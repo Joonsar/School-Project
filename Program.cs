@@ -10,6 +10,7 @@ namespace School_Project
         private static void Main(string[] args)
         {
             GameController gc = GameController.Instance;
+            
             gc.Init();
         }
     }
