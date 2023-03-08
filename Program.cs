@@ -9,9 +9,13 @@ namespace School_Project
     {
         private static void Main(string[] args)
         {
-            GameController gc = GameController.Instance;
-            
-            gc.Init();
+          //  GameController gc = GameController.Instance;
+
+            //  gc.Init();
+
+            Screen screen = new Screen(40, 20);
+            screen.DrawScreen();
+            Console.ReadLine();
         }
     }
 }
