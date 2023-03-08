@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Xml;
 
 namespace School_Project
 {
@@ -65,6 +61,8 @@ namespace School_Project
             gameMap.SetPlayerPosition(5, 5);
 
             // Create a new instance of the PlayerMovement class
+            
+            //eli kaikki liikkumiset jne pois tästä classista. Pelkästään tulostaminen.
             PlayerMovement playerMovement = new PlayerMovement(gameMap, 5, 5);
 
             // Draw the game board
