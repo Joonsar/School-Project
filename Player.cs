@@ -4,6 +4,7 @@ namespace School_Project
     public class Player
     {
         //nää toimii, mutta yleinen nimikäytäntö on että nää alkaa isolla kirjaimella (turhaa höpötystä, mutta näin ne yleensä tehdään) :)
+        //eli kun kutsutaan sit vaikka gc.player.Name; gc.player.Health;
         private string name;
         private int health {get;set;}
         private int points {get;set;}
