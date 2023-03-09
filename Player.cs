@@ -1,5 +1,6 @@
 namespace School_Project
 {
+    //itseasiassa miksei me käytettäs vector2 positionissa? Tosin tääkin toimii, mutta jos meillä olis esim vector2 position, niin siihen vois lisätä position += new vector2(1,0) jne
     public class Player
     {
         private string name;
