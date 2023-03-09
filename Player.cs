@@ -1,7 +1,10 @@
 namespace School_Project
 {
+    //itseasiassa miksei me käytettäs vector2 positionissa? Tosin tääkin toimii, mutta jos meillä olis esim vector2 position, niin siihen vois lisätä position += new vector2(1,0) jne
     public class Player
     {
+        //nää toimii, mutta yleinen nimikäytäntö on että nää alkaa isolla kirjaimella (turhaa höpötystä, mutta näin ne yleensä tehdään) :)
+        //eli kun kutsutaan sit vaikka gc.player.Name; gc.player.Health;
         private string name;
         private int health {get;set;}
         private int points {get;set;}
