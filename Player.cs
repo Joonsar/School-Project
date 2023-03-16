@@ -24,6 +24,7 @@ namespace School_Project
        //     this.pos = new Position(xAxis, yAxis);
        // }
 
+        //ei välttämättä tarvi constructorissa expPoints(jos oletetaan, että se on alussa nolla. voidaan vaan laitta ExpPoints = 0)
         public Player(string name, int healthValue, int hitPoints, int expPoints)
         {
             Name = name;
