@@ -5,17 +5,38 @@ namespace School_Project
     {
         //nää toimii, mutta yleinen nimikäytäntö on että nää alkaa isolla kirjaimella (turhaa höpötystä, mutta näin ne yleensä tehdään) :)
         //eli kun kutsutaan sit vaikka gc.player.Name; gc.player.Health;
-        private string name;
-        private int health {get;set;}
-        private int points {get;set;}
-        //private int money {get;set;}
-        private Position pos;
-        public Player(string name, int xAxis, int yAxis)
+        public string Name { get; private set; }
+        public int HealthValue { get; private set; }
+        public int HitPoints { get; private set; }
+        public int ExpPoints { get; private set; }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
+       // private Position pos;
+       
+        
+        //public Player(string name, int xAxis, int yAxis)
+       // {
+       //     this.name = name;
+       //     //this.health = ?; Päätetään myöhemmin
+       //     this.points = 0;
+       //     this.pos = new Position(xAxis, yAxis);
+       // }
+
+        public Player(string name, int healthValue, int hitPoints, int expPoints)
         {
-            this.name = name;
-            //this.health = ?; Päätetään myöhemmin
-            this.points = 0;
-            this.pos = new Position(xAxis, yAxis);
+            Name = name;
+            HealthValue = healthValue;
+            HitPoints = hitPoints;
+            ExpPoints = expPoints;
+        }
+
+        public string GetStats()
+        {
+            return $"{Name} - Health: {HealthValue}, Hit Points: {HitPoints}, Exp Points: {ExpPoints}";
         }
     }
+
 }
+
