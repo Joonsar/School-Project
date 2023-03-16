@@ -1,4 +1,4 @@
-namespace School_Project
+﻿namespace School_Project
 {
     //itseasiassa miksei me käytettäs vector2 positionissa? Tosin tääkin toimii, mutta jos meillä olis esim vector2 position, niin siihen vois lisätä position += new vector2(1,0) jne
     public class Player
@@ -13,16 +13,16 @@ namespace School_Project
         public int X { get; set; }
         public int Y { get; set; }
 
-       // private Position pos;
-       
-        
+        // private Position pos;
+
+
         //public Player(string name, int xAxis, int yAxis)
-       // {
-       //     this.name = name;
-       //     //this.health = ?; Päätetään myöhemmin
-       //     this.points = 0;
-       //     this.pos = new Position(xAxis, yAxis);
-       // }
+        // {
+        //     this.name = name;
+        //     //this.health = ?; Päätetään myöhemmin
+        //     this.points = 0;
+        //     this.pos = new Position(xAxis, yAxis);
+        // }
 
         //ei välttämättä tarvi constructorissa expPoints(jos oletetaan, että se on alussa nolla. voidaan vaan laitta ExpPoints = 0)
         public Player(string name, int healthValue, int hitPoints, int expPoints)

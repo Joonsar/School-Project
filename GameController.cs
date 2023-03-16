@@ -5,6 +5,7 @@ namespace School_Project
     public class GameController
     {
         public static GameController Instance { get; set; }
+        public Player player = new Player("henkka", 100, 100, 0);
         private bool running = false;
         
         public GameController()
