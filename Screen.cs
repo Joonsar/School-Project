@@ -58,8 +58,9 @@ namespace School_Project
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
 
             // Create a new instance of the Map class
-            //esim tää pois
-            Map gameMap = new Map(35, 25);
+
+            Map gameMap = new Map(25, 25);
+
 
             // Set the player position on the map
             //tää pois

@@ -10,7 +10,7 @@ namespace School_Project
 
             //  gc.Init();
 
-            Screen screen = new Screen(40, 20);
+            Screen screen = new Screen(30, 25);
             screen.DrawScreen();
             Console.ReadLine();
         }
