@@ -50,6 +50,7 @@ namespace School_Project
         // Check if a given position is within the bounds of the game board
         public bool IsPositionValid(int x, int y)
         {
+            
             return x >= 0 && x < width && y >= 0 && y < height && mapping[y, x] != '#';
         }
 
