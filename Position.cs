@@ -1,19 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+
 namespace School_Project
 {
     public class Position
     {
-        public int x {get; set;}
-        public int y {get; set;}
+        public int X { get; set; }
+        public int Y { get; set; }
 
-
-        public Position()
-        {
-            
-        }
         public Position(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
     }
 }

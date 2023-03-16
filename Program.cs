@@ -6,13 +6,10 @@ namespace School_Project
     {
         private static void Main(string[] args)
         {
-            //  GameController gc = GameController.Instance;
-
-            //  gc.Init();
-
-            Screen screen = new Screen(30, 25);
-            screen.DrawScreen();
-            Console.ReadLine();
+            GameController gc = new GameController();
+            GameController.Instance = gc;
+            gc.Init();
+            gc.Run();
         }
     }
 }
