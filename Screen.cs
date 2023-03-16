@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Xml;
 
 namespace School_Project
 {
@@ -38,7 +34,10 @@ namespace School_Project
         public void PrintPlayer()
         {
             // tää ei tuu toimiin, ennenkun pelaajalla on position value, public Position pos {get; set;} ja asetettu jossain (todnäk player constructorissa)
-            // Console.SetCursorPosition(gc.Player.Pos.x, gc.Player.Pos.y);
+            
+            
+            //tää on rikki viä, ennenkun gamecontrollerissa määritellään pelaaja
+            //Console.SetCursorPosition(gc.Player.Pos.x, gc.Player.Pos.y);
             Write("@");
         }
 
@@ -59,15 +58,23 @@ namespace School_Project
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
 
             // Create a new instance of the Map class
+
             Map gameMap = new Map(25, 25);
 
+
             // Set the player position on the map
+            //tää pois
             gameMap.SetPlayerPosition(5, 5);
 
             // Create a new instance of the PlayerMovement class
+            
+            //eli kaikki liikkumiset jne pois tästä classista. Pelkästään tulostaminen.
+            //tää pois
             PlayerMovement playerMovement = new PlayerMovement(gameMap, 5, 5);
 
             // Draw the game board
+            // tähän public void DrawMap(Map map) { joku tyhmä esimerkki if(map.mapArray[10,10] == TileType.Wall { console.write("#"); }
+            
             gameMap.Draw();
 
             // Print the player on the screen

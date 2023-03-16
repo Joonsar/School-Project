@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace School_Project
+﻿namespace School_Project
 {
+    //tän koko systeemin laittasin player classin sisään. ja poistasin moveup movedown jne, tekisin yhen metodin Move(Direction dir) ja directionista tekisin
+    //enum up,down,left,right,upright jnejne.. esimerkiksi up = (0,-1) down = (0,1) jnejne.. ja map on tuolla gamecontroller classissa. esim tässäkin käytettäs gc.map.IsPositionValid()
     public class PlayerMovement
     {
         private Map map;
