@@ -14,6 +14,10 @@ namespace School_Project
         public int HitPoints { get; private set; }
         public int ExpPoints { get; private set; }
 
+        public ConsoleColor Color { get; private set; }
+
+        public char Mark { get; set; }
+
         private GameController gc = GameController.Instance;
 
         Tuple<Position, char> LastPosition;
@@ -41,6 +45,8 @@ namespace School_Project
             ExpPoints = 0;
             Pos = new Position(10, 10);
             LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.map.Mapping[10,10] );
+            Color = ConsoleColor.Green;
+            Mark = '@';
         }
 
         public string GetStats()

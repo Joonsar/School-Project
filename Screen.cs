@@ -28,16 +28,24 @@ namespace School_Project
                 ShowWindow(consoleWindow, 3);
             }
 
-            Console.WindowHeight = Height;
+            Console.WindowHeight = Height+1;
             Console.WindowWidth = Width;
-            Console.SetBufferSize(width+1, height+2);
+            Console.SetBufferSize(width, height+1);
+         
             Console.CursorVisible = false;
         }
 
         public void PrintPlayer()
         {
             Console.SetCursorPosition(gc.player.Pos.X, gc.player.Pos.Y);
-            Write("@");
+            Write(gc.player.Mark.ToString(), gc.player.Color);
+            PrintPlayerStats();
+        }
+
+        public void PrintPlayerStats()
+        {
+            Console.SetCursorPosition(0, Height);
+            Write(gc.player.GetStats());
         }
 
         public void PrintMap()
@@ -70,6 +78,13 @@ namespace School_Project
         {
             Console.SetCursorPosition(pos.X, pos.Y);
             Console.Write(mark);
+        }
+        public void WriteAtPosition(Position pos, char mark, ConsoleColor color)
+        {
+            Console.SetCursorPosition(pos.X, pos.Y);
+            Console.ForegroundColor = color;
+            Console.Write(mark);
+            Console.ResetColor();
         }
 
         public void DrawScreen()
