@@ -30,13 +30,28 @@ namespace School_Project
 
             Console.WindowHeight = Height;
             Console.WindowWidth = Width;
-            Console.SetBufferSize(width, height);
+            Console.SetBufferSize(width+1, height+2);
+            Console.CursorVisible = false;
         }
 
         public void PrintPlayer()
         {
             Console.SetCursorPosition(gc.player.Pos.X, gc.player.Pos.Y);
             Write("@");
+        }
+
+        public void PrintMap()
+        {
+           
+            for(int y = 0; y < gc.map.Height; y++)
+            {
+                for(int x = 0; x < gc.map.Width; x++ )
+                {
+                    Console.SetCursorPosition(x, y);
+                    Write(gc.map.Mapping[x, y].ToString());
+                }
+            }
+           
         }
 
         public void Write(string text, ConsoleColor colour)
@@ -49,6 +64,12 @@ namespace School_Project
         public void Write(string text)
         {
             Console.Write(text);
+        }
+
+        public void WriteAtPosition(Position pos, char mark)
+        {
+            Console.SetCursorPosition(pos.X, pos.Y);
+            Console.Write(mark);
         }
 
         public void DrawScreen()
@@ -72,20 +93,12 @@ namespace School_Project
             PrintPlayer();
 
             // Keep moving the player until the user presses the Esc key
-            while (true)
-            {
-                // Get the key pressed by the user
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+          
 
-                // Move the player in the corresponding direction
-            }
+          
 
-            // Update the player position
-
-            // Print the player on the screen again
-
-            // Keep the console window open
-            Console.ReadLine();
+            
+            
         }
     }
 }

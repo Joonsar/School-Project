@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace School_Project
 {
@@ -12,6 +13,10 @@ namespace School_Project
         public int HealthValue { get; private set; }
         public int HitPoints { get; private set; }
         public int ExpPoints { get; private set; }
+
+        private GameController gc = GameController.Instance;
+
+        Tuple<Position, char> LastPosition;
 
         public Position Pos { get; private set; }
         /*public int X { get; set; }
@@ -35,6 +40,7 @@ namespace School_Project
             HitPoints = hitPoints;
             ExpPoints = 0;
             Pos = new Position(10, 10);
+            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.map.Mapping[10,10] );
         }
 
         public string GetStats()
@@ -44,8 +50,13 @@ namespace School_Project
 
         public void MovePlayer(int x, int y)
         {
-            Pos.X += x;
-            Pos.Y += y;
+            if (gc.map.IsPositionValid(Pos.X + x, Pos.Y + y))
+            {
+                Pos.X += x;
+                Pos.Y += y;
+                gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
+                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.map.Mapping[Pos.X, Pos.Y]);
+            }
         }
     }
 }

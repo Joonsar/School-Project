@@ -7,6 +7,10 @@ namespace School_Project
         public static GameController Instance { get; set; }
         public Player player { get; set; }
         public Map map { get; set; }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+
         public Screen screen;
         private bool running = false;
 
@@ -16,13 +20,16 @@ namespace School_Project
 
         public void Init()
         {
+            Width = 80;
+            Height = 20;
             //All here that needs to be initialized like map, player, screen etc.
             // for example Player player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
             // Map map =new Map(mitä onkaan)
-            screen = new Screen(20, 20);
-            map = new Map(20, 20);
+            screen = new Screen(Width, Height);
+            map = new Map(Width, Height);
             player = new Player("Pelaaja", 100, 100);
+            screen.PrintMap();
             running = true;
         }
 
@@ -31,6 +38,7 @@ namespace School_Project
             while (running)
             {
                 screen.PrintPlayer();
+                
 
                 var input = Console.ReadKey(true);
                 CheckInput(input);
