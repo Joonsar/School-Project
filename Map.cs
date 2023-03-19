@@ -21,7 +21,7 @@ namespace School_Project
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
+                    if (x == 0 || x == width || y == 0 || y == height)
                     {
                         // Place "#" at edges of the board
                         Mapping[x, y] = '#';

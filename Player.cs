@@ -7,7 +7,7 @@ namespace School_Project
     public class Player
     {
         //nää toimii, mutta yleinen nimikäytäntö on että nää alkaa isolla kirjaimella (turhaa höpötystä, mutta näin ne yleensä tehdään) :)
-        //eli kun kutsutaan sit vaikka gc.player.Name; gc.player.Health;
+        //eli kun kutsutaan sit vaikka gc.Player.Name; gc.Player.Health;
         public string Name { get; private set; }
 
         public int HealthValue { get; private set; }
@@ -44,7 +44,7 @@ namespace School_Project
             HitPoints = hitPoints;
             ExpPoints = 0;
             Pos = new Position(10, 10);
-            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.map.Mapping[10,10] );
+            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10,10] );
             Color = ConsoleColor.Green;
             Mark = '@';
         }
@@ -56,12 +56,12 @@ namespace School_Project
 
         public void MovePlayer(int x, int y)
         {
-            if (gc.map.IsPositionValid(Pos.X + x, Pos.Y + y))
+            if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y))
             {
                 Pos.X += x;
                 Pos.Y += y;
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
-                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.map.Mapping[Pos.X, Pos.Y]);
+                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
             }
         }
     }
