@@ -11,6 +11,8 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public int Turn { get; set; }
+
         public Screen screen;
         private bool running = false;
 
@@ -20,6 +22,7 @@ namespace School_Project
 
         public void Init()
         {
+            Turn = 1;
             Width = 80;
             Height = 20;
             //All here that needs to be initialized like map, player, screen etc.
@@ -52,6 +55,7 @@ namespace School_Project
                 //mikälie meidän tulostus funktio onkaan.
                 // ja tässä game loopissa voidaan kutsua sit screen.printplayer(); tai jos halutaan yksinkertastaa niin player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua player.Draw(); ja se sit viitaa screen luokkaan jne.
+                Turn++;
             }
         }
 

@@ -51,7 +51,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Health: {HealthValue}, Hit Points: {HitPoints}, Exp Points: {ExpPoints}";
+            return $"{Name} - Health: {HealthValue}, Hit Points: {HitPoints}, Exp Points: {ExpPoints}, Turn: {gc.Turn}";
         }
 
         public void MovePlayer(int x, int y)

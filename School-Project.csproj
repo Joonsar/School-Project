@@ -85,7 +85,6 @@
     <Compile Include="GameController.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerMovement.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Screen.cs" />
