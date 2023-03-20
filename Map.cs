@@ -54,6 +54,14 @@ namespace School_Project
         public void GenerateRandomRooms()
         {
             // Using <> as markers for stairs
+
+            // Generate random coordinates for the marker
+            Random rand = new Random();
+            int x = rand.Next(1, Width - 1); // x-coordinate should be within the bounds of the map, excluding the edges
+            int y = rand.Next(1, Height - 1); // y-coordinate should be within the bounds of the map, excluding the edges
+
+            // Place the marker at the randomly generated position
+            Mapping[x, y] = '<';
             // Tee liikkuminen yksi ylös päin ja yksi alaspäin huoneita. Jos aikaa niin Generoi myös erikoikonen huone
         }
     }
