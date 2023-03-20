@@ -42,7 +42,7 @@ namespace School_Project
             // Map map =new Map(mitä onkaan)
             screen = new Screen(Width, Height);
             
-            //Adding few test enemy
+            // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
            
             Player = new Player("Pelaaja", 100, 100);
@@ -63,10 +63,14 @@ namespace School_Project
                 var input = Console.ReadKey(true);
                 CheckInput(input);
 
-                //käydään läpi entity lista.
+                //liikutetaan entityjä
+                
                 MoveEntities();
-
+                //tulostetaan entityt
                 screen.PrintEntities(entities);
+
+                //tulostetaan entityt ruudulle.
+
 
                 //tähän game looppi.
                 //Mikä ikinä onkaan syötteen luku.. esim InputParser() -> täällä voi sit olla, että jos vaikka rightarrow, niin Player.move(0,1) ja

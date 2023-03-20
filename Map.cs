@@ -59,6 +59,7 @@ namespace School_Project
             return movePos.X >= 0 && movePos.X < Width && movePos.Y >= 0 && movePos.Y < Height && Mapping[movePos.X, movePos.Y] != '#';
         }
 
+        // tarkastetaan onko ruudustta entity. jos on palautetaan se. muuten palautetaan null
         public Entity IsEnemyAtPosition(int x, int y)
         {
             foreach(Entity e in entities)
@@ -83,13 +84,19 @@ namespace School_Project
             return null;
         }
 
+        // luodaan vihollisia karttaan. ja lisätään ne entities listaan.
         public void CreateEnemies()
         {
-            for(int i = 0; i < 5; i ++)
-            {
-                var enemy = new Enemy("juoppo" + i, "melkonen juoppo", new Position(15, 15), 'J', ConsoleColor.Yellow);
-                entities.Add(enemy);
-            }
+            
+            
+            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(15, 15), 'J', ConsoleColor.Yellow);
+            entities.Add(enemy);
+            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(16, 16), '╚', ConsoleColor.Cyan);
+            entities.Add(enemy2);
+            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(4, 5), '~', ConsoleColor.DarkYellow);
+            entities.Add(enemy3);
+                
+            
         }
 
         // Update the game board with a new 2D char array
