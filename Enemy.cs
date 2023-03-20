@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace School_Project
 {
-    public class Enemy
+    public class Enemy: Entity
     {
         public int Health { get; set; }
         public int MaxHealth { get; set; }

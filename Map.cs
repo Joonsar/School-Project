@@ -54,7 +54,7 @@ namespace School_Project
         public void GenerateRandomRooms()
         {
             // Using <> as markers for stairs
-
+            // Tee liikkuminen yksi ylös päin ja yksi alaspäin huoneita. Jos aikaa niin Generoi myös erikoikonen huone
         }
     }
 
