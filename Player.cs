@@ -13,6 +13,7 @@ namespace School_Project
         public int HealthValue { get; private set; }
         public int HitPoints { get; private set; }
         public int ExpPoints { get; private set; }
+        public int Level { get; private set; }
 
         public ConsoleColor Color { get; private set; }
 
@@ -39,6 +40,7 @@ namespace School_Project
         //ei välttämättä tarvi constructorissa expPoints(jos oletetaan, että se on alussa nolla. voidaan vaan laitta ExpPoints = 0)
         public Player(string name, int healthValue, int hitPoints)
         {
+            Level = 1;
             Name = name;
             HealthValue = healthValue;
             HitPoints = hitPoints;
@@ -63,6 +65,10 @@ namespace School_Project
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
             }
+
+
         }
+
+
     }
 }
