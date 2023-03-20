@@ -24,20 +24,7 @@ namespace School_Project
         Tuple<Position, char> LastPosition;
 
         public Position Pos { get; private set; }
-        /*public int X { get; set; }
-        public int Y { get; set; }*/
 
-        // private Position pos;
-
-        //public Player(string name, int xAxis, int yAxis)
-        // {
-        //     this.name = name;
-        //     //this.health = ?; Päätetään myöhemmin
-        //     this.points = 0;
-        //     this.pos = new Position(xAxis, yAxis);
-        // }
-
-        //ei välttämättä tarvi constructorissa expPoints(jos oletetaan, että se on alussa nolla. voidaan vaan laitta ExpPoints = 0)
         public Player(string name, int healthValue, int hitPoints)
         {
             Level = 1;
