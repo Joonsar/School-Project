@@ -16,6 +16,7 @@ namespace School_Project
         public Screen screen;
         private bool running = false;
 
+        public bool StairsGenerated = false;
         public GameController()
         {
         }
@@ -32,7 +33,8 @@ namespace School_Project
             screen = new Screen(Width, Height);
             Map = new Map(Width, Height);
             Player = new Player("Pelaaja", 100, 100);
-            screen.PrintMap();
+            //   screen.PrintMap();
+            screen.DrawScreen();
             running = true;
         }
 
@@ -93,6 +95,9 @@ namespace School_Project
 
                 case ConsoleKey.NumPad6:
                     Player.MovePlayer(1, 0);
+                    break;
+                case ConsoleKey.Escape:
+                    System.Environment.Exit(0);
                     break;
             }
         }

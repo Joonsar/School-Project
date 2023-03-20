@@ -51,18 +51,16 @@ namespace School_Project
             Mapping = updatedBoard;
         }
 
-        public void GenerateRandomRooms()
+        public void GenerateStairs()
         {
-            // Using <> as markers for stairs
+          
+            Random random = new Random();
+            int x = random.Next(1, Width - 1);
+            int y = random.Next(1, Height - 1);
 
-            // Generate random coordinates for the marker
-            Random rand = new Random();
-            int x = rand.Next(1, Width - 1); // x-coordinate should be within the bounds of the map, excluding the edges
-            int y = rand.Next(1, Height - 1); // y-coordinate should be within the bounds of the map, excluding the edges
-
-            // Place the marker at the randomly generated position
+            
             Mapping[x, y] = '<';
-            // Tee liikkuminen yksi ylös päin ja yksi alaspäin huoneita. Jos aikaa niin Generoi myös erikoikonen huone
+
         }
     }
 

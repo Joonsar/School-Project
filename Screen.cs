@@ -8,7 +8,7 @@ namespace School_Project
     {
         private readonly int Width;
         private readonly int Height;
-
+      
         private GameController gc = GameController.Instance;
 
         [DllImport("kernel32.dll", ExactSpelling = true)]
@@ -59,7 +59,7 @@ namespace School_Project
                     Write(gc.Map.Mapping[x, y].ToString());
                 }
             }
-           
+            
         }
 
         public void Write(string text, ConsoleColor colour)
@@ -90,30 +90,21 @@ namespace School_Project
         public void DrawScreen()
         {
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
+            // Generate stairs if they haven't been generated already
+            if (!gc.StairsGenerated)
+            {
+                gc.Map.GenerateStairs();
+                gc.StairsGenerated = true;
+            }
 
-            // Create a new instance of the Map class
-
-            // Set the Player position on the map
-            //tää pois
-
-            // Create a new instance of the PlayerMovement class
-
-            //eli kaikki liikkumiset jne pois tästä classista. Pelkästään tulostaminen.
-            //tää pois
-
-            // Draw the game board
+            PrintMap();
+          
             // tähän public void DrawMap(Map map) { joku tyhmä esimerkki if(map.mapArray[10,10] == TileType.Wall { console.write("#"); }
 
             // Print the Player on the screen
             PrintPlayer();
 
             // Keep moving the Player until the user presses the Esc key
-          
-
-          
-
-            
-            
         }
     }
 }
