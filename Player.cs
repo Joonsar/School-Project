@@ -35,9 +35,9 @@ namespace School_Project
             ExpPoints = 0;
             Pos = new Position(10, 10);
 
-            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
+            //LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
 
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+            SetPlayerLastPosition();
 
             Color = ConsoleColor.Green;
             Mark = '@';
@@ -51,6 +51,11 @@ namespace School_Project
         public void MovePlayerToPosition(Position pos)
         {
             Pos = pos;
+        }
+
+        public void SetPlayerLastPosition()
+        {
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
         }
         
         public void MovePlayer(int x, int y)

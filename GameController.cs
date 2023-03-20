@@ -125,6 +125,7 @@ namespace School_Project
                     Level++;
                     Player.Pos = Map.StairUp;
                     screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
                 }
 
                 else
@@ -139,6 +140,7 @@ namespace School_Project
                     Player.Pos = Map.StairUp;
                     
                     screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
                 }
             }
 
@@ -151,6 +153,7 @@ namespace School_Project
                     Level--;
                     Player.Pos = Map.StairDown;
                     screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
                 }
 
                 else
