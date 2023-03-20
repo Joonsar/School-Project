@@ -21,7 +21,7 @@ namespace School_Project
             this.Description = description;
             this.Pos = pos;
             this.Mark = mark;
-            this.Color = Color;
+            this.Color = color;
         }
 
 
