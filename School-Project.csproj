@@ -82,6 +82,7 @@
     <Folder Include=".vs\School-Project\v17\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enemy.cs" />
     <Compile Include="GameController.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Player.cs" />
