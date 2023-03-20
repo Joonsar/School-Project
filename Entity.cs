@@ -24,6 +24,11 @@ namespace School_Project
             this.Color = color;
         }
 
+        public virtual void MoveEntity(Position position)
+        {
+
+        }
+
 
     }
 }

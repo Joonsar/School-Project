@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace School_Project
 {
@@ -11,6 +12,10 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
+        private Random rand;
+
+        public List<Entity> entities;
+
         public int Turn { get; set; }
 
         public Screen screen;
@@ -22,6 +27,8 @@ namespace School_Project
 
         public void Init()
         {
+            rand = new Random();
+            entities = new List<Entity>();
             Turn = 1;
             Width = 80;
             Height = 20;
@@ -31,9 +38,17 @@ namespace School_Project
             // Map map =new Map(mitä onkaan)
             screen = new Screen(Width, Height);
             Map = new Map(Width, Height);
+            //Adding few test enemy
+            Enemy testEnemy = new Enemy("Juoppo", "Hirvee juopo", new Position(15, 15), '~', ConsoleColor.Red);
+            Enemy testEnemy2 = new Enemy("Juoppo2", "Vielä hirveempi juoppo", new Position(20, 18), '!', ConsoleColor.Yellow);
+            entities.Add(testEnemy);
+            entities.Add(testEnemy2);
             Player = new Player("Pelaaja", 100, 100);
             screen.PrintMap();
+            //printing entities to screen
+            screen.PrintEntities(entities);
             running = true;
+            
         }
 
         public void Run()
@@ -41,10 +56,15 @@ namespace School_Project
             while (running)
             {
                 screen.PrintPlayer();
-                
+
 
                 var input = Console.ReadKey(true);
                 CheckInput(input);
+
+                //käydään läpi entity lista.
+                MoveEntities();
+
+                screen.PrintEntities(entities);
 
                 //tähän game looppi.
                 //Mikä ikinä onkaan syötteen luku.. esim InputParser() -> täällä voi sit olla, että jos vaikka rightarrow, niin Player.move(0,1) ja
@@ -56,6 +76,21 @@ namespace School_Project
                 // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
                 Turn++;
+            }
+        }
+
+        private void MoveEntities()
+        {
+            foreach (Entity e in entities)
+            {
+                int moveX = rand.Next(-1, 2);
+                int moveY = rand.Next(-1, 2);
+                //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
+                if (e.GetType() == typeof(Enemy))
+                {
+                    e.MoveEntity(new Position(moveX, moveY));
+                }
+
             }
         }
 

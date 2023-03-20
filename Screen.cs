@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
@@ -60,6 +61,14 @@ namespace School_Project
                 }
             }
            
+        }
+
+        internal void PrintEntities(List<Entity> entities)
+        {
+            foreach(Entity e in entities)
+            {
+                WriteAtPosition(e.Pos, e.Mark, e.Color);
+            }
         }
 
         public void Write(string text, ConsoleColor colour)
