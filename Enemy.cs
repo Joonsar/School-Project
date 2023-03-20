@@ -14,7 +14,7 @@ namespace School_Project
         public int MaxHealth { get; set; }
         public int Damage { get; set; }
 
-        public Enemy(string name, string description, Position pos, char mark, ConsoleColor color, ) : base(name, description, pos, mark, color)
+        public Enemy(string name, string description, Position pos, char mark, ConsoleColor color) : base(name, description, pos, mark, color)
         {
             //lisätään default valuet
         }
