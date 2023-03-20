@@ -5,6 +5,7 @@ namespace School_Project
 {
     public class Map
     {
+        private GameController gc = GameController.Instance;
         public char[,] Mapping { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
@@ -53,14 +54,58 @@ namespace School_Project
 
         public void GenerateStairs()
         {
-          
+
             Random random = new Random();
             int x = random.Next(1, Width - 1);
             int y = random.Next(1, Height - 1);
 
-            
             Mapping[x, y] = '<';
 
+            int newX = random.Next(1, Width - 1);
+            int newY = random.Next(1, Height - 1);
+
+            // Make sure the new position is not the same as the first one
+            while (newX == x && newY == y)
+            {
+                newX = random.Next(1, Width - 1);
+                newY = random.Next(1, Height - 1);
+            }
+
+            Mapping[newX, newY] = '>';
+
+        }
+
+        public void GenerateNewMap()
+        {
+            int newWidth = Width;
+            int newHeight = Height; 
+            char emptySpaceChar = '.';
+
+            
+            Map newMap = new Map(newWidth, newHeight, emptySpaceChar);
+
+            
+            for (int x = 0; x < newWidth; x++)
+            {
+                for (int y = 0; y < newHeight; y++)
+                {
+                    if (x == 0 || x == newWidth - 1 || y == 0 || y == newHeight - 1)
+                    {
+                        
+                        newMap.Mapping[x, y] = '#';
+                    }
+                    else
+                    {
+                        
+                        newMap.Mapping[x, y] = emptySpaceChar;
+                    }
+                }
+            }
+            newMap.GenerateStairs();
+            // Update the game controller's map and redraw it
+            gc.Map = newMap;
+            gc.screen.Clear();
+            UpdateMap(gc.Map.Mapping);
         }
     }
 

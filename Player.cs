@@ -15,6 +15,7 @@ namespace School_Project
         public int ExpPoints { get; private set; }
         public int Level { get; private set; }
 
+        public Map map;
         public ConsoleColor Color { get; private set; }
 
         public char Mark { get; set; }
@@ -33,7 +34,7 @@ namespace School_Project
             HitPoints = hitPoints;
             ExpPoints = 0;
             Pos = new Position(10, 10);
-            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10,10] );
+            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
             Color = ConsoleColor.Green;
             Mark = '@';
         }
@@ -51,11 +52,29 @@ namespace School_Project
                 Pos.Y += y;
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+
+                // check for collision with "<"
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
+                {
+                    gc.Map.GenerateNewMap(); // generate a new map
+                }
             }
 
 
         }
 
-
+        public bool CheckIfPlayerCollidesWithStairs()
+        {
+            {
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

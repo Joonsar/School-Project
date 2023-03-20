@@ -86,9 +86,14 @@ namespace School_Project
             Console.Write(mark);
             Console.ResetColor();
         }
+        public void Clear()
+        {
+            Console.Clear();
+        }
 
         public void DrawScreen()
         {
+            Clear();
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
             // Generate stairs if they haven't been generated already
             if (!gc.StairsGenerated)
