@@ -9,6 +9,8 @@ namespace School_Project
         public Player Player { get; set; }
         public Map Map { get; set; }
 
+        public List<Map> Maps { get; set; }
+        public int Level { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -31,10 +33,13 @@ namespace School_Project
         public void Init()
         {
 
+            Level = 0;
+            Maps = new List<Map>();
             Width = 50;
             Height = 20;
             this.Map = new Map(Width, Height);
             Map.CreateEnemies();
+            Maps.Add(Map);
             rand = new Random();
             entities = new List<Entity>();
             Turn = 1;
@@ -109,6 +114,49 @@ namespace School_Project
             }
         }
 
+        public void ChangeLevel(int direction)
+        {
+            if(direction == 1)
+            {
+                if (Maps.Count > Level + 1)
+                {
+                    this.Map = Maps[Level + 1];
+                    entities = Map.entities;
+                    Level++;
+                    screen.DrawScreen();
+                }
+
+                else
+                {
+                    var newMap = new Map(Width, Height);
+                    newMap.CreateEnemies();
+                    newMap.GenerateNewMap();
+                    Maps.Add(newMap);
+                    Map = newMap;
+                    entities = Map.entities;
+                    Player.Pos = new Position(10, 10);
+                    Level++;
+                    screen.DrawScreen();
+                }
+            }
+
+            if(direction == -1)
+            {
+                if(Level > 0)
+                {
+                    this.Map = Maps[Level - 1];
+                    entities = Map.entities;
+                    Level--;
+                    screen.DrawScreen();
+                }
+
+                else
+                {
+                    return;
+                }
+            }
+        }
+
         private void CheckInput(ConsoleKeyInfo input)
         {
             // Move the Player in the corresponding direction
@@ -149,6 +197,12 @@ namespace School_Project
                     break;
                 case ConsoleKey.Escape:
                     System.Environment.Exit(0);
+                    break;
+                case ConsoleKey.O:
+                    ChangeLevel(1);
+                    break;
+                case ConsoleKey.I:
+                    ChangeLevel(-1);
                     break;
 
                 //case ConsoleKey.OemComma: // 

@@ -24,7 +24,7 @@ namespace School_Project
 
         Tuple<Position, char> LastPosition;
 
-        public Position Pos { get; private set; }
+        public Position Pos { get; set; }
 
         public Player(string name, int healthValue, int hitPoints)
         {
@@ -45,7 +45,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn}";
+            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
         }
 
         public void MovePlayerToPosition(Position pos)
