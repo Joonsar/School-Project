@@ -34,23 +34,33 @@ namespace School_Project
             HitPoints = hitPoints;
             ExpPoints = 0;
             Pos = new Position(10, 10);
+
             LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
+
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+
             Color = ConsoleColor.Green;
             Mark = '@';
         }
 
         public string GetStats()
         {
-            return $"{Name} - Health: {HealthValue}, Hit Points: {HitPoints}, Exp Points: {ExpPoints}, Turn: {gc.Turn}";
+            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn}";
         }
 
+        public void MovePlayerToPosition(Position pos)
+        {
+            Pos = pos;
+        }
+        
         public void MovePlayer(int x, int y)
         {
-            if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y))
+            if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
                 Pos.X += x;
                 Pos.Y += y;
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
+                gc.screen.PrintPlayer();
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
                

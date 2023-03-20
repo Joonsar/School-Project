@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
@@ -42,6 +43,11 @@ namespace School_Project
             PrintPlayerStats();
         }
 
+        public void PrintEnemy(Enemy enemy)
+        {
+            WriteAtPosition(enemy.Pos, enemy.Mark, enemy.Color);
+        }
+
         public void PrintPlayerStats()
         {
             Console.SetCursorPosition(0, Height);
@@ -65,6 +71,15 @@ namespace School_Project
                 }
             }
             
+        }
+
+        public void PrintEntities(List<Entity> entities)
+        {
+            // tulostetaan jokainen entity ruudulle.
+            foreach(Entity e in entities)
+            {
+                WriteAtPosition(e.Pos, e.Mark, e.Color);
+            }
         }
 
         public void Write(string text, ConsoleColor colour)
