@@ -64,9 +64,13 @@ namespace School_Project
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
                
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<') 
                 {
-                    gc.Map.GenerateNewMap(); // generate a new map
+                    gc.ChangeLevel(1); 
+                }
+                if(gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                {
+                    gc.ChangeLevel(-1);
                 }
             }
 

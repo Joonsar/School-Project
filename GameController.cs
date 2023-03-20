@@ -16,7 +16,7 @@ namespace School_Project
 
         private Random rand;
 
-        public List<Entity> entities;
+        public List<Entity> entities { get; set; }
 
         public int Turn { get; set; }
 
@@ -120,9 +120,10 @@ namespace School_Project
             {
                 if (Maps.Count > Level + 1)
                 {
-                    this.Map = Maps[Level + 1];
+                    Map = Maps[Level + 1];
                     entities = Map.entities;
                     Level++;
+                    Player.Pos = Map.StairUp;
                     screen.DrawScreen();
                 }
 
@@ -130,12 +131,13 @@ namespace School_Project
                 {
                     var newMap = new Map(Width, Height);
                     newMap.CreateEnemies();
-                    newMap.GenerateNewMap();
+                    newMap.GenerateStairs();
                     Maps.Add(newMap);
                     Map = newMap;
                     entities = Map.entities;
-                    Player.Pos = new Position(10, 10);
                     Level++;
+                    Player.Pos = Map.StairUp;
+                    
                     screen.DrawScreen();
                 }
             }
@@ -144,9 +146,10 @@ namespace School_Project
             {
                 if(Level > 0)
                 {
-                    this.Map = Maps[Level - 1];
+                    Map = Maps[Level - 1];
                     entities = Map.entities;
                     Level--;
+                    Player.Pos = Map.StairDown;
                     screen.DrawScreen();
                 }
 

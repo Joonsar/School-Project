@@ -11,6 +11,9 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public Position StairDown { get; set; }
+        public Position StairUp { get; set; }
+
 
 
         public List<Entity> entities;
@@ -92,13 +95,17 @@ namespace School_Project
         // tähän vois kehitellä jonkun systeemin, että noi viholliset kaivetaan jostain sen mukaan kuinka syvällä ollaan jne.
         public void CreateEnemies()
         {
-            
-            
-            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(15, 15), 'J', ConsoleColor.Yellow, 100, 10);
+            Random rand = new Random();
+            string charString = "ABCDEFGHIJKLMNOPQRST!!#¤%&/()♀-N`↨-↨00Kdkoewjatfiheioahteaotih}cA";
+            char randomChar1 = charString[rand.Next(0, charString.Length)];
+            char randomChar2 = charString[rand.Next(0, charString.Length)];
+            char randomChar3 = charString[rand.Next(0, charString.Length)];
+
+            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, ConsoleColor.Yellow, 100, 10);
             entities.Add(enemy);
-            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(16, 16), '╚', ConsoleColor.Cyan, 100, 5);
+            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar2, ConsoleColor.Cyan, 100, 5);
             entities.Add(enemy2);
-            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(4, 5), '~', ConsoleColor.DarkYellow, 100, 3);
+            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar3, ConsoleColor.DarkYellow, 100, 3);
             entities.Add(enemy3);
                 
             
@@ -118,6 +125,7 @@ namespace School_Project
             int y = random.Next(1, Height - 1);
 
             Mapping[x, y] = '<';
+            StairDown = new Position(x, y);
 
             int newX = random.Next(1, Width - 1);
             int newY = random.Next(1, Height - 1);
@@ -130,6 +138,7 @@ namespace School_Project
             }
 
             Mapping[newX, newY] = '>';
+            StairUp = new Position(newX, newY);
 
         }
 
