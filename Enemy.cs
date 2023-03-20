@@ -12,6 +12,6 @@ namespace School_Project
         public int MaxHealth { get; set; }
         public int Damage { get; set; }
 
- 
+        
     }
 }

@@ -50,6 +50,12 @@ namespace School_Project
         {
             Mapping = updatedBoard;
         }
+
+        public void GenerateRandomRooms()
+        {
+            // Using <> as markers for stairs
+
+        }
     }
 
 }
