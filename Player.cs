@@ -53,8 +53,8 @@ namespace School_Project
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
-                // check for collision with "<"
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
+               
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
                 {
                     gc.Map.GenerateNewMap(); // generate a new map
                 }
@@ -66,7 +66,7 @@ namespace School_Project
         public bool CheckIfPlayerCollidesWithStairs()
         {
             {
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
                 {
                     return true;
                 }

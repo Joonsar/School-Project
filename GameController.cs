@@ -16,6 +16,8 @@ namespace School_Project
         public Screen screen;
         private bool running = false;
 
+    //    private Stack<Map> previousMaps = new Stack<Map>();
+
         public bool StairsGenerated = false;
         public GameController()
         {
@@ -99,7 +101,25 @@ namespace School_Project
                 case ConsoleKey.Escape:
                     System.Environment.Exit(0);
                     break;
+
+                //case ConsoleKey.OemComma: // 
+                //    if (Player.CollidesWith('<'))
+                //    {
+                //        previousMaps.Push(Map);
+                //        Map = new Map(Width, Height);
+                //    }
+                //    break;
+
+                //case ConsoleKey.OemPeriod: 
+                //    if (previousMaps.Count > 0 && Player.CollidesWith('>'))
+                //    {
+                        
+                //        Map = previousMaps.Pop();
+                //    }
+                //    break;
             }
         }
+
+        
     }
 }

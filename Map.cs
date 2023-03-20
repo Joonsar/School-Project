@@ -10,6 +10,7 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
+
         public Map(int width, int height, char emptySpaceChar = '.')
         {
             this.Width = width;
@@ -101,10 +102,11 @@ namespace School_Project
                     }
                 }
             }
-            newMap.GenerateStairs();
+           
             // Update the game controller's map and redraw it
             gc.Map = newMap;
             gc.screen.Clear();
+            newMap.GenerateStairs();
             UpdateMap(gc.Map.Mapping);
         }
     }

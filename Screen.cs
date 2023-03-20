@@ -57,6 +57,11 @@ namespace School_Project
                 {
                     Console.SetCursorPosition(x, y);
                     Write(gc.Map.Mapping[x, y].ToString());
+                    if (!gc.StairsGenerated)
+                    {
+                        gc.Map.GenerateStairs();
+                        gc.StairsGenerated = true;
+                    }
                 }
             }
             
@@ -96,11 +101,7 @@ namespace School_Project
             Clear();
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
             // Generate stairs if they haven't been generated already
-            if (!gc.StairsGenerated)
-            {
-                gc.Map.GenerateStairs();
-                gc.StairsGenerated = true;
-            }
+            
 
             PrintMap();
           
