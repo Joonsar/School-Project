@@ -12,9 +12,11 @@ namespace School_Project
     {
 
         private Random rand = new Random();
-        private GameController gc = GameController.Instance;
+        private GameController gc;
 
         Tuple<Position, char> LastPosition;
+
+        
 
         public int Health { get; set; }
         public int MaxHealth { get; set; }
@@ -22,17 +24,22 @@ namespace School_Project
 
         public Enemy(string name, string description, Position pos, char mark, ConsoleColor color) : base(name, description, pos, mark, color)
         {
-            LastPosition = new Tuple<Position, char>(pos, gc.Map.Mapping[Pos.X, Pos.Y]);
+
+            gc = GameController.Instance;
+            LastPosition = new Tuple<Position, char>(Pos, gc.Map.Mapping[Pos.X, Pos.Y]);
+
         }
 
-        public override void MoveEntity(Position movePos)
+        public override void MoveEntity(int x, int y)
         {
-            
-            //Console.Write(this.Name + " " + moveX + moveY);
 
-            if(gc.Map.IsPositionValid(Pos.X + movePos.X, Pos.Y + movePos.Y)) {
-                Pos.X += movePos.X;
-                Pos.Y += movePos.Y;
+            var newPosX = Pos.X + x;
+            var newPosY = Pos.Y + y;
+
+            
+            if (gc.Map.IsPositionValid(newPosX, newPosY) && gc.Map.IsEnemyAtPosition(newPosX, newPosY) == null && newPosX != gc.Player.Pos.X && newPosY != gc.Player.Pos.Y) {
+                Pos.X = newPosX;
+                Pos.Y = newPosY;
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
             }

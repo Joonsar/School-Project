@@ -27,22 +27,24 @@ namespace School_Project
 
         public void Init()
         {
+
+            Width = 80;
+            Height = 20;
+            this.Map = new Map(Width, Height);
+            Map.CreateEnemies();
             rand = new Random();
             entities = new List<Entity>();
             Turn = 1;
-            Width = 80;
-            Height = 20;
+           
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
             // Map map =new Map(mitä onkaan)
             screen = new Screen(Width, Height);
-            Map = new Map(Width, Height);
+            
             //Adding few test enemy
-            Enemy testEnemy = new Enemy("Juoppo", "Hirvee juopo", new Position(15, 15), '~', ConsoleColor.Red);
-            Enemy testEnemy2 = new Enemy("Juoppo2", "Vielä hirveempi juoppo", new Position(20, 18), '!', ConsoleColor.Yellow);
-            entities.Add(testEnemy);
-            entities.Add(testEnemy2);
+            entities = Map.entities;
+           
             Player = new Player("Pelaaja", 100, 100);
             screen.PrintMap();
             //printing entities to screen
@@ -88,7 +90,7 @@ namespace School_Project
                 //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
                 if (e.GetType() == typeof(Enemy))
                 {
-                    e.MoveEntity(new Position(moveX, moveY));
+                    e.MoveEntity(moveX, moveY);
                 }
 
             }

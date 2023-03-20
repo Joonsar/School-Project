@@ -43,9 +43,14 @@ namespace School_Project
             return $"{Name} - Health: {HealthValue}, Hit Points: {HitPoints}, Exp Points: {ExpPoints}, Turn: {gc.Turn}";
         }
 
+        public void MovePlayer(Position pos)
+        {
+
+        }
+        
         public void MovePlayer(int x, int y)
         {
-            if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y))
+            if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
                 Pos.X += x;
                 Pos.Y += y;

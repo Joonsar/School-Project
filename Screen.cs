@@ -63,8 +63,9 @@ namespace School_Project
            
         }
 
-        internal void PrintEntities(List<Entity> entities)
+        public void PrintEntities(List<Entity> entities)
         {
+            // tulostetaan jokainen entity ruudulle.
             foreach(Entity e in entities)
             {
                 WriteAtPosition(e.Pos, e.Mark, e.Color);
