@@ -85,15 +85,16 @@ namespace School_Project
         }
 
         // luodaan vihollisia karttaan. ja lisätään ne entities listaan.
+        // tähän vois kehitellä jonkun systeemin, että noi viholliset kaivetaan jostain sen mukaan kuinka syvällä ollaan jne.
         public void CreateEnemies()
         {
             
             
-            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(15, 15), 'J', ConsoleColor.Yellow);
+            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(15, 15), 'J', ConsoleColor.Yellow, 100, 10);
             entities.Add(enemy);
-            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(16, 16), '╚', ConsoleColor.Cyan);
+            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(16, 16), '╚', ConsoleColor.Cyan, 100, 5);
             entities.Add(enemy2);
-            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(4, 5), '~', ConsoleColor.DarkYellow);
+            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(4, 5), '~', ConsoleColor.DarkYellow, 100, 3);
             entities.Add(enemy3);
                 
             

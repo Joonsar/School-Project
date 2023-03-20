@@ -43,6 +43,11 @@ namespace School_Project
             PrintPlayerStats();
         }
 
+        public void PrintEnemy(Enemy enemy)
+        {
+            WriteAtPosition(enemy.Pos, enemy.Mark, enemy.Color);
+        }
+
         public void PrintPlayerStats()
         {
             Console.SetCursorPosition(0, Height);

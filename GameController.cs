@@ -28,7 +28,7 @@ namespace School_Project
         public void Init()
         {
 
-            Width = 80;
+            Width = 50;
             Height = 20;
             this.Map = new Map(Width, Height);
             Map.CreateEnemies();
@@ -49,6 +49,7 @@ namespace School_Project
             screen.PrintMap();
             //printing entities to screen
             screen.PrintEntities(entities);
+            screen.PrintPlayer();
             running = true;
             
         }
@@ -57,7 +58,7 @@ namespace School_Project
         {
             while (running)
             {
-                screen.PrintPlayer();
+                
 
 
                 var input = Console.ReadKey(true);
@@ -67,7 +68,7 @@ namespace School_Project
                 
                 MoveEntities();
                 //tulostetaan entityt
-                screen.PrintEntities(entities);
+                //screen.PrintEntities(entities);
 
                 //tulostetaan entityt ruudulle.
 
@@ -105,6 +106,9 @@ namespace School_Project
             // Move the Player in the corresponding direction
             switch (input.Key)
             {
+                case ConsoleKey.Q:
+                    running = false;
+                    break;
                 case ConsoleKey.UpArrow:
                     Player.MovePlayer(0, -1);
                     break;
