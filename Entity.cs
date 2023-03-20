@@ -12,7 +12,7 @@ namespace School_Project
         public string Description { get; private set; }
         public Position Pos { get; private set; }
         public Char Mark { get; private set; }
-        public ConsoleColor Color {get; private set;}
+        public ConsoleColor Color { get; private set; }
 
 
         public Entity(string name, String description, Position pos, Char mark, ConsoleColor color)
