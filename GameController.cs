@@ -79,6 +79,21 @@ namespace School_Project
                 case ConsoleKey.RightArrow:
                     Player.MovePlayer(1, 0);
                     break;
+                case ConsoleKey.NumPad8:
+                    Player.MovePlayer(0, -1);
+                    break;
+
+                case ConsoleKey.NumPad2:
+                    Player.MovePlayer(0, 1);
+                    break;
+
+                case ConsoleKey.NumPad4:
+                    Player.MovePlayer(-1, 0);
+                    break;
+
+                case ConsoleKey.NumPad6:
+                    Player.MovePlayer(1, 0);
+                    break;
             }
         }
     }
