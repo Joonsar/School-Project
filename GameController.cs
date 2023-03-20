@@ -21,6 +21,9 @@ namespace School_Project
         public Screen screen;
         private bool running = false;
 
+    //    private Stack<Map> previousMaps = new Stack<Map>();
+
+        public bool StairsGenerated = false;
         public GameController()
         {
         }
@@ -46,10 +49,15 @@ namespace School_Project
             entities = Map.entities;
            
             Player = new Player("Pelaaja", 100, 100);
+
+            //   screen.PrintMap();
+            screen.DrawScreen();
+
             screen.PrintMap();
             //printing entities to screen
             screen.PrintEntities(entities);
             screen.PrintPlayer();
+
             running = true;
             
         }
@@ -139,7 +147,28 @@ namespace School_Project
                 case ConsoleKey.NumPad6:
                     Player.MovePlayer(1, 0);
                     break;
+                case ConsoleKey.Escape:
+                    System.Environment.Exit(0);
+                    break;
+
+                //case ConsoleKey.OemComma: // 
+                //    if (Player.CollidesWith('<'))
+                //    {
+                //        previousMaps.Push(Map);
+                //        Map = new Map(Width, Height);
+                //    }
+                //    break;
+
+                //case ConsoleKey.OemPeriod: 
+                //    if (previousMaps.Count > 0 && Player.CollidesWith('>'))
+                //    {
+                        
+                //        Map = previousMaps.Pop();
+                //    }
+                //    break;
             }
         }
+
+        
     }
 }

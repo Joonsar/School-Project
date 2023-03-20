@@ -6,11 +6,15 @@ namespace School_Project
 {
     public class Map
     {
+        private GameController gc = GameController.Instance;
         public char[,] Mapping { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
+
+
         public List<Entity> entities;
+
 
         public Map(int width, int height, char emptySpaceChar = '.')
         {
@@ -106,10 +110,61 @@ namespace School_Project
             Mapping = updatedBoard;
         }
 
-        public void GenerateRandomRooms()
+        public void GenerateStairs()
         {
-            // Using <> as markers for stairs
-            // Tee liikkuminen yksi ylös päin ja yksi alaspäin huoneita. Jos aikaa niin Generoi myös erikoikonen huone
+
+            Random random = new Random();
+            int x = random.Next(1, Width - 1);
+            int y = random.Next(1, Height - 1);
+
+            Mapping[x, y] = '<';
+
+            int newX = random.Next(1, Width - 1);
+            int newY = random.Next(1, Height - 1);
+
+            // Make sure the new position is not the same as the first one
+            while (newX == x && newY == y)
+            {
+                newX = random.Next(1, Width - 1);
+                newY = random.Next(1, Height - 1);
+            }
+
+            Mapping[newX, newY] = '>';
+
+        }
+
+        public void GenerateNewMap()
+        {
+            int newWidth = Width;
+            int newHeight = Height; 
+            char emptySpaceChar = '.';
+
+            
+            Map newMap = new Map(newWidth, newHeight, emptySpaceChar);
+
+            
+            for (int x = 0; x < newWidth; x++)
+            {
+                for (int y = 0; y < newHeight; y++)
+                {
+                    if (x == 0 || x == newWidth - 1 || y == 0 || y == newHeight - 1)
+                    {
+                        
+                        newMap.Mapping[x, y] = '#';
+                    }
+                    else
+                    {
+                        
+                        newMap.Mapping[x, y] = emptySpaceChar;
+                    }
+                }
+            }
+           
+            // Update the game controller's map and redraw it
+            gc.Map = newMap;
+            gc.screen.Clear();
+            newMap.GenerateStairs();
+            UpdateMap(gc.Map.Mapping);
         }
     }
 
