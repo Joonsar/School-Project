@@ -9,12 +9,14 @@ namespace School_Project
         public Player Player { get; set; }
         public Map Map { get; set; }
 
+        public List<Map> Maps { get; set; }
+        public int Level { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
         private Random rand;
 
-        public List<Entity> entities;
+        public List<Entity> entities { get; set; }
 
         public int Turn { get; set; }
 
@@ -31,10 +33,13 @@ namespace School_Project
         public void Init()
         {
 
+            Level = 0;
+            Maps = new List<Map>();
             Width = 50;
             Height = 20;
             this.Map = new Map(Width, Height);
             Map.CreateEnemies();
+            Maps.Add(Map);
             rand = new Random();
             entities = new List<Entity>();
             Turn = 1;
@@ -69,8 +74,7 @@ namespace School_Project
                 
 
 
-                var input = Console.ReadKey(true);
-                CheckInput(input);
+                
 
                 //liikutetaan entityjä
                 
@@ -90,6 +94,8 @@ namespace School_Project
                 //mikälie meidän tulostus funktio onkaan.
                 // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
+                var input = Console.ReadKey(true);
+                CheckInput(input);
                 Turn++;
             }
         }
@@ -106,6 +112,69 @@ namespace School_Project
                     e.MoveEntity(moveX, moveY);
                 }
 
+            }
+        }
+
+        public void ChangeLevel(int direction)
+        {
+            //jos liikutaan alaspäin
+            if(direction == 1)
+            {
+                //jos listasta löytyy jo seuraavan levelin kartta.
+                if (Maps.Count > Level + 1)
+                {
+                    //otetaan mappi listasta ja vaihdetaan se gamecontrollerin mapiksi
+                    Map = Maps[Level + 1];
+                    //otetaan entityt mapista
+                    entities = Map.entities;
+                    //lisätään leveliin 1
+                    Level++;
+                    Player.Pos = Map.StairUp;
+                    //piirrettään ruutu uudestaan
+                    screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
+                }
+
+                //jos ei löydy jo listasta
+                else
+                {
+                    //tehdään uusi mappi
+                    var newMap = new Map(Width, Height);
+                    //tehdään viholliset
+                    newMap.CreateEnemies();
+                    //tehdään portaat
+                    
+                    newMap.GenerateStairs();
+                    //lisätään uusi mappi listaan
+                    Maps.Add(newMap);
+                    //vaihdetaan gamecontrollerin mapiksi uusi mappi
+                    Map = newMap;
+                    //haetaan levelin entityt mapista
+                    entities = Map.entities;
+                    Level++;
+                    Player.Pos = Map.StairUp;
+                    
+                    screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
+                }
+            }
+
+            if(direction == -1)
+            {
+                if(Level > 0)
+                {
+                    Map = Maps[Level - 1];
+                    entities = Map.entities;
+                    Level--;
+                    Player.Pos = Map.StairDown;
+                    screen.DrawScreen();
+                    Player.SetPlayerLastPosition();
+                }
+
+                else
+                {
+                    return;
+                }
             }
         }
 
@@ -136,6 +205,18 @@ namespace School_Project
                     Player.MovePlayer(0, -1);
                     break;
 
+                case ConsoleKey.NumPad1:
+                    Player.MovePlayer(-1, 1);
+                    break;
+                case ConsoleKey.NumPad3:
+                    Player.MovePlayer(1, 1);
+                    break;
+                case ConsoleKey.NumPad9:
+                    Player.MovePlayer(1, -1);
+                    break;
+                case ConsoleKey.NumPad7:
+                    Player.MovePlayer(-1, -1);
+                    break;
                 case ConsoleKey.NumPad2:
                     Player.MovePlayer(0, 1);
                     break;
@@ -149,6 +230,12 @@ namespace School_Project
                     break;
                 case ConsoleKey.Escape:
                     System.Environment.Exit(0);
+                    break;
+                case ConsoleKey.O:
+                    ChangeLevel(1);
+                    break;
+                case ConsoleKey.I:
+                    ChangeLevel(-1);
                     break;
 
                 //case ConsoleKey.OemComma: // 

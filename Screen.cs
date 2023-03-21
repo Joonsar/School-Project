@@ -125,6 +125,8 @@ namespace School_Project
             // Print the Player on the screen
             PrintPlayer();
 
+            PrintEntities(gc.entities);
+
             // Keep moving the Player until the user presses the Esc key
         }
     }

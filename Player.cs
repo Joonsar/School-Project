@@ -24,7 +24,7 @@ namespace School_Project
 
         Tuple<Position, char> LastPosition;
 
-        public Position Pos { get; private set; }
+        public Position Pos { get; set; }
 
         public Player(string name, int healthValue, int hitPoints)
         {
@@ -35,9 +35,9 @@ namespace School_Project
             ExpPoints = 0;
             Pos = new Position(10, 10);
 
-            LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
+            //LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
 
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+            SetPlayerLastPosition();
 
             Color = ConsoleColor.Green;
             Mark = '@';
@@ -45,12 +45,17 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn}";
+            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
         }
 
         public void MovePlayerToPosition(Position pos)
         {
             Pos = pos;
+        }
+
+        public void SetPlayerLastPosition()
+        {
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
         }
         
         public void MovePlayer(int x, int y)
@@ -64,9 +69,13 @@ namespace School_Project
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
                
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<') 
                 {
-                    gc.Map.GenerateNewMap(); // generate a new map
+                    gc.ChangeLevel(1); 
+                }
+                if(gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                {
+                    gc.ChangeLevel(-1);
                 }
             }
 

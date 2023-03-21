@@ -29,7 +29,7 @@ namespace School_Project
             Health = maxHealth;
             Damage = damage;
             gc = GameController.Instance;
-            LastPosition = new Tuple<Position, char>(Pos, gc.Map.Mapping[Pos.X, Pos.Y]);
+            SetEnemyLastPosition();
 
         }
 
@@ -48,10 +48,15 @@ namespace School_Project
                 gc.screen.PrintEnemy(this);
                 //kirjoitetaan ruutuun mistä liikuttiin, sen edellinen merkki.
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
+
+                SetEnemyLastPosition();
                 
-                
-                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
             }
+        }
+
+        public void SetEnemyLastPosition()
+        {
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
         }
     }
 }
