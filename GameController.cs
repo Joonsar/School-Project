@@ -104,9 +104,25 @@ namespace School_Project
         {
             foreach (Entity e in entities)
             {
-                int moveX = rand.Next(-1, 2);
-                int moveY = rand.Next(-1, 2);
+                int moveX = 0; // rand.Next(-1, 2);
+                int moveY = 0; // rand.Next(-1, 2);
                 //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
+                if(e.Pos.X < Player.Pos.X)
+                {
+                    moveX++;
+                }
+                if(e.Pos.Y < Player.Pos.Y)
+                {
+                    moveY++;
+                }
+                if(e.Pos.X > Player.Pos.X)
+                {
+                    moveX--;
+                }
+                if(e.Pos.Y > Player.Pos.Y)
+                {
+                    moveY--;
+                }
                 if (e.GetType() == typeof(Enemy))
                 {
                     e.MoveEntity(moveX, moveY);
