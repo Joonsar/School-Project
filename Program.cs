@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace School_Project
+﻿namespace School_Project
 {
     public class Program
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
 namespace School_Project
@@ -9,7 +8,7 @@ namespace School_Project
     {
         private readonly int Width;
         private readonly int Height;
-      
+
         private GameController gc = GameController.Instance;
 
         [DllImport("kernel32.dll", ExactSpelling = true)]
@@ -32,7 +31,7 @@ namespace School_Project
             Console.WindowHeight = Height;
             Console.WindowWidth = Width;
             Console.SetBufferSize(width, height);
-         
+
             Console.CursorVisible = false;
         }
 
@@ -58,13 +57,12 @@ namespace School_Project
         {
             gc.MessageLog.PrintMessages();
         }
-        
+
         public void PrintMap()
         {
-           
-            for(int y = 0; y < gc.Map.Height; y++)
+            for (int y = 0; y < gc.Map.Height; y++)
             {
-                for(int x = 0; x < gc.Map.Width; x++ )
+                for (int x = 0; x < gc.Map.Width; x++)
                 {
                     Console.SetCursorPosition(x, y);
                     Write(gc.Map.Mapping[x, y].ToString());
@@ -75,13 +73,12 @@ namespace School_Project
                     }
                 }
             }
-            
         }
 
         public void PrintEntities(List<Entity> entities)
         {
             // tulostetaan jokainen entity ruudulle.
-            foreach(Entity e in entities)
+            foreach (Entity e in entities)
             {
                 WriteAtPosition(e.Pos, e.Mark, e.Color);
             }
@@ -104,6 +101,7 @@ namespace School_Project
             Console.SetCursorPosition(pos.X, pos.Y);
             Console.Write(mark);
         }
+
         public void WriteAtPosition(Position pos, char mark, ConsoleColor color)
         {
             Console.SetCursorPosition(pos.X, pos.Y);
@@ -111,6 +109,7 @@ namespace School_Project
             Console.Write(mark);
             Console.ResetColor();
         }
+
         public void Clear()
         {
             Console.Clear();
@@ -121,10 +120,9 @@ namespace School_Project
             Clear();
             //tähän tulee vielä kaikki mapin piirtämiset, entityt, pelaaja jne. kunhan ne ny on eka valmiina.
             // Generate stairs if they haven't been generated already
-            
 
             PrintMap();
-          
+
             // tähän public void DrawMap(Map map) { joku tyhmä esimerkki if(map.mapArray[10,10] == TileType.Wall { console.write("#"); }
 
             // Print the Player on the screen

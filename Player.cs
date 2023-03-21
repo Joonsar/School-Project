@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 
 namespace School_Project
 {
@@ -22,7 +21,7 @@ namespace School_Project
 
         private GameController gc = GameController.Instance;
 
-        Tuple<Position, char> LastPosition;
+        private Tuple<Position, char> LastPosition;
 
         public Position Pos { get; set; }
 
@@ -57,7 +56,7 @@ namespace School_Project
         {
             LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
         }
-        
+
         public void MovePlayer(int x, int y)
         {
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
@@ -69,18 +68,15 @@ namespace School_Project
                 gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
-               
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<') 
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
                 {
-                    gc.ChangeLevel(1); 
+                    gc.ChangeLevel(1);
                 }
-                if(gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '>')
                 {
                     gc.ChangeLevel(-1);
                 }
             }
-
-
         }
 
         public bool CheckIfPlayerCollidesWithStairs()

@@ -14,10 +14,12 @@ namespace School_Project
 
         //width / height max valuet. pitäisi fiksata ongelma, jos halutaan eri kokoisia mappeja. kun luodaan screen näillä arvoilla
         public int SCREEN_WIDTH = Console.LargestWindowWidth;
+
         public int SCREEN_HEIGHT = Console.LargestWindowHeight;
-        
+
         //nää pitäs vaihtaa MapWidth, kun joku jaksaa. käytetään perkeleen monessa paikassa :D
         public int Width { get; set; }
+
         public int Height { get; set; }
 
         public MessageLog MessageLog { get; set; }
@@ -31,9 +33,10 @@ namespace School_Project
         public Screen screen;
         private bool running = false;
 
-    //    private Stack<Map> previousMaps = new Stack<Map>();
+        //    private Stack<Map> previousMaps = new Stack<Map>();
 
         public bool StairsGenerated = false;
+
         public GameController()
         {
         }
@@ -43,28 +46,27 @@ namespace School_Project
             Width = 50;
             Height = 24;
             MessageLog = new MessageLog(Height);
-           
-            
+
             Level = 0;
             Maps = new List<Map>();
-           
+
             this.Map = new Map(Width, Height);
             Map.CreateEnemies();
             Maps.Add(Map);
             rand = new Random();
             entities = new List<Entity>();
-            
+
             Turn = 1;
-           
+
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
             // Map map =new Map(mitä onkaan)
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
-            
+
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
-           
+
             Player = new Player("Pelaaja", 100, 100);
 
             //   screen.PrintMap();
@@ -76,26 +78,19 @@ namespace School_Project
             screen.PrintPlayer();
 
             running = true;
-            
         }
 
         public void Run()
         {
             while (running)
             {
-                
-
-
-                
-
                 //liikutetaan entityjä
-                
+
                 MoveEntities();
                 //tulostetaan entityt
                 //screen.PrintEntities(entities);
 
                 //tulostetaan entityt ruudulle.
-
 
                 //tähän game looppi.
                 //Mikä ikinä onkaan syötteen luku.. esim InputParser() -> täällä voi sit olla, että jos vaikka rightarrow, niin Player.move(0,1) ja
@@ -111,7 +106,6 @@ namespace School_Project
                 screen.PrintMessageLog();
                 CheckInput(input);
                 Turn++;
-                
             }
         }
 
@@ -124,8 +118,8 @@ namespace School_Project
                 int xDiff = Player.Pos.X - e.Pos.X;
                 int yDiff = Player.Pos.Y - e.Pos.Y;
                 double distance = Math.Sqrt(yDiff * yDiff + xDiff * xDiff);
-               
-                if(distance > 4)
+
+                if (distance > 4)
                 {
                     moveX = rand.Next(-1, 2);
                     moveY = rand.Next(-1, 2);
@@ -146,14 +140,13 @@ namespace School_Project
                 {
                     e.MoveEntity(moveX, moveY);
                 }
-
             }
         }
 
         public void ChangeLevel(int direction)
         {
             //jos liikutaan alaspäin
-            if(direction == 1)
+            if (direction == 1)
             {
                 //jos listasta löytyy jo seuraavan levelin kartta.
                 if (Maps.Count > Level + 1)
@@ -178,7 +171,7 @@ namespace School_Project
                     //tehdään viholliset
                     newMap.CreateEnemies();
                     //tehdään portaat
-                    
+
                     newMap.GenerateStairs();
                     //lisätään uusi mappi listaan
                     Maps.Add(newMap);
@@ -188,15 +181,15 @@ namespace School_Project
                     entities = Map.entities;
                     Level++;
                     Player.Pos = Map.StairUp;
-                    
+
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
                 }
             }
 
-            if(direction == -1)
+            if (direction == -1)
             {
-                if(Level > 0)
+                if (Level > 0)
                 {
                     Map = Maps[Level - 1];
                     entities = Map.entities;
@@ -205,7 +198,6 @@ namespace School_Project
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
                 }
-
                 else
                 {
                     return;
@@ -221,6 +213,7 @@ namespace School_Project
                 case ConsoleKey.Q:
                     running = false;
                     break;
+
                 case ConsoleKey.UpArrow:
                     Player.MovePlayer(0, -1);
                     break;
@@ -236,6 +229,7 @@ namespace School_Project
                 case ConsoleKey.RightArrow:
                     Player.MovePlayer(1, 0);
                     break;
+
                 case ConsoleKey.NumPad8:
                     Player.MovePlayer(0, -1);
                     break;
@@ -243,15 +237,19 @@ namespace School_Project
                 case ConsoleKey.NumPad1:
                     Player.MovePlayer(-1, 1);
                     break;
+
                 case ConsoleKey.NumPad3:
                     Player.MovePlayer(1, 1);
                     break;
+
                 case ConsoleKey.NumPad9:
                     Player.MovePlayer(1, -1);
                     break;
+
                 case ConsoleKey.NumPad7:
                     Player.MovePlayer(-1, -1);
                     break;
+
                 case ConsoleKey.NumPad2:
                     Player.MovePlayer(0, 1);
                     break;
@@ -263,34 +261,34 @@ namespace School_Project
                 case ConsoleKey.NumPad6:
                     Player.MovePlayer(1, 0);
                     break;
+
                 case ConsoleKey.Escape:
                     System.Environment.Exit(0);
                     break;
+
                 case ConsoleKey.O:
                     ChangeLevel(1);
                     break;
+
                 case ConsoleKey.I:
                     ChangeLevel(-1);
                     break;
 
-                //case ConsoleKey.OemComma: // 
-                //    if (Player.CollidesWith('<'))
-                //    {
-                //        previousMaps.Push(Map);
-                //        Map = new Map(Width, Height);
-                //    }
-                //    break;
+                    //case ConsoleKey.OemComma: //
+                    //    if (Player.CollidesWith('<'))
+                    //    {
+                    //        previousMaps.Push(Map);
+                    //        Map = new Map(Width, Height);
+                    //    }
+                    //    break;
 
-                //case ConsoleKey.OemPeriod: 
-                //    if (previousMaps.Count > 0 && Player.CollidesWith('>'))
-                //    {
-                        
-                //        Map = previousMaps.Pop();
-                //    }
-                //    break;
+                    //case ConsoleKey.OemPeriod:
+                    //    if (previousMaps.Count > 0 && Player.CollidesWith('>'))
+                    //    {
+                    //        Map = previousMaps.Pop();
+                    //    }
+                    //    break;
             }
         }
-
-        
     }
 }

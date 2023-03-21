@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace School_Project
 {
@@ -13,8 +9,6 @@ namespace School_Project
         public Position Pos { get; set; }
         public Char Mark { get; private set; }
         public ConsoleColor Color { get; private set; }
-        
-
 
         public Entity(string name, String description, Position pos, Char mark, ConsoleColor color)
         {
@@ -23,14 +17,10 @@ namespace School_Project
             this.Pos = pos;
             this.Mark = mark;
             this.Color = color;
-            
         }
 
         public virtual void MoveEntity(int x, int y)
         {
-
         }
-
-
     }
 }
