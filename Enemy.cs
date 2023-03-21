@@ -52,9 +52,10 @@ namespace School_Project
             var newPosX = Pos.X + x;
             var newPosY = Pos.Y + y;
 
-            
+
             //tarkistetaan onko ruudussa johon yritetään liikkua seinä, toinen vihollinen tai pelaaja.. jos ei liikutetaan vihollista siihen ruutuun
-            if (gc.Map.IsPositionValid(newPosX, newPosY) && gc.Map.IsEnemyAtPosition(newPosX, newPosY) == null && newPosX != gc.Player.Pos.X && newPosY != gc.Player.Pos.Y) {
+            if (gc.Map.IsPositionValid(newPosX, newPosY) && gc.Map.IsEnemyAtPosition(newPosX, newPosY) == null && (newPosX != gc.Player.Pos.X || newPosY != gc.Player.Pos.Y))
+            {
                 Pos.X = newPosX;
                 Pos.Y = newPosY;
                 //tulostetaan vihollinen liikkumisen jälkeen.
