@@ -11,10 +11,9 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public Position StairDown { get; set; }
+        public int Level { get; set; }
+    public Position StairDown { get; set; }
         public Position StairUp { get; set; }
-
-
 
         public List<Entity> entities;
 
@@ -43,18 +42,9 @@ namespace School_Project
                     }
                 }
             }
-
-            
         }
 
-        
-
-        
-
-
-
         // Check if a given position is within the bounds of the game board and if there is wall at position
-
         public bool IsPositionValid(int x, int y)
         {
             
@@ -119,12 +109,21 @@ namespace School_Project
 
         public void GenerateStairs()
         {
-
             Random random = new Random();
             int x = random.Next(1, Width - 1);
             int y = random.Next(1, Height - 1);
 
-            Mapping[x, y] = '<';
+            //if (Level == 0)
+            //{
+            //    Piirrä nuoli vain ylös levelissä 0
+            //}
+            //else
+            //{
+
+
+            //}
+
+            Mapping[x, y] = '↓';
             StairDown = new Position(x, y);
 
             int newX = random.Next(1, Width - 1);
@@ -137,7 +136,7 @@ namespace School_Project
                 newY = random.Next(1, Height - 1);
             }
 
-            Mapping[newX, newY] = '>';
+            Mapping[newX, newY] = '↑';
             StairUp = new Position(newX, newY);
 
         }

@@ -68,24 +68,29 @@ namespace School_Project
                 gc.screen.PrintPlayer();
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
-               
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<') 
-                {
-                    gc.ChangeLevel(1); 
-                }
-                if(gc.Map.Mapping[Pos.X, Pos.Y] == '>')
-                {
-                    gc.ChangeLevel(-1);
-                }
+                MoveFromLevel();
             }
 
 
         }
 
+        private void MoveFromLevel()
+        {
+
+            if (gc.Map.Mapping[Pos.X, Pos.Y] == '↓')
+            {
+                gc.ChangeLevel(1);
+            }
+            if (gc.Map.Mapping[Pos.X, Pos.Y] == '↑')
+            {
+                gc.ChangeLevel(-1);
+            }
+        }
+
         public bool CheckIfPlayerCollidesWithStairs()
         {
             {
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == '↓' || gc.Map.Mapping[Pos.X, Pos.Y] == '↑')
                 {
                     return true;
                 }

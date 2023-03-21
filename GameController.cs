@@ -117,8 +117,9 @@ namespace School_Project
 
         public void ChangeLevel(int direction)
         {
+            
             //jos liikutaan alaspäin
-            if(direction == 1)
+            if(direction == -1)
             {
                 //jos listasta löytyy jo seuraavan levelin kartta.
                 if (Maps.Count > Level + 1)
@@ -159,7 +160,7 @@ namespace School_Project
                 }
             }
 
-            if(direction == -1)
+            if(direction == 1)
             {
                 if(Level > 0)
                 {
