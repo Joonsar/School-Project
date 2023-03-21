@@ -85,7 +85,7 @@ namespace School_Project
             while (running)
             {
                 //liikutetaan entityjä
-
+                screen.PrintMessageLog();
                 MoveEntities();
                 //tulostetaan entityt
                 //screen.PrintEntities(entities);
@@ -103,7 +103,7 @@ namespace School_Project
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
                 var input = Console.ReadKey(true);
                 //tulostetaan messagelogin sisältö
-                screen.PrintMessageLog();
+
                 CheckInput(input);
                 Turn++;
             }
@@ -161,6 +161,7 @@ namespace School_Project
                     //piirrettään ruutu uudestaan
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
+                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
                 }
 
                 //jos ei löydy jo listasta
@@ -184,6 +185,7 @@ namespace School_Project
 
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
+                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
                 }
             }
 
@@ -197,6 +199,7 @@ namespace School_Project
                     Player.Pos = Map.StairDown;
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
+                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
                 }
                 else
                 {
