@@ -107,6 +107,7 @@ namespace School_Project
                 int moveX = 0; // rand.Next(-1, 2);
                 int moveY = 0; // rand.Next(-1, 2);
                 //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
+                // Vihollisen seuranta
                 if(e.Pos.X < Player.Pos.X)
                 {
                     moveX++;
