@@ -71,10 +71,12 @@ namespace School_Project
                 if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
                 {
                     gc.ChangeLevel(1);
+                    return;
                 }
                 if (gc.Map.Mapping[Pos.X, Pos.Y] == '>')
                 {
                     gc.ChangeLevel(-1);
+                    return;
                 }
             }
         }

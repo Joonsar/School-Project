@@ -84,8 +84,10 @@ namespace School_Project
         {
             while (running)
             {
-                //liikutetaan entityjä
+                
+                //tulostetaan messagelogin sisältö
                 screen.PrintMessageLog();
+                //liikutetaan entityjä
                 MoveEntities();
                 //tulostetaan entityt
                 //screen.PrintEntities(entities);
@@ -102,7 +104,7 @@ namespace School_Project
                 // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
                 var input = Console.ReadKey(true);
-                //tulostetaan messagelogin sisältö
+                
 
                 CheckInput(input);
                 Turn++;
