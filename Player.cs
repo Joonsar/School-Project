@@ -12,6 +12,9 @@ namespace School_Project
         public int HealthValue { get; private set; }
         public int HitPoints { get; private set; }
         public int ExpPoints { get; private set; }
+        
+        public int MaxHp { get; set; }
+
         public int Level { get; private set; }
 
         public Map map;
@@ -31,6 +34,7 @@ namespace School_Project
             Name = name;
             HealthValue = healthValue;
             HitPoints = hitPoints;
+            MaxHp = hitPoints;
             ExpPoints = 0;
             Pos = new Position(10, 10);
 
@@ -44,7 +48,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HealthValue} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
+            return $"{Name} - Hp: {HealthValue}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
         }
 
         public void MovePlayerToPosition(Position pos)
@@ -79,6 +83,8 @@ namespace School_Project
                     
                 }
             }
+
+
         }
 
         public bool CheckIfPlayerCollidesWithStairs()

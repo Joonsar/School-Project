@@ -13,9 +13,9 @@ namespace School_Project
         public int Level { get; set; }
 
         //width / height max valuet. pitäisi fiksata ongelma, jos halutaan eri kokoisia mappeja. kun luodaan screen näillä arvoilla
-        public int SCREEN_WIDTH = Console.LargestWindowWidth;
+        public static readonly int SCREEN_WIDTH = Console.LargestWindowWidth;
 
-        public int SCREEN_HEIGHT = Console.LargestWindowHeight;
+        public static readonly int SCREEN_HEIGHT = Console.LargestWindowHeight;
 
         //nää pitäs vaihtaa MapWidth, kun joku jaksaa. käytetään perkeleen monessa paikassa :D
         public int Width { get; set; }
@@ -31,7 +31,7 @@ namespace School_Project
         public int Turn { get; set; }
 
         public Screen screen;
-        private bool running = false;
+        public bool running { get; set; }
 
         //    private Stack<Map> previousMaps = new Stack<Map>();
 
@@ -43,43 +43,30 @@ namespace School_Project
 
         public void Init()
         {
-            Width = 50;
-            Height = 24;
-            MessageLog = new MessageLog(Height);
-
-            Level = 0;
-            Maps = new List<Map>();
-
-            this.Map = new Map(Width, Height);
-            Map.CreateEnemies();
-            Maps.Add(Map);
-            rand = new Random();
-            entities = new List<Entity>();
-
-            Turn = 1;
-
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
             // Map map =new Map(mitä onkaan)
+            Width = 50;
+            Height = 24;
+            Level = 0;
+            Turn = 1;
+            rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
+            MessageLog = new MessageLog(Height);
+            entities = new List<Entity>();
+
+            Maps = new List<Map>();
+            this.Map = new Map(Width, Height);
+            Maps.Add(Map);
+            Map.CreateEnemies();
+            Player = new Player("Pelaaja", 100, 100);
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
-
-            Player = new Player("Pelaaja", 100, 100);
-
-            //   screen.PrintMap();
             screen.DrawScreen();
-
-            screen.PrintMap();
-            //printing entities to screen
-            screen.PrintEntities(entities);
-            screen.PrintPlayer();
-
             running = true;
         }
-
         public void Run()
         {
             while (running)
@@ -106,11 +93,10 @@ namespace School_Project
                 var input = Console.ReadKey(true);
                 
 
-                CheckInput(input);
+                Input.CheckInput(input.Key);
                 Turn++;
             }
         }
-
         private void MoveEntities()
         {
             foreach (Entity e in entities)
@@ -144,7 +130,6 @@ namespace School_Project
                 }
             }
         }
-
         public void ChangeLevel(int direction)
         {
             //jos liikutaan alaspäin
@@ -210,90 +195,18 @@ namespace School_Project
             }
         }
 
-        private void CheckInput(ConsoleKeyInfo input)
-        {
-            // Move the Player in the corresponding direction
-            switch (input.Key)
-            {
-                case ConsoleKey.Q:
-                    running = false;
-                    break;
 
-                case ConsoleKey.UpArrow:
-                    Player.MovePlayer(0, -1);
-                    break;
 
-                case ConsoleKey.DownArrow:
-                    Player.MovePlayer(0, 1);
-                    break;
 
-                case ConsoleKey.LeftArrow:
-                    Player.MovePlayer(-1, 0);
-                    break;
 
-                case ConsoleKey.RightArrow:
-                    Player.MovePlayer(1, 0);
-                    break;
+           
 
-                case ConsoleKey.NumPad8:
-                    Player.MovePlayer(0, -1);
-                    break;
+          
 
-                case ConsoleKey.NumPad1:
-                    Player.MovePlayer(-1, 1);
-                    break;
 
-                case ConsoleKey.NumPad3:
-                    Player.MovePlayer(1, 1);
-                    break;
 
-                case ConsoleKey.NumPad9:
-                    Player.MovePlayer(1, -1);
-                    break;
 
-                case ConsoleKey.NumPad7:
-                    Player.MovePlayer(-1, -1);
-                    break;
 
-                case ConsoleKey.NumPad2:
-                    Player.MovePlayer(0, 1);
-                    break;
 
-                case ConsoleKey.NumPad4:
-                    Player.MovePlayer(-1, 0);
-                    break;
-
-                case ConsoleKey.NumPad6:
-                    Player.MovePlayer(1, 0);
-                    break;
-
-                case ConsoleKey.Escape:
-                    System.Environment.Exit(0);
-                    break;
-
-                case ConsoleKey.O:
-                    ChangeLevel(1);
-                    break;
-
-                case ConsoleKey.I:
-                    ChangeLevel(-1);
-                    break;
-
-                    //case ConsoleKey.OemComma: //
-                    //    if (Player.CollidesWith('<'))
-                    //    {
-                    //        previousMaps.Push(Map);
-                    //        Map = new Map(Width, Height);
-                    //    }
-                    //    break;
-
-                    //case ConsoleKey.OemPeriod:
-                    //    if (previousMaps.Count > 0 && Player.CollidesWith('>'))
-                    //    {
-                    //        Map = previousMaps.Pop();
-                    //    }
-                    //    break;
-            }
         }
     }
-}
