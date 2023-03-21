@@ -22,5 +22,10 @@ namespace School_Project
         public virtual void MoveEntity(int x, int y)
         {
         }
+
+        public virtual void Update()
+        {
+
+        }
     }
 }

@@ -58,5 +58,33 @@ namespace School_Project
         {
             LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
         }
+
+        public override void Update()
+        {
+            int moveX = 0;
+            int moveY = 0;
+            int xDiff = gc.Player.Pos.X - Pos.X;
+            int yDiff = gc.Player.Pos.Y - Pos.Y;
+            double distance = Math.Sqrt(yDiff * yDiff + xDiff * xDiff);
+
+            if (distance > 4)
+            {
+                moveX = rand.Next(-1, 2);
+                moveY = rand.Next(-1, 2);
+            }
+            else
+            {
+                if (Math.Abs(xDiff) > Math.Abs(yDiff))
+                {
+                    moveX = xDiff > 0 ? 1 : -1;
+                }
+                else
+                {
+                    moveY = yDiff > 0 ? 1 : -1;
+                }
+                
+            }
+            MoveEntity(moveX, moveY);
+        }
     }
 }

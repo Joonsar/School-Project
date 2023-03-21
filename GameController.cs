@@ -101,33 +101,14 @@ namespace School_Project
         {
             foreach (Entity e in entities)
             {
-                int moveX = 0;
-                int moveY = 0;
-                int xDiff = Player.Pos.X - e.Pos.X;
-                int yDiff = Player.Pos.Y - e.Pos.Y;
-                double distance = Math.Sqrt(yDiff * yDiff + xDiff * xDiff);
 
-                if (distance > 4)
-                {
-                    moveX = rand.Next(-1, 2);
-                    moveY = rand.Next(-1, 2);
-                }
-                else
-                {
-                    if (Math.Abs(xDiff) > Math.Abs(yDiff))
-                    {
-                        moveX = xDiff > 0 ? 1 : -1;
-                    }
-                    else
-                    {
-                        moveY = yDiff > 0 ? 1 : -1;
-                    }
-                }
                 //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
                 if (e.GetType() == typeof(Enemy))
                 {
-                    e.MoveEntity(moveX, moveY);
+                    e.Update();
                 }
+
+
             }
         }
         public void ChangeLevel(int direction)
