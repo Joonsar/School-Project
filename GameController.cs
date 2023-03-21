@@ -67,11 +67,11 @@ namespace School_Project
             screen.DrawScreen();
             running = true;
         }
+
         public void Run()
         {
             while (running)
             {
-                
                 //tulostetaan messagelogin sisältö
                 screen.PrintMessageLog();
                 //liikutetaan entityjä
@@ -91,26 +91,24 @@ namespace School_Project
                 // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
                 var input = Console.ReadKey(true);
-                
 
                 Input.CheckInput(input.Key);
                 Turn++;
             }
         }
+
         private void MoveEntities()
         {
             foreach (Entity e in entities)
             {
-
                 //katsotaan jos entityn tyyppi on Enemy ja liikutetaan jos on
                 if (e.GetType() == typeof(Enemy))
                 {
                     e.Update();
                 }
-
-
             }
         }
+
         public void ChangeLevel(int direction)
         {
             //jos liikutaan alaspäin
@@ -175,19 +173,5 @@ namespace School_Project
                 }
             }
         }
-
-
-
-
-
-           
-
-          
-
-
-
-
-
-
-        }
     }
+}
