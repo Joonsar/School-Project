@@ -80,10 +80,16 @@ namespace School_Project
             if (gc.Map.Mapping[Pos.X, Pos.Y] == '↓')
             {
                 gc.ChangeLevel(1);
+                Console.ForegroundColor = ConsoleColor.Red; // set console text color to red
+                Console.Write('↓');
+                Console.ResetColor(); // reset console text color to default
             }
             if (gc.Map.Mapping[Pos.X, Pos.Y] == '↑')
             {
                 gc.ChangeLevel(-1);
+                Console.ForegroundColor = ConsoleColor.Green; // set console text color to green
+                Console.Write('↑');
+                Console.ResetColor(); // reset console text color to default
             }
         }
 

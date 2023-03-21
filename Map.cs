@@ -113,31 +113,29 @@ namespace School_Project
             int x = random.Next(1, Width - 1);
             int y = random.Next(1, Height - 1);
 
-            //if (Level == 0)
-            //{
-            //    Piirrä nuoli vain ylös levelissä 0
-            //}
-            //else
-            //{
-
-
-            //}
-
-            Mapping[x, y] = '↓';
-            StairDown = new Position(x, y);
-
-            int newX = random.Next(1, Width - 1);
-            int newY = random.Next(1, Height - 1);
-
-            // Make sure the new position is not the same as the first one
-            while (newX == x && newY == y)
+            if (Level == 0)
             {
-                newX = random.Next(1, Width - 1);
-                newY = random.Next(1, Height - 1);
+                Mapping[x, y] = '↑'; // Only generate upwards arrow for level 0
+                StairUp = new Position(x, y);
             }
+            else
+            {
+                Mapping[x, y] = '↓'; // Generate both arrows for any other level
+                StairDown = new Position(x, y);
 
-            Mapping[newX, newY] = '↑';
-            StairUp = new Position(newX, newY);
+                int newX = random.Next(1, Width - 1);
+                int newY = random.Next(1, Height - 1);
+
+                // Make sure the new position is not the same as the first one
+                while (newX == x && newY == y)
+                {
+                    newX = random.Next(1, Width - 1);
+                    newY = random.Next(1, Height - 1);
+                }
+
+                Mapping[newX, newY] = '↑';
+                StairUp = new Position(newX, newY);
+            }
 
         }
 
