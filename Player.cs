@@ -66,6 +66,7 @@ namespace School_Project
                 Pos.Y += y;
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 gc.screen.PrintPlayer();
+                gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
                 LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
 
                

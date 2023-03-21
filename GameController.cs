@@ -11,8 +11,16 @@ namespace School_Project
 
         public List<Map> Maps { get; set; }
         public int Level { get; set; }
+
+        //width / height max valuet. pitäisi fiksata ongelma, jos halutaan eri kokoisia mappeja. kun luodaan screen näillä arvoilla
+        public int SCREEN_WIDTH = Console.LargestWindowWidth;
+        public int SCREEN_HEIGHT = Console.LargestWindowHeight;
+        
+        //nää pitäs vaihtaa MapWidth, kun joku jaksaa. käytetään perkeleen monessa paikassa :D
         public int Width { get; set; }
         public int Height { get; set; }
+
+        public MessageLog MessageLog { get; set; }
 
         private Random rand;
 
@@ -32,23 +40,27 @@ namespace School_Project
 
         public void Init()
         {
-
+            Width = 50;
+            Height = 24;
+            MessageLog = new MessageLog(Height);
+           
+            
             Level = 0;
             Maps = new List<Map>();
-            Width = 50;
-            Height = 20;
+           
             this.Map = new Map(Width, Height);
             Map.CreateEnemies();
             Maps.Add(Map);
             rand = new Random();
             entities = new List<Entity>();
+            
             Turn = 1;
            
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
             // Map map =new Map(mitä onkaan)
-            screen = new Screen(Width, Height);
+            screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
@@ -95,8 +107,11 @@ namespace School_Project
                 // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
                 //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
                 var input = Console.ReadKey(true);
+                //tulostetaan messagelogin sisältö
+                screen.PrintMessageLog();
                 CheckInput(input);
                 Turn++;
+                
             }
         }
 

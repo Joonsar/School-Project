@@ -29,9 +29,9 @@ namespace School_Project
                 ShowWindow(consoleWindow, 3);
             }
 
-            Console.WindowHeight = Height+1;
+            Console.WindowHeight = Height;
             Console.WindowWidth = Width;
-            Console.SetBufferSize(width, height+1);
+            Console.SetBufferSize(width, height);
          
             Console.CursorVisible = false;
         }
@@ -50,10 +50,15 @@ namespace School_Project
 
         public void PrintPlayerStats()
         {
-            Console.SetCursorPosition(0, Height);
+            Console.SetCursorPosition(0, gc.Height);
             Write(gc.Player.GetStats());
         }
 
+        public void PrintMessageLog()
+        {
+            gc.MessageLog.PrintMessages();
+        }
+        
         public void PrintMap()
         {
            
