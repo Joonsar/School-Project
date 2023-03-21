@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace School_Project
 {
@@ -22,6 +23,8 @@ namespace School_Project
         public int MaxHealth { get; set; }
         public int Damage { get; set; }
 
+        public int Level { get; set; }
+
         public Enemy(string name, string description, Position pos, char mark, ConsoleColor color, int maxHealth, int damage) : base(name, description, pos, mark, color)
         {
 
@@ -31,6 +34,16 @@ namespace School_Project
             gc = GameController.Instance;
             SetEnemyLastPosition();
 
+        }
+
+        public Enemy(string name, string description, Position pos, char mark, ConsoleColor color, int maxHealth, int damage, int level) : base(name, description, pos, mark, color)
+        {
+            MaxHealth = maxHealth;
+            Health = maxHealth;
+            Damage = damage;
+            gc = GameController.Instance;
+            SetEnemyLastPosition();
+            Level = level;
         }
 
         public override void MoveEntity(int x, int y)

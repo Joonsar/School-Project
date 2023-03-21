@@ -19,7 +19,7 @@ namespace School_Project
         public List<Entity> entities;
 
 
-        public Map(int width, int height, char emptySpaceChar = '.')
+        public Map(int width, int height, char emptySpaceChar = ' ')
         {
             this.Width = width;
             this.Height = height;
