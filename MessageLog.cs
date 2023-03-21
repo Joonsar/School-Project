@@ -32,8 +32,9 @@ namespace School_Project
         {
             for(int i = Messages.Count - 1; i >= 0; i--)
             {
+                //var spaces = Console.WindowWidth - (gc.Width - 1) - Messages[i].Length;
                 Console.SetCursorPosition(gc.Width + 1, i);
-                Console.WriteLine(Messages[i]);
+                Console.WriteLine(Messages[i] + new string(' ', 20));
                
             }
         }

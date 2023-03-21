@@ -58,6 +58,7 @@ namespace School_Project
             {
                 Pos.X = newPosX;
                 Pos.Y = newPosY;
+                gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
                 //tulostetaan vihollinen liikkumisen jälkeen.
                 gc.screen.PrintEnemy(this);
                 //kirjoitetaan ruutuun mistä liikuttiin, sen edellinen merkki.
