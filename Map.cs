@@ -13,15 +13,13 @@ namespace School_Project
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
-        public Enemies enemies = new Enemies();
-        public List<Enemy> enemyList;
+        public List<Entity> entities;
 
-        public Map(int width, int height, char emptySpaceChar = ' ', int enemyLvl, int enemyCount)
+        public Map(int width, int height, char emptySpaceChar = ' ')
         {
             this.Width = width;
             this.Height = height;
-
-            enemyList = enemies.GetEnemyListByLevel(enemyLvl, enemyCount);
+            entities = new List<Entity>();
             // Create game board array
             Mapping = new char[width, height];
 
@@ -58,7 +56,7 @@ namespace School_Project
         // tarkastetaan onko ruudustta entity. jos on palautetaan se. muuten palautetaan null
         public Entity IsEnemyAtPosition(int x, int y)
         {
-            foreach (Enemy e in enemyList)
+            foreach (Entity e in entities)
             {
                 if (e.Pos.X == x && e.Pos.Y == y && e.GetType() == typeof(Enemy))
                 {
@@ -70,7 +68,7 @@ namespace School_Project
 
         public Entity IsEnemyAtPosition(Position movePos)
         {
-            foreach (Enemy e in enemyList)
+            foreach (Entity e in entities)
             {
                 if (e.Pos == movePos && e.Pos == movePos && e.GetType() == typeof(Enemy))
                 {
@@ -82,9 +80,14 @@ namespace School_Project
 
         // luodaan vihollisia karttaan. ja lisätään ne entities listaan.
         // tähän vois kehitellä jonkun systeemin, että noi viholliset kaivetaan jostain sen mukaan kuinka syvällä ollaan jne.
-        public void CreateEnemies()
+        public void CreateEnemies(int level, int enemyCount)
         {
-
+            Enemies enemies = new Enemies();
+            List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, enemyCount);
+            foreach(Enemy enemy in enemyList)
+            {
+                entities.Add(enemy);
+            }
         }
 
         // Update the game board with a new 2D char array
