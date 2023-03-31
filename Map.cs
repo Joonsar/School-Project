@@ -13,13 +13,15 @@ namespace School_Project
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
-        public List<Entity> entities;
+        public Enemies enemies = new Enemies();
+        public List<Enemy> enemyList;
 
-        public Map(int width, int height, char emptySpaceChar = ' ')
+        public Map(int width, int height, char emptySpaceChar = ' ', int enemyLvl, int enemyCount)
         {
             this.Width = width;
             this.Height = height;
-            entities = new List<Entity>();
+
+            enemyList = enemies.GetEnemyListByLevel(enemyLvl, enemyCount);
             // Create game board array
             Mapping = new char[width, height];
 
@@ -56,7 +58,7 @@ namespace School_Project
         // tarkastetaan onko ruudustta entity. jos on palautetaan se. muuten palautetaan null
         public Entity IsEnemyAtPosition(int x, int y)
         {
-            foreach (Entity e in entities)
+            foreach (Enemy e in enemyList)
             {
                 if (e.Pos.X == x && e.Pos.Y == y && e.GetType() == typeof(Enemy))
                 {
@@ -68,7 +70,7 @@ namespace School_Project
 
         public Entity IsEnemyAtPosition(Position movePos)
         {
-            foreach (Entity e in entities)
+            foreach (Enemy e in enemyList)
             {
                 if (e.Pos == movePos && e.Pos == movePos && e.GetType() == typeof(Enemy))
                 {
@@ -82,18 +84,7 @@ namespace School_Project
         // tähän vois kehitellä jonkun systeemin, että noi viholliset kaivetaan jostain sen mukaan kuinka syvällä ollaan jne.
         public void CreateEnemies()
         {
-            Random rand = new Random();
-            string charString = "ABCDEFGHIJKLMNOPQRST!!#¤%&/()♀-N`↨-↨00Kdkoewjatfiheioahteaotih}cA";
-            char randomChar1 = charString[rand.Next(0, charString.Length)];
-            char randomChar2 = charString[rand.Next(0, charString.Length)];
-            char randomChar3 = charString[rand.Next(0, charString.Length)];
 
-            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, ConsoleColor.Yellow, 100, 10);
-            entities.Add(enemy);
-            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar2, ConsoleColor.Cyan, 100, 5);
-            entities.Add(enemy2);
-            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar3, ConsoleColor.DarkYellow, 100, 3);
-            entities.Add(enemy3);
         }
 
         // Update the game board with a new 2D char array
