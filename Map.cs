@@ -39,6 +39,28 @@ namespace School_Project
                     }
                 }
             }
+            // Generate random walls
+            GenerateRandomWalls();
+        }
+
+        private void GenerateRandomWalls()
+        {
+            Random random = new Random();
+
+            // Determine the number of walls to create based on the size of the map
+            int wallCount = Width * Height / 10;
+
+            // Generate the specified number of walls in random positions
+            for (int i = 0; i < wallCount; i++)
+            {
+                int x = random.Next(1, Width - 1);
+                int y = random.Next(1, Height - 1);
+
+                if (Mapping[x, y] == ' ')
+                {
+                    Mapping[x, y] = '#';
+                }
+            }
         }
 
         // Check if a given position is within the bounds of the game board and if there is wall at position
