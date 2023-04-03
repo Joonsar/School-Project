@@ -11,6 +11,7 @@ namespace School_Project
 
         public List<Map> Maps { get; set; }
         public int Level { get; set; }
+        public int EnemiesCount { get; set; }   
 
         //width / height max valuet. pitäisi fiksata ongelma, jos halutaan eri kokoisia mappeja. kun luodaan screen näillä arvoilla
         public static readonly int SCREEN_WIDTH = Console.LargestWindowWidth;
@@ -50,6 +51,7 @@ namespace School_Project
             Width = 50;
             Height = 24;
             Level = 0;
+            EnemiesCount = 3;
             Turn = 1;
             rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -59,7 +61,7 @@ namespace School_Project
             Maps = new List<Map>();
             this.Map = new Map(Width, Height);
             Maps.Add(Map);
-            Map.CreateEnemies();
+            Map.CreateEnemies(this.Level, this.EnemiesCount);
             Player = new Player("Pelaaja", 100, 100);
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
@@ -136,7 +138,7 @@ namespace School_Project
                     //tehdään uusi mappi
                     var newMap = new Map(Width, Height);
                     //tehdään viholliset
-                    newMap.CreateEnemies();
+                    newMap.CreateEnemies(this.Level, this.EnemiesCount);
                     //tehdään portaat
 
                     newMap.GenerateStairs();

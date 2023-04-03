@@ -80,20 +80,14 @@ namespace School_Project
 
         // luodaan vihollisia karttaan. ja lisätään ne entities listaan.
         // tähän vois kehitellä jonkun systeemin, että noi viholliset kaivetaan jostain sen mukaan kuinka syvällä ollaan jne.
-        public void CreateEnemies()
+        public void CreateEnemies(int level, int enemyCount)
         {
-            Random rand = new Random();
-            string charString = "ABCDEFGHIJKLMNOPQRST!!#¤%&/()♀-N`↨-↨00Kdkoewjatfiheioahteaotih}cA";
-            char randomChar1 = charString[rand.Next(0, charString.Length)];
-            char randomChar2 = charString[rand.Next(0, charString.Length)];
-            char randomChar3 = charString[rand.Next(0, charString.Length)];
-
-            var enemy = new Enemy("juoppo", "melkonen juoppo", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, ConsoleColor.Yellow, 100, 10);
-            entities.Add(enemy);
-            var enemy2 = new Enemy("piilojuoppo", "Juo salaa.. hyi!", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar2, ConsoleColor.Cyan, 100, 5);
-            entities.Add(enemy2);
-            var enemy3 = new Enemy("rapajuoppo", "Ei mitään toivoa", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar3, ConsoleColor.DarkYellow, 100, 3);
-            entities.Add(enemy3);
+            Enemies enemies = new Enemies();
+            List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, enemyCount);
+            foreach(Enemy enemy in enemyList)
+            {
+                entities.Add(enemy);
+            }
         }
 
         // Update the game board with a new 2D char array
