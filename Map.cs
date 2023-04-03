@@ -106,7 +106,7 @@ namespace School_Project
         {
             Enemies enemies = new Enemies();
             List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, enemyCount);
-            foreach(Enemy enemy in enemyList)
+            foreach (Enemy enemy in enemyList)
             {
                 entities.Add(enemy);
             }

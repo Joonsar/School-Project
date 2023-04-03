@@ -132,5 +132,10 @@ namespace School_Project
 
             // Keep moving the Player until the user presses the Esc key
         }
+
+        public void SetCursorPosition(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+        }
     }
 }

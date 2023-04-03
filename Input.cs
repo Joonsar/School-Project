@@ -8,52 +8,52 @@ namespace School_Project
 {
     public static class Input
     {
-
         private static GameController gc = GameController.Instance;
-        
+
         public static void CheckInput(ConsoleKey key)
         {
-           
-            if(gc.Inspecting)
+            if (gc.Inspecting)
             {
                 Console.CursorVisible = true;
-                switch(key)
+                switch (key)
                 {
                     case ConsoleKey.RightArrow:
                         Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop);
                         CheckCurrentPosition();
 
-
                         break;
+
                     case ConsoleKey.LeftArrow:
                         Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                         CheckCurrentPosition();
                         break;
+
                     case ConsoleKey.UpArrow:
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
                         break;
+
                     case ConsoleKey.DownArrow:
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 1);
                         CheckCurrentPosition();
                         break;
+
                     case ConsoleKey.Spacebar:
                         Console.CursorVisible = false;
                         gc.Inspecting = false;
                         break;
-
                 }
-            }    
-            
-             
-            else {
+            }
+            else
+            {
                 // Move the Player in the corresponding direction
                 switch (key)
                 {
                     case ConsoleKey.Spacebar:
                         gc.Inspecting = true;
                         Console.CursorVisible = true;
-                        Console.SetCursorPosition(gc.Player.Pos.X, gc.Player.Pos.Y);
+                        gc.screen.SetCursorPosition(gc.Player.Pos.X, gc.Player.Pos.Y);
                         break;
+
                     case ConsoleKey.Q:
                         gc.running = false;
                         break;
@@ -117,33 +117,53 @@ namespace School_Project
                     case ConsoleKey.I:
                         gc.ChangeLevel(-1);
                         break;
-
-                }
                 }
             }
+        }
 
         private static void CheckCurrentPosition()
         {
-            foreach(Entity e in gc.entities)
+            foreach (Entity e in gc.entities)
             {
-                if(e.Pos.X == Console.CursorLeft && e.Pos.Y == Console.CursorTop)
+                if (e.Pos.X == Console.CursorLeft && e.Pos.Y == Console.CursorTop)
                 {
                     var oldPosX = Console.CursorLeft;
                     var oldPosY = Console.CursorTop;
                     gc.MessageLog.AddMessage(e.Name);
                     gc.screen.PrintMessageLog();
-                    Console.SetCursorPosition(oldPosX, oldPosY);
+                    gc.screen.SetCursorPosition(oldPosX, oldPosY);
                 }
             }
 
-            if(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] == '#')
+            CheckMapItems();
+        }
+
+        private static void CheckMapItems()
+        {
+            if (gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] != ' ')
             {
-                var oldPosX = Console.CursorLeft;
-                var oldPosY = Console.CursorTop;
-                gc.MessageLog.AddMessage("seinä");
-                gc.screen.PrintMessageLog();
-                Console.SetCursorPosition(oldPosX, oldPosY);
+                SetPositionAndPrintToMessageLog(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop]);
             }
+        }
+
+        private static void SetPositionAndPrintToMessageLog(char c)
+        {
+            var oldPosX = Console.CursorLeft;
+            var oldPosY = Console.CursorTop;
+            if (c == '#')
+            {
+                gc.MessageLog.AddMessage("seinä");
+            }
+            else if (c == '<')
+            {
+                gc.MessageLog.AddMessage("Portaat alas");
+            }
+            else if (c == '>')
+            {
+                gc.MessageLog.AddMessage("Portaal ylös");
+            }
+            gc.screen.PrintMessageLog();
+            gc.screen.SetCursorPosition(oldPosX, oldPosY);
         }
     }
 }
