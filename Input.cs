@@ -14,9 +14,46 @@ namespace School_Project
         public static void CheckInput(ConsoleKey key)
         {
            
+            if(gc.Inspecting)
+            {
+                Console.CursorVisible = true;
+                switch(key)
+                {
+                    case ConsoleKey.RightArrow:
+                        Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop);
+                        CheckCurrentPosition();
+
+
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                        CheckCurrentPosition();
+                        break;
+                    case ConsoleKey.UpArrow:
+                        Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 1);
+                        CheckCurrentPosition();
+                        break;
+                    case ConsoleKey.Spacebar:
+                        Console.CursorVisible = false;
+                        gc.Inspecting = false;
+                        break;
+
+                }
+            }    
+            
+             
+            else {
                 // Move the Player in the corresponding direction
                 switch (key)
                 {
+                    case ConsoleKey.Spacebar:
+                        gc.Inspecting = true;
+                        Console.CursorVisible = true;
+                        Console.SetCursorPosition(gc.Player.Pos.X, gc.Player.Pos.Y);
+                        break;
                     case ConsoleKey.Q:
                         gc.running = false;
                         break;
@@ -81,8 +118,32 @@ namespace School_Project
                         gc.ChangeLevel(-1);
                         break;
 
-
+                }
                 }
             }
+
+        private static void CheckCurrentPosition()
+        {
+            foreach(Entity e in gc.entities)
+            {
+                if(e.Pos.X == Console.CursorLeft && e.Pos.Y == Console.CursorTop)
+                {
+                    var oldPosX = Console.CursorLeft;
+                    var oldPosY = Console.CursorTop;
+                    gc.MessageLog.AddMessage(e.Name);
+                    gc.screen.PrintMessageLog();
+                    Console.SetCursorPosition(oldPosX, oldPosY);
+                }
+            }
+
+            if(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] == '#')
+            {
+                var oldPosX = Console.CursorLeft;
+                var oldPosY = Console.CursorTop;
+                gc.MessageLog.AddMessage("seinä");
+                gc.screen.PrintMessageLog();
+                Console.SetCursorPosition(oldPosX, oldPosY);
+            }
+        }
     }
 }
