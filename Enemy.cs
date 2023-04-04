@@ -63,18 +63,19 @@ namespace School_Project
 
         public override void Update()
         {
+            int speed = rand.Next(1, 10);
             int moveX = 0;
             int moveY = 0;
             int xDiff = gc.Player.Pos.X - Pos.X;
             int yDiff = gc.Player.Pos.Y - Pos.Y;
             double distance = Math.Sqrt(yDiff * yDiff + xDiff * xDiff);
 
-            if (distance > 1)
+            if (distance > 4)
             {
                 moveX = rand.Next(-1, 2);
                 moveY = rand.Next(-1, 2);
             }
-            else
+            else if (speed > 3)
             {
                 if (Math.Abs(xDiff) > Math.Abs(yDiff))
                 {
