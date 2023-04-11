@@ -34,6 +34,8 @@ namespace School_Project
         public Screen screen;
         public bool running { get; set; }
 
+        public bool Inspecting { get; set; }
+
         //    private Stack<Map> previousMaps = new Stack<Map>();
 
         public bool StairsGenerated = false;
@@ -74,28 +76,41 @@ namespace School_Project
         {
             while (running)
             {
-                //tulostetaan messagelogin sisältö
-                screen.PrintMessageLog();
-                //liikutetaan entityjä
-                MoveEntities();
-                //tulostetaan entityt
-                //screen.PrintEntities(entities);
 
-                //tulostetaan entityt ruudulle.
+                if (Inspecting)
+                {
+                    var input = Console.ReadKey(true);
+                    Input.CheckInput(input.Key);
+                }
+                else
+                {
 
-                //tähän game looppi.
-                //Mikä ikinä onkaan syötteen luku.. esim InputParser() -> täällä voi sit olla, että jos vaikka rightarrow, niin Player.move(0,1) ja
-                //ja jos käytetään tätä gamecontroller instancee. esim niinkun tossa program.cs on toi kommentoituna pois. niin joka classissa voi sit käyttää sitä
-                //kun luo vaan classissa GameController gc = Gamecontroller.Instance. sit pystyy kutsuun gc.Player.blabla, gc.screen.blabla, gc.mikälie.blabla.
-                //eli voidaan poistaa tosta program.cs noi Screen = screen blabla jne
-                //esimerkkinä vaikka jos pitää piirtää pelaaja siihen pisteeseen missä se on. (screen class todennäkösesti). niin voidaan vaan laitta
-                //mikälie meidän tulostus funktio onkaan.
-                // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
-                //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
-                var input = Console.ReadKey(true);
 
-                Input.CheckInput(input.Key);
-                Turn++;
+
+
+                    //tulostetaan messagelogin sisältö
+                    screen.PrintMessageLog();
+                    //liikutetaan entityjä
+                    MoveEntities();
+                    //tulostetaan entityt
+                    //screen.PrintEntities(entities);
+
+                    //tulostetaan entityt ruudulle.
+
+                    //tähän game looppi.
+                    //Mikä ikinä onkaan syötteen luku.. esim InputParser() -> täällä voi sit olla, että jos vaikka rightarrow, niin Player.move(0,1) ja
+                    //ja jos käytetään tätä gamecontroller instancee. esim niinkun tossa program.cs on toi kommentoituna pois. niin joka classissa voi sit käyttää sitä
+                    //kun luo vaan classissa GameController gc = Gamecontroller.Instance. sit pystyy kutsuun gc.Player.blabla, gc.screen.blabla, gc.mikälie.blabla.
+                    //eli voidaan poistaa tosta program.cs noi Screen = screen blabla jne
+                    //esimerkkinä vaikka jos pitää piirtää pelaaja siihen pisteeseen missä se on. (screen class todennäkösesti). niin voidaan vaan laitta
+                    //mikälie meidän tulostus funktio onkaan.
+                    // ja tässä game loopissa voidaan kutsua sit screen.printPlayer(); tai jos halutaan yksinkertastaa niin Player luokassa voi olla vaikka draw funktio.
+                    //niin sit voidaan vaan kutsua Player.Draw(); ja se sit viitaa screen luokkaan jne.
+                    var input = Console.ReadKey(true);
+
+                    Input.CheckInput(input.Key);
+                    Turn++;
+                }
             }
         }
 
