@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace School_Project
 {
@@ -65,6 +66,10 @@ namespace School_Project
 
         // Check if a given position is within the bounds of the game board and if there is wall at position
 
+        public bool IsPositionInsideBounds(int x, int y)
+        {
+            return x >= 0 && x < Width && y >= 0 && y < Height;
+        }
         public bool IsPositionValid(int x, int y)
         {
             return x >= 0 && x < Width && y >= 0 && y < Height && Mapping[x, y] != '#';

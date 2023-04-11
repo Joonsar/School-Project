@@ -18,21 +18,37 @@ namespace School_Project
                 switch (key)
                 {
                     case ConsoleKey.RightArrow:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft + 1, Console.CursorTop))
+                        {
+                            break;
+                        }
                         Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop);
                         CheckCurrentPosition();
 
                         break;
 
                     case ConsoleKey.LeftArrow:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft - 1, Console.CursorTop))
+                        {
+                            break;
+                        }
                         Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                         CheckCurrentPosition();
                         break;
 
                     case ConsoleKey.UpArrow:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft, Console.CursorTop - 1))
+                        {
+                            break;
+                        }
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
                         break;
 
                     case ConsoleKey.DownArrow:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft, Console.CursorTop + 1))
+                        {
+                            break;
+                        }
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 1);
                         CheckCurrentPosition();
                         break;
@@ -123,6 +139,7 @@ namespace School_Project
 
         private static void CheckCurrentPosition()
         {
+           
             foreach (Entity e in gc.entities)
             {
                 if (e.Pos.X == Console.CursorLeft && e.Pos.Y == Console.CursorTop)
