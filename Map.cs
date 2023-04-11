@@ -15,7 +15,7 @@ namespace School_Project
         public Position StairUp { get; set; }
 
         public List<Entity> entities;
-
+        private List<Position> playerPath;
         public Map(int width, int height, char emptySpaceChar = ' ')
         {
             this.Width = width;
@@ -49,7 +49,7 @@ namespace School_Project
             Random random = new Random();
 
             // Determine the number of walls to create based on the size of the map
-            int wallCount = Width * Height / 10;
+            int wallCount = Width * Height / 25;
 
             // Generate the specified number of walls in random positions
             for (int i = 0; i < wallCount; i++)
