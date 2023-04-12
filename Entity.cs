@@ -25,7 +25,10 @@ namespace School_Project
 
         public virtual void Update()
         {
+        }
 
+        public virtual void TakeDamage(int v)
+        {
         }
     }
 }

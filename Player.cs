@@ -67,6 +67,10 @@ namespace School_Project
         public void MovePlayer(int x, int y)
         {
             var oldPos = new Position(Pos.X, Pos.Y);
+            if (gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) != null)
+            {
+                gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y).TakeDamage(50);
+            }
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
                 Pos.X += x;

@@ -61,6 +61,22 @@ namespace School_Project
             LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
         }
 
+        public override void TakeDamage(int v)
+        {
+            Health -= v;
+            gc.MessageLog.AddMessage($"{Name} takes {v} Damage. has {Health}/{MaxHealth} hp");
+            CheckDeath();
+        }
+
+        private void CheckDeath()
+        {
+            if (Health <= 0)
+            {
+                gc.MessageLog.AddMessage($"{Name} dies.");
+                gc.Map.entities.Remove(this);
+            }
+        }
+
         public override void Update()
         {
             int speed = rand.Next(1, 10);
