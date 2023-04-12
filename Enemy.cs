@@ -73,6 +73,7 @@ namespace School_Project
             if (Health <= 0)
             {
                 gc.MessageLog.AddMessage($"{Name} dies.");
+                gc.Player.AddExperience((Level + 1) * 50);
                 gc.Map.entities.Remove(this);
             }
         }

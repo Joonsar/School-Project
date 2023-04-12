@@ -104,5 +104,10 @@ namespace School_Project
                 }
             }
         }
+
+        public void AddExperience(int amount)
+        {
+            ExpPoints += amount;
+        }
     }
 }
