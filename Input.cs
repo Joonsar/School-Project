@@ -158,26 +158,27 @@ namespace School_Project
         {
             if (gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] != Map.empty)
             {
-                SetPositionAndPrintToMessageLog(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop].Mark);
+                SetPositionAndPrintToMessageLog(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop]);
             }
         }
 
-        private static void SetPositionAndPrintToMessageLog(char c)
+        private static void SetPositionAndPrintToMessageLog(MapObject c)
         {
             var oldPosX = Console.CursorLeft;
             var oldPosY = Console.CursorTop;
-            if (c == '#')
-            {
-                gc.MessageLog.AddMessage("seinä");
-            }
-            else if (c == '<')
-            {
-                gc.MessageLog.AddMessage("Portaat alas");
-            }
-            else if (c == '>')
-            {
-                gc.MessageLog.AddMessage("Portaal ylös");
-            }
+            /*   if (c == '#')
+               {
+                   gc.MessageLog.AddMessage("seinä");
+               }
+               else if (c == Map.stairsDown)
+               {
+                   gc.MessageLog.AddMessage("Portaat alas");
+               }
+               else if (c == Map.stairsUp)
+               {
+                   gc.MessageLog.AddMessage("Portaal ylös");
+               }*/
+            gc.MessageLog.AddMessage(c.Description);
             gc.screen.PrintMessageLog();
             gc.screen.SetCursorPosition(oldPosX, oldPosY);
         }
