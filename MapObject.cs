@@ -19,6 +19,7 @@ namespace School_Project
             Mark = mark;
             Description = description;
             CanWalkThrough = canWalkThrhough;
+            Color = ConsoleColor.White;
         }
 
         public MapObject(char mark, string description, bool canWalkThrhough, ConsoleColor color)

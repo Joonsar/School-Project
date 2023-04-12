@@ -24,7 +24,9 @@ namespace School_Project
 
         private GameController gc = GameController.Instance;
 
-        private Tuple<Position, char> LastPosition;
+        //private Tuple<Position, char> LastPosition;
+
+        private MapObject LastPosition;
 
         public Position Pos { get; set; }
 
@@ -58,19 +60,21 @@ namespace School_Project
 
         public void SetPlayerLastPosition()
         {
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
+            //LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
+            LastPosition = gc.Map.Mapping[Pos.X, Pos.Y];
         }
 
         public void MovePlayer(int x, int y)
         {
+            var oldPos = new Position(Pos.X, Pos.Y);
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
                 Pos.X += x;
                 Pos.Y += y;
-                gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
+                gc.screen.WriteAtPosition(oldPos, LastPosition.Mark, LastPosition.Color);
                 gc.screen.PrintPlayer();
                 gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
-                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
+                LastPosition = gc.Map.Mapping[Pos.X, Pos.Y];
 
                 if (gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsDown)
                 {

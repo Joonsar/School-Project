@@ -65,7 +65,8 @@ namespace School_Project
                 for (int x = 0; x < gc.Map.Width; x++)
                 {
                     Console.SetCursorPosition(x, y);
-                    Write(gc.Map.Mapping[x, y].Mark.ToString());
+
+                    Write(gc.Map.Mapping[x, y].Mark.ToString(), gc.Map.Mapping[x, y].Color);
                     if (!gc.StairsGenerated)
                     {
                         gc.Map.GenerateStairs();
