@@ -139,7 +139,6 @@ namespace School_Project
 
         private static void CheckCurrentPosition()
         {
-           
             foreach (Entity e in gc.entities)
             {
                 if (e.Pos.X == Console.CursorLeft && e.Pos.Y == Console.CursorTop)
@@ -157,9 +156,9 @@ namespace School_Project
 
         private static void CheckMapItems()
         {
-            if (gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] != ' ')
+            if (gc.Map.Mapping[Console.CursorLeft, Console.CursorTop] != Map.empty)
             {
-                SetPositionAndPrintToMessageLog(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop]);
+                SetPositionAndPrintToMessageLog(gc.Map.Mapping[Console.CursorLeft, Console.CursorTop].Mark);
             }
         }
 

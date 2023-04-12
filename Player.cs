@@ -12,7 +12,7 @@ namespace School_Project
         public int HealthValue { get; private set; }
         public int HitPoints { get; private set; }
         public int ExpPoints { get; private set; }
-        
+
         public int MaxHp { get; set; }
 
         public int Level { get; private set; }
@@ -58,7 +58,7 @@ namespace School_Project
 
         public void SetPlayerLastPosition()
         {
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
         }
 
         public void MovePlayer(int x, int y)
@@ -70,27 +70,23 @@ namespace School_Project
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
                 gc.screen.PrintPlayer();
                 gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
-                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+                LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
 
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsDown)
                 {
                     gc.ChangeLevel(1);
-                    
                 }
-                else if (gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                else if (gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsUp)
                 {
                     gc.ChangeLevel(-1);
-                    
                 }
             }
-
-
         }
 
         public bool CheckIfPlayerCollidesWithStairs()
         {
             {
-                if (gc.Map.Mapping[Pos.X, Pos.Y] == '<' || gc.Map.Mapping[Pos.X, Pos.Y] == '>')
+                if (gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsDown || gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsUp)
                 {
                     return true;
                 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Security.Cryptography.X509Certificates;
 
 namespace School_Project
@@ -7,22 +8,28 @@ namespace School_Project
     public class Map
     {
         private GameController gc = GameController.Instance;
-        public char[,] Mapping { get; set; }
+        public MapObject[,] Mapping { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
+        public static readonly MapObject wall = new MapObject('#', "seinä", false);
+        public static readonly MapObject empty = new MapObject(' ', "lattia", true);
+        public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true);
+        public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true);
+
         public List<Entity> entities;
         private List<Position> playerPath;
+
         public Map(int width, int height, char emptySpaceChar = ' ')
         {
             this.Width = width;
             this.Height = height;
             entities = new List<Entity>();
             // Create game board array
-            Mapping = new char[width, height];
+            Mapping = new MapObject[width, height];
 
             for (int x = 0; x < width; x++)
             {
@@ -31,12 +38,12 @@ namespace School_Project
                     if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
                     {
                         // Place "#" at edges of the board
-                        Mapping[x, y] = '#';
+                        Mapping[x, y] = wall;
                     }
                     else
                     {
                         // Fill the rest of the board with empty space character
-                        Mapping[x, y] = emptySpaceChar;
+                        Mapping[x, y] = empty;
                     }
                 }
             }
@@ -57,9 +64,9 @@ namespace School_Project
                 int x = random.Next(1, Width - 1);
                 int y = random.Next(1, Height - 1);
 
-                if (Mapping[x, y] == ' ')
+                if (Mapping[x, y] == empty)
                 {
-                    Mapping[x, y] = '#';
+                    Mapping[x, y] = wall;
                 }
             }
         }
@@ -70,14 +77,15 @@ namespace School_Project
         {
             return x >= 0 && x < Width && y >= 0 && y < Height;
         }
+
         public bool IsPositionValid(int x, int y)
         {
-            return x >= 0 && x < Width && y >= 0 && y < Height && Mapping[x, y] != '#';
+            return x >= 0 && x < Width && y >= 0 && y < Height && Mapping[x, y] != wall;
         }
 
         public bool IsPositionValid(Position movePos)
         {
-            return movePos.X >= 0 && movePos.X < Width && movePos.Y >= 0 && movePos.Y < Height && Mapping[movePos.X, movePos.Y] != '#';
+            return movePos.X >= 0 && movePos.X < Width && movePos.Y >= 0 && movePos.Y < Height && Mapping[movePos.X, movePos.Y] != wall;
         }
 
         // tarkastetaan onko ruudustta entity. jos on palautetaan se. muuten palautetaan null
@@ -118,7 +126,7 @@ namespace School_Project
         }
 
         // Update the game board with a new 2D char array
-        public void UpdateMap(char[,] updatedBoard)
+        public void UpdateMap(MapObject[,] updatedBoard)
         {
             Mapping = updatedBoard;
         }
@@ -129,7 +137,7 @@ namespace School_Project
             int x = random.Next(1, Width - 1);
             int y = random.Next(1, Height - 1);
 
-            Mapping[x, y] = '<';
+            Mapping[x, y] = stairsDown;
             StairDown = new Position(x, y);
 
             int newX = random.Next(1, Width - 1);
@@ -142,7 +150,7 @@ namespace School_Project
                 newY = random.Next(1, Height - 1);
             }
 
-            Mapping[newX, newY] = '>';
+            Mapping[newX, newY] = stairsUp;
             StairUp = new Position(newX, newY);
         }
 
@@ -160,11 +168,11 @@ namespace School_Project
                 {
                     if (x == 0 || x == newWidth - 1 || y == 0 || y == newHeight - 1)
                     {
-                        newMap.Mapping[x, y] = '#';
+                        newMap.Mapping[x, y] = wall;
                     }
                     else
                     {
-                        newMap.Mapping[x, y] = emptySpaceChar;
+                        newMap.Mapping[x, y] = empty;
                     }
                 }
             }

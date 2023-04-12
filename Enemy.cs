@@ -7,7 +7,7 @@ namespace School_Project
         private Random rand = new Random();
         private GameController gc;
 
-        private Tuple<Position, char> LastPosition;
+        private Tuple<Position, Char> LastPosition;
 
         public int Health { get; set; }
         public int MaxHealth { get; set; }
@@ -58,7 +58,7 @@ namespace School_Project
 
         public void SetEnemyLastPosition()
         {
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y]);
+            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
         }
 
         public override void Update()
@@ -85,7 +85,6 @@ namespace School_Project
                 {
                     moveY = yDiff > 0 ? 1 : -1;
                 }
-                
             }
             MoveEntity(moveX, moveY);
         }
