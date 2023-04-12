@@ -15,7 +15,9 @@ namespace School_Project
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
+        //tässä määritellään seinät jne. toi true false arvo on voiko sen läpi kävellä vai ei
         public static readonly MapObject wall = new MapObject('#', "seinä", false);
+
         public static readonly MapObject empty = new MapObject(' ', "lattia", true);
         public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true);
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true);
