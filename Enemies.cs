@@ -20,7 +20,7 @@ namespace School_Project
             char randomChar3 = charString[rand.Next(0, charString.Length)];
             // Lisää vihollinen liestaan (Nimi, kuvaus, positio, merkki, väri, max healt, damage, level)
             //Lvl 0
-            this.enemies.Add(new Enemy("Tissuttelija", "Pari sillon tällön", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, ConsoleColor.Yellow, 100, 10, 0));
+            this.enemies.Add(new Enemy("Tissuttelija Tauno", "Pari sillon tällön", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, ConsoleColor.Yellow, 100, 10, 0));
             this.enemies.Add(new Enemy("Matti", "Saunakaljat mukana", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar2, ConsoleColor.Cyan, 100, 5, 0));
             this.enemies.Add(new Enemy("Seppo Sivistyneesti", "Muutamat aina maistuu", new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar3, ConsoleColor.DarkYellow, 100, 3, 0));
             //Lvl 1
@@ -47,12 +47,35 @@ namespace School_Project
             int count = 0;
             var randomizedList = this.enemies.OrderBy(item => rand.Next());
             List<Enemy> enemies = new List<Enemy>();
-            foreach(Enemy enemy in randomizedList)
+            while (count < howMany)
             {
-                if(enemy.Level == lvl && count < howMany)
+                if (lvl <= 4)
                 {
-                    enemies.Add(enemy);
-                    count++;
+                    foreach (Enemy enemy in randomizedList)
+                    {
+                        if (enemy.Level == lvl && count < howMany)
+                        {
+                            enemies.Add(enemy);
+                            count++;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Enemy enemy in randomizedList)
+                    {
+                        if (count < howMany)
+                        {
+                            int levelDifference = lvl - enemy.Level;
+                            enemy.Level += levelDifference;
+                            enemy.MaxHealth *= levelDifference;
+                            enemy.Damage *= levelDifference;
+                            enemy.Health *= levelDifference;
+                            enemy.Description = "Romahti täydellisesti rappiolle!";
+                            enemies.Add((enemy));
+                            count++;
+                        }
+                    }
                 }
             }
             return enemies;
@@ -63,16 +86,34 @@ namespace School_Project
         {
             var randomizedList = this.enemies.OrderBy(item => rand.Next());
             Enemy enemy1 = null;
-            foreach(Enemy enemy in randomizedList)
+            if (lvl <= 4)
             {
-                if(enemy.Level == lvl)
+                foreach (Enemy enemy in randomizedList)
                 {
+                    if (enemy.Level == lvl)
+                    {
+                        enemy1 = enemy;
+                        break;
+                    }
+
+                }
+            }
+            else
+            {
+                foreach (Enemy enemy in randomizedList)
+                {
+                    
+                    int levelDifference = lvl - enemy.Level;
+                    enemy.Level += levelDifference;
+                    enemy.MaxHealth *= levelDifference;
+                    enemy.Damage *= levelDifference;
+                    enemy.Health *= levelDifference;
+                    enemy.Description = "Romahti täydellisesti rappiolle!";
                     enemy1 = enemy;
                     break;
                 }
-                
             }
-            return enemy1;
+        return enemy1;
 
         }
 
