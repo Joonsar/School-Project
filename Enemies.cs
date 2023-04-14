@@ -8,6 +8,7 @@ namespace School_Project
 {
     public class Enemies
     {
+        private GameController gc = GameController.Instance;
         List<Enemy> enemies;
         Random rand =  new Random();
         string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -66,7 +67,7 @@ namespace School_Project
             {
                 char randomChar1 = charString[rand.Next(0, charString.Length)];
                 ConsoleColor color = colors[rand.Next(0,colors.Length)];
-                enemies.Add(new Enemy((randomizedNameList[rand.Next(0, randomizedNameList.Count())]), randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, 40), rand.Next(1, 15)), randomChar1, color, 300*1*lvl, 10*1*lvl, 0+lvl));
+                enemies.Add(new Enemy((randomizedNameList[rand.Next(0, randomizedNameList.Count())]), randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), randomChar1, color, 300*1*lvl, 10*1*lvl, 0+lvl));
                 count++;
             }
             return enemies;
