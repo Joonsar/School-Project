@@ -15,6 +15,7 @@ namespace School_Project
 
         public int Level { get; set; }
 
+
         public Enemy(string name, string description, Position pos, char mark, ConsoleColor color, int maxHealth, int damage) : base(name, description, pos, mark, color)
         {
             MaxHealth = maxHealth;
