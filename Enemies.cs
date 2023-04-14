@@ -11,7 +11,7 @@ namespace School_Project
         private GameController gc = GameController.Instance;
         List<Enemy> enemies;
         Random rand =  new Random();
-        string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä";
         string enemyDescriptiosTwo = "Koko vkl putkeen!,Sixpäkki duunin jälkee heti pöytää!,Juo pelkkää olutta ja korvaa kaiken sanomansa PERKELE huudolla,Juo salaa.. hyi!";
         string enemyDescriptionsThree = "melkonen juoppo,Välillä huiliiki,Juo käänit ja aiheuttaa pahennusta kylillä,Välillä heilahtaa viikko kaks..,Katkolta alkon kautta";
@@ -65,9 +65,10 @@ namespace School_Project
 
             while (count < howMany)
             {
-                char randomChar1 = charString[rand.Next(0, charString.Length)];
+                //char randomChar1 = charString[rand.Next(0, charString.Length)];
                 ConsoleColor color = colors[rand.Next(0,colors.Length)];
-                enemies.Add(new Enemy((randomizedNameList[rand.Next(0, randomizedNameList.Count())]), randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), randomChar1, color, 300*1*lvl, 10*1*lvl, 0+lvl));
+                string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
+                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300*1*lvl, 10*1*lvl, 0+lvl));
                 count++;
             }
             return enemies;
