@@ -58,6 +58,17 @@ namespace School_Project
                             enemies.Add(enemy);
                             count++;
                         }
+                        else if(count < howMany)
+                        {
+                            int levelDifference = lvl - enemy.Level;
+                            enemy.Level += levelDifference;
+                            enemy.MaxHealth *= levelDifference;
+                            enemy.Damage *= levelDifference;
+                            enemy.Health *= levelDifference;
+                            enemy.Description = "Vielä pysyy jotenki hallinnassa homma!";
+                            enemies.Add((enemy));
+                            count++;
+                        }
                     }
                 }
                 else
