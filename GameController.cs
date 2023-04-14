@@ -153,7 +153,7 @@ namespace School_Project
                     //tehdään uusi mappi
                     var newMap = new Map(Width, Height);
                     //tehdään viholliset
-                    newMap.CreateEnemies(this.Level, this.EnemiesCount);
+                    
                     //tehdään portaat
 
                     newMap.GenerateStairs();
@@ -165,6 +165,7 @@ namespace School_Project
                     entities = Map.entities;
                     Level++;
                     Player.Pos = Map.StairUp;
+                    newMap.CreateEnemies(this.Level, this.EnemiesCount);
 
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
