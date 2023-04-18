@@ -30,6 +30,8 @@ namespace School_Project
 
         public Position Pos { get; set; }
 
+        private Random rand = new Random();
+
         public Player(string name, int healthValue, int hitPoints)
         {
             Level = 1;
@@ -69,7 +71,7 @@ namespace School_Project
             var oldPos = new Position(Pos.X, Pos.Y);
             if (gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) != null)
             {
-                gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y).TakeDamage(50);
+                Attack(gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y));
             }
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
@@ -77,7 +79,7 @@ namespace School_Project
                 Pos.Y += y;
                 gc.screen.WriteAtPosition(oldPos, LastPosition.Mark, LastPosition.Color);
                 gc.screen.PrintPlayer();
-                gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
+                //gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
                 LastPosition = gc.Map.Mapping[Pos.X, Pos.Y];
 
                 if (gc.Map.Mapping[Pos.X, Pos.Y] == Map.stairsDown)
@@ -88,6 +90,21 @@ namespace School_Project
                 {
                     gc.ChangeLevel(-1);
                 }
+            }
+        }
+
+        private void Attack(Entity e)
+        {
+            var hitChance = rand.Next(1, 100);
+            if (hitChance > 50 )
+            {
+                var damage = (50 + rand.Next(1, 50) * Level);
+                e.TakeDamage(damage);
+                //gc.MessageLog.AddMessage($"{Name} Hits {e.Name} for {damage}.");
+            }
+            else
+            {
+                gc.MessageLog.AddMessage($"{Name} misses {e.Name}");
             }
         }
 
@@ -108,6 +125,15 @@ namespace School_Project
         public void AddExperience(int amount)
         {
             ExpPoints += amount;
+            CheckLevelUp();
+        }
+        public void CheckLevelUp()
+        {
+            if (ExpPoints > Level * 100)
+            {
+                Level++;
+            }
         }
     }
+        
 }

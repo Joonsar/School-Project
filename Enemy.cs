@@ -50,8 +50,8 @@ namespace School_Project
                 gc.screen.PrintEnemy(this);
                 //kirjoitetaan ruutuun mistä liikuttiin, sen edellinen merkki.
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
-                gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
-                gc.MessageLog.AddMessage($"{Name} on {Description}");
+               // gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
+               // gc.MessageLog.AddMessage($"{Name} on {Description}");
 
                 SetEnemyLastPosition();
             }
