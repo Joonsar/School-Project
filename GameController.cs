@@ -121,6 +121,7 @@ namespace School_Project
                 }
             }
             screen.Clear();
+            //tämä ny tässä testimielessä, joku oma metodi loppuscreenille ja sit lyö tietoo vähän tietokantaan ny hyvä tulee.
             Console.WriteLine("Tapoit seuraavat viholliset");
             foreach (Entity e in GameStats.EnemiesKilled)
             {

@@ -44,7 +44,7 @@ namespace School_Project
             HitPoints = hitPoints;
             MaxHp = hitPoints;
             ExpPoints = 0;
-            Pos = new Position(10, 10);
+            Pos = gc.Map.StairUp;
 
             //LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
 
