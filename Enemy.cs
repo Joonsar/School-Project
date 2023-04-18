@@ -94,6 +94,7 @@ namespace School_Project
 
         public override void Update()
         {
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
             int speed = rand.Next(1, 10);
             int moveX = 0;
             int moveY = 0;
