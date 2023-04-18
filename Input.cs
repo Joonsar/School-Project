@@ -145,7 +145,7 @@ namespace School_Project
                 {
                     var oldPosX = Console.CursorLeft;
                     var oldPosY = Console.CursorTop;
-                    gc.screen.PrintInspectingObject(e.Name + " " + e.Description + new string(' ', gc.Width));
+                    gc.screen.PrintInspectingObject(e.Name + " " + e.Description + " " +  new string(' ', gc.Width));
                     //gc.screen.PrintMessageLog();
                     gc.screen.SetCursorPosition(oldPosX, oldPosY);
                 }
