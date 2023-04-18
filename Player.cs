@@ -52,7 +52,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HealthValue}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
+            return $"{Name} - Hp: {HitPoints}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
         }
 
         public void MovePlayerToPosition(Position pos)
@@ -132,6 +132,25 @@ namespace School_Project
             if (ExpPoints > Level * 100)
             {
                 Level++;
+                gc.MessageLog.AddMessage($"{Name} is now level {Level}");
+                gc.screen.PrintPlayerStats();
+            }
+        }
+
+        public void TakeDamage(int amount)
+        {
+            gc.MessageLog.AddMessage($"{Name} takes {amount} damage");
+            HitPoints -= amount;
+            gc.screen.PrintPlayerStats();
+            CheckDeath();
+
+        }
+
+        public void CheckDeath()
+        {
+            if(HitPoints <= 0 )
+            {
+                gc.MessageLog.AddMessage($"You die!");
             }
         }
     }

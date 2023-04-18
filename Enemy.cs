@@ -55,6 +55,19 @@ namespace School_Project
 
                 SetEnemyLastPosition();
             }
+            else if(newPosX == gc.Player.Pos.X && newPosY == gc.Player.Pos.Y)
+            {
+                var hitChance = rand.Next(0, 100);
+                if(hitChance > 50)
+                {
+                    gc.MessageLog.AddMessage($"{Name} attacks {gc.Player.Name}");
+                    gc.Player.TakeDamage(20);
+                }
+                else
+                {
+                    gc.MessageLog.AddMessage($"{Name} misses {gc.Player.Name}");
+                }
+            }
         }
 
         public void SetEnemyLastPosition()
