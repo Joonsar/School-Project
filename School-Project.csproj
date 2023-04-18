@@ -99,6 +99,7 @@
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Screen.cs" />
+    <Compile Include="StartScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

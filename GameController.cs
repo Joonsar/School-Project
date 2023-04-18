@@ -7,6 +7,9 @@ namespace School_Project
     {
         public static GameController Instance { get; set; }
         public Player Player { get; set; }
+        public StartScreen StartScreen { get; set; }
+
+        public string PlayerName { get; set; }  
         public Map Map { get; set; }
 
         public List<Map> Maps { get; set; }
@@ -54,22 +57,29 @@ namespace School_Project
             Height = 24;
             Level = 0;
             EnemiesCount = 3;
-            Turn = 1;
+            Turn = 0;
             rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             MessageLog = new MessageLog(Height);
+            StartScreen = new StartScreen(SCREEN_WIDTH);
+            if(Turn == 0)
+            {
+                screen.Clear();
+                StartScreen.Run();
+                Turn = 1;
+            }
             entities = new List<Entity>();
 
             Maps = new List<Map>();
             this.Map = new Map(Width, Height);
             Maps.Add(Map);
             Map.CreateEnemies(this.Level, this.EnemiesCount);
-            Player = new Player("Pelaaja", 100, 100);
+            Player = new Player(PlayerName, 100, 100);
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
             screen.DrawScreen();
-            running = true;
+            
         }
 
         public void Run()
@@ -191,5 +201,7 @@ namespace School_Project
                 }
             }
         }
+
+        
     }
 }

@@ -88,7 +88,7 @@ namespace School_Project
             int yDiff = gc.Player.Pos.Y - Pos.Y;
             double distance = Math.Sqrt(yDiff * yDiff + xDiff * xDiff);
 
-            if (distance > 4)
+            if (distance > 6)
             {
                 moveX = rand.Next(-1, 2);
                 moveY = rand.Next(-1, 2);
