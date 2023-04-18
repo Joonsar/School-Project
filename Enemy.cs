@@ -77,7 +77,25 @@ namespace School_Project
         public override void TakeDamage(int v)
         {
             Health -= v;
-            gc.MessageLog.AddMessage($"{Name} takes {v} Damage. has {Health}/{MaxHealth} hp");
+            switch (v)
+            {
+                case int n when n < 70:
+                    gc.MessageLog.AddMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa");
+                    break;
+
+                case int n when n > 70 && n < 90:
+                    gc.MessageLog.AddMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa.");
+                    break;
+
+                case int n when n > 90 && n < 120:
+                    gc.MessageLog.AddMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa");
+                    break;
+
+                default:
+                    gc.MessageLog.AddMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa");
+                    break;
+            }
+
             CheckDeath();
         }
 

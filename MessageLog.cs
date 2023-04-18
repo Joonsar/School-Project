@@ -22,6 +22,7 @@ namespace School_Project
                 Messages.RemoveAt(0);
             }
             Messages.Add(message);
+            gc.screen.PrintMessageLog();
         }
 
         //tulostetaan lista mapin oikealle puolelle käänteisessä järjestyksessä.
