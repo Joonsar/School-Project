@@ -21,10 +21,11 @@ namespace School_Project
         public static readonly MapObject empty = new MapObject(' ', "lattia", true);
         public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true, ConsoleColor.Green);
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
+        public static readonly MapObject door = new MapObject('+', "Ovi", true, ConsoleColor.White);
 
         public List<Entity> entities;
         private List<Position> playerPath;
-     
+
         public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
             this.Width = width;
@@ -51,7 +52,7 @@ namespace School_Project
             }
             int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(1, 5);
             GenerateRoom(numberOfRooms);
-            
+
             // Generate random walls
             //  GenerateRandomWalls();
         }
@@ -84,11 +85,11 @@ namespace School_Project
                         {
                             if (x == room.Rect.Left && y == room.Rect.Top + room.Rect.Height / 2)
                             {
-                                Mapping[x, y] = empty;
+                                Mapping[x, y] = door;
                             }
                             else if (x == room.Rect.Right - 1 && y == room.Rect.Top + room.Rect.Height / 2)
                             {
-                                Mapping[x, y] = empty;
+                                Mapping[x, y] = door;
                             }
                             else if (x == room.Rect.Left || x == room.Rect.Right - 1 || y == room.Rect.Top || y == room.Rect.Bottom - 1)
                             {
