@@ -61,7 +61,7 @@ namespace School_Project
                 if(hitChance > 50)
                 {
                     gc.MessageLog.AddMessage($"{Name} attacks {gc.Player.Name}");
-                    gc.Player.TakeDamage(20);
+                    gc.Player.TakeDamage(Damage);
                 }
                 else
                 {

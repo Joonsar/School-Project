@@ -53,7 +53,7 @@ namespace School_Project
             Width = 50;
             Height = 24;
             Level = 0;
-            EnemiesCount = 3;
+            EnemiesCount = 10;
             Turn = 1;
             rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);

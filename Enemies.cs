@@ -18,7 +18,7 @@ namespace School_Project
         string enemyDescriptionsFour = "Kaikki tauluu mitä löytyy,Kusen tuoksu hiipii nenää jo kaukaa,Täyspäivänen duuni pysyy tönössä..";
         string enemyDescriptionsFive = "Nesteeltä lasolia vaikka pikkasen iho kellertääki";
 
-        string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti";
+        string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti,Naapurin Pena";
         String enemyNamesTwo = "Juoppo Jaska,Piilojuoppo Pekka,Rapajuoppu Reino,Pelkkä Keijo,Ex nyrkkeilijä puistosta";
         string enemyNamesThree = "Semi pro,Lasse lähti lapasesta,Ihan vaan Seppo,Taiteilija Thomas";
         string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
