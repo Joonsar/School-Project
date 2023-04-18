@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace School_Project
@@ -10,7 +11,6 @@ namespace School_Project
     public class StartScreen
     {
         string command;
-        public static readonly int SCREEN_WIDTH = Console.LargestWindowWidth;
         private GameController gc = GameController.Instance;
 
         public string PlayerName { get; set; }  
@@ -63,12 +63,8 @@ namespace School_Project
             ConsoleColor date = ConsoleColor.Green;
             ConsoleColor text = ConsoleColor.Yellow;
             ConsoleColor drink = ConsoleColor.Red;
-            string lines = "\n";
-            for (int i = 0; i < SCREEN_WIDTH; i++)
-            {
-                lines+= "-";
-            }
-            String spaces = "            ";
+            string lines = new string('-', Console.LargestWindowWidth);
+            String spaces = new String(' ',12);
             Console.WriteLine();
             Console.Write("Anna sankarillesi nimi: ", Console.ForegroundColor= ConsoleColor.Yellow);
             this.PlayerName = Console.ReadLine();
@@ -93,7 +89,7 @@ namespace School_Project
             Console.WriteLine(spaces+"Tilanne huutaa paria napanderia!!", Console.ForegroundColor = drink);
             Console.WriteLine();
             Console.WriteLine("Paina etteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            string c = Console.ReadLine();
+            Console.ReadLine();
             Console.Clear();
             Console.WriteLine();
             Console.Write("02.10.2020: ", Console.ForegroundColor = date);
@@ -117,7 +113,7 @@ namespace School_Project
             Console.WriteLine(spaces+"Pistää sen verta vihaks et pakko ryyppää varastossa", Console.ForegroundColor = drink);
             Console.WriteLine();
             Console.WriteLine("Paina etteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            c = Console.ReadLine();
+            Console.ReadLine();
             Console.Clear();
             Console.WriteLine();
             Console.Write("12.04.2021: ", Console.ForegroundColor = date);
@@ -147,7 +143,7 @@ namespace School_Project
             Console.WriteLine("kehän toiseen kulmaan joka paukuttaa lättyy niin että saadaan tarina päätökseen ja sankarimme pääsee ansaitulle levolle matohotelliin!");
             Console.WriteLine();
             Console.WriteLine("paina enteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            string s = Console.ReadLine();
+            Console.ReadLine();
             gc.PlayerName = this.PlayerName;
         }
     }
