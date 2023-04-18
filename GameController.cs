@@ -61,7 +61,7 @@ namespace School_Project
             rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             MessageLog = new MessageLog(Height);
-            StartScreen = new StartScreen(SCREEN_WIDTH);
+            StartScreen = new StartScreen();
             if(Turn == 0)
             {
                 screen.Clear();
