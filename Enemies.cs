@@ -9,50 +9,50 @@ namespace School_Project
     public class Enemies
     {
         private GameController gc = GameController.Instance;
-        List<Enemy> enemies;
-        Random rand =  new Random();
-        //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä";
-        string enemyDescriptiosTwo = "Koko vkl putkeen!,Sixpäkki duunin jälkee heti pöytää!,Juo pelkkää olutta ja korvaa kaiken sanomansa PERKELE huudolla,Juo salaa.. hyi!";
-        string enemyDescriptionsThree = "melkonen juoppo,Välillä huiliiki,Juo käänit ja aiheuttaa pahennusta kylillä,Välillä heilahtaa viikko kaks..,Katkolta alkon kautta";
-        string enemyDescriptionsFour = "Kaikki tauluu mitä löytyy,Kusen tuoksu hiipii nenää jo kaukaa,Täyspäivänen duuni pysyy tönössä..";
-        string enemyDescriptionsFive = "Nesteeltä lasolia vaikka pikkasen iho kellertääki";
+        private List<Enemy> enemies;
+        private Random rand = new Random();
 
-        string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti,Naapurin Pena,Puisto-Paavo";
-        String enemyNamesTwo = "Juoppo Jaska,Piilojuoppo Pekka,Rapajuoppu Reino,Pelkkä Keijo,Ex nyrkkeilijä puistosta";
-        string enemyNamesThree = "Semi pro,Lasse lähti lapasesta,Ihan vaan Seppo,Taiteilija Thomas";
-        string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
-        string enemyNamesFive = "Pro,Puiston Jaska,Ihan vaan ammattilainen,Delirium topi,Kadun mies,Puiston asukki";
-        ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+        //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä,Näprää tietokoneella,Vaimo sano, että yks vaan.";
+
+        private string enemyDescriptiosTwo = "Koko vkl putkeen!,Sixpäkki duunin jälkee heti pöytää!,Juo pelkkää olutta ja korvaa kaiken sanomansa PERKELE huudolla,Juo salaa.. hyi!";
+        private string enemyDescriptionsThree = "melkonen juoppo,Välillä huiliiki,Juo käänit ja aiheuttaa pahennusta kylillä,Välillä heilahtaa viikko kaks..,Katkolta alkon kautta";
+        private string enemyDescriptionsFour = "Kaikki tauluu mitä löytyy,Kusen tuoksu hiipii nenää jo kaukaa,Täyspäivänen duuni pysyy tönössä..";
+        private string enemyDescriptionsFive = "Nesteeltä lasolia vaikka pikkasen iho kellertääki";
+
+        private string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti,Naapurin Pena,Puisto-Paavo,Rappukäytävän Rauno,Hepuli Henkka,Joskus Joonas,Iltaisin Ilkka";
+        private String enemyNamesTwo = "Juoppo Jaska,Piilojuoppo Pekka,Rapajuoppu Reino,Pelkkä Keijo,Ex nyrkkeilijä puistosta";
+        private string enemyNamesThree = "Semi pro,Lasse lähti lapasesta,Ihan vaan Seppo,Taiteilija Thomas";
+        private string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
+        private string enemyNamesFive = "Pro,Puiston Jaska,Ihan vaan ammattilainen,Delirium topi,Kadun mies,Puiston asukki";
+        private ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
 
         public Enemies()
         {
-           this.enemies = new List<Enemy>();
-            
+            this.enemies = new List<Enemy>();
         }
+
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
         {
-
             int count = 0;
             List<string> randomizedNameList = new List<string>();
             List<string> randomizedDescriptionList = new List<string>();
-            if(lvl > 10)
+            if (lvl > 10)
             {
                 randomizedNameList = new List<string>(enemyNamesFive.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptionsFive.Split(',').ToList().OrderBy(item => rand.Next()));
-                
             }
-            else if(lvl > 8)
+            else if (lvl > 8)
             {
                 randomizedNameList = new List<string>(enemyNamesFour.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptionsFour.Split(',').ToList().OrderBy(item => rand.Next()));
             }
-            else if(lvl > 5)
+            else if (lvl > 5)
             {
                 randomizedNameList = new List<string>(enemyNamesThree.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptionsThree.Split(',').ToList().OrderBy(item => rand.Next()));
             }
-            else if(lvl > 2)
+            else if (lvl > 2)
             {
                 randomizedNameList = new List<string>(enemyNamesTwo.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptiosTwo.Split(',').ToList().OrderBy(item => rand.Next()));
@@ -66,14 +66,12 @@ namespace School_Project
             while (count < howMany)
             {
                 //char randomChar1 = charString[rand.Next(0, charString.Length)];
-                ConsoleColor color = colors[rand.Next(0,colors.Length)];
+                ConsoleColor color = colors[rand.Next(0, colors.Length)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
-                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300+300*lvl, 10+10*lvl, lvl));
+                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
                 count++;
             }
             return enemies;
         }
-
     }
-
 }

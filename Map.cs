@@ -110,10 +110,9 @@ namespace School_Project
         public void GenerateItems()
         {
             Random rand = new Random();
-            bool isvalid = false;
             for (int i = 0; i < 4; i++)
             {
-                isvalid = false;
+                bool isvalid = false;
                 while (isvalid == false)
                 {
                     Position randomPos = new Position(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
