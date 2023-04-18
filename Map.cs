@@ -52,6 +52,8 @@ namespace School_Project
             }
             int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(1, 5);
             GenerateRoom(numberOfRooms);
+            GenerateStairs();
+            GenerateItems();
 
             // Generate random walls
             //  GenerateRandomWalls();
@@ -105,6 +107,35 @@ namespace School_Project
             }
         }
 
+        public void GenerateItems()
+        {
+            Random rand = new Random();
+            bool isvalid = false;
+            for (int i = 0; i < 4; i++)
+            {
+                isvalid = false;
+                while (isvalid == false)
+                {
+                    Position randomPos = new Position(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
+                    if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos))
+
+                    {
+                        entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue));
+                        isvalid = true;
+                    }
+                }
+            }
+        }
+
+        public bool IsStairsAtPosition(Position pos)
+        {
+            if ((pos.X == StairDown.X && pos.Y == StairDown.Y) || (pos.X == StairUp.X && pos.Y == StairUp.Y))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void GenerateRandomWalls()
         {
             Random random = new Random();
@@ -150,6 +181,18 @@ namespace School_Project
                 if (e.Pos.X == x && e.Pos.Y == y && e.GetType() == typeof(Enemy))
                 {
                     return e;
+                }
+            }
+            return null;
+        }
+
+        public Entity IsItemAtPosition(int x, int y)
+        {
+            foreach (Entity i in entities)
+            {
+                if (i.Pos.X == x && i.Pos.Y == y && i.GetType() == typeof(Item))
+                {
+                    return i;
                 }
             }
             return null;

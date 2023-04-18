@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace School_Project
 {
@@ -17,6 +18,8 @@ namespace School_Project
 
         public int Level { get; private set; }
 
+        public List<Entity> Inventory { get; set; }
+
         public Map map;
         public ConsoleColor Color { get; private set; }
 
@@ -34,6 +37,7 @@ namespace School_Project
 
         public Player(string name, int healthValue, int hitPoints)
         {
+            Inventory = new List<Entity>();
             Level = 1;
             Name = name;
             HealthValue = healthValue;
@@ -73,6 +77,14 @@ namespace School_Project
             {
                 Attack(gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y));
             }
+
+            if (gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y) != null)
+            {
+                var item = gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y);
+                gc.MessageLog.AddMessage($"Poimit maasta {item.Name} {item.Description}");
+                Inventory.Add(item);
+                gc.Map.entities.Remove(item);
+            }
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
             {
                 Pos.X += x;
@@ -96,10 +108,11 @@ namespace School_Project
         private void Attack(Entity e)
         {
             var hitChance = rand.Next(1, 100);
-            if (hitChance > 50 )
+            if (hitChance > 50)
             {
                 var damage = (50 + rand.Next(1, 50) * Level);
                 e.TakeDamage(damage);
+                gc.GameStats.DamageDealt += damage;
                 //gc.MessageLog.AddMessage($"{Name} Hits {e.Name} for {damage}.");
             }
             else
@@ -127,6 +140,7 @@ namespace School_Project
             ExpPoints += amount;
             CheckLevelUp();
         }
+
         public void CheckLevelUp()
         {
             if (ExpPoints > Level * 100)
@@ -139,20 +153,24 @@ namespace School_Project
 
         public void TakeDamage(int amount)
         {
+            gc.GameStats.DamageTaken += amount;
             gc.MessageLog.AddMessage($"{Name} takes {amount} damage");
             HitPoints -= amount;
             gc.screen.PrintPlayerStats();
             CheckDeath();
-
         }
 
         public void CheckDeath()
         {
-            if(HitPoints <= 0 )
+            if (HitPoints <= 0)
             {
                 gc.MessageLog.AddMessage($"You die!");
+                foreach (Entity e in gc.GameStats.EnemiesKilled)
+                {
+                    gc.running = false;
+                    gc.MessageLog.AddMessage(e.Name);
+                }
             }
         }
     }
-        
 }

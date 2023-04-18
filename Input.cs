@@ -42,6 +42,7 @@ namespace School_Project
                             break;
                         }
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                        CheckCurrentPosition();
                         break;
 
                     case ConsoleKey.DownArrow:
@@ -145,7 +146,7 @@ namespace School_Project
                 {
                     var oldPosX = Console.CursorLeft;
                     var oldPosY = Console.CursorTop;
-                    gc.screen.PrintInspectingObject(e.Name + " " + e.Description + " " +  new string(' ', gc.Width));
+                    gc.screen.PrintInspectingObject(e.Name + " " + e.Description + " " + new string(' ', gc.Width));
                     //gc.screen.PrintMessageLog();
                     gc.screen.SetCursorPosition(oldPosX, oldPosY);
                 }
