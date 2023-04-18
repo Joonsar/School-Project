@@ -69,6 +69,8 @@ namespace School_Project
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
             screen.DrawScreen();
+
+
             running = true;
         }
 
@@ -191,5 +193,7 @@ namespace School_Project
                 }
             }
         }
+
+
     }
 }

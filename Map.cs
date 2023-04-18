@@ -24,7 +24,7 @@ namespace School_Project
 
         public List<Entity> entities;
         private List<Position> playerPath;
-
+     
         public Map(int width, int height, char emptySpaceChar = ' ')
         {
             this.Width = width;
@@ -49,8 +49,59 @@ namespace School_Project
                     }
                 }
             }
+
+            GenerateRoom(2);
+            
             // Generate random walls
-            GenerateRandomWalls();
+            //  GenerateRandomWalls();
+        }
+
+        private void GenerateRoom(int numRooms)
+        {
+            List<Room> rooms = new List<Room>();
+
+            while (rooms.Count < numRooms)
+            {
+                Room room = new Room();
+
+                bool overlaps = false;
+                foreach (Room otherRoom in rooms)
+                {
+                    if (room.Rect.IntersectsWith(otherRoom.Rect))
+                    {
+                        overlaps = true;
+                        break;
+                    }
+                }
+
+                if (!overlaps)
+                {
+                    rooms.Add(room);
+
+                    for (int x = room.Rect.Left; x < room.Rect.Right; x++)
+                    {
+                        for (int y = room.Rect.Top; y < room.Rect.Bottom; y++)
+                        {
+                            if (x == room.Rect.Left && y == room.Rect.Top + room.Rect.Height / 2)
+                            {
+                                Mapping[x, y] = empty;
+                            }
+                            else if (x == room.Rect.Right - 1 && y == room.Rect.Top + room.Rect.Height / 2)
+                            {
+                                Mapping[x, y] = empty;
+                            }
+                            else if (x == room.Rect.Left || x == room.Rect.Right - 1 || y == room.Rect.Top || y == room.Rect.Bottom - 1)
+                            {
+                                Mapping[x, y] = wall;
+                            }
+                            else
+                            {
+                                Mapping[x, y] = empty;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void GenerateRandomWalls()
@@ -58,7 +109,7 @@ namespace School_Project
             Random random = new Random();
 
             // Determine the number of walls to create based on the size of the map
-            int wallCount = Width * Height / 25;
+            int wallCount = Width * Height / 80;
 
             // Generate the specified number of walls in random positions
             for (int i = 0; i < wallCount; i++)

@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -98,6 +99,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Room.cs" />
     <Compile Include="Screen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
