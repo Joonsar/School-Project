@@ -9,12 +9,12 @@ namespace School_Project
         public Player Player { get; set; }
         public StartScreen StartScreen { get; set; }
 
-        public string PlayerName { get; set; }  
+        public string PlayerName { get; set; }
         public Map Map { get; set; }
 
         public List<Map> Maps { get; set; }
         public int Level { get; set; }
-        public int EnemiesCount { get; set; }   
+        public int EnemiesCount { get; set; }
 
         //width / height max valuet. pitäisi fiksata ongelma, jos halutaan eri kokoisia mappeja. kun luodaan screen näillä arvoilla
         public static readonly int SCREEN_WIDTH = Console.LargestWindowWidth;
@@ -27,6 +27,8 @@ namespace School_Project
         public int Height { get; set; }
 
         public MessageLog MessageLog { get; set; }
+
+        public GameStats GameStats { get; set; }
 
         private Random rand;
 
@@ -61,8 +63,9 @@ namespace School_Project
             rand = new Random();
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             MessageLog = new MessageLog(Height);
+            GameStats = new GameStats();
             StartScreen = new StartScreen(SCREEN_WIDTH);
-            if(Turn == 0)
+            if (Turn == 0)
             {
                 screen.Clear();
                 StartScreen.Run();
@@ -74,19 +77,18 @@ namespace School_Project
             this.Map = new Map(Width, Height);
             Maps.Add(Map);
             Map.CreateEnemies(this.Level, this.EnemiesCount);
+
             Player = new Player(PlayerName, 100, 100);
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
             screen.DrawScreen();
-
         }
 
         public void Run()
         {
             while (running)
             {
-
                 if (Inspecting)
                 {
                     var input = Console.ReadKey(true);
@@ -94,10 +96,6 @@ namespace School_Project
                 }
                 else
                 {
-
-
-
-
                     //tulostetaan messagelogin sisältö
                     screen.PrintMessageLog();
                     //liikutetaan entityjä
@@ -122,6 +120,13 @@ namespace School_Project
                     Turn++;
                 }
             }
+            screen.Clear();
+            Console.WriteLine("Tapoit seuraavat viholliset");
+            foreach (Entity e in GameStats.EnemiesKilled)
+            {
+                Console.WriteLine(e.Name);
+            }
+            var input2 = Console.ReadKey(false);
         }
 
         private void MoveEntities()
@@ -163,10 +168,10 @@ namespace School_Project
                     //tehdään uusi mappi
                     var newMap = new Map(Width, Height);
                     //tehdään viholliset
-                    
+
                     //tehdään portaat
 
-                    newMap.GenerateStairs();
+                    //newMap.GenerateStairs();
                     //lisätään uusi mappi listaan
                     Maps.Add(newMap);
                     //vaihdetaan gamecontrollerin mapiksi uusi mappi
