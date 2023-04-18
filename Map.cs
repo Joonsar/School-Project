@@ -25,7 +25,7 @@ namespace School_Project
         public List<Entity> entities;
         private List<Position> playerPath;
      
-        public Map(int width, int height, char emptySpaceChar = ' ')
+        public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
             this.Width = width;
             this.Height = height;
@@ -49,8 +49,8 @@ namespace School_Project
                     }
                 }
             }
-
-            GenerateRoom(2);
+            int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(1, 5);
+            GenerateRoom(numberOfRooms);
             
             // Generate random walls
             //  GenerateRandomWalls();
