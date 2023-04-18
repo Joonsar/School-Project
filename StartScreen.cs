@@ -68,6 +68,7 @@ namespace School_Project
             Console.WriteLine();
             Console.Write("Anna sankarillesi nimi: ", Console.ForegroundColor= ConsoleColor.Yellow);
             this.PlayerName = Console.ReadLine();
+            gc.PlayerName = this.PlayerName;
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine(spaces+"Luet nyt päiväkirjaa minkä omistaja on "+PlayerName+" ja jos en oo kuollu ja luet\n"+spaces+"ilman lupaa ni etin sut ja vedän lättyy runkku!");
@@ -144,7 +145,6 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine("paina enteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
             Console.ReadLine();
-            gc.PlayerName = this.PlayerName;
         }
     }
 }
