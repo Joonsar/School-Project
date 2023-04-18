@@ -50,10 +50,23 @@ namespace School_Project
                 gc.screen.PrintEnemy(this);
                 //kirjoitetaan ruutuun mistä liikuttiin, sen edellinen merkki.
                 gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
-                gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
-                gc.MessageLog.AddMessage($"{Name} on {Description}");
+               // gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
+               // gc.MessageLog.AddMessage($"{Name} on {Description}");
 
                 SetEnemyLastPosition();
+            }
+            else if(newPosX == gc.Player.Pos.X && newPosY == gc.Player.Pos.Y)
+            {
+                var hitChance = rand.Next(0, 100);
+                if(hitChance > 50)
+                {
+                    gc.MessageLog.AddMessage($"{Name} hits {gc.Player.Name}");
+                    gc.Player.TakeDamage(Damage);
+                }
+                else
+                {
+                    gc.MessageLog.AddMessage($"{Name} misses {gc.Player.Name}");
+                }
             }
         }
 

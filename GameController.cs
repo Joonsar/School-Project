@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace School_Project
@@ -79,7 +79,7 @@ namespace School_Project
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
             screen.DrawScreen();
-            
+
         }
 
         public void Run()
@@ -201,7 +201,5 @@ namespace School_Project
                 }
             }
         }
-
-        
     }
 }

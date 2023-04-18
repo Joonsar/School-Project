@@ -145,8 +145,8 @@ namespace School_Project
                 {
                     var oldPosX = Console.CursorLeft;
                     var oldPosY = Console.CursorTop;
-                    gc.MessageLog.AddMessage(e.Name);
-                    gc.screen.PrintMessageLog();
+                    gc.screen.PrintInspectingObject(e.Name + " " + e.Description + " " +  new string(' ', gc.Width));
+                    //gc.screen.PrintMessageLog();
                     gc.screen.SetCursorPosition(oldPosX, oldPosY);
                 }
             }
@@ -178,8 +178,9 @@ namespace School_Project
                {
                    gc.MessageLog.AddMessage("Portaal ylös");
                }*/
-            gc.MessageLog.AddMessage(c.Description);
-            gc.screen.PrintMessageLog();
+            //gc.MessageLog.AddMessage(c.Description);
+            //gc.screen.PrintMessageLog();
+            gc.screen.PrintInspectingObject(c.Description + new string(' ', gc.Width));
             gc.screen.SetCursorPosition(oldPosX, oldPosY);
         }
     }

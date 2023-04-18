@@ -21,11 +21,12 @@ namespace School_Project
         public static readonly MapObject empty = new MapObject(' ', "lattia", true);
         public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true, ConsoleColor.Green);
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
+        public static readonly MapObject door = new MapObject('+', "Ovi", true, ConsoleColor.White);
 
         public List<Entity> entities;
         private List<Position> playerPath;
 
-        public Map(int width, int height, char emptySpaceChar = ' ')
+        public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
             this.Width = width;
             this.Height = height;
@@ -49,8 +50,59 @@ namespace School_Project
                     }
                 }
             }
+            int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(1, 5);
+            GenerateRoom(numberOfRooms);
+
             // Generate random walls
-            GenerateRandomWalls();
+            //  GenerateRandomWalls();
+        }
+
+        private void GenerateRoom(int numRooms)
+        {
+            List<Room> rooms = new List<Room>();
+
+            while (rooms.Count < numRooms)
+            {
+                Room room = new Room();
+
+                bool overlaps = false;
+                foreach (Room otherRoom in rooms)
+                {
+                    if (room.Rect.IntersectsWith(otherRoom.Rect))
+                    {
+                        overlaps = true;
+                        break;
+                    }
+                }
+
+                if (!overlaps)
+                {
+                    rooms.Add(room);
+
+                    for (int x = room.Rect.Left; x < room.Rect.Right; x++)
+                    {
+                        for (int y = room.Rect.Top; y < room.Rect.Bottom; y++)
+                        {
+                            if (x == room.Rect.Left && y == room.Rect.Top + room.Rect.Height / 2)
+                            {
+                                Mapping[x, y] = door;
+                            }
+                            else if (x == room.Rect.Right - 1 && y == room.Rect.Top + room.Rect.Height / 2)
+                            {
+                                Mapping[x, y] = door;
+                            }
+                            else if (x == room.Rect.Left || x == room.Rect.Right - 1 || y == room.Rect.Top || y == room.Rect.Bottom - 1)
+                            {
+                                Mapping[x, y] = wall;
+                            }
+                            else
+                            {
+                                Mapping[x, y] = empty;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void GenerateRandomWalls()
@@ -58,7 +110,7 @@ namespace School_Project
             Random random = new Random();
 
             // Determine the number of walls to create based on the size of the map
-            int wallCount = Width * Height / 25;
+            int wallCount = Width * Height / 80;
 
             // Generate the specified number of walls in random positions
             for (int i = 0; i < wallCount; i++)

@@ -31,7 +31,7 @@ namespace School_Project
             {
                 //var spaces = Console.WindowWidth - (gc.Width - 1) - Messages[i].Length;
                 Console.SetCursorPosition(gc.Width + 1, i);
-                Console.WriteLine(Messages[i] + new string(' ', 20));
+                Console.WriteLine(Messages[i] + new string(' ', gc.Width));
             }
         }
     }
