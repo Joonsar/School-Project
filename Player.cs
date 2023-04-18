@@ -165,11 +165,7 @@ namespace School_Project
             if (HitPoints <= 0)
             {
                 gc.MessageLog.AddMessage($"You die!");
-                foreach (Entity e in gc.GameStats.EnemiesKilled)
-                {
-                    gc.running = false;
-                    gc.MessageLog.AddMessage(e.Name);
-                }
+                gc.running = false;
             }
         }
     }
