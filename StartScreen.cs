@@ -50,6 +50,7 @@ namespace School_Project
 
         public void PrintInfo()
         {
+            Console.WriteLine("       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1 - Uusi peli");
             Console.WriteLine("2 - Piste tilastot");
