@@ -13,6 +13,7 @@ namespace School_Project
         private Random rand = new Random();
 
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        //pitäskö nää vaan muuttaa, että kaikki pötkössä ja sieltä arvotaan. tuntuu vähän turhalta tää leveli juttu.
         private string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä,Näprää tietokoneella,Vaimo sano, että yks vaan.";
 
         private string enemyDescriptiosTwo = "Koko vkl putkeen!,Sixpäkki duunin jälkee heti pöytää!,Juo pelkkää olutta ja korvaa kaiken sanomansa PERKELE huudolla,Juo salaa.. hyi!";
