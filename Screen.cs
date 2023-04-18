@@ -52,6 +52,11 @@ namespace School_Project
             Console.SetCursorPosition(0, gc.Height);
             Write(gc.Player.GetStats());
         }
+        public void PrintInspectingObject(string message)
+        {
+            Console.SetCursorPosition(0, gc.Height + 1);
+            Write(message);
+        }
 
         public void PrintMessageLog()
         {
