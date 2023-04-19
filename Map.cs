@@ -176,7 +176,7 @@ namespace School_Project
 
         public bool IsPositionValid(int x, int y)
         {
-            return x >= 0 && x < Width && y >= 0 && y < Height && Mapping[x, y] != wall;
+            return x >= 0 && x < Width && y >= 0 && y < Height && Mapping[x, y].CanWalkThrough;
         }
 
         public bool IsPositionValid(Position movePos)
