@@ -80,19 +80,19 @@ namespace School_Project
             switch (v)
             {
                 case int n when n < 70:
-                    gc.MessageLog.AddMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa");
+                    gc.MessageLog.AddMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})");
                     break;
 
                 case int n when n > 70 && n < 90:
-                    gc.MessageLog.AddMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa.");
+                    gc.MessageLog.AddMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa. ({Health}/{MaxHealth})");
                     break;
 
                 case int n when n > 90 && n < 120:
-                    gc.MessageLog.AddMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa");
+                    gc.MessageLog.AddMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})");
                     break;
 
                 default:
-                    gc.MessageLog.AddMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa");
+                    gc.MessageLog.AddMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})");
                     break;
             }
 

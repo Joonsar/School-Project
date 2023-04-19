@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
 namespace School_Project
@@ -52,6 +53,7 @@ namespace School_Project
             Console.SetCursorPosition(0, gc.Height);
             Write(gc.Player.GetStats());
         }
+
         public void PrintInspectingObject(string message)
         {
             Console.SetCursorPosition(0, gc.Height + 1);
@@ -142,6 +144,24 @@ namespace School_Project
         public void SetCursorPosition(int x, int y)
         {
             Console.SetCursorPosition(x, y);
+        }
+
+        public void EndScreen()
+        {
+            Clear();
+            //tämä ny tässä testimielessä, joku oma metodi loppuscreenille ja sit lyö tietoo vähän tietokantaan ny hyvä tulee.
+            Console.WriteLine("Tapoit seuraavat viholliset");
+            foreach (Entity e in gc.GameStats.EnemiesKilled)
+            {
+                Console.WriteLine($"{e.Name} {e.Description}");
+            }
+
+            Console.WriteLine($"Teit yhteensä {gc.GameStats.DamageDealt} vahinkoa");
+            Console.WriteLine($"Otit yhteensä {gc.GameStats.DamageTaken} vahinkoa");
+
+            Console.WriteLine($"Keräsit myös {gc.GameStats.ItemsCollected.Count} pulloa näistä olisi saanut palautus rahoja {gc.GameStats.ItemsCollected.Count * 0.10} euroa. Harmi!");
+            Console.WriteLine($"Lopulta kuolit dungeon tasolla {gc.Level}. olit itse {gc.Player.Level} tasolla");
+            var input2 = Console.ReadKey(false);
         }
     }
 }

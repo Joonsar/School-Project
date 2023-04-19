@@ -83,6 +83,7 @@ namespace School_Project
                 var item = gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y);
                 gc.MessageLog.AddMessage($"Poimit maasta {item.Name} {item.Description}");
                 Inventory.Add(item);
+                gc.GameStats.ItemsCollected.Add(item);
                 gc.Map.entities.Remove(item);
             }
             if (gc.Map.IsPositionValid(Pos.X + x, Pos.Y + y) && gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) == null)
@@ -108,7 +109,7 @@ namespace School_Project
         private void Attack(Entity e)
         {
             var hitChance = rand.Next(1, 100);
-            if (hitChance > 50)
+            if (hitChance > 30)
             {
                 var damage = (50 + rand.Next(1, 50) * Level);
                 e.TakeDamage(damage);
@@ -117,7 +118,7 @@ namespace School_Project
             }
             else
             {
-                gc.MessageLog.AddMessage($"{Name} misses {e.Name}");
+                gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
             }
         }
 
@@ -166,6 +167,15 @@ namespace School_Project
             {
                 gc.MessageLog.AddMessage($"You die!");
                 gc.running = false;
+            }
+        }
+
+        public void Update()
+        {
+            HitPoints += 1;
+            if (HitPoints > MaxHp)
+            {
+                HitPoints = MaxHp;
             }
         }
     }
