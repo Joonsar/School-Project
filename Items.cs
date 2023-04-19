@@ -37,6 +37,11 @@ namespace School_Project
                 gc.Player.AddExperience(100);
                 gc.MessageLog.AddMessage("Nautiskelet konjakin. Tunnet itsesi ammattilaiseksi");
             }));
+            ItemsList.Add(new Item("Smurffilimu", "(+Hp)", new Position(0, 0), '!', ConsoleColor.DarkGreen, () =>
+            {
+                gc.Player.HitPoints += 20;
+                gc.MessageLog.AddMessage("Juot smurffilimun ja tunnet voivasi paremmin");
+            }));
         }
 
         public Item GetRandomItem()

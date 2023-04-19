@@ -112,31 +112,28 @@ namespace School_Project
 
         public void GenerateItems()
         {
+            var itemCount = 10;
+            var count = 0;
             Random rand = new Random();
-            for (int i = 0; i < 10; i++)
+            while (itemCount > count)
             {
                 bool isvalid = false;
+                var oldPos = new Position(-10, -10);
                 while (isvalid == false)
                 {
                     Position randomPos = new Position(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
-                    if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos))
+                    var item = items.GetRandomItem();
+                    if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos) && randomPos.X != oldPos.X && randomPos.Y != oldPos.Y)
 
                     {
-                        /* entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue, () =>
-                         {
-                             gc.Player.HitPoints += 10;
-                             gc.Player.MaxHp += 10;
-                             gc.Player.BaseDamage += 10;
-                             gc.Player.BaseHitChance += 10;
-                             gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
-                         })); */
-                        var item = items.GetRandomItem();
                         item.Pos = randomPos;
+                        oldPos = randomPos;
                         entities.Add(item);
 
                         isvalid = true;
                     }
                 }
+                count++;
             }
         }
 
