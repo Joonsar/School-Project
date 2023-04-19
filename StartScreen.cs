@@ -49,7 +49,9 @@ namespace School_Project
                     Console.WriteLine(" ! - Itemi               Kirjaimet - Vastustajia");
                     Console.WriteLine(" < - Rappuset ylös       > - Rappuset alas");
                     Console.WriteLine(" ");
-                    Console.WriteLine("- Paina Esc lopettaaksesi pelin");
+                    Console.WriteLine(" - Paina Välilyöntiä tutkiaksesi maailmaa.");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" - Paina Esc lopettaaksesi pelin");
                     System.Threading.Thread.Sleep(3000);
                     this.PrintInfo();
                 }
