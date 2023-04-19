@@ -11,6 +11,7 @@
             Y = y;
         }
 
+        //tarkistetaan onko Positionit samat
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())

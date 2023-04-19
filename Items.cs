@@ -16,12 +16,12 @@ namespace School_Project
         public Items()
         {
             ItemsList = new List<Item>();
-            ItemsList2 = new List<Item>();
+            
             ItemsList.Add(new Item("Koskenkorvapullo", "(+Vahinko -Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Blue, () =>
             {
                 gc.Player.BaseDamage += 10;
                 gc.Player.BaseHitChance += 10;
-                gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
+                gc.MessageLog.AddMessage("Juot pullon, tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
             }));
             ItemsList.Add(new Item("Välivesi", "(+Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Cyan, () =>
             {
@@ -32,7 +32,7 @@ namespace School_Project
             {
                 gc.Player.HitPoints += 100;
                 gc.Player.MaxHp += 20;
-                gc.MessageLog.AddMessage("Kulautat vissyn naamariin, tunnet itsesti terveellisemmäksi.");
+                gc.MessageLog.AddMessage("Kulautat vissyn naamariin, tunnet voivasi paremmin.");
             }));
             ItemsList.Add(new Item("Konjakki", "(+Kokemuspisteet)", new Position(0, 0), '!', ConsoleColor.DarkRed, () =>
             {
