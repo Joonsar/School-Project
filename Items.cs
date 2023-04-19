@@ -15,22 +15,27 @@ namespace School_Project
         public Items()
         {
             ItemsList = new List<Item>();
-            ItemsList.Add(new Item("Koskenkorvapullo", "(Tyhjä)", new Position(0, 0), '!', ConsoleColor.Blue, () =>
+            ItemsList.Add(new Item("Koskenkorvapullo", "(+Vahinko -Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Blue, () =>
             {
                 gc.Player.BaseDamage += 10;
                 gc.Player.BaseHitChance += 10;
                 gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
             }));
-            ItemsList.Add(new Item("Välivesi", "helpottaa humalatilaan", new Position(0, 0), '!', ConsoleColor.Cyan, () =>
+            ItemsList.Add(new Item("Välivesi", "(+Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Cyan, () =>
             {
                 gc.Player.BaseHitChance -= 15;
                 gc.MessageLog.AddMessage("Hörppäät väliveden ja maailma näyttää selkeämmältä. Osumatarkkuutesi paranee");
             }));
-            ItemsList.Add(new Item("Vissy", "ilman kossua", new Position(0, 0), '!', ConsoleColor.DarkBlue, () =>
+            ItemsList.Add(new Item("Vissy", "ilman kossua (+Hp +MaxHp)", new Position(0, 0), '!', ConsoleColor.DarkBlue, () =>
             {
                 gc.Player.HitPoints += 100;
                 gc.Player.MaxHp += 20;
                 gc.MessageLog.AddMessage("Kulautat vissyn naamariin, tunnet itsesti terveellisemmäksi.");
+            }));
+            ItemsList.Add(new Item("Konjakki", "(+Kokemuspisteet)", new Position(0, 0), '!', ConsoleColor.DarkRed, () =>
+            {
+                gc.Player.AddExperience(100);
+                gc.MessageLog.AddMessage("Nautiskelet konjakin. Tunnet itsesi ammattilaiseksi");
             }));
         }
 
