@@ -243,8 +243,6 @@ namespace School_Project
         {
             Random random = new Random();
 
-            int x = random.Next(1, Width - 1);
-            int y = random.Next(1, Height - 1);
             int newX = random.Next(1, Width - 1);
             int newY = random.Next(1, Height - 1);
             while (!IsPositionValid(newX, newY))
