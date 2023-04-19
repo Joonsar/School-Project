@@ -16,6 +16,9 @@ namespace School_Project
 
         public int MaxHp { get; set; }
 
+        public int BaseDamage { get; set; }
+        public int BaseHitChance { get; set; }
+
         public int Level { get; private set; }
 
         public List<Entity> Inventory { get; set; }
@@ -45,6 +48,8 @@ namespace School_Project
             MaxHp = hitPoints;
             ExpPoints = 0;
             Pos = gc.Map.StairUp;
+            BaseDamage = 50;
+            BaseHitChance = 30;
 
             //LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
 
@@ -56,7 +61,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HitPoints}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level}";
+            return $"{Name} - Hp: {HitPoints}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level} Dam: {BaseDamage} Hit: {100 - BaseHitChance}%";
         }
 
         public void MovePlayerToPosition(Position pos)
@@ -110,9 +115,9 @@ namespace School_Project
         private void Attack(Entity e)
         {
             var hitChance = rand.Next(1, 100);
-            if (hitChance > 30)
+            if (hitChance > BaseHitChance)
             {
-                var damage = (50 + rand.Next(1, 50) * Level);
+                var damage = (BaseDamage + rand.Next(1, 50));
                 e.TakeDamage(damage);
                 gc.GameStats.DamageDealt += damage;
                 //gc.MessageLog.AddMessage($"{Name} Hits {e.Name} for {damage}.");

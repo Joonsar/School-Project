@@ -94,6 +94,7 @@
     <Compile Include="GameStats.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapObject.cs" />
     <Compile Include="MessageLog.cs" />

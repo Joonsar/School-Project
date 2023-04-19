@@ -12,6 +12,8 @@ namespace School_Project
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public Items items;
+
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
@@ -28,6 +30,7 @@ namespace School_Project
 
         public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
+            items = new Items();
             this.Width = width;
             this.Height = height;
             entities = new List<Entity>();
@@ -110,7 +113,7 @@ namespace School_Project
         public void GenerateItems()
         {
             Random rand = new Random();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
                 bool isvalid = false;
                 while (isvalid == false)
@@ -119,12 +122,17 @@ namespace School_Project
                     if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos))
 
                     {
-                        entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue, () =>
-                        {
-                            gc.Player.HitPoints += 10;
-                            gc.Player.MaxHp += 10;
-                            gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi");
-                        }));
+                        /* entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue, () =>
+                         {
+                             gc.Player.HitPoints += 10;
+                             gc.Player.MaxHp += 10;
+                             gc.Player.BaseDamage += 10;
+                             gc.Player.BaseHitChance += 10;
+                             gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
+                         })); */
+                        var item = items.GetRandomItem();
+                        item.Pos = randomPos;
+                        entities.Add(item);
 
                         isvalid = true;
                     }
