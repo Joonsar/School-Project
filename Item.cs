@@ -8,7 +8,7 @@ namespace School_Project
 {
     public class Item : Entity
     {
-        private Action UseAction;
+        public Action UseAction { get; set; }
 
         public Item(string name, string description, Position pos, char mark, ConsoleColor color) : base(name, description, pos, mark, color)
         {

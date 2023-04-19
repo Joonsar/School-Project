@@ -14,6 +14,8 @@ namespace School_Project
 
         public Items items;
 
+        public int ItemCount { get; set; }
+
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
@@ -31,6 +33,7 @@ namespace School_Project
         public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
             items = new Items();
+            ItemCount = 6;
             this.Width = width;
             this.Height = height;
             entities = new List<Entity>();
@@ -112,10 +115,9 @@ namespace School_Project
 
         public void GenerateItems()
         {
-            var itemCount = 10;
             var count = 0;
             Random rand = new Random();
-            while (itemCount > count)
+            while (ItemCount > count)
             {
                 bool isvalid = false;
                 var oldPos = new Position(-10, -10);
@@ -123,13 +125,11 @@ namespace School_Project
                 {
                     Position randomPos = new Position(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
                     var item = items.GetRandomItem();
-                    if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos) && randomPos.X != oldPos.X && randomPos.Y != oldPos.Y)
-
+                    if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos) && !randomPos.Equals(oldPos))
                     {
                         item.Pos = randomPos;
                         oldPos = randomPos;
                         entities.Add(item);
-
                         isvalid = true;
                     }
                 }

@@ -9,12 +9,14 @@ namespace School_Project
     public class Items
     {
         private List<Item> ItemsList;
+        private List<Item> ItemsList2;
         private GameController gc = GameController.Instance;
         private Random random = new Random();
 
         public Items()
         {
             ItemsList = new List<Item>();
+            ItemsList2 = new List<Item>();
             ItemsList.Add(new Item("Koskenkorvapullo", "(+Vahinko -Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Blue, () =>
             {
                 gc.Player.BaseDamage += 10;
@@ -46,7 +48,10 @@ namespace School_Project
 
         public Item GetRandomItem()
         {
-            return ItemsList[random.Next(0, ItemsList.Count())];
+            var randomItem = ItemsList[random.Next(0, ItemsList.Count())];
+            Item newItem = new Item(randomItem.Name, randomItem.Description, randomItem.Pos, randomItem.Mark, randomItem.Color, randomItem.UseAction);
+            return newItem;
+            //  return ItemsList[random.Next(0, ItemsList.Count())];
         }
     }
 }

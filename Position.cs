@@ -10,5 +10,19 @@
             X = x;
             Y = y;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Position other = (Position)obj;
+            return (X == other.X && Y == other.Y);
+        }
+
+        public override int GetHashCode()
+        {
+            return (X * 31) ^ Y;
+        }
     }
 }
