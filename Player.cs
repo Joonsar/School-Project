@@ -11,7 +11,7 @@ namespace School_Project
         public string Name { get; private set; }
 
         public int HealthValue { get; private set; }
-        public int HitPoints { get; private set; }
+        public int HitPoints { get; set; }
         public int ExpPoints { get; private set; }
 
         public int MaxHp { get; set; }
@@ -82,6 +82,7 @@ namespace School_Project
             {
                 var item = gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y);
                 gc.MessageLog.AddMessage($"Poimit maasta {item.Name} {item.Description}");
+                item.Use();
                 Inventory.Add(item);
                 gc.GameStats.ItemsCollected.Add(item);
                 gc.Map.entities.Remove(item);

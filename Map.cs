@@ -119,7 +119,13 @@ namespace School_Project
                     if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos))
 
                     {
-                        entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue));
+                        entities.Add(new Item("Koskenkorvapullo", "(Tyhjä)", randomPos, '!', ConsoleColor.Blue, () =>
+                        {
+                            gc.Player.HitPoints += 10;
+                            gc.Player.MaxHp += 10;
+                            gc.MessageLog.AddMessage("Juot helmen pullon pohjalta tunnet itsesi voimakkaammaksi");
+                        }));
+
                         isvalid = true;
                     }
                 }

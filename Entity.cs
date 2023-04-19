@@ -5,7 +5,7 @@ namespace School_Project
     public class Entity
     {
         public string Name { get; private set; }
-        public string Description { get;  set; }
+        public string Description { get; set; }
         public Position Pos { get; set; }
         public Char Mark { get; private set; }
         public ConsoleColor Color { get; private set; }
@@ -28,6 +28,10 @@ namespace School_Project
         }
 
         public virtual void TakeDamage(int v)
+        {
+        }
+
+        public virtual void Use()
         {
         }
     }
