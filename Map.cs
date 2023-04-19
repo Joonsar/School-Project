@@ -242,17 +242,22 @@ namespace School_Project
         public void GenerateStairs()
         {
             Random random = new Random();
+
             int x = random.Next(1, Width - 1);
             int y = random.Next(1, Height - 1);
-
-            Mapping[x, y] = stairsDown;
-            StairDown = new Position(x, y);
-
             int newX = random.Next(1, Width - 1);
             int newY = random.Next(1, Height - 1);
-
+            while (!IsPositionValid(newX, newY))
+            {
+                newX = random.Next(1, Width - 1);
+                newY = random.Next(1, Height - 1);
+            }
+            Mapping[newX, newY] = stairsDown;
+            StairDown = new Position(newX, newY);
+            newX = random.Next(1, Width - 1);
+            newY = random.Next(1, Height - 1);
             // Make sure the new position is not the same as the first one
-            while (newX == x && newY == y)
+            while (new Position(newX, newY).Equals(stairsDown) && !IsPositionValid(newX, newY))
             {
                 newX = random.Next(1, Width - 1);
                 newY = random.Next(1, Height - 1);
