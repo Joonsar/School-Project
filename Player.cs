@@ -78,6 +78,13 @@ namespace School_Project
         public void MovePlayer(int x, int y)
         {
             var oldPos = new Position(Pos.X, Pos.Y);
+            if (gc.Map.Mapping[Pos.X + x, Pos.Y + y] == Map.door)
+            {
+                gc.Map.Mapping[Pos.X + x, Pos.Y + y] = Map.openDoor;
+                gc.MessageLog.AddMessage("Avasit oven!");
+                gc.screen.WriteAtPosition(new Position(Pos.X + x, Pos.Y + y), Map.openDoor.Mark);
+                return;
+            }
             if (gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) != null)
             {
                 Attack(gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y));
