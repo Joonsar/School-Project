@@ -25,7 +25,7 @@ namespace School_Project
         public static readonly MapObject empty = new MapObject(' ', "lattia", true);
         public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true, ConsoleColor.Green);
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
-        public static readonly MapObject door = new MapObject('+', "Ovi", true, ConsoleColor.White);
+        public static readonly MapObject door = new MapObject('+', "Ovi", false, ConsoleColor.White);
         public static readonly MapObject openDoor = new MapObject('-', "Ovi", true, ConsoleColor.White);
 
         public List<Entity> entities;
