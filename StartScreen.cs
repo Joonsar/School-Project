@@ -44,7 +44,8 @@ namespace School_Project
                 if (this.command == "0")
                 {
                     gc.running = false;
-                    break;
+                    System.Environment.Exit(0);
+                   
                 }
             }
         }
