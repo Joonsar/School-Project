@@ -76,7 +76,7 @@ namespace School_Project
                     Write(gc.Map.Mapping[x, y].Mark.ToString(), gc.Map.Mapping[x, y].Color);
                     if (!gc.StairsGenerated)
                     {
-                        gc.Map.GenerateStairs();
+                    //    gc.Map.GenerateStairs();
                         gc.StairsGenerated = true;
                     }
                 }

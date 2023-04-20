@@ -147,25 +147,25 @@ namespace School_Project
             return false;
         }
 
-        private void GenerateRandomWalls()
-        {
-            Random random = new Random();
+        //private void GenerateRandomWalls()
+        //{
+        //    Random random = new Random();
 
-            // Determine the number of walls to create based on the size of the map
-            int wallCount = Width * Height / 80;
+        //    // Determine the number of walls to create based on the size of the map
+        //    int wallCount = Width * Height / 80;
 
-            // Generate the specified number of walls in random positions
-            for (int i = 0; i < wallCount; i++)
-            {
-                int x = random.Next(1, Width - 1);
-                int y = random.Next(1, Height - 1);
+        //    // Generate the specified number of walls in random positions
+        //    for (int i = 0; i < wallCount; i++)
+        //    {
+        //        int x = random.Next(1, Width - 1);
+        //        int y = random.Next(1, Height - 1);
 
-                if (Mapping[x, y] == empty)
-                {
-                    Mapping[x, y] = wall;
-                }
-            }
-        }
+        //        if (Mapping[x, y] == empty)
+        //        {
+        //            Mapping[x, y] = wall;
+        //        }
+        //    }
+        //}
 
         // Check if a given position is within the bounds of the game board and if there is wall at position
 
@@ -265,34 +265,34 @@ namespace School_Project
             StairUp = new Position(newX, newY);
         }
 
-        public void GenerateNewMap()
-        {
-            int newWidth = Width;
-            int newHeight = Height;
-            char emptySpaceChar = '.';
+        //public void GenerateNewMap()
+        //{
+        //    int newWidth = Width;
+        //    int newHeight = Height;
+        //    char emptySpaceChar = '.';
 
-            Map newMap = new Map(newWidth, newHeight, emptySpaceChar);
+        //    Map newMap = new Map(newWidth, newHeight, emptySpaceChar);
 
-            for (int x = 0; x < newWidth; x++)
-            {
-                for (int y = 0; y < newHeight; y++)
-                {
-                    if (x == 0 || x == newWidth - 1 || y == 0 || y == newHeight - 1)
-                    {
-                        newMap.Mapping[x, y] = wall;
-                    }
-                    else
-                    {
-                        newMap.Mapping[x, y] = empty;
-                    }
-                }
-            }
+        //    for (int x = 0; x < newWidth; x++)
+        //    {
+        //        for (int y = 0; y < newHeight; y++)
+        //        {
+        //            if (x == 0 || x == newWidth - 1 || y == 0 || y == newHeight - 1)
+        //            {
+        //                newMap.Mapping[x, y] = wall;
+        //            }
+        //            else
+        //            {
+        //                newMap.Mapping[x, y] = empty;
+        //            }
+        //        }
+        //    }
 
-            // Update the game controller's map and redraw it
-            gc.Map = newMap;
-            gc.screen.Clear();
-            newMap.GenerateStairs();
-            UpdateMap(gc.Map.Mapping);
-        }
+        //    // Update the game controller's map and redraw it
+        //    gc.Map = newMap;
+        //    gc.screen.Clear();
+        //    newMap.GenerateStairs();
+        //    UpdateMap(gc.Map.Mapping);
+        //}
     }
 }
