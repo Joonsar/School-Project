@@ -30,10 +30,10 @@ namespace School_Project
         {
             for (int i = Messages.Count - 1; i >= 0; i--)
             {
-                //var spaces = Console.WindowWidth - (gc.Width - 1) - Messages[i].Length;
-                //Console.SetCursorPosition(gc.Width + 1, i);
                 Console.SetCursorPosition(gc.Map.Width + 1, i);
-                Console.Write(Messages[i] + new string(' ', 60));
+                //Console.Write(Messages[i] + new string(' ', 60));
+                //Console.Write(Messages[i]);
+                Console.Write(Messages[i] + new string(' ', Console.LargestWindowWidth - Messages[i].Length - gc.Map.Width - 1));
             }
         }
     }
