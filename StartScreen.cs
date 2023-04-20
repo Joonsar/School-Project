@@ -36,7 +36,6 @@ namespace School_Project
                 }
                 if (this.command == "2")
                 {
-                    
                 }
                 if (this.command == "3")
                 {
@@ -44,7 +43,7 @@ namespace School_Project
                     Console.WriteLine(" ");
                     Console.WriteLine("- Liikuta pelaajaa nuoli- tai numpad näppäimillä.");
                     Console.WriteLine(" ");
-                    Console.WriteLine("Merkit:");      
+                    Console.WriteLine("Merkit:");
                     Console.WriteLine(" # - Seinä               + - Ovi");
                     Console.WriteLine(" ! - Itemi               Kirjaimet - Vastustajia");
                     Console.WriteLine(" < - Rappuset ylös       > - Rappuset alas");
@@ -128,7 +127,7 @@ namespace School_Project
             Console.WriteLine(spaces + "Sinne kuunteleen sen hitusen omakehun löyhkäsiä juttuja vaikka äijä ihan teline!", Console.ForegroundColor = text);
             Console.WriteLine(spaces + "Pistää sen verta vihaks et pakko ryyppää varastossa", Console.ForegroundColor = drink);
             Console.WriteLine();
-            Console.WriteLine("Paina etteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.WriteLine("Paina entteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine();
