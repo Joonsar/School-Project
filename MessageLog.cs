@@ -33,7 +33,7 @@ namespace School_Project
                 //var spaces = Console.WindowWidth - (gc.Width - 1) - Messages[i].Length;
                 //Console.SetCursorPosition(gc.Width + 1, i);
                 Console.SetCursorPosition(gc.Map.Width + 1, i);
-                Console.WriteLine(Messages[i] + new string(' ', gc.Width));
+                Console.Write(Messages[i] + new string(' ', 60));
             }
         }
     }
