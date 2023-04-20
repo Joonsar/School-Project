@@ -44,12 +44,12 @@ namespace School_Project
                     Console.WriteLine(" ");
                     Console.WriteLine("- Liikuta pelaajaa nuoli- tai numpad näppäimillä.");
                     Console.WriteLine(" ");
-                    Console.WriteLine("Merkit:");      
+                    Console.WriteLine(" - Paina Välilyöntiä tutkiaksesi maailmaa.");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Merkit:");
                     Console.WriteLine(" # - Seinä               + - Ovi");
                     Console.WriteLine(" ! - Itemi               Kirjaimet - Vastustajia");
                     Console.WriteLine(" < - Rappuset ylös       > - Rappuset alas");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" - Paina Välilyöntiä tutkiaksesi maailmaa.");
                     Console.WriteLine(" ");
                     Console.WriteLine(" - Paina Esc lopettaaksesi pelin");
                     System.Threading.Thread.Sleep(3000);
