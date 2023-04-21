@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,10 +28,16 @@ namespace School_Project
         private string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
         private string enemyNamesFive = "Pro,Puiston Jaska,Ihan vaan ammattilainen,Delirium topi,Kadun mies,Puiston asukki";
         private ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+        public List<ConsoleColor> c;
+
+       
 
         public Enemies()
         {
             this.enemies = new List<Enemy>();
+            this.c = colors.ToList<ConsoleColor>();
+            this.c.Remove(ConsoleColor.Black);
+            
         }
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
@@ -67,7 +74,7 @@ namespace School_Project
             while (count < howMany)
             {
                 //char randomChar1 = charString[rand.Next(0, charString.Length)];
-                ConsoleColor color = colors[rand.Next(0, colors.Length)];
+                ConsoleColor color = this.c[rand.Next(0, colors.Length)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
                 enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
                 count++;
