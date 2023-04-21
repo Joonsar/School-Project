@@ -12,7 +12,7 @@ namespace School_Project
     {
         private string command;
         private GameController gc = GameController.Instance;
-        private string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
+        private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
 
         public string PlayerName { get; set; }
 
@@ -63,6 +63,7 @@ namespace School_Project
             }
         }
 
+        //jos mennään kaikkien oikeioppisten sääntöjen mukaan niin täähän voi olla private? ei kutsuta muualta
         public void PrintInfo()
         {
             Console.WriteLine(IntroText);
@@ -93,7 +94,7 @@ namespace School_Project
             PrintText("Elämä hymyilee, bisnekset rullaa. On vaimoo, on isoo taloo, on autoo, on venettä yms! Janoo menee vissyä ja safkan kans ehkä tilkka viiniä. Elämä hymyilee", text);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
-            PrintDate("04.02.2020",date);
+            PrintDate("04.02.2020", date);
             PrintText("Iski joku saatanan rokko keniasta ja väki paniikissa pistää kuljetukset poikki ja ulkonaliikkumis kieltoja. Kaikki bisnekset kusee huolella!", text);
             PrintText(spaces + "Ny pakko vetää pari kaljaa ressii!", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
@@ -104,7 +105,7 @@ namespace School_Project
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             PrintDate("01.08.2020", date);
-            PrintText("Appiukko onneks sponssas et pääsis uutee alkuu mut sit toi prkl läskiperse muija sai selville että oon vuosia kusettanu olevani ylitöissä vaikka tuli temmottua savuja meitsin sihteeristä sirpasta. Paska homma, sinne meni seki perse!",  text);
+            PrintText("Appiukko onneks sponssas et pääsis uutee alkuu mut sit toi prkl läskiperse muija sai selville että oon vuosia kusettanu olevani ylitöissä vaikka tuli temmottua savuja meitsin sihteeristä sirpasta. Paska homma, sinne meni seki perse!", text);
             PrintText(spaces + "Tilanne huutaa paria napanderia!!", drink);
 
             Console.WriteLine();
@@ -114,7 +115,7 @@ namespace School_Project
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             PrintDate("02.10.2020", date);
-            PrintText("Muija ny sit tietty otti kakarat ja lähti (Ne saatanan kiittänättömät paskiaiset saaki mennä!) mut appiukon rahoja tuli ikävä vaikka joutuki nuolee se haisevan mulkun persettä",  text);
+            PrintText("Muija ny sit tietty otti kakarat ja lähti (Ne saatanan kiittänättömät paskiaiset saaki mennä!) mut appiukon rahoja tuli ikävä vaikka joutuki nuolee se haisevan mulkun persettä", text);
             PrintText(spaces + "Ny kyllä vedetää kunnon kännit!", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
@@ -129,7 +130,7 @@ namespace School_Project
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             PrintDate("28.01.2021", date);
-            PrintText("Ny on taisteltu asiosta kelan kanssa sain viihtyisän 14 neliön kompaktin yksiön yhteisillä wc tiloilla ihan entisen talon vierestä et näkee suoraa vanhaa omaa olkkarii ku ämmä kattoo salkkareitaa mun 70 tuumasesta LED TV:stä.",text);
+            PrintText("Ny on taisteltu asiosta kelan kanssa sain viihtyisän 14 neliön kompaktin yksiön yhteisillä wc tiloilla ihan entisen talon vierestä et näkee suoraa vanhaa omaa olkkarii ku ämmä kattoo salkkareitaa mun 70 tuumasesta LED TV:stä.", text);
             PrintText(spaces + "Kyllä mies lääkkeen tietää, viinalla tänki paskan sietää!", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
@@ -149,13 +150,13 @@ namespace School_Project
             PrintText(spaces + "pakko antaa mennä vaa ei tätä sevinpäin kestä", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
-            PrintDate("30.05.2021",  date);
+            PrintDate("30.05.2021", date);
             PrintText("Rallatrallati rai! Ny juhlitaa!", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             PrintDate("01.06.2021", date);
-            PrintText("Kattelin ikkunasta vanhaa kämppää ni siähän se saatanan tuhkamuna homo petteri kairas sitä läskiperse ex-muijaa!",  text);
-            PrintText(spaces + "Kävi kiahuttaa mut onneks kävin alkossa jo päivällä tankkaa varstot...",  drink);
+            PrintText("Kattelin ikkunasta vanhaa kämppää ni siähän se saatanan tuhkamuna homo petteri kairas sitä läskiperse ex-muijaa!", text);
+            PrintText(spaces + "Kävi kiahuttaa mut onneks kävin alkossa jo päivällä tankkaa varstot...", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             Console.WriteLine();
@@ -169,49 +170,49 @@ namespace School_Project
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
             PrintDate("17.06.2021", date);
-            PrintText("Olin pari viikkoo rokulilla ja se petteri kävi jotai mulisee ni kiskasin kunnolla tukkaa ja lähin tepon kans puistoo dokaa!",  text);
+            PrintText("Olin pari viikkoo rokulilla ja se petteri kävi jotai mulisee ni kiskasin kunnolla tukkaa ja lähin tepon kans puistoo dokaa!", text);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
-            PrintDate("01.07.2021",  date);
+            PrintDate("01.07.2021", date);
             PrintText("Nyy on kämoppä ryysypätty myt kessällöä pärjrrää perkeele ilmmanjki!", drink);
             PrintText(spaces + "vaiahan tän vituin läpppärrinki ny kossyyy ja annan mennnää! Sytököö paskakaa pettttrit ja muauutki runkkkart!", drink);
             PrintText(spaces + "NY VEESDETÄÄÄ JA TTAPPELLLAAA SI TAAPPPII ASTI!!! TULKAAA SAATAANA KOITTAA!", drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
 
-            PrintText(spaces +"Kuten sankarimme taustasta voimme päätellä että sitä ollaan jo pikkasen ehkä mukiin menevää sorttia ja tappelukin irtoo herkästi.",text);
+            PrintText(spaces + "Kuten sankarimme taustasta voimme päätellä että sitä ollaan jo pikkasen ehkä mukiin menevää sorttia ja tappelukin irtoo herkästi.", text);
             Console.WriteLine();
-            PrintText(spaces +"Sinun tehtäväsi on auttaa sankariamme hiomaan rappionsa huippuunsa ja vetää kaikkia ketkä vittuilee turpaan kunnes kohtalo suo kovemman konkarin kehän toiseen kulmaan joka paukuttaa lättyy niin että saadaan tarina päätökseen ja sankarimme pääsee ansaitulle levolle matohotelliin!", text);
+            PrintText(spaces + "Sinun tehtäväsi on auttaa sankariamme hiomaan rappionsa huippuunsa ja vetää kaikkia ketkä vittuilee turpaan kunnes kohtalo suo kovemman konkarin kehän toiseen kulmaan joka paukuttaa lättyy niin että saadaan tarina päätökseen ja sankarimme pääsee ansaitulle levolle matohotelliin!", text);
             Console.WriteLine();
             Console.WriteLine("paina jotain näppäintä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
             Console.ReadKey(false);
         }
 
+        //tääkin voi kaiketi olla private?
         public void PrintText(string line, ConsoleColor color)
         {
             Console.ForegroundColor = color;
             String spaces = new String(' ', 12);
             string[] words = line.Split(' ');
             String l = "";
-            for(int i = 0; i < words.Length; i++)
+            for (int i = 0; i < words.Length; i++)
             {
-                if(l.Length < Console.LargestWindowWidth / 2)
+                if (l.Length < Console.LargestWindowWidth / 2)
                 {
                     l += words[i] + " ";
                 }
                 else
                 {
-                    
                     Console.WriteLine(l);
-                    l = spaces + words[i] +" "; 
+                    l = spaces + words[i] + " ";
                 }
             }
-            if(l != spaces)
+            if (l != spaces)
             {
                 Console.WriteLine(l);
             }
-            
         }
 
+        //ja tämä :D (ittellä on varmasti noita kans omassa koodissa)
         public void PrintDate(String date, ConsoleColor color)
         {
             Console.ForegroundColor = color;

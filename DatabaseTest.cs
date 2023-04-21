@@ -11,6 +11,7 @@ namespace School_Project
 
         public void SaveToDatabase(string dbName, string jsonString)
         {
+            //test
             var connection = new SqliteConnection($"Data Source ={dbName}");
             connection.Open();
             string insertString = $"INSERT INTO HighScores (PlayerID, GameStats) Values (@PlayerID, @GameStats)";
