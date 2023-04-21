@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace School_Project
 {
@@ -46,6 +48,8 @@ namespace School_Project
 
         public bool StairsGenerated = false;
 
+        private DatabaseTest db;
+
         public GameController()
         {
         }
@@ -83,6 +87,7 @@ namespace School_Project
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
+            db = new DatabaseTest();
             screen.DrawScreen();
         }
 
@@ -122,9 +127,15 @@ namespace School_Project
                     Turn++;
                 }
             }
-            var testi = JsonSerializer.Serialize(GameStats.EnemiesKilled);
+            var testi = JsonSerializer.Serialize(GameStats);
+            db.CreateDatabase("testi.db");
+            db.SaveToDatabase("testi.db", testi);
+            var luettuJson = JsonSerializer.Deserialize<GameStats>(testi);
 
-            var testiLista = JsonSerializer.Deserialize<List<Enemy>>(testi);
+            var damageDealth = luettuJson.DamageDealt;
+
+            Console.WriteLine(testi.Length);
+            Console.WriteLine(testi);
             screen.EndScreen();
         }
 

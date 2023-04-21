@@ -30,14 +30,11 @@ namespace School_Project
         private ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
         public List<ConsoleColor> c;
 
-       
-
         public Enemies()
         {
             this.enemies = new List<Enemy>();
             this.c = colors.ToList<ConsoleColor>();
             this.c.Remove(ConsoleColor.Black);
-            
         }
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
@@ -74,7 +71,7 @@ namespace School_Project
             while (count < howMany)
             {
                 //char randomChar1 = charString[rand.Next(0, charString.Length)];
-                ConsoleColor color = this.c[rand.Next(0, colors.Length)];
+                ConsoleColor color = this.c[rand.Next(0, colors.Length - 1)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
                 enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
                 count++;

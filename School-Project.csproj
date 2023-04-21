@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="DatabaseTest.cs" />
     <Compile Include="Enemies.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
