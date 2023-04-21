@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace School_Project
 {
@@ -84,81 +85,124 @@ namespace School_Project
             this.PlayerName = Console.ReadLine();
             gc.PlayerName = this.PlayerName;
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(spaces + "Luet nyt päiväkirjaa minkä omistaja on " + PlayerName + " ja jos en oo kuollu ja luet\n" + spaces + "ilman lupaa ni etin sut ja vedän lättyy runkku!");
-            Console.WriteLine(lines);
-            Console.Write("01.02.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("Elämä hymyilee, bisnekset rullaa. On vaimoo, on isoo taloo, on autoo, on venettä yms!\n" + spaces + "Janoo menee vissyä ja safkan kans ehkä tilkka viiniä. Elämä hymyilee", Console.ForegroundColor = text);
-            Console.WriteLine(lines);
-            Console.Write("04.02.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("Iski joku saatanan rokko keniasta ja väki paniikissa pistää kuljetukset poikki ja ulkonaliikkumis kieltoja.\n" + spaces + "Kaikki bisnekset kusee huolella!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Ny pakko vetää pari kaljaa ressii!", Console.ForegroundColor = drink);
             Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("04.07.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("Firma meni konkkaan ja ulosottaja myi sen pilkka hintaa naapurin liimatukka petterille.", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "(siinä vasta kunnon mulkku! Hinkkaa bemariaa pihassa ilman paitaa sikspakkiä esitelle ja kehuu kuin on bisnesmies vaikka isin taaloilla\n" + spaces + "tehny vaa tappioo ja sikspäkkiki on silikoonia.)");
-            Console.WriteLine(spaces + "Pistää vihaks sen verta et taidan hakee laatikon nelosta!", Console.ForegroundColor = drink);
+            PrintText(spaces + "Luet nyt päiväkirjaa minkä omistaja on " + this.PlayerName + " ja jos en oo kuollu ja luet ilman lupaa ni etin sut ja vedän lättyy runkku!", text);
             Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("01.08.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("Appiukko onneks sponssas et pääsis uutee alkuu mut sit toi prkl läskiperse muija sai selville että oon vuosia kusettanu olevani ylitöissä\n" + spaces + "vaikka tuli temmottua savuja meitsin sihteeristä sirpasta. Paska homma, sinne meni seki perse!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Tilanne huutaa paria napanderia!!", Console.ForegroundColor = drink);
+
+            PrintDate("01.02.2020", date);
+            PrintText("Elämä hymyilee, bisnekset rullaa. On vaimoo, on isoo taloo, on autoo, on venettä yms! Janoo menee vissyä ja safkan kans ehkä tilkka viiniä. Elämä hymyilee", text);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("04.02.2020",date);
+            PrintText("Iski joku saatanan rokko keniasta ja väki paniikissa pistää kuljetukset poikki ja ulkonaliikkumis kieltoja. Kaikki bisnekset kusee huolella!", text);
+            PrintText(spaces + "Ny pakko vetää pari kaljaa ressii!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("04.07.2020", date);
+            PrintText("Firma meni konkkaan ja ulosottaja myi sen pilkka hintaa naapurin liimatukka petterille. (siinä vasta kunnon mulkku! Hinkkaa bemariaa pihassa ilman paitaa sikspakkiä esitelle ja kehuu kuin on bisnesmies vaikka isin taaloilla tehny vaa tappioo ja sikspäkkiki on silikoonia.)", text);
+            PrintText(spaces + "Pistää vihaks sen verta et taidan hakee laatikon nelosta!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("01.08.2020", date);
+            PrintText("Appiukko onneks sponssas et pääsis uutee alkuu mut sit toi prkl läskiperse muija sai selville että oon vuosia kusettanu olevani ylitöissä vaikka tuli temmottua savuja meitsin sihteeristä sirpasta. Paska homma, sinne meni seki perse!",  text);
+            PrintText(spaces + "Tilanne huutaa paria napanderia!!", drink);
+
             Console.WriteLine();
-            Console.WriteLine("Paina entteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            Console.ReadLine();
+            Console.WriteLine("Paina jotain näppäintä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.ReadKey(false);
             Console.Clear();
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("02.10.2020", date);
+            PrintText("Muija ny sit tietty otti kakarat ja lähti (Ne saatanan kiittänättömät paskiaiset saaki mennä!) mut appiukon rahoja tuli ikävä vaikka joutuki nuolee se haisevan mulkun persettä",  text);
+            PrintText(spaces + "Ny kyllä vedetää kunnon kännit!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("24.12.2020", date);
+            PrintText("No erohan siitä tuli ja se saatanan ammatti runkkari palkkas tyttärellee kunnon hyeenan imee pölykki taskusta! Hyvää joulua vaa teillekki prkl runkkarit!", text);
+            PrintText(spaces + "Ny kyllä si vedetää viikko viinaa!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("12.01.2021", date);
+            PrintText("Meni vähä pitkäks ja ihan törkee darra mut ny tarvii himmaa ja ihan vaan tasotella muutama päivä..", text);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("28.01.2021", date);
+            PrintText("Ny on taisteltu asiosta kelan kanssa sain viihtyisän 14 neliön kompaktin yksiön yhteisillä wc tiloilla ihan entisen talon vierestä et näkee suoraa vanhaa omaa olkkarii ku ämmä kattoo salkkareitaa mun 70 tuumasesta LED TV:stä.",text);
+            PrintText(spaces + "Kyllä mies lääkkeen tietää, viinalla tänki paskan sietää!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("22.03.2021", date);
+            PrintText("Vähä on tullu ryypiskeltyä mut hei kai ny maistuu tässä paskassa! Ny ne laitto työkkäristäki kuntouttavaan työtoimintaan ja viä vittu mun omaa entiseen firmaa kattelee sitä liimatukka petteriä! Sinne kuunteleen sen hitusen omakehun löyhkäsiä juttuja vaikka äijä ihan teline!", text);
+            PrintText(spaces + "Pistää sen verta vihaks et pakko ryyppää varastossa", drink);
+
             Console.WriteLine();
-            Console.Write("02.10.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("Muija ny sit tietty otti kakarat ja lähti (Ne saatanan kiittänättömät paskat saaki mennä!), mut appiukon rahoja tuli ikävä\n            vaikka joutuki nuolee senki ikälopun haisevan mulkun persettä", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Ny kyllä vedetää kunnon kännit!", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("24.12.2020: ", Console.ForegroundColor = date);
-            Console.WriteLine("No erohan siitä tuli ja se saatanan ammatti runkkari palkkas tyttärellee kunnon hyeenan imee pölykki taskusta! Hyvää joulua\n            vaa teillekki prkl runkkarit!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Ny kyllä si vedetää viikko viinaa!", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("12.01.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Meni vähä pitkäks ja ihan törkee darra mut ny tarvii himmaa ja ihan vaan tasotella muutama päivä..", Console.ForegroundColor = text);
-            Console.WriteLine(lines);
-            Console.Write("28.01.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Ny on taisteltu asiosta kelan kanssa sain viihtyisän 14 neliön kompaktin yksiön yhteisillä wc tiloilla ihan entisen talon vierestä\n            et näkee suoraa vanhaa omaa olkkarii ku ämmä kattoo salkkareitaa mun 70 tuumasesta LED TV:stä.", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Kyllä mies lääkkeen tietää, viinalla tänki paskan sietää!", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("22.03.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Vähä on tullu ryypiskeltyä mut hei kai ny maistuu tässä paskassa! Ny ne laitto työkkäristäki kuntouttavaan työtoimintaan ja viä vittu\n            mun omaa entiseen firmaa kattelee sitä liimatukka petteriä!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Sinne kuunteleen sen hitusen omakehun löyhkäsiä juttuja vaikka äijä ihan teline!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Pistää sen verta vihaks et pakko ryyppää varastossa", Console.ForegroundColor = drink);
-            Console.WriteLine();
-            Console.WriteLine("Paina entteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            Console.ReadLine();
+            Console.WriteLine("Paina jotain nappia jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.ReadKey(false);
             Console.Clear();
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("12.04.2021", date);
+            PrintText("Jotai viinan huurusia muistikuvia puistosta ja kämppä täynnä juoppoja...", text);
+            PrintText(spaces + "pakko antaa mennä vaa ei tätä sevinpäin kestä", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("30.05.2021",  date);
+            PrintText("Rallatrallati rai! Ny juhlitaa!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("01.06.2021", date);
+            PrintText("Kattelin ikkunasta vanhaa kämppää ni siähän se saatanan tuhkamuna homo petteri kairas sitä läskiperse ex-muijaa!",  text);
+            PrintText(spaces + "Kävi kiahuttaa mut onneks kävin alkossa jo päivällä tankkaa varstot...",  drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("20.06.2021", date);
+            PrintText("RapPPIppioolla oONO huvAä oollaa ei hhHuuolet pinAAaaaa eIIii RAAasaituu pOllaaaaa", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("17.06.2021", date);
+            PrintText("Olin pari viikkoo rokulilla ja se petteri kävi jotai mulisee ni kiskasin kunnolla tukkaa ja lähin tepon kans puistoo dokaa!",  text);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintDate("01.07.2021",  date);
+            PrintText("Nyy on kämoppä ryysypätty myt kessällöä pärjrrää perkeele ilmmanjki!", drink);
+            PrintText(spaces + "vaiahan tän vituin läpppärrinki ny kossyyy ja annan mennnää! Sytököö paskakaa pettttrit ja muauutki runkkkart!", drink);
+            PrintText(spaces + "NY VEESDETÄÄÄ JA TTAPPELLLAAA SI TAAPPPII ASTI!!! TULKAAA SAATAANA KOITTAA!", drink);
+            Console.WriteLine(lines, Console.ForegroundColor = text);
+
+            PrintText(spaces +"Kuten sankarimme taustasta voimme päätellä että sitä ollaan jo pikkasen ehkä mukiin menevää sorttia ja tappelukin irtoo herkästi.",text);
+            PrintText(spaces +"Sinun tehtäväsi on auttaa sankariamme hiomaan rappionsa huippuunsa ja vetää kaikkia ketkä vittuilee turpaan kunnes kohtalo suo kovemman konkarin kehän toiseen kulmaan joka paukuttaa lättyy niin että saadaan tarina päätökseen ja sankarimme pääsee ansaitulle levolle matohotelliin!", text);
             Console.WriteLine();
-            Console.Write("12.04.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Jotai viinan huurusia muistikuvia puistosta ja kämppä täynnä juoppoja...", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "pakko antaa mennä vaa ei tätä sevinpäin kestä", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("30.05.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Rallatrallati rai! Ny juhlitaa!", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("01.06.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Kattelin ikkunasta vanhaa kämppää ni siähän se saatanan tuhkamuna homo petteri kairas sitä läskiperse ex-muijaa!", Console.ForegroundColor = text);
-            Console.WriteLine(spaces + "Kävi kiahuttaa mut onneks kävin alkossa jo päivällä tankkaa varstot...", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("20.06.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("RapPPIppioolla oONO huvAä oollaa ei hhHuuolet pinAAaaaa eIIii RAAasaituu pOllaaaaa", Console.ForegroundColor = drink);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("17.06.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Olin pari viikkoo rokulilla ja se petteri kävi jotai mulisee ni kiskasin kunnolla tukkaa ja lähin tepon kans puistoo dokaa!", Console.ForegroundColor = text);
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.Write("01.07.2021: ", Console.ForegroundColor = date);
-            Console.WriteLine("Nyy on kämoppä ryysypätty myt kessällöä pärjrrää perkeele ilmmanjki!", Console.ForegroundColor = drink);
-            Console.WriteLine(spaces + "vaiahan tän vituin läpppärrinki ny kossyyy ja annan mennnää! Sytököö paskakaa pettttrit ja muauutki runkkkart!");
-            Console.WriteLine(spaces + "NY VEESDETÄÄÄ JA TTAPPELLLAAA SI TAAPPPII ASTI!!! TULKAAA SAATAANA KOITTAA!");
-            Console.WriteLine(lines, Console.ForegroundColor = text);
-            Console.WriteLine("Kuten sankarimme taustasta voimme päätellä että sitä ollaan jo pikkasen ehkä mukiin menevää sorttia ja tappelukin irtoo herkästi.");
-            Console.WriteLine("Sinun tehtäväsi on auttaa sankariamme hiomaan rappionsa huippuunsa ja vetää kaikkia ketkä vittuilee turpaan kunnes kohtalo suo kovemman konkarin");
-            Console.WriteLine("kehän toiseen kulmaan joka paukuttaa lättyy niin että saadaan tarina päätökseen ja sankarimme pääsee ansaitulle levolle matohotelliin!");
-            Console.WriteLine();
-            Console.WriteLine("paina enteriä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
-            Console.ReadLine();
+            Console.WriteLine("paina jotain näppäintä jatkaaksesi", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.ReadKey(false);
+        }
+
+        public void PrintText(string line, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            String spaces = new String(' ', 12);
+            string[] words = line.Split(' ');
+            String l = "";
+            for(int i = 0; i < words.Length; i++)
+            {
+                if(l.Length < Console.LargestWindowWidth / 2)
+                {
+                    l += words[i] + " ";
+                }
+                else
+                {
+                    l += words[i];
+                    Console.WriteLine(l);
+                    l = spaces;
+                }
+            }
+            Console.WriteLine(l);
+        }
+
+        public void PrintDate(String date, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(date + ": ");
         }
     }
 }
