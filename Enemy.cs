@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace School_Project
 {
     public class Enemy : Entity
     {
         private Random rand = new Random();
-        private GameController gc;
+
+        [JsonIgnore]
+        private GameController gc = GameController.Instance;
 
         private Tuple<Position, Char> LastPosition;
 
@@ -20,16 +23,17 @@ namespace School_Project
             MaxHealth = maxHealth;
             Health = maxHealth;
             Damage = damage;
-            gc = GameController.Instance;
+
             SetEnemyLastPosition();
         }
 
+        [JsonConstructor]
         public Enemy(string name, string description, Position pos, char mark, ConsoleColor color, int maxHealth, int damage, int level) : base(name, description, pos, mark, color)
         {
             MaxHealth = maxHealth;
             Health = maxHealth;
             Damage = damage;
-            gc = GameController.Instance;
+
             SetEnemyLastPosition();
             Level = level;
         }

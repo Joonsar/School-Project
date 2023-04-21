@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace School_Project
 {
@@ -121,6 +122,9 @@ namespace School_Project
                     Turn++;
                 }
             }
+            var testi = JsonSerializer.Serialize(GameStats.EnemiesKilled);
+
+            var testiLista = JsonSerializer.Deserialize<List<Enemy>>(testi);
             screen.EndScreen();
         }
 
