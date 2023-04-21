@@ -1,9 +1,12 @@
-﻿using Microsoft.Data.Sqlite;
+﻿//using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
+using Microsoft.Data.Sqlite;
+using SQLitePCL;
 
 namespace School_Project
 {
@@ -18,7 +21,7 @@ namespace School_Project
             var connection = new SqliteConnection($"Data Source ={dbName}");
             connection.Open();
             string insertString = $"INSERT INTO HighScores (PlayerID, GameStats) Values (@PlayerID, @GameStats)";
-            var cmd = new SqliteCommand(jsonString, connection);
+            var cmd = new SqliteCommand(insertString, connection);
             cmd.Parameters.AddWithValue("@PlayerID", 1);
             cmd.Parameters.AddWithValue("@Gamestats", jsonString);
             cmd.ExecuteNonQuery();
