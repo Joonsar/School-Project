@@ -9,5 +9,9 @@ namespace School_Project
 {
     public class DataBase
     {
+        public DataBase()
+        {
+
+        }
     }
 }
