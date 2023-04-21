@@ -128,8 +128,8 @@ namespace School_Project
                 }
             }
             var testi = JsonSerializer.Serialize(GameStats);
-            db.CreateDatabase("testi.db");
-            db.SaveToDatabase("testi.db", testi);
+            //  db.CreateDatabase("testi.db");
+            //  db.SaveToDatabase("testi.db", testi);
             var luettuJson = JsonSerializer.Deserialize<GameStats>(testi);
 
             var damageDealth = luettuJson.DamageDealt;

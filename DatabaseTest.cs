@@ -30,9 +30,9 @@ namespace School_Project
 
         public void CreateDatabase(string dbName)
         {
-            string createTableSql = @"CREATE TABLE IF NOT EXISTS GameStats (
+            string createTableSql = @"CREATE TABLE IF NOT EXISTS HighScores (
             PlayerId INTEGER PRIMARY KEY AUTOINCREMENT,
-            GameStatsJson TEXT NOT NULL)";
+            GameStats TEXT NOT NULL)";
             var connection = new SqliteConnection($"Data Source ={dbName}");
             connection.Open();
             var command = new SqliteCommand(createTableSql, connection);
