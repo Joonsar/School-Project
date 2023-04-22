@@ -45,7 +45,7 @@ namespace School_Project
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.Parameters.AddWithValue("@value1", jsonString);
             command.Parameters.AddWithValue("@value2", GameController.Instance.GameStats.PlayerName);
-            command.Parameters.AddWithValue("@value3", GameController.Instance.GameStats.PlayerLevel);
+            command.Parameters.AddWithValue("@value3", GameController.Instance.Player.Level);
             command.ExecuteNonQuery();
             connection.Close();
         }
