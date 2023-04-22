@@ -71,7 +71,6 @@ namespace School_Project
             StartScreen = new StartScreen();
             if (Turn == 0)
             {
-                GameStats = new GameStats();
                 screen.Clear();
                 StartScreen.Run();
                 Turn = 1;
@@ -84,6 +83,7 @@ namespace School_Project
             Map.CreateEnemies(this.Level, this.EnemiesCount);
 
             Player = new Player(PlayerName, 100, 100);
+            GameStats = new GameStats();
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
@@ -133,7 +133,7 @@ namespace School_Project
             var luettuJson = JsonSerializer.Deserialize<GameStats>(testi);
 
             var damageDealth = luettuJson.DamageDealt;
-
+            db.UploadToServer(testi);
             Console.WriteLine(testi.Length);
             Console.WriteLine(testi);
             screen.EndScreen();

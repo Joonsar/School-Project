@@ -15,12 +15,17 @@ namespace School_Project
 
         public int DamageTaken { get; set; }
 
+        public string PlayerName { get; set; }
+        public int PlayerLevel { get; set; }
+
         public GameStats()
         {
             EnemiesKilled = new List<Entity>();
             ItemsCollected = new List<Entity>();
             DamageDealt = 0;
             DamageTaken = 0;
+            PlayerName = GameController.Instance.Player.Name;
+            PlayerLevel = GameController.Instance.Player.Level;
         }
     }
 }
