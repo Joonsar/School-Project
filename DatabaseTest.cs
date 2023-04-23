@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace School_Project
 {
@@ -39,15 +40,26 @@ namespace School_Project
 
         public void UploadToServer(string jsonString)
         {
-            var connection = new MySqlConnection(connectionString);
-            connection.Open();
-            string sql = "INSERT INTO GameStats (GameStats, Name, Level) VALUES (@value1, @value2, @value3)";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@value1", jsonString);
-            command.Parameters.AddWithValue("@value2", GameController.Instance.GameStats.PlayerName);
-            command.Parameters.AddWithValue("@value3", GameController.Instance.Player.Level);
-            command.ExecuteNonQuery();
-            connection.Close();
+            try
+            {
+                var connection = new MySqlConnection(connectionString);
+                connection.Open();
+                string sql = "INSERT INTO GameStats (GameStats, Name, Level) VALUES (@value1, @value2, @value3)";
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@value1", jsonString);
+                command.Parameters.AddWithValue("@value2", GameController.Instance.GameStats.PlayerName);
+                command.Parameters.AddWithValue("@value3", GameController.Instance.Player.Level);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Virhe yhdistäessä tietokantaan: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Virhe datan lähettämisessä tietokantaan: " + ex.Message);
+            }
         }
     }
 }
