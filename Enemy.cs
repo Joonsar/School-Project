@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace School_Project
 {
@@ -7,7 +8,7 @@ namespace School_Project
     {
         private Random rand = new Random();
 
-        [JsonIgnore]
+        [XmlIgnore]
         private GameController gc = GameController.Instance;
 
         private Tuple<Position, Char> LastPosition;
