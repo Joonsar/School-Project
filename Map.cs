@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Drawing;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace School_Project
 {
@@ -71,8 +72,9 @@ namespace School_Project
         private void GenerateRoom(int numRooms)
         {
             List<Room> rooms = new List<Room>();
+            int tries = 0;
 
-            while (rooms.Count < numRooms)
+            while (rooms.Count < numRooms && tries < 1000)
             {
                 Room room = new Room();
 
@@ -125,6 +127,7 @@ namespace School_Project
                         }
                     }
                 }
+                tries++;
             }
         }
 
