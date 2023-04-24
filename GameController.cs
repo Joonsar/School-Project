@@ -127,9 +127,11 @@ namespace School_Project
                     Turn++;
                 }
             }
+            GameStats.MapLevel = Level;
             var testi = JsonSerializer.Serialize(GameStats);
             //  db.CreateDatabase("testi.db");
             //  db.SaveToDatabase("testi.db", testi);
+
             var luettuJson = JsonSerializer.Deserialize<GameStats>(testi);
 
             var damageDealth = luettuJson.DamageDealt;

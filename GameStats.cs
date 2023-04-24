@@ -18,6 +18,8 @@ namespace School_Project
         public string PlayerName { get; set; }
         public int PlayerLevel { get; set; }
 
+        public int MapLevel { get; set; }
+
         public GameStats()
         {
             EnemiesKilled = new List<Entity>();
@@ -26,6 +28,7 @@ namespace School_Project
             DamageTaken = 0;
             PlayerName = GameController.Instance.Player.Name;
             PlayerLevel = GameController.Instance.Player.Level;
+            MapLevel = GameController.Instance.Level;
         }
     }
 }
