@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.Bibliography;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -58,6 +59,8 @@ namespace School_Project
 
         public void Init()
         {
+            localdb = new DataBase();
+            localdb.CreateDatabase();
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
@@ -133,7 +136,7 @@ namespace School_Project
             }
             GameStats.MapLevel = Level;
 
-            localdb.CreateDatabase();
+            //localdb.CreateDatabase();
             localdb.GetData(GameStats);
             localdb.SaveToDatabase();
             localdb.PrintData();
