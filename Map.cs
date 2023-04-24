@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
+using System.Drawing;
 
 namespace School_Project
 {
@@ -57,7 +59,7 @@ namespace School_Project
                     }
                 }
             }
-            int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(1, 5);
+            int numberOfRooms = numRooms > 0 ? numRooms : new Random().Next(2, 5);
             GenerateRoom(numberOfRooms);
             GenerateStairs();
             GenerateItems();
@@ -77,7 +79,19 @@ namespace School_Project
                 bool overlaps = false;
                 foreach (Room otherRoom in rooms)
                 {
-                    if (room.Rect.IntersectsWith(otherRoom.Rect))
+                    int xr = room.Rect.X -1;
+                    int yr = room.Rect.Y +1;
+                    int rwidht = room.Rect.Width +2;
+                    int rheight = room.Rect.Height +2;
+
+                    int xo = otherRoom.Rect.X -1;
+                    int yo = otherRoom.Rect.Y +1;
+                    int owidht = otherRoom.Rect.Width +2;
+                    int oheight = otherRoom.Rect.Height +2;
+
+                    Rectangle r = new Rectangle(xr, yr, rwidht, rheight);
+                    Rectangle ro = new Rectangle(xo, yo, owidht, oheight);
+                    if (room.Rect.IntersectsWith(otherRoom.Rect) || room.Rect.IntersectsWith(ro) || r.IntersectsWith(ro))
                     {
                         overlaps = true;
                         break;
