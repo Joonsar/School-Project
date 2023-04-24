@@ -50,6 +50,8 @@ namespace School_Project
 
         private DatabaseTest db;
 
+        private DataBase localdb;
+
         public GameController()
         {
         }
@@ -88,6 +90,7 @@ namespace School_Project
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
             db = new DatabaseTest();
+            localdb = new DataBase();
             screen.DrawScreen();
         }
 
@@ -128,6 +131,7 @@ namespace School_Project
                 }
             }
             GameStats.MapLevel = Level;
+           
             var testi = JsonSerializer.Serialize(GameStats);
             //  db.CreateDatabase("testi.db");
             //  db.SaveToDatabase("testi.db", testi);
