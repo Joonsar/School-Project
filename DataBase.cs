@@ -103,12 +103,28 @@ namespace School_Project
                     Console.WriteLine(lines);
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
+                    PlayerID = rdr.GetInt32(0);
                      
                     Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
             }
+            while (true)
+            {
+                Console.WriteLine("1 - Tarkemmat tiedot");
+                Console.WriteLine("2 - Paluu valikkoon");
+                string c = Console.ReadLine();
+                if(c == "1")
+                {
+                    this.PrintPlayerStats();
+                }
+                if(c == "2")
+                {
+                    break;
+                }
+            }
+
         }
 
         private void getNamesForEntities()
@@ -116,16 +132,65 @@ namespace School_Project
             this.enemiesNames = new List<String>();
             foreach (Entity e in EnemiesKilled)
             {
-                enemiesNames.Add(e.Name);
+                enemiesNames.Add(e.Name + ";" + e.Description);
             }
 
             this.itemNames = new List<String>();
             foreach (Entity i in ItemsCollected)
             {
-                itemNames.Add(i.Name);
+                itemNames.Add(i.Name + ";" + i.Description);
             }
             this.enemies = string.Join(",", enemiesNames);
             this.items = string.Join(",", itemNames);
         }
+
+        private void PrintPlayerStats()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            var connection = new SqliteConnection($"Data Source ={this.db}");
+            connection.Open();
+            string sql = "SELECT * FROM HighScores WHERE @PlayerID = PlayerID";
+            var cmd = new SqliteCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@PlayerID", PlayerID);
+            using (SqliteDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+
+
+
+                    //string enemies = rdr.GetString(7).Replace(",",", ");
+                    string items = rdr.GetString(8).Replace(",", ", ");
+                    Console.WriteLine("Nimi: " + rdr.GetString(1));
+                    Console.WriteLine("Pisteet: " + rdr.GetString(2));
+                    Console.WriteLine("Taso: " + rdr.GetString(3));
+                    Console.WriteLine("Tehty vahinko: " + rdr.GetString(5));
+                    Console.WriteLine("Otettu vahinko: " + rdr.GetString(6));
+                    Console.WriteLine("Kuolit lähiön tasolla: " + rdr.GetString(4));
+                    string s = "Tapetut viholliset: ";
+                    string spaces = new string(' ', s.Length);
+                    Console.WriteLine("Tapetut viholliset: ");
+                    string[] enemies = rdr.GetString(7).Split(",");
+                    for (int i = 0; i < enemies.Length; i++)
+                    {
+                        Console.WriteLine(spaces + enemies[i].Replace(";"," - "), Console.ForegroundColor = ConsoleColor.Red);
+                    }
+                    string[] item = rdr.GetString(8).Split(",");
+                    string juodut = "Juodut pullot: ";
+                    spaces = new string(' ', juodut.Length);
+                    Console.WriteLine(juodut, Console.ForegroundColor = ConsoleColor.Yellow);
+                    for(int i = 0;i < item.Length; i++)
+                    {
+                        Console.WriteLine(spaces + item[i].Replace(";"," - "), Console.ForegroundColor = ConsoleColor.Green);
+                    }
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    // Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
+                }
+                rdr.Close();
+            }
+
+        }
+
     }
 }

@@ -25,7 +25,7 @@ namespace School_Project
         private string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti,Naapurin Pena,Puisto-Paavo,Rappukäytävän Rauno,Hepuli Henkka,Joskus Joonas,Iltaisin Ilkka,Kaarle Kustaa,Kaisa-Maija,Hilkka Hiljainen,Vihainen Väinö,Tuhma-Tuulia,Puliveivi-Petteri,Korjari-Kalle,Kuura-Kaisa,Kierosilmä-Kalle,Kukko-Kustaa,Vihreä-Vilho,Röyhkeä-Riku,Sähäkkä-Sari,Sini-Simo,Karski-Kalle,Leijuva-Liisa,Pimeyden Pekka,Suksi-Sakari,Timanttinen Tiina,Ukko-Pekka,Vilkas-Ville";
 
         //private string enemyNamesOne = "Tissuttelija Tauno,Tuoppi Matti,Junnu Jannu,Repa duunari,Seppo sivistyneesti,Naapurin Pena,Puisto-Paavo,Rappukäytävän Rauno,Hepuli Henkka,Joskus Joonas,Iltaisin Ilkka";
-        private String enemyNamesTwo = "Juoppo Jaska,Piilojuoppo Pekka,Rapajuoppu Reino,Pelkkä Keijo,Ex nyrkkeilijä puistosta";
+        private string enemyNamesTwo = "Juoppo Jaska,Piilojuoppo Pekka,Rapajuoppu Reino,Pelkkä Keijo,Ex nyrkkeilijä puistosta";
 
         private string enemyNamesThree = "Semi pro,Lasse lähti lapasesta,Ihan vaan Seppo,Taiteilija Thomas";
         private string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
