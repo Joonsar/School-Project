@@ -60,7 +60,7 @@ namespace School_Project
                     Console.WriteLine("Merkit:");
                     Console.WriteLine(" # - Seinä               + - Ovi");
                     Console.WriteLine(" ! - Itemi               Kirjaimet - Vastustajia");
-                    Console.WriteLine(" < - Rappuset ylös       > - Rappuset alas");
+                    Console.WriteLine(" > - Rappuset ylös       < - Rappuset alas");
                     Console.WriteLine(" ");
                     Console.WriteLine("- Paina Välilyöntiä tutkiaksesi maailmaa.");
                     Console.WriteLine(" ");
