@@ -38,15 +38,20 @@ namespace School_Project
                 }
                 if (this.command == "2")
                 {
+                    gc.localdb.PrintData();
+                }
+
+
+                if (this.command == "3")
+                {
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
                         FileName = "http://juopontarina.servebeer.com:3000",
                         UseShellExecute = true
                     });
-                    
-                    gc.localdb.PrintData();
                 }
-                if (this.command == "3")
+
+                if (this.command == "4")
                 {
                     Console.Clear();
                     Console.WriteLine(" ");
@@ -68,6 +73,7 @@ namespace School_Project
                     gc.running = false;
                     System.Environment.Exit(0);
                 }
+
             }
         }
 
@@ -77,8 +83,9 @@ namespace School_Project
             Console.WriteLine(IntroText);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1 - Uusi peli");
-            Console.WriteLine("2 - Piste tilastot");
-            Console.WriteLine("3 - Info");
+            Console.WriteLine("2 - Paikallinen piste tilasto");
+            Console.WriteLine("3 - Maailmanlaajuinen ranking tilasto");
+            Console.WriteLine("4 - Info");
             Console.WriteLine("0 - Lopeta");
         }
 

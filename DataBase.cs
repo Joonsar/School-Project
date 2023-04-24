@@ -82,13 +82,14 @@ namespace School_Project
             connection.Open();
             string sql = "SELECT * FROM HighScores";
             var cmd = new SqliteCommand(sql, connection);
-            SqliteDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
-                Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1));
+                while (rdr.Read())
+                {
+                    Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1));
+                }
+                rdr.Close();
             }
-            rdr.Close();
         }
     }
 }
