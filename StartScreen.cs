@@ -43,6 +43,8 @@ namespace School_Project
                         FileName = "http://juopontarina.servebeer.com:3000",
                         UseShellExecute = true
                     });
+                    
+                    gc.localdb.PrintData();
                 }
                 if (this.command == "3")
                 {
