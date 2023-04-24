@@ -18,16 +18,17 @@ namespace School_Project
                 switch (key)
                 {
                     case ConsoleKey.RightArrow:
+                    case ConsoleKey.NumPad6:
                         if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft + 1, Console.CursorTop))
                         {
                             break;
                         }
                         Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop);
                         CheckCurrentPosition();
-
                         break;
 
                     case ConsoleKey.LeftArrow:
+                    case ConsoleKey.NumPad4:
                         if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft - 1, Console.CursorTop))
                         {
                             break;
@@ -37,6 +38,7 @@ namespace School_Project
                         break;
 
                     case ConsoleKey.UpArrow:
+                    case ConsoleKey.NumPad8:
                         if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft, Console.CursorTop - 1))
                         {
                             break;
@@ -46,11 +48,48 @@ namespace School_Project
                         break;
 
                     case ConsoleKey.DownArrow:
+                    case ConsoleKey.NumPad2:
                         if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft, Console.CursorTop + 1))
                         {
                             break;
                         }
                         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 1);
+                        CheckCurrentPosition();
+                        break;
+
+                    case ConsoleKey.NumPad9:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft + 1, Console.CursorTop - 1))
+                        {
+                            break;
+                        }
+                        Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop - 1);
+                        CheckCurrentPosition();
+                        break;
+
+                    case ConsoleKey.NumPad7:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft - 1, Console.CursorTop - 1))
+                        {
+                            break;
+                        }
+                        Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop - 1);
+                        CheckCurrentPosition();
+                        break;
+
+                    case ConsoleKey.NumPad1:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft - 1, Console.CursorTop + 1))
+                        {
+                            break;
+                        }
+                        Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop + 1);
+                        CheckCurrentPosition();
+                        break;
+
+                    case ConsoleKey.NumPad3:
+                        if (!gc.Map.IsPositionInsideBounds(Console.CursorLeft + 1, Console.CursorTop + 1))
+                        {
+                            break;
+                        }
+                        Console.SetCursorPosition(Console.CursorLeft + 1, Console.CursorTop + 1);
                         CheckCurrentPosition();
                         break;
 
