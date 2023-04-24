@@ -117,7 +117,7 @@ namespace School_Project
                 string c = Console.ReadLine();
                 if(c == "1")
                 {
-                    this.PrintPlayerStats();
+                    this.PrintPlayerStats(PlayerID);
                 }
                 if(c == "2")
                 {
@@ -144,7 +144,7 @@ namespace School_Project
             this.items = string.Join(",", itemNames);
         }
 
-        private void PrintPlayerStats()
+        private void PrintPlayerStats(int id)
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -152,7 +152,7 @@ namespace School_Project
             connection.Open();
             string sql = "SELECT * FROM HighScores WHERE @PlayerID = PlayerID";
             var cmd = new SqliteCommand(sql, connection);
-            cmd.Parameters.AddWithValue("@PlayerID", PlayerID);
+            cmd.Parameters.AddWithValue("@PlayerID", id);
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
                 while (rdr.Read())
