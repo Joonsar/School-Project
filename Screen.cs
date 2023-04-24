@@ -160,7 +160,7 @@ namespace School_Project
             Console.WriteLine($"Otit yhteensä {gc.GameStats.DamageTaken} vahinkoa");
 
             Console.WriteLine($"Keräsit myös {gc.GameStats.ItemsCollected.Count} pulloa näistä olisi saanut palautus rahoja {gc.GameStats.ItemsCollected.Count * 0.10} euroa. Harmi!");
-            Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level}. olit itse {gc.Player.Level} tasolla");
+            Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level + 1}. olit itse {gc.Player.Level} tasolla");
             var input2 = Console.ReadKey(false);
         }
     }
