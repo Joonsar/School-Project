@@ -29,7 +29,7 @@ namespace School_Project
             PrintInfo();
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Anna Komento: ");
                 this.command = Console.ReadLine();
                 if (this.command == "1")
@@ -55,12 +55,16 @@ namespace School_Project
 
                 if (this.command == "4")
                 {
+                    
                     Console.Clear();
                     Console.WriteLine(" ");
                     Console.WriteLine("Merkit:");
                     Console.WriteLine(" # - Seinä               + - Ovi");
                     Console.WriteLine(" ! - Itemi               Kirjaimet - Vastustajia");
-                    Console.WriteLine(" > - Rappuset ylös       < - Rappuset alas");
+                    Console.Write(" < ", Console.ForegroundColor = ConsoleColor.Green);
+                    Console.Write("- Rappuset ylös       ", Console.ForegroundColor = ConsoleColor.Yellow);
+                    Console.Write(">", Console.ForegroundColor = ConsoleColor.Red);
+                    Console.Write(" - Rappuset alas", Console.ForegroundColor = ConsoleColor.Yellow);
                     Console.WriteLine(" ");
                     Console.WriteLine("- Paina Välilyöntiä tutkiaksesi maailmaa.");
                     Console.WriteLine(" ");
