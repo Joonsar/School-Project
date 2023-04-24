@@ -24,13 +24,11 @@ namespace School_Project
         private string db;
 
         public int PlayerID { get; set; }
-        
+
         public DataBase()
         {
             this.db = "database.db";
-
         }
-
 
         public void CreateDatabase()
         {
@@ -41,12 +39,11 @@ namespace School_Project
                  Nimi TEXT, Pelaajantaso INTEGER, Kartantaso INTEGER, Tehtyvahinko INTEGER, Otettuvahinko INTEGER, Tapetutviholliset TEXT, Juodutpullot TEXT)";
                 var connection = new SqliteConnection($"Data Source ={this.db}");
                 connection.Open();
-                var command =new SqliteCommand(createDb, connection);
+                var command = new SqliteCommand(createDb, connection);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
             }
         }
 
@@ -70,8 +67,8 @@ namespace School_Project
 
         public void GetData(GameStats gs)
         {
-            this.EnemiesKilled = String.Join(",",gs.EnemiesKilled);
-            this.ItemsCollected = String.Join(",",gs.ItemsCollected);
+            this.EnemiesKilled = String.Join(",", gs.EnemiesKilled);
+            this.ItemsCollected = String.Join(",", gs.ItemsCollected);
             this.MapLevel = gs.MapLevel;
             this.PlayerLevel = gs.PlayerLevel;
             this.DamageDealt = gs.DamageDealt;
@@ -83,12 +80,13 @@ namespace School_Project
         {
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
-            string sql = "SELECT Nimi FROM HighScores";
+            string sql = "SELECT * FROM HighScores";
             var cmd = new SqliteCommand(sql, connection);
             SqliteDataReader rdr = cmd.ExecuteReader();
+
             while (rdr.Read())
             {
-                Console.WriteLine(rdr);
+                Console.WriteLine(rdr.GetString(0) + " " + rdr.GetString(1));
             }
             rdr.Close();
         }
