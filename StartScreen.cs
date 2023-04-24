@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -37,8 +38,11 @@ namespace School_Project
                 }
                 if (this.command == "2")
                 {
-
-
+                    System.Diagnostics.Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "http://juopontarina.servebeer.com:3000",
+                        UseShellExecute = true
+                    });
                 }
                 if (this.command == "3")
                 {
