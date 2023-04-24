@@ -91,7 +91,7 @@ namespace School_Project
             entities = Map.entities;
             db = new DatabaseTest();
             localdb = new DataBase();
-            localdb.CreateDatabase();
+
             screen.DrawScreen();
         }
 
@@ -133,10 +133,12 @@ namespace School_Project
             }
             GameStats.MapLevel = Level;
 
+            localdb.CreateDatabase();
             localdb.GetData(GameStats);
             localdb.SaveToDatabase();
+            localdb.PrintData();
+            var input22 = Console.ReadKey();
 
-           
             var testi = JsonSerializer.Serialize(GameStats);
             //  db.CreateDatabase("testi.db");
             //  db.SaveToDatabase("testi.db", testi);
