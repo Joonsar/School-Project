@@ -20,7 +20,7 @@ namespace School_Project
 
         public int MapLevel { get; set; }
 
-        public int Scores { get; set; } 
+        public int Scores { get; set; }
 
         public GameStats()
         {
@@ -31,7 +31,13 @@ namespace School_Project
             PlayerName = GameController.Instance.Player.Name;
             PlayerLevel = GameController.Instance.Player.Level;
             MapLevel = GameController.Instance.Level;
-            Scores = 20*DamageDealt - 20*DamageTaken + 100*PlayerLevel + 50*EnemiesKilled.Count + 50*ItemsCollected.Count + 50*MapLevel;
+            Scores = 0;
+        }
+
+        public void Update()
+        {
+            MapLevel = GameController.Instance.Level;
+            Scores = 20 * DamageDealt - 20 * DamageTaken + 100 * PlayerLevel + 50 * EnemiesKilled.Count + 50 * ItemsCollected.Count + 50 * MapLevel;
         }
     }
 }

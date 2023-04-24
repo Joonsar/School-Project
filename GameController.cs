@@ -134,7 +134,7 @@ namespace School_Project
                     Turn++;
                 }
             }
-            GameStats.MapLevel = Level;
+            GameStats.Update();
 
             //localdb.CreateDatabase();
             localdb.GetData(GameStats);

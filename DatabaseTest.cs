@@ -5,7 +5,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data.SqlClient;
 
-
 namespace School_Project
 {
     public class DatabaseTest
@@ -46,11 +45,12 @@ namespace School_Project
             {
                 var connection = new MySqlConnection(connectionString);
                 connection.Open();
-                string sql = "INSERT INTO GameStats (GameStats, Name, Level) VALUES (@value1, @value2, @value3)";
+                string sql = "INSERT INTO GameStats (GameStats, Name, Level, Score) VALUES (@value1, @value2, @value3, @value4)";
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@value1", jsonString);
                 command.Parameters.AddWithValue("@value2", GameController.Instance.GameStats.PlayerName);
                 command.Parameters.AddWithValue("@value3", GameController.Instance.Player.Level);
+                command.Parameters.AddWithValue("@value4", GameController.Instance.GameStats.Scores);
                 command.ExecuteNonQuery();
                 connection.Close();
             }
