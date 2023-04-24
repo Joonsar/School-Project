@@ -15,10 +15,10 @@ namespace School_Project
 
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         //pitäskö nää vaan muuttaa, että kaikki pötkössä ja sieltä arvotaan. tuntuu vähän turhalta tää leveli juttu.
-        private string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä,Näprää tietokoneella,Vaimo sano että yks vaan.,Harvoin juo. mutta sitten tulee ongelmia.,Kovaääninen juhlija, usein muisti pätkii.,Yllättäen juo, mutta aina kalja kädessä.,Väittää olevansa raitis, mutta salaa juo.,Kokenut, nauttii viskiä.,Salamajuoppo, napostelee juotuaan.,Tupakoi ja juo usein yksin.,Pitää viinistä, mutta ei juo koskaan paljon.,Tykkää maistella erilaisia juomia.,Sosiaalinen juoja joka rakastaa bileitä.,Pieni lasi punaviiniä päivässä pitää terveenä.,Kovaa juovien porukassa. mutta ei itse ole kova juomaan.";
+        private string enemyDescriptiosOne = "Pari sillon tällön,Saunakaljat mukana,Muutamat aina maistuu,Juhlatilaisuuksissa kilistää ei muuten,Eläkkeellä voi pari konjakkia ottaa!,Lähtee yhdelle ja pysyy siinä,Näprää tietokoneella,Vaimo sano että yks vaan.,Harvoin juo. mutta sitten tulee ongelmia.,Kovaääninen juhlija. usein muisti pätkii.,Yllättäen juo, mutta aina kalja kädessä.,Väittää olevansa raitis, mutta salaa juo.,Kokenut, nauttii viskiä.,Salamajuoppo napostelee juotuaan.,Tupakoi ja juo usein yksin.,Pitää viinistä. mutta ei juo koskaan paljon.,Tykkää maistella erilaisia juomia.,Sosiaalinen juoja joka rakastaa bileitä.,Pieni lasi punaviiniä päivässä pitää terveenä.,Kovaa juovien porukassa. mutta ei itse ole kova juomaan.";
 
         private string enemyDescriptiosTwo = "Koko vkl putkeen!,Sixpäkki duunin jälkee heti pöytää!,Juo pelkkää olutta ja korvaa kaiken sanomansa PERKELE huudolla,Juo salaa.. hyi!";
-        private string enemyDescriptionsThree = "melkonen juoppo,Välillä huiliiki,Juo käänit ja aiheuttaa pahennusta kylillä,Välillä heilahtaa viikko kaks..,Katkolta alkon kautta";
+        private string enemyDescriptionsThree = "melkonen juoppo,Välillä huiliiki,Juo käänit ja aiheuttaa pahennusta kylillä,Välillä heilahtaa viikko kaks..,Katkolta kotiin alkon kautta";
         private string enemyDescriptionsFour = "Kaikki tauluu mitä löytyy,Kusen tuoksu hiipii nenää jo kaukaa,Täyspäivänen duuni pysyy tönössä..";
         private string enemyDescriptionsFive = "Nesteeltä lasolia vaikka pikkasen iho kellertääki";
 
@@ -30,6 +30,7 @@ namespace School_Project
         private string enemyNamesThree = "Semi pro,Lasse lähti lapasesta,Ihan vaan Seppo,Taiteilija Thomas";
         private string enemyNamesFour = "Pelle Pöhnä,Märkäkorva Marko,Pimeyden Reino,Viinapiru Väinö";
         private string enemyNamesFive = "Pro,Puiston Jaska,Ihan vaan ammattilainen,Delirium topi,Kadun mies,Puiston asukki";
+
         private ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
         public List<ConsoleColor> c;
 
@@ -42,17 +43,18 @@ namespace School_Project
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
         {
+            var allNames = new string(enemyNamesOne + enemyNamesTwo + enemyNamesThree + enemyNamesFive);
             int count = 0;
             List<string> randomizedNameList = new List<string>();
             List<string> randomizedDescriptionList = new List<string>();
             if (lvl > 10)
             {
-                randomizedNameList = new List<string>(enemyNamesFive.Split(',').ToList().OrderBy(item => rand.Next()));
+                randomizedNameList = new List<string>(allNames.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptionsFive.Split(',').ToList().OrderBy(item => rand.Next()));
             }
             else if (lvl > 8)
             {
-                randomizedNameList = new List<string>(enemyNamesFour.Split(',').ToList().OrderBy(item => rand.Next()));
+                randomizedNameList = new List<string>(allNames.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptionsFour.Split(',').ToList().OrderBy(item => rand.Next()));
             }
             else if (lvl > 5)
@@ -62,12 +64,13 @@ namespace School_Project
             }
             else if (lvl > 2)
             {
-                randomizedNameList = new List<string>(enemyNamesTwo.Split(',').ToList().OrderBy(item => rand.Next()));
+                randomizedNameList = new List<string>(allNames.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptiosTwo.Split(',').ToList().OrderBy(item => rand.Next()));
             }
             else
             {
-                randomizedNameList = new List<string>(enemyNamesOne.Split(',').ToList().OrderBy(item => rand.Next()));
+                randomizedNameList = new List<string>(allNames.Split(',').ToList().OrderBy(item => rand.Next()));
+                //randomizedNameList = new List<string>(enemyNamesOne.Split(',').ToList().OrderBy(item => rand.Next()));
                 randomizedDescriptionList = new List<string>(enemyDescriptiosOne.Split(',').ToList().OrderBy(item => rand.Next()));
             }
 
