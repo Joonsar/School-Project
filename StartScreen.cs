@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace School_Project
         private string command;
         private GameController gc = GameController.Instance;
         private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
+        private readonly ConsoleColor[] Colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Cyan };
 
         public string PlayerName { get; set; }
 
@@ -74,7 +76,12 @@ namespace School_Project
         //jos mennään kaikkien oikeioppisten sääntöjen mukaan niin täähän voi olla private? ei kutsuta muualta
         public void PrintInfo()
         {
+            Random random = new Random();
+            Console.ForegroundColor = Colors[random.Next(Colors.Length)];
             Console.WriteLine(IntroText);
+            Console.ResetColor();
+
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1 - Uusi peli");
             Console.WriteLine("2 - Piste tilastot");
