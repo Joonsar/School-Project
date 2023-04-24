@@ -160,6 +160,8 @@ namespace School_Project
             if (ExpPoints > Level * 100)
             {
                 Level++;
+                BaseDamage += 10;
+                MaxHp += 25;
                 gc.MessageLog.AddMessage($"{Name} on nyt tason {Level} sankari.");
                 gc.screen.PrintPlayerStats();
             }
