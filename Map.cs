@@ -242,7 +242,11 @@ namespace School_Project
         public void CreateEnemies(int level, int enemyCount)
         {
             Enemies enemies = new Enemies();
-            var nrEnemies = Math.Clamp(3, enemyCount + gc.Level, 20);
+            var nrEnemies = enemyCount + gc.Level;
+            if (nrEnemies > 20)
+            {
+                nrEnemies = 20;
+            }
             List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, nrEnemies);
             foreach (Enemy enemy in enemyList)
             {
