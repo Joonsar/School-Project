@@ -108,7 +108,7 @@ namespace School_Project
         {
             if (Health <= 0)
             {
-                gc.MessageLog.AddMessage($"{Name} dies.");
+                gc.MessageLog.AddMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.");
                 gc.GameStats.EnemiesKilled.Add(this);
                 gc.Player.AddExperience((Level + 1) * 50);
                 gc.Map.entities.Remove(this);

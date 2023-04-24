@@ -177,7 +177,7 @@ namespace School_Project
                     //piirrettään ruutu uudestaan
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
+                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
                 }
 
                 //jos ei löydy jo listasta
@@ -202,7 +202,7 @@ namespace School_Project
 
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
+                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
                 }
             }
 
@@ -216,7 +216,7 @@ namespace School_Project
                     Player.Pos = Map.StairDown;
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} Entered level {Level}");
+                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
                 }
                 else
                 {

@@ -160,7 +160,7 @@ namespace School_Project
             if (ExpPoints > Level * 100)
             {
                 Level++;
-                gc.MessageLog.AddMessage($"{Name} is now level {Level}");
+                gc.MessageLog.AddMessage($"{Name} on nyt tason {Level} sankari.");
                 gc.screen.PrintPlayerStats();
             }
         }
@@ -168,7 +168,7 @@ namespace School_Project
         public void TakeDamage(int amount)
         {
             gc.GameStats.DamageTaken += amount;
-            gc.MessageLog.AddMessage($"{Name} takes {amount} damage");
+            gc.MessageLog.AddMessage($"{Name} otaa {amount} vahinkoa");
             HitPoints -= amount;
             gc.screen.PrintPlayerStats();
             CheckDeath();
@@ -178,7 +178,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
-                gc.MessageLog.AddMessage($"You die!");
+                gc.MessageLog.AddMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!");
                 gc.running = false;
             }
         }
