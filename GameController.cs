@@ -139,8 +139,6 @@ namespace School_Project
             //localdb.CreateDatabase();
             localdb.GetData(GameStats);
             localdb.SaveToDatabase();
-            localdb.PrintData();
-            var input22 = Console.ReadKey();
 
             var testi = JsonSerializer.Serialize(GameStats);
             //  db.CreateDatabase("testi.db");
