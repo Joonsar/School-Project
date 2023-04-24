@@ -139,19 +139,11 @@ namespace School_Project
             //localdb.CreateDatabase();
             localdb.GetData(GameStats);
             localdb.SaveToDatabase();
-            localdb.PrintData();
-            var input22 = Console.ReadKey();
 
-            var testi = JsonSerializer.Serialize(GameStats);
-            //  db.CreateDatabase("testi.db");
-            //  db.SaveToDatabase("testi.db", testi);
+            var gamestatsJson = JsonSerializer.Serialize(GameStats);
 
-            var luettuJson = JsonSerializer.Deserialize<GameStats>(testi);
+            db.UploadToServer(gamestatsJson);
 
-            var damageDealth = luettuJson.DamageDealt;
-            db.UploadToServer(testi);
-            Console.WriteLine(testi.Length);
-            Console.WriteLine(testi);
             screen.EndScreen();
         }
 
