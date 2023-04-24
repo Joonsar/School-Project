@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
@@ -81,15 +80,15 @@ namespace School_Project
                 bool overlaps = false;
                 foreach (Room otherRoom in rooms)
                 {
-                    int xr = room.Rect.X -1;
-                    int yr = room.Rect.Y +1;
-                    int rwidht = room.Rect.Width +2;
-                    int rheight = room.Rect.Height +2;
+                    int xr = room.Rect.X - 1;
+                    int yr = room.Rect.Y + 1;
+                    int rwidht = room.Rect.Width + 2;
+                    int rheight = room.Rect.Height + 2;
 
-                    int xo = otherRoom.Rect.X -1;
-                    int yo = otherRoom.Rect.Y +1;
-                    int owidht = otherRoom.Rect.Width +2;
-                    int oheight = otherRoom.Rect.Height +2;
+                    int xo = otherRoom.Rect.X - 1;
+                    int yo = otherRoom.Rect.Y + 1;
+                    int owidht = otherRoom.Rect.Width + 2;
+                    int oheight = otherRoom.Rect.Height + 2;
 
                     Rectangle r = new Rectangle(xr, yr, rwidht, rheight);
                     Rectangle ro = new Rectangle(xo, yo, owidht, oheight);
@@ -243,7 +242,7 @@ namespace School_Project
         public void CreateEnemies(int level, int enemyCount)
         {
             Enemies enemies = new Enemies();
-            List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, enemyCount);
+            List<Enemy> enemyList = enemies.GetEnemyListByLevel(level, enemyCount + gc.Level);
             foreach (Enemy enemy in enemyList)
             {
                 entities.Add(enemy);
