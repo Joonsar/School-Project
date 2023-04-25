@@ -67,8 +67,8 @@ namespace School_Project
                     Console.Write("- Rappuset ylös       ", Console.ForegroundColor = ConsoleColor.Yellow);
                     Console.Write(">", Console.ForegroundColor = ConsoleColor.Red);
                     Console.Write(" - Rappuset alas\n", Console.ForegroundColor = ConsoleColor.Yellow);
-                    Console.Write(" Ħ", Console.ForegroundColor = Map.qMarket.Color);
-                    Console.WriteLine(" - Q-Marketti", Console.ForegroundColor = ConsoleColor.Yellow);
+                    Console.Write(" " + Map.qMarket.Mark + " -", Console.ForegroundColor = Map.qMarket.Color);
+                    Console.WriteLine(" " + Map.qMarket.Description, Console.ForegroundColor = ConsoleColor.Yellow);
                     Console.WriteLine(" ");
                     Console.WriteLine("- Paina Välilyöntiä tutkiaksesi maailmaa.");
                     Console.WriteLine(" ");
