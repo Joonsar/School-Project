@@ -72,6 +72,15 @@ namespace School_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream Bottles {
+            get {
+                return ResourceManager.GetStream("Bottles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream Dead {
             get {
                 return ResourceManager.GetStream("Dead", resourceCulture);
@@ -129,6 +138,15 @@ namespace School_Project.Properties {
         public static System.IO.UnmanagedMemoryStream Score {
             get {
                 return ResourceManager.GetStream("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Slots {
+            get {
+                return ResourceManager.GetStream("Slots", resourceCulture);
             }
         }
         

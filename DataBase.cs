@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Data.Sqlite;
 
 namespace School_Project
@@ -67,7 +68,6 @@ namespace School_Project
             cmd.Parameters.AddWithValue("@DamageTaken", this.DamageTaken);
             cmd.Parameters.AddWithValue("@EnemiesKilled", this.enemies);
             cmd.Parameters.AddWithValue("@ItemsCollected", this.items);
-            PlayerID = Convert.ToInt32(cmd.ExecuteScalar());
             connection.Close();
         }
 
@@ -83,7 +83,7 @@ namespace School_Project
             this.Scores = gs.Scores;
         }
 
-        public void PrintData()
+        public void PrintData(string sql, string name)
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -91,16 +91,25 @@ namespace School_Project
             Console.WriteLine($"{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-25}{"Otettu vahinko",-25}{"Tapetut viholliset",-25}{"Juodut pullot",-25}");
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
-            string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var cmd = new SqliteCommand(sql, connection);
+            if (name != null)
+            {
+                cmd.Parameters.AddWithValue("@Nimi", name);
+            }
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
+                int i = 0;
                 while (rdr.Read())
                 {
                     Console.WriteLine(lines);
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
-                    PlayerID = rdr.GetInt32(0);
+                    if(i == 0)
+                    {
+                        PlayerID = rdr.GetInt32(0);
+                        i++;
+                    }
+                    
 
                     Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
@@ -178,6 +187,19 @@ namespace School_Project
             var cmd = new SqliteCommand(sql, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public void PrintAllPlayerData(String name)
+        {
+            string sql = "SELECT * FROM HighScores WHERE @Nimi = Nimi";
+            this.PrintData(sql, name);
+
+        }
+
+        public void PrintAllData()
+        {
+            string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
+            this.PrintData(sql, null);
         }
 
     }

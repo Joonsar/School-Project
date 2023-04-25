@@ -85,6 +85,7 @@ namespace School_Project
                     }
                     else if (gc.Player.Bottles > 0)
                     {
+                        SoundManager.PlayBottlesSoundAsync();
                         Console.WriteLine($"Palautit {gc.Player.Bottles} pulloa ja sait niistä {gc.Player.Bottles} euroa");
                         gc.Player.Addmoney(gc.Player.Bottles);
                         gc.Player.Bottles = 0;
@@ -114,6 +115,7 @@ namespace School_Project
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
+            SoundManager.PlaySlotsMusicAsync();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Slots();
