@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace School_Project
 {
@@ -138,6 +139,9 @@ namespace School_Project
             else
             {
                 gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
+                SoundManager.PlayMissedSound();
+                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                SoundManager.PlayMainMusic();
             }
         }
 

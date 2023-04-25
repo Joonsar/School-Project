@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 namespace School_Project
 {
@@ -108,6 +109,10 @@ namespace School_Project
         {
             if (Health <= 0)
             {
+                SoundManager.PlayVictorySound();
+                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                SoundManager.PlayMainMusic();
+
                 gc.MessageLog.AddMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.");
                 gc.GameStats.EnemiesKilled.Add(this);
                 gc.Player.AddExperience((Level + 1) * 50);
