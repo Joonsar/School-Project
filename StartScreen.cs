@@ -64,6 +64,8 @@ namespace School_Project
                         if (c == "9")
                         {
                             gc.localdb.ClearDatabase();
+                            this.PrintInfo();
+                            break;
                         }
                     }
                 }
