@@ -45,6 +45,8 @@ namespace School_Project
 
         public bool Inspecting { get; set; }
 
+        public Qmarket Qmarket { get; set; }
+
         //    private Stack<Map> previousMaps = new Stack<Map>();
 
         public bool StairsGenerated = false;
@@ -59,6 +61,7 @@ namespace School_Project
 
         public void Init()
         {
+            Qmarket = new Qmarket();
             localdb = new DataBase();
             localdb.CreateDatabase();
             //All here that needs to be initialized like map, Player, screen etc.

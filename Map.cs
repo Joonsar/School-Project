@@ -29,6 +29,7 @@ namespace School_Project
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
         public static readonly MapObject door = new MapObject('+', "Ovi", false, ConsoleColor.White);
         public static readonly MapObject openDoor = new MapObject('-', "Ovi", true, ConsoleColor.White);
+        public static readonly MapObject qMarket = new MapObject('Q', "Q-Market", true, ConsoleColor.Cyan);
 
         public List<Entity> entities;
         private List<Position> playerPath;
@@ -63,6 +64,7 @@ namespace School_Project
             GenerateRoom(numberOfRooms);
             GenerateStairs();
             GenerateItems();
+            GenerateMarket();
 
             // Generate random walls
             //  GenerateRandomWalls();
@@ -161,6 +163,17 @@ namespace School_Project
                 return true;
             }
             return false;
+        }
+
+        private void GenerateMarket()
+        {
+            Random random = new Random();
+            var pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
+            while (!IsPositionValid(pos))
+            {
+                pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
+            }
+            Mapping[pos.X, pos.Y] = qMarket;
         }
 
         private void GenerateRandomWalls()
