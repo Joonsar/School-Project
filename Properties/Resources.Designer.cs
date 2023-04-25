@@ -72,9 +72,9 @@ namespace School_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        public static System.IO.UnmanagedMemoryStream Death {
+        public static System.IO.UnmanagedMemoryStream Dead {
             get {
-                return ResourceManager.GetStream("Death", resourceCulture);
+                return ResourceManager.GetStream("Dead", resourceCulture);
             }
         }
         

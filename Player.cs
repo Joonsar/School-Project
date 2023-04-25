@@ -151,7 +151,7 @@ namespace School_Project
             else
             {
                 gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
-                SoundManager.PlayMissedSound();
+                SoundManager.PlayMissedHitSound();
                 Task.Delay(TimeSpan.FromSeconds(1)).Wait();
                 SoundManager.PlayMainMusic();
             }

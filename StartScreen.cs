@@ -29,7 +29,7 @@ namespace School_Project
 
         public void Run()
         {
-            SoundManager.PlayGameStart();
+            SoundManager.PlayGameStartSound();
             PrintInfo();
             while (true)
             {
