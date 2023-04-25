@@ -84,7 +84,7 @@ namespace School_Project
                 Turn = 1;
             }
             entities = new List<Entity>();
-
+           
             Maps = new List<Map>();
             this.Map = new Map(Width, Height);
             Maps.Add(Map);
