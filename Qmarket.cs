@@ -44,8 +44,7 @@ namespace School_Project
                         gc.Player.Money -= 10;
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
-                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
-                        Console.ReadKey(true);
+                        PressKeyToContinue();
                         Shop();
                     }
                     else
@@ -88,8 +87,7 @@ namespace School_Project
                         gc.Player.Addmoney(gc.Player.Bottles);
                         gc.Player.Bottles = 0;
                     }
-                    Console.WriteLine("Paina jotain nappia jatkaaksesi");
-                    Console.ReadKey();
+                    PressKeyToContinue();
                     Shop();
                     break;
 
@@ -103,14 +101,19 @@ namespace School_Project
             }
         }
 
+        private static void PressKeyToContinue()
+        {
+            Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+            Console.ReadKey(true);
+        }
+
         private void RunMachine()
         {
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
             Console.WriteLine("e - Poistu, p - Pelaa");
-            Console.SetCursorPosition(20, 14);
-            Console.WriteLine($"Rahat: {gc.Player.Money}e");
+            PrintMoney();
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
@@ -126,6 +129,12 @@ namespace School_Project
                     RunMachine();
                     break;
             }
+        }
+
+        private void PrintMoney()
+        {
+            Console.SetCursorPosition(20, 14);
+            Console.WriteLine($"Rahat: {gc.Player.Money}e");
         }
 
         private void Slots()
@@ -146,13 +155,11 @@ namespace School_Project
                 var input = Console.ReadKey(true);
                 if (gc.Player.Money >= 1)
                 {
-                    Console.SetCursorPosition(20, 14);
-                    Console.WriteLine($"Rahat: {gc.Player.Money}              ");
+                    PrintMoney();
                 }
                 else if (gc.Player.Money < 0)
                 {
-                    Console.SetCursorPosition(20, 14);
-                    Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
+                    PrintNotEnoughMoney();
                 }
                 switch (input.Key)
                 {
@@ -161,13 +168,12 @@ namespace School_Project
                         if (gc.Player.Money >= 1)
                         {
                             gc.Player.Money -= 1;
-                            Console.SetCursorPosition(20, 14);
-                            Console.WriteLine($"Rahat: {gc.Player.Money}");
+                            PrintMoney();
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
                                 Console.SetCursorPosition(20 + i, 20);
-                                Console.Write("#");
+                                Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
                                 Console.SetCursorPosition(20 + i, 20);
                                 Console.Write(row[i]);
@@ -233,8 +239,7 @@ namespace School_Project
                         }
                         else
                         {
-                            Console.SetCursorPosition(20, 14);
-                            Console.WriteLine("Sinulla ei ole tarpeeksi rahaa pelata.");
+                            PrintNotEnoughMoney();
                         }
                         break;
 
@@ -247,6 +252,12 @@ namespace School_Project
                         break;
                 }
             }
+        }
+
+        private static void PrintNotEnoughMoney()
+        {
+            Console.SetCursorPosition(20, 14);
+            Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
         }
     }
 }
