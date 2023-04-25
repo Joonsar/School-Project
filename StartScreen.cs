@@ -45,11 +45,13 @@ namespace School_Project
                 if (this.command == "2")
                 {
                     gc.localdb.PrintData();
+                    SoundManager.PlayScoreSound();
                 }
 
 
                 if (this.command == "3")
                 {
+                    SoundManager.PlayScoreSound();
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
                         FileName = "http://juopontarina.servebeer.com:3000",

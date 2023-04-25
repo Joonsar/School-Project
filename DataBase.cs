@@ -96,7 +96,7 @@ namespace School_Project
             connection.Open();
             string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var cmd = new SqliteCommand(sql, connection);
-            using (SqliteDataReader rdr = cmd.ExecuteReader())
+            using (SqliteDataReader rdr = cmd.ExecuteReader()) 
             {
                 while (rdr.Read())
                 {

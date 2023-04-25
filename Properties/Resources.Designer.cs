@@ -104,5 +104,14 @@ namespace School_Project.Properties {
                 return ResourceManager.GetStream("MainMusic", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Score {
+            get {
+                return ResourceManager.GetStream("Score", resourceCulture);
+            }
+        }
     }
 }

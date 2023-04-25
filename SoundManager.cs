@@ -13,6 +13,7 @@ namespace School_Project
         private static readonly SoundPlayer ItemPickupPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
         private static readonly SoundPlayer GameStartPlayer = new SoundPlayer(School_Project.Properties.Resources.GameStart);
         private static readonly SoundPlayer DieSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Death);
+        private static readonly SoundPlayer ScoreSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Score);
         private static SoundPlayer mainMusicPlayer;
 
         public static void PlayMainMusic()
@@ -40,6 +41,11 @@ namespace School_Project
         public static void PlayDieSound()
         {
             DieSoundPlayer.Play();
+        }
+
+        public static void PlayScoreSound()
+        {
+            ScoreSoundPlayer.Play();
         }
     }
 }
