@@ -21,6 +21,8 @@ namespace School_Project
 
         public int Level { get; private set; }
 
+        public int Bottles { get; set; }
+
         public List<Entity> Inventory { get; set; }
 
         public Map map;
@@ -36,6 +38,8 @@ namespace School_Project
 
         public Position Pos { get; set; }
 
+        public float Money { get; set; }
+
         private Random rand = new Random();
 
         public Player(string name, int healthValue, int hitPoints)
@@ -50,6 +54,8 @@ namespace School_Project
             Pos = gc.Map.StairUp;
             BaseDamage = 50;
             BaseHitChance = 30;
+            Money = 0;
+            Bottles = 0;
 
             //LastPosition = new Tuple<Position, char>(new Position(10, 10), gc.Map.Mapping[10, 10]);
 
@@ -67,6 +73,11 @@ namespace School_Project
         public void MovePlayerToPosition(Position pos)
         {
             Pos = pos;
+        }
+
+        public void Addmoney(float amount)
+        {
+            Money += amount;
         }
 
         public void SetPlayerLastPosition()
@@ -102,6 +113,7 @@ namespace School_Project
                 gc.MessageLog.AddMessage($"Poimit maasta {item.Name} {item.Description}");
                 item.Use();
                 Inventory.Add(item);
+                Bottles++;
                 gc.GameStats.ItemsCollected.Add(item);
                 gc.Map.entities.Remove(item);
             }
