@@ -136,6 +136,9 @@
   <data name="Item" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\item.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LevelUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sounds\levelup.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="MainMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\mainmusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

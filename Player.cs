@@ -177,13 +177,18 @@ namespace School_Project
             CheckLevelUp();
         }
 
-        public void CheckLevelUp()
+        public  void CheckLevelUp()
         {
             if (ExpPoints > Level * 100)
             {
                 Level++;
                 BaseDamage += 10;
                 MaxHp += 25;
+
+                SoundManager.PlayLevelUpSound().Wait(1);
+                Task.Delay(TimeSpan.FromSeconds(1));
+                SoundManager.PlayMainMusic();
+
                 gc.MessageLog.AddMessage($"{Name} on nyt tason {Level} sankari.");
                 gc.screen.PrintPlayerStats();
             }

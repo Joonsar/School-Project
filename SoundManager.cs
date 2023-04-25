@@ -22,7 +22,8 @@ namespace School_Project
         Bottles,
         OpenBottle,
         Win,
-        Fail
+        Fail,
+        LevelUp
     }
 
     public static class SoundManager
@@ -41,7 +42,8 @@ namespace School_Project
             { SoundType.Bottles, new SoundPlayer(School_Project.Properties.Resources.Bottles) },
             { SoundType.OpenBottle, new SoundPlayer(School_Project.Properties.Resources.OpenBottle) },
             { SoundType.Win, new SoundPlayer(School_Project.Properties.Resources.Win) },
-            { SoundType.Fail, new SoundPlayer(School_Project.Properties.Resources.Fail) }
+            { SoundType.Fail, new SoundPlayer(School_Project.Properties.Resources.Fail) },
+            { SoundType.LevelUp, new SoundPlayer(School_Project.Properties.Resources.LevelUp) }
         };
 
         private static SoundPlayer mainMusicPlayer;
@@ -136,6 +138,12 @@ namespace School_Project
             var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
             await Task.Run(() => soundPlayer.PlaySync());
         }
+        public static async Task PlayLevelUpSound()
+        {
+            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.LevelUp);
+            await Task.Run(() => soundPlayer.PlaySync());
+        }
+
 
         public static async Task PlayGameStartSoundAsync()
         {
@@ -173,5 +181,6 @@ namespace School_Project
         {
             await Task.Run(() => soundPlayers[SoundType.Die].PlaySync());
         }
+
     }
 }
