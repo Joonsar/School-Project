@@ -77,7 +77,7 @@ namespace School_Project
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             MessageLog = new MessageLog(Height);
             StartScreen = new StartScreen();
-            
+
             if (Turn == 0)
             {
                 screen.Clear();
@@ -85,7 +85,7 @@ namespace School_Project
                 Turn = 1;
             }
             entities = new List<Entity>();
-           
+
             Maps = new List<Map>();
             this.Map = new Map(Width, Height);
             Maps.Add(Map);
@@ -107,7 +107,6 @@ namespace School_Project
             SoundManager.PlayMainMusic();
             while (running)
             {
-               
                 if (Inspecting)
                 {
                     var input = Console.ReadKey(true);
@@ -183,7 +182,7 @@ namespace School_Project
                     //piirrettään ruutu uudestaan
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
+                    MessageLog.AddMessage(new LogMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}", ConsoleColor.Yellow));
                 }
 
                 //jos ei löydy jo listasta
@@ -208,7 +207,7 @@ namespace School_Project
 
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
+                    MessageLog.AddMessage(new LogMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}", ConsoleColor.Yellow));
                 }
             }
 
@@ -222,7 +221,7 @@ namespace School_Project
                     Player.Pos = Map.StairDown;
                     screen.DrawScreen();
                     Player.SetPlayerLastPosition();
-                    MessageLog.AddMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}");
+                    MessageLog.AddMessage(new LogMessage($"{Player.Name} saapuu lähiön tasolle {Level + 1}", ConsoleColor.Yellow));
                 }
                 else
                 {

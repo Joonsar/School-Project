@@ -93,13 +93,13 @@ namespace School_Project
             if (gc.Map.Mapping[Pos.X + x, Pos.Y + y] == Map.door)
             {
                 gc.Map.Mapping[Pos.X + x, Pos.Y + y] = Map.openDoor;
-                gc.MessageLog.AddMessage("Avasit oven!");
+                gc.MessageLog.AddMessage(new LogMessage("Avasit oven!", ConsoleColor.DarkYellow));
                 gc.screen.WriteAtPosition(new Position(Pos.X + x, Pos.Y + y), Map.openDoor.Mark);
                 return;
             }
             if (gc.Map.Mapping[Pos.X + x, Pos.Y + y] == Map.qMarket)
             {
-                gc.MessageLog.AddMessage("Menit Q-Markettiin!");
+                gc.MessageLog.AddMessage(new LogMessage("Menit Q-Markettiin!", ConsoleColor.DarkYellow));
 
                 gc.Qmarket.Shop();
             }
@@ -111,7 +111,7 @@ namespace School_Project
             if (gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y) != null)
             {
                 var item = gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y);
-                gc.MessageLog.AddMessage($"Poimit maasta {item.Name} {item.Description}");
+                gc.MessageLog.AddMessage(new LogMessage($"Poimit maasta {item.Name} {item.Description}", ConsoleColor.Blue));
                 item.Use();
                 Inventory.Add(item);
                 Bottles++;
@@ -150,7 +150,7 @@ namespace School_Project
             }
             else
             {
-                gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
+                gc.MessageLog.AddMessage(new LogMessage($"Epäonnistut nolosti ja kaadut turvallesi.", ConsoleColor.Red));
                 SoundManager.PlayMissedHitSound();
                 Task.Delay(TimeSpan.FromSeconds(1));
                 SoundManager.PlayMainMusic();
@@ -177,7 +177,7 @@ namespace School_Project
             CheckLevelUp();
         }
 
-        public  void CheckLevelUp()
+        public void CheckLevelUp()
         {
             if (ExpPoints > Level * 100)
             {
@@ -189,7 +189,7 @@ namespace School_Project
                 Task.Delay(TimeSpan.FromSeconds(1));
                 SoundManager.PlayMainMusic();
 
-                gc.MessageLog.AddMessage($"{Name} on nyt tason {Level} sankari.");
+                gc.MessageLog.AddMessage(new LogMessage($"{Name} on nyt tason {Level} sankari.", ConsoleColor.DarkYellow));
                 gc.screen.PrintPlayerStats();
             }
         }
@@ -197,7 +197,7 @@ namespace School_Project
         public void TakeDamage(int amount)
         {
             gc.GameStats.DamageTaken += amount;
-            gc.MessageLog.AddMessage($"{Name} otaa {amount} vahinkoa");
+            gc.MessageLog.AddMessage(new LogMessage($"{Name} otaa {amount} vahinkoa", ConsoleColor.Red));
             HitPoints -= amount;
             gc.screen.PrintPlayerStats();
             CheckDeath();
@@ -208,7 +208,7 @@ namespace School_Project
             if (HitPoints <= 0)
             {
                 SoundManager.PlayDieSoundAsync();
-                gc.MessageLog.AddMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!");
+                gc.MessageLog.AddMessage(new LogMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!", ConsoleColor.Red));
                 gc.running = false;
             }
         }

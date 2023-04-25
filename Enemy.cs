@@ -65,12 +65,12 @@ namespace School_Project
                 var hitChance = rand.Next(0, 100);
                 if (hitChance > 50)
                 {
-                    gc.MessageLog.AddMessage($"{Name} hits {gc.Player.Name}");
+                    gc.MessageLog.AddMessage(new LogMessage($"{Name} lyö {gc.Player.Name}", ConsoleColor.DarkYellow));
                     gc.Player.TakeDamage(Damage);
                 }
                 else
                 {
-                    gc.MessageLog.AddMessage($"{Name} misses {gc.Player.Name}");
+                    gc.MessageLog.AddMessage(new LogMessage($"{Name} yrittää huitaista, mutta {gc.Player.Name} väistää.", ConsoleColor.DarkYellow));
                 }
             }
         }
@@ -86,19 +86,19 @@ namespace School_Project
             switch (v)
             {
                 case int n when n < 70:
-                    gc.MessageLog.AddMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})");
+                    gc.MessageLog.AddMessage(new LogMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 70 && n < 90:
-                    gc.MessageLog.AddMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa. ({Health}/{MaxHealth})");
+                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 90 && n < 120:
-                    gc.MessageLog.AddMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})");
+                    gc.MessageLog.AddMessage(new LogMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})", ConsoleColor.Green)); ;
                     break;
 
                 default:
-                    gc.MessageLog.AddMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})");
+                    gc.MessageLog.AddMessage(new LogMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
             }
 
@@ -113,7 +113,7 @@ namespace School_Project
                 Task.Delay(TimeSpan.FromSeconds(1)).Wait(1);
                 SoundManager.PlayMainMusic();
 
-                gc.MessageLog.AddMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.");
+                gc.MessageLog.AddMessage(new LogMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.", ConsoleColor.Green));
                 gc.GameStats.EnemiesKilled.Add(this);
                 gc.Player.AddExperience((Level + 1) * 50);
                 gc.Map.entities.Remove(this);
