@@ -28,13 +28,53 @@ namespace School_Project
             PrintLogo(qMarketLogo);
             Console.WriteLine();
 
-            Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia ");
+            Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
+                    break;
+
+                case ConsoleKey.K:
+                    if (gc.Player.Money >= 10)
+                    {
+                        gc.Player.BaseDamage += 20;
+                        gc.Player.Money -= 10;
+                        Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
+                        gc.Player.Bottles++;
+                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+                        Console.ReadKey(true);
+                        Shop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sinulla ei ole tarpeeksi rahaa!");
+                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+                        Console.ReadKey(true);
+                        Shop();
+                    }
+                    break;
+
+                case ConsoleKey.V:
+                    if (gc.Player.Money >= 10)
+                    {
+                        gc.Player.MaxHp += 20;
+                        gc.Player.Money -= 10;
+                        Console.WriteLine("Ostit vissyn ja kulautit sen naamaan. Tunnet voivasi paremmin");
+                        gc.Player.Bottles++;
+                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+                        Console.ReadKey(true);
+                        Shop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sinulla ei ole tarpeeksi rahaa!");
+                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+                        Console.ReadKey(true);
+                        Shop();
+                    }
                     break;
 
                 case (ConsoleKey.S):
@@ -104,8 +144,16 @@ namespace School_Project
             while (playing)
             {
                 var input = Console.ReadKey(true);
-                Console.SetCursorPosition(20, 14);
-                Console.WriteLine($"Rahat: {gc.Player.Money}");
+                if (gc.Player.Money >= 1)
+                {
+                    Console.SetCursorPosition(20, 14);
+                    Console.WriteLine($"Rahat: {gc.Player.Money}              ");
+                }
+                else if (gc.Player.Money < 0)
+                {
+                    Console.SetCursorPosition(20, 14);
+                    Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
+                }
                 switch (input.Key)
                 {
                     case ConsoleKey.P:
@@ -113,6 +161,8 @@ namespace School_Project
                         if (gc.Player.Money >= 1)
                         {
                             gc.Player.Money -= 1;
+                            Console.SetCursorPosition(20, 14);
+                            Console.WriteLine($"Rahat: {gc.Player.Money}");
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
