@@ -180,6 +180,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
+                SoundManager.PlayDieSound();
                 gc.MessageLog.AddMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!");
                 gc.running = false;
             }
