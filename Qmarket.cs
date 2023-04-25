@@ -135,14 +135,14 @@ namespace School_Project
         private void PrintMoney()
         {
             Console.SetCursorPosition(20, 14);
-            Console.WriteLine($"Rahat: {gc.Player.Money}e");
+            Console.WriteLine($"Rahat: {gc.Player.Money}e            ");
         }
 
         private void Slots()
         {
             bool playing = true;
             int winnings = 0;
-            var spaces = new string(' ', 20);
+            var spaces = new string(' ', 40);
             Random rand = new Random();
             char[] row = new char[3];
             List<char> chars = new List<char>();
@@ -170,17 +170,25 @@ namespace School_Project
                         {
                             gc.Player.Money -= 1;
                             PrintMoney();
+                            Console.SetCursorPosition(20, 20);
+                            Console.Write("       ");
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
                                 Console.SetCursorPosition(20 + i, 20);
-                                Console.Write(".");
+                                //Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
                                 Console.SetCursorPosition(20 + i, 20);
+                                if (i == 0)
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                if (i == 1)
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                if (i == 2)
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write(row[i]);
                             }
                             //  Console.WriteLine($"\n{row[0]} {row[1]} {row[2]}");
-
+                            Console.ResetColor();
                             Console.WriteLine();
 
                             if (row[0] == row[1] && row[1] == row[2])
@@ -188,22 +196,23 @@ namespace School_Project
                                 if (row[0] == '$')
                                 {
                                     winnings = 50;
-                                    Console.WriteLine("Humalaisen tuuria voitit JACKPOTIN 50 euroa!");
+                                    Console.WriteLine("Humalaisen tuuria voitit JACKPOTIN 50 euroa!" + spaces);
                                 }
                                 else if (row[0] == '%')
                                 {
                                     winnings = 20;
-                                    // Console.WriteLine("Voitit 10 euroa." + spaces);
+
+                                    Console.WriteLine("Voitit 10 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
                                 {
                                     winnings = 30;
-                                    //Console.WriteLine("Voitit 20 euroa." + spaces);
+                                    Console.WriteLine("Voitit 20 euroa." + spaces);
                                 }
                                 else if (row[0] == '¤')
                                 {
                                     winnings = 40;
-                                    //Console.WriteLine("Voitit 30 euroa." + spaces);
+                                    Console.WriteLine("ISO voitto, meinaat lentää perseellesi. Voitit 40 euroa." + spaces);
                                 }
                             }
                             else if (row[0] == row[1])
@@ -211,24 +220,24 @@ namespace School_Project
                                 if (row[0] == '$')
                                 {
                                     winnings = 5;
-                                    //Console.WriteLine("Voitit 5 euroa." + spaces);
+                                    Console.WriteLine("Voitit 5 euroa." + spaces);
                                 }
                                 else if (row[0] == '%')
                                 {
                                     winnings = 4;
-                                    //Console.WriteLine("Voitit 4 euroa." + spaces);
+                                    Console.WriteLine("Voitit 4 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
                                 {
                                     winnings = 3;
-                                    //   Console.WriteLine("Voitit 3 euroa." + spaces);
+                                    Console.WriteLine("Voitit 3 euroa." + spaces);
                                 }
                                 else if (row[0] == '¤')
                                 {
                                     winnings = 2;
-                                    // Console.WriteLine("Voitit 2 euroa." + spaces);
+                                    Console.WriteLine("Voitit 2 euroa." + spaces);
                                 }
-                                Console.Write($"Voitit {winnings} euroa." + spaces);
+                                // Console.Write($"Voitit {winnings} euroa." + spaces);
                             }
                             else
                             {
@@ -236,6 +245,7 @@ namespace School_Project
                                 Console.WriteLine("Sinne meni, et voittanut mitään!" + spaces);
                             }
                             gc.Player.Money += winnings;
+                            PrintMoney();
                             winnings = 0;
                             // Console.WriteLine($"Rahat {gc.Player.Money}\n");
                         }
