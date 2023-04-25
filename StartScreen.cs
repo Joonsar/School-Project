@@ -51,6 +51,7 @@ namespace School_Project
                         Console.WriteLine("1 - Tarkemmat tiedot");
                         Console.WriteLine("2 - Paluu valikkoon");
                         Console.WriteLine("9 - Tyhjennä tilastot");
+                        Console.Write("Anna komento: ");
                         string c = Console.ReadLine();
                         if (c == "1")
                         {
