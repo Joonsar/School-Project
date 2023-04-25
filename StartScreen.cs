@@ -50,7 +50,8 @@ namespace School_Project
                     {
                         Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
                         Console.WriteLine("2 - Hae pelaajan tiedot nimellä");
-                        Console.WriteLine("3 - Paluu valikkoon");
+                        Console.WriteLine("3 - Tulosta sijoitus lista");
+                        Console.WriteLine("4 - Paluu valikkoon");
                         Console.WriteLine("9 - Tyhjennä tilastot");
                         Console.Write("Anna komento: ");
                         string c = Console.ReadLine();
@@ -66,6 +67,11 @@ namespace School_Project
                         }
                         if (c == "3")
                         {
+                            gc.localdb.PrintAllData();
+                            SoundManager.PlayScoreSound();
+                        }
+                        if (c == "4")
+                        {
                             this.PrintInfo();
                             break;
                         }
@@ -75,6 +81,7 @@ namespace School_Project
                             this.PrintInfo();
                             break;
                         }
+                        
                     }
                 }
 
