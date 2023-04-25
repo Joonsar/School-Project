@@ -42,56 +42,11 @@ namespace School_Project
                     gc.running = true;
                     break;
                 }
+
                 if (this.command == "2")
                 {
-                    gc.localdb.PrintAllData();
-                    SoundManager.PlayScoreSound();
-                    while (true)
-                    {
-                        Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
-                        Console.WriteLine("2 - Hae pelaajan sijoitukset nimellä");
-                        Console.WriteLine("3 - Hae tarkemmat tiedot id:llä");
-                        Console.WriteLine("4 - Tulosta sijoitus lista");
-                        Console.WriteLine("5 - Paluu valikkoon");
-                        Console.WriteLine("9 - Tyhjennä tilastot");
-                        Console.Write("Anna komento: ");
-                        string c = Console.ReadLine();
-                        if (c == "1")
-                        {
-                            gc.localdb.PrintPlayerStats(gc.localdb.PlayerID);
-                        }
-                        if(c == "2")
-                        {
-                            Console.Write("Anna pelaajan nimi: ");
-                            string name = Console.ReadLine();
-                            gc.localdb.PrintAllPlayerData(name);
-                        }
-                        if(c == "3")
-                        {
-                            Console.Write("Anna id: ");
-                            int id = Convert.ToInt32(Console.ReadLine());
-                            gc.localdb.PrintPlayerStatsWihtID(id);
-                        }
-                        if (c == "4")
-                        {
-                            gc.localdb.PrintAllData();
-                            SoundManager.PlayScoreSound();
-                        }
-                        if (c == "5")
-                        {
-                            this.PrintInfo();
-                            break;
-                        }
-                        if (c == "9")
-                        {
-                            gc.localdb.ClearDatabase();
-                            this.PrintInfo();
-                            break;
-                        }
-                        
-                    }
+                    this.DatabaseUsage();
                 }
-
 
                 if (this.command == "3")
                 {
@@ -128,6 +83,56 @@ namespace School_Project
                 {
                     gc.running = false;
                     System.Environment.Exit(0);
+                }
+
+            }
+        }
+
+        private void DatabaseUsage()
+        {
+            gc.localdb.PrintAllData();
+            SoundManager.PlayScoreSound();
+            while (true)
+            {
+                Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
+                Console.WriteLine("2 - Hae pelaajan sijoitukset nimellä");
+                Console.WriteLine("3 - Hae tarkemmat tiedot id:llä");
+                Console.WriteLine("4 - Tulosta sijoitus lista");
+                Console.WriteLine("5 - Paluu valikkoon");
+                Console.WriteLine("9 - Tyhjennä tilastot");
+                Console.Write("Anna komento: ");
+                string c = Console.ReadLine();
+                if (c == "1")
+                {
+                    gc.localdb.PrintPlayerStats(gc.localdb.PlayerID);
+                }
+                if (c == "2")
+                {
+                    Console.Write("Anna pelaajan nimi: ");
+                    string name = Console.ReadLine();
+                    gc.localdb.PrintAllPlayerData(name);
+                }
+                if (c == "3")
+                {
+                    Console.Write("Anna id: ");
+                    int id = Convert.ToInt32(Console.ReadLine());
+                    gc.localdb.PrintPlayerStatsWihtID(id);
+                }
+                if (c == "4")
+                {
+                    gc.localdb.PrintAllData();
+                    SoundManager.PlayScoreSound();
+                }
+                if (c == "5")
+                {
+                    this.PrintInfo();
+                    break;
+                }
+                if (c == "9")
+                {
+                    gc.localdb.ClearDatabase();
+                    this.PrintInfo();
+                    break;
                 }
 
             }
