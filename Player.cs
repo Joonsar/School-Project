@@ -152,7 +152,7 @@ namespace School_Project
             {
                 gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
                 SoundManager.PlayMissedHitSound();
-                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                Task.Delay(TimeSpan.FromSeconds(1));
                 SoundManager.PlayMainMusic();
             }
         }
@@ -202,7 +202,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
-                SoundManager.PlayDieSound();
+                SoundManager.PlayDieSoundAsync();
                 gc.MessageLog.AddMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!");
                 gc.running = false;
             }

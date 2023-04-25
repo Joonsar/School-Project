@@ -110,7 +110,7 @@ namespace School_Project
             if (Health <= 0)
             {
                 SoundManager.PlayVictorySound();
-                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                Task.Delay(TimeSpan.FromSeconds(1)).Wait(1);
                 SoundManager.PlayMainMusic();
 
                 gc.MessageLog.AddMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.");
