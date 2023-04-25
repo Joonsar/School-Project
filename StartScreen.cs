@@ -46,6 +46,26 @@ namespace School_Project
                 {
                     gc.localdb.PrintData();
                     SoundManager.PlayScoreSound();
+                    while (true)
+                    {
+                        Console.WriteLine("1 - Tarkemmat tiedot");
+                        Console.WriteLine("2 - Paluu valikkoon");
+                        Console.WriteLine("9 - Tyhjennä tilastot");
+                        string c = Console.ReadLine();
+                        if (c == "1")
+                        {
+                            gc.localdb.PrintPlayerStats(gc.localdb.PlayerID);
+                        }
+                        if (c == "2")
+                        {
+                            this.PrintInfo();
+                            break;
+                        }
+                        if (c == "9")
+                        {
+                            gc.localdb.ClearDatabase();
+                        }
+                    }
                 }
 
 
