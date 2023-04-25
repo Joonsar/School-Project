@@ -30,6 +30,7 @@ namespace School_Project
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
             SoundManager.PlayMarketSoundAsync();
+            gc.screen.PrintPlayerStats();
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
@@ -118,6 +119,7 @@ namespace School_Project
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
             SoundManager.PlaySlotsMusicAsync();
+            Console.WriteLine();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Slots();
@@ -159,6 +161,7 @@ namespace School_Project
 
             while (playing)
             {
+                gc.screen.PrintPlayerStats();
                 var input = Console.ReadKey(true);
                 if (gc.Player.Money >= 1)
                 {
@@ -257,6 +260,7 @@ namespace School_Project
                             PrintMoney();
                             winnings = 0;
                             // Console.WriteLine($"Rahat {gc.Player.Money}\n");
+                            SoundManager.PlaySlotsMusicAsync();
                         }
                         else
                         {
