@@ -206,13 +206,13 @@ namespace School_Project
                                 }
                                 else if (row[0] == '%')
                                 {
-                                    winnings = 20;
+                                    winnings = 10;
 
                                     Console.WriteLine("Voitit 10 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
                                 {
-                                    winnings = 30;
+                                    winnings = 20;
                                     Console.WriteLine("Voitit 20 euroa." + spaces);
                                 }
                                 else if (row[0] == '¤')

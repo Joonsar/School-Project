@@ -37,7 +37,7 @@ namespace School_Project
         public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
             items = new Items();
-            ItemCount = 6;
+            ItemCount = 8;
             this.Width = width;
             this.Height = height;
             entities = new List<Entity>();
