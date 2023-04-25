@@ -140,13 +140,12 @@ namespace School_Project
         }
 
         //jos mennään kaikkien oikeioppisten sääntöjen mukaan niin täähän voi olla private? ei kutsuta muualta
-        public void PrintInfo()
+        private void PrintInfo()
         {
             Random random = new Random();
             Console.ForegroundColor = Colors[random.Next(Colors.Length)];
             Console.WriteLine(IntroText);
             Console.ResetColor();
-
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1 - Uusi peli");
@@ -273,7 +272,7 @@ namespace School_Project
         }
 
         //tääkin voi kaiketi olla private?
-        public void PrintText(string line, ConsoleColor color)
+        private void PrintText(string line, ConsoleColor color)
         {
             Console.ForegroundColor = color;
             String spaces = new String(' ', 12);
@@ -298,7 +297,7 @@ namespace School_Project
         }
 
         //ja tämä :D (ittellä on varmasti noita kans omassa koodissa)
-        public void PrintDate(String date, ConsoleColor color)
+        private void PrintDate(String date, ConsoleColor color)
         {
             Console.ForegroundColor = color;
             Console.Write(date + ": ");

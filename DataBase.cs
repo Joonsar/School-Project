@@ -87,7 +87,7 @@ namespace School_Project
         {
             Console.WriteLine();
             Console.WriteLine();
-            String lines = new String('-', Console.LargestWindowWidth);
+            string lines = new String('-', Console.LargestWindowWidth);
             Console.WriteLine($"{"Sija",-7}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-20}{"Otettu vahinko",-20}{"Tapetut viholliset",-25}{"Juodut pullot",-20}{"Id",-5}");
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
