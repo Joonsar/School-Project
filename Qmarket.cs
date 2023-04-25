@@ -114,6 +114,7 @@ namespace School_Project
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
+            SoundManager.PlaySlotsMusicAsync();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Slots();

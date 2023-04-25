@@ -17,7 +17,8 @@ namespace School_Project
         Die,
         Score,
         MissedHit,
-        Victory
+        Victory,
+        Slots
     }
 
     public static class SoundManager
@@ -31,11 +32,13 @@ namespace School_Project
             { SoundType.Die, new SoundPlayer(School_Project.Properties.Resources.Dead) },
             { SoundType.Score, new SoundPlayer(School_Project.Properties.Resources.Score) },
             { SoundType.MissedHit, new SoundPlayer(School_Project.Properties.Resources.Missed) },
-            { SoundType.Victory, new SoundPlayer(School_Project.Properties.Resources.Victory) }
+            { SoundType.Victory, new SoundPlayer(School_Project.Properties.Resources.Victory) },
+            { SoundType.Slots, new SoundPlayer(School_Project.Properties.Resources.Slots) }
         };
 
         private static SoundPlayer mainMusicPlayer;
         private static SoundPlayer marketMusicPlayer;
+        private static SoundPlayer slotsMusicPlayer;
 
         public static void Play(SoundType soundType)
         {
@@ -76,6 +79,11 @@ namespace School_Project
             {
                 await Task.Run(() => mainMusicPlayer.Stop());
             }
+        }
+        public static async Task PlaySlotsMusicAsync()
+        {
+            slotsMusicPlayer = soundPlayers[SoundType.Slots];
+            await Task.Run(() => slotsMusicPlayer.PlayLooping());
         }
 
         public static async Task PlayMarketSoundAsync()
