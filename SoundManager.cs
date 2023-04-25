@@ -11,12 +11,13 @@ namespace School_Project
     {
         private static readonly SoundPlayer MainMusicPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\MainMusic.wav");
         private static readonly SoundPlayer ItemPickupPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\Item.wav");
-        private static readonly SoundPlayer GameStartPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\GameStart.wav");
+        private static readonly SoundPlayer GameStartPlayer = new SoundPlayer(School_Project.Properties.Resources.GameStart);
+        private static readonly SoundPlayer DieSoundPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\Death.wav");
         private static SoundPlayer mainMusicPlayer;
 
         public static void PlayMainMusic()
         {
-            mainMusicPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\MainMusic.wav");
+            mainMusicPlayer = new SoundPlayer(School_Project.Properties.Resources.MainMusic);
             mainMusicPlayer.PlayLooping();
         }
 
@@ -33,6 +34,11 @@ namespace School_Project
         public static void PlayGameStart()
         {
             GameStartPlayer.Play();
+        }
+
+        public static void PlayDieSound()
+        {
+            DieSoundPlayer.Play();
         }
     }
 }
