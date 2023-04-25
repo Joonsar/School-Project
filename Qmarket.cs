@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -70,6 +71,12 @@ namespace School_Project
                     RunMachine();
                     break;
             }
+        }
+
+        private void Slots()
+        {
+            List<char> chars = new List<char>();
+            chars.Add('$');
         }
     }
 }
