@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Security;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +27,9 @@ namespace School_Project
             gc.screen.Clear();
             PrintLogo(qMarketLogo);
             Console.WriteLine();
+
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia ");
+            Console.WriteLine($"Rahat: {gc.Player.Money}e");
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
@@ -68,6 +69,8 @@ namespace School_Project
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
             Console.WriteLine("e - Poistu, p - Pelaa");
+            Console.SetCursorPosition(20, 14);
+            Console.WriteLine($"Rahat: {gc.Player.Money}e");
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
@@ -155,7 +158,7 @@ namespace School_Project
                                 }
                                 else if (row[0] == '%')
                                 {
-                                    winnings = 2;
+                                    winnings = 4;
                                     Console.WriteLine("Voitit 4 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
@@ -165,7 +168,7 @@ namespace School_Project
                                 }
                                 else if (row[0] == '¤')
                                 {
-                                    winnings = 4;
+                                    winnings = 2;
                                     Console.WriteLine("Voitit 2 euroa." + spaces);
                                 }
                             }
@@ -180,6 +183,7 @@ namespace School_Project
                         }
                         else
                         {
+                            Console.SetCursorPosition(20, 14);
                             Console.WriteLine("Sinulla ei ole tarpeeksi rahaa pelata.");
                         }
                         break;

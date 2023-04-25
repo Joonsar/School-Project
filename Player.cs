@@ -68,7 +68,7 @@ namespace School_Project
 
         public string GetStats()
         {
-            return $"{Name} - Hp: {HitPoints}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} T: {gc.Turn} L: {gc.Level} Dam: {BaseDamage} Hit: {100 - BaseHitChance}%";
+            return $"{Name} - Hp: {HitPoints}/{MaxHp} Exp: {ExpPoints} Lvl: {Level} $:{Money} L: {gc.Level} Pullot {Bottles} Hit: {100 - BaseHitChance}% Dam: {BaseDamage}             ";
         }
 
         public void MovePlayerToPosition(Position pos)
