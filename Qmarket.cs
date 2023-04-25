@@ -44,6 +44,7 @@ namespace School_Project
                     {
                         gc.Player.BaseDamage += 20;
                         gc.Player.Money -= 10;
+                        SoundManager.PlayOpenBottleSoundAsync();
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
                         PressKeyToContinue();
@@ -63,6 +64,7 @@ namespace School_Project
                     {
                         gc.Player.MaxHp += 20;
                         gc.Player.Money -= 10;
+                        SoundManager.PlayOpenBottleSoundAsync();
                         Console.WriteLine("Ostit vissyn ja kulautit sen naamaan. Tunnet voivasi paremmin");
                         gc.Player.Bottles++;
                         Console.WriteLine("Paina jotain nappia jatkaaksesi.");

@@ -142,6 +142,9 @@
   <data name="Missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\missed.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="OpenBottle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sounds\openbottle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Score" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\score.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
