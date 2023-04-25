@@ -43,7 +43,7 @@ namespace School_Project
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
         {
-            var allNames = new string(enemyNamesOne + enemyNamesTwo + enemyNamesThree + enemyNamesFour + enemyNamesFive);
+            var allNames = new string(enemyNamesOne + "," + enemyNamesTwo + "," + enemyNamesThree + "," + enemyNamesFour + "," + enemyNamesFive);
             int count = 0;
             List<string> randomizedNameList = new List<string>();
             List<string> randomizedDescriptionList = new List<string>();
