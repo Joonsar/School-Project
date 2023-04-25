@@ -8,8 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-
-
 namespace School_Project
 {
     public class StartScreen
@@ -47,7 +45,6 @@ namespace School_Project
                     this.DatabaseUsage();
                 }
 
-
                 if (this.command == "3")
                 {
                     SoundManager.PlayScoreSound();
@@ -60,8 +57,8 @@ namespace School_Project
 
                 if (this.command == "4")
                 {
-                    
                     Console.Clear();
+                    Console.OutputEncoding = System.Text.Encoding.UTF8;
                     Console.WriteLine(" ");
                     Console.WriteLine("Merkit:");
                     Console.WriteLine(" # - Seinä               + - Ovi");
@@ -69,7 +66,9 @@ namespace School_Project
                     Console.Write(" < ", Console.ForegroundColor = ConsoleColor.Green);
                     Console.Write("- Rappuset ylös       ", Console.ForegroundColor = ConsoleColor.Yellow);
                     Console.Write(">", Console.ForegroundColor = ConsoleColor.Red);
-                    Console.Write(" - Rappuset alas", Console.ForegroundColor = ConsoleColor.Yellow);
+                    Console.Write(" - Rappuset alas\n", Console.ForegroundColor = ConsoleColor.Yellow);
+                    Console.Write(" Ħ", Console.ForegroundColor = Map.qMarket.Color);
+                    Console.WriteLine(" - Q-Marketti", Console.ForegroundColor = ConsoleColor.Yellow);
                     Console.WriteLine(" ");
                     Console.WriteLine("- Paina Välilyöntiä tutkiaksesi maailmaa.");
                     Console.WriteLine(" ");
@@ -84,7 +83,6 @@ namespace School_Project
                     gc.running = false;
                     System.Environment.Exit(0);
                 }
-
             }
         }
 
@@ -135,7 +133,6 @@ namespace School_Project
                     this.PrintInfo();
                     break;
                 }
-
             }
         }
 
@@ -168,7 +165,7 @@ namespace School_Project
             gc.PlayerName = this.PlayerName;
             Console.Clear();
 
-           // SoundManager.PlayMainMusic();
+            // SoundManager.PlayMainMusic();
 
             Console.WriteLine(lines, Console.ForegroundColor = text);
             PrintText(spaces + "Luet nyt päiväkirjaa minkä omistaja on " + this.PlayerName + " ja jos en oo kuollu ja luet ilman lupaa ni etin sut ja vedän lättyy runkku!", text);
