@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,7 @@ namespace School_Project
                 connection.Open();
                 var command = new SqliteCommand(createDb, connection);
                 command.ExecuteNonQuery();
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -70,7 +72,6 @@ namespace School_Project
             cmd.Parameters.AddWithValue("@DamageTaken", this.DamageTaken);
             cmd.Parameters.AddWithValue("@EnemiesKilled", this.enemies);
             cmd.Parameters.AddWithValue("@ItemsCollected", this.items);
-            PlayerID = Convert.ToInt32(cmd.ExecuteScalar());
             connection.Close();
         }
 
@@ -103,25 +104,31 @@ namespace School_Project
                     Console.WriteLine(lines);
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
-                    PlayerID = rdr.GetInt32(0);
+                    this.PlayerID = rdr.GetInt32(0);
                      
                     Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
             }
+            connection.Close();
             while (true)
             {
                 Console.WriteLine("1 - Tarkemmat tiedot");
                 Console.WriteLine("2 - Paluu valikkoon");
+                Console.WriteLine("9 - Tyhjennä tilasto");
                 string c = Console.ReadLine();
                 if(c == "1")
                 {
-                    this.PrintPlayerStats(PlayerID);
+                    this.PrintPlayerStats(this.PlayerID);
                 }
                 if(c == "2")
                 {
                     break;
+                }
+                if(c == "9")
+                {
+                    File.Delete("database.db");
                 }
             }
 
@@ -157,11 +164,6 @@ namespace School_Project
             {
                 while (rdr.Read())
                 {
-
-
-
-                    //string enemies = rdr.GetString(7).Replace(",",", ");
-                    string items = rdr.GetString(8).Replace(",", ", ");
                     Console.WriteLine("Nimi: " + rdr.GetString(1));
                     Console.WriteLine("Pisteet: " + rdr.GetString(2));
                     Console.WriteLine("Taso: " + rdr.GetString(3));
@@ -188,6 +190,7 @@ namespace School_Project
                 }
                 rdr.Close();
             }
+            connection.Close();
 
         }
 
