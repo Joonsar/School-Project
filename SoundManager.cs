@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -31,8 +32,11 @@ namespace School_Project
 
         public static void PlayItemPickupSound()
         {
-            ItemPickupPlayer.Play();
-       
+            using (var player = new SoundPlayer(School_Project.Properties.Resources.Bottle))
+            {
+                player.LoadAsync();
+                player.Play();
+            }
         }
 
         public static void PlayGameStart()

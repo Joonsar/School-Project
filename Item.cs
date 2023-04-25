@@ -24,8 +24,7 @@ namespace School_Project
             UseAction.Invoke();
             SoundManager.PlayItemPickupSound();
 
-            // Wait for 1 second before playing the main music
-            Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+            Task.Delay(TimeSpan.FromSeconds(2)).Wait();
 
             SoundManager.PlayMainMusic();
         }
