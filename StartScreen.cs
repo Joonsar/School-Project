@@ -44,6 +44,7 @@ namespace School_Project
                 }
                 if (this.command == "2")
                 {
+                    Console.Clear();
                     gc.localdb.PrintAllData();
                     SoundManager.PlayScoreSound();
                     while (true)
@@ -67,16 +68,19 @@ namespace School_Project
                         }
                         if (c == "3")
                         {
+                            Console.Clear();
                             gc.localdb.PrintAllData();
                             SoundManager.PlayScoreSound();
                         }
                         if (c == "4")
                         {
+                            Console.Clear();
                             this.PrintInfo();
                             break;
                         }
                         if (c == "9")
                         {
+                            Console.Clear();
                             gc.localdb.ClearDatabase();
                             this.PrintInfo();
                             break;
