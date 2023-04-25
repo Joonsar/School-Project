@@ -149,7 +149,7 @@ namespace School_Project
         public void EndScreen()
         {
             Clear();
-            //tämä ny tässä testimielessä, joku oma metodi loppuscreenille ja sit lyö tietoo vähän tietokantaan ny hyvä tulee.
+            //tämä  ny tässä testimielessä, joku oma metodi loppuscreenille ja sit lyö tietoo vähän tietokantaan ny hyvä tulee.
             Console.WriteLine("Tapoit seuraavat viholliset");
             foreach (Entity e in gc.GameStats.EnemiesKilled)
             {

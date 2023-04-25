@@ -114,21 +114,22 @@ namespace School_Project
             PrintLogo(ruplaPottiLogo);
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
-            var input = Console.ReadKey(true);
-            switch (input.Key)
-            {
-                case ConsoleKey.E:
-                    Shop();
-                    break;
+            Slots();
+            /*     var input = Console.ReadKey(true);
+                 switch (input.Key)
+                 {
+                     case ConsoleKey.E:
+                         Shop();
+                         break;
 
-                case ConsoleKey.P:
-                    Slots();
-                    break;
+                     case ConsoleKey.P:
+                         Slots();
+                         break;
 
-                default:
-                    RunMachine();
-                    break;
-            }
+                     default:
+                         RunMachine();
+                         break;
+                 } */
         }
 
         private void PrintMoney()
@@ -192,17 +193,17 @@ namespace School_Project
                                 else if (row[0] == '%')
                                 {
                                     winnings = 20;
-                                    Console.WriteLine("Voitit 10 euroa." + spaces);
+                                    // Console.WriteLine("Voitit 10 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
                                 {
                                     winnings = 30;
-                                    Console.WriteLine("Voitit 20 euroa." + spaces);
+                                    //Console.WriteLine("Voitit 20 euroa." + spaces);
                                 }
                                 else if (row[0] == '¤')
                                 {
                                     winnings = 40;
-                                    Console.WriteLine("Voitit 30 euroa." + spaces);
+                                    //Console.WriteLine("Voitit 30 euroa." + spaces);
                                 }
                             }
                             else if (row[0] == row[1])
@@ -210,23 +211,24 @@ namespace School_Project
                                 if (row[0] == '$')
                                 {
                                     winnings = 5;
-                                    Console.WriteLine("Voitit 5 euroa." + spaces);
+                                    //Console.WriteLine("Voitit 5 euroa." + spaces);
                                 }
                                 else if (row[0] == '%')
                                 {
                                     winnings = 4;
-                                    Console.WriteLine("Voitit 4 euroa." + spaces);
+                                    //Console.WriteLine("Voitit 4 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
                                 {
                                     winnings = 3;
-                                    Console.WriteLine("Voitit 3 euroa." + spaces);
+                                    //   Console.WriteLine("Voitit 3 euroa." + spaces);
                                 }
                                 else if (row[0] == '¤')
                                 {
                                     winnings = 2;
-                                    Console.WriteLine("Voitit 2 euroa." + spaces);
+                                    // Console.WriteLine("Voitit 2 euroa." + spaces);
                                 }
+                                Console.Write($"Voitit {winnings} euroa." + spaces);
                             }
                             else
                             {
