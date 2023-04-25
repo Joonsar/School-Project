@@ -68,6 +68,7 @@ namespace School_Project
             cmd.Parameters.AddWithValue("@DamageTaken", this.DamageTaken);
             cmd.Parameters.AddWithValue("@EnemiesKilled", this.enemies);
             cmd.Parameters.AddWithValue("@ItemsCollected", this.items);
+            cmd.ExecuteNonQuery();
             connection.Close();
         }
 
