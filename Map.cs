@@ -29,7 +29,7 @@ namespace School_Project
         public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
         public static readonly MapObject door = new MapObject('+', "Ovi", false, ConsoleColor.White);
         public static readonly MapObject openDoor = new MapObject('-', "Ovi", true, ConsoleColor.White);
-        public static readonly MapObject qMarket = new MapObject('Q', "Q-Market", true, ConsoleColor.Cyan);
+        public static readonly MapObject qMarket = new MapObject('Ħ', "Q-Market", true, ConsoleColor.Cyan);
 
         public List<Entity> entities;
         private List<Position> playerPath;

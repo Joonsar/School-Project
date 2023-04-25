@@ -67,6 +67,7 @@ namespace School_Project
 
         public void PrintMap()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             for (int y = 0; y < gc.Map.Height; y++)
             {
                 for (int x = 0; x < gc.Map.Width; x++)
