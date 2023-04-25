@@ -121,6 +121,9 @@
   <data name="Bottle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\bottle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Bottles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sounds\bottles.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Dead" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\sounds\dead.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
