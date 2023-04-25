@@ -35,6 +35,7 @@ namespace School_Project
         };
 
         private static SoundPlayer mainMusicPlayer;
+        private static SoundPlayer marketMusicPlayer;
 
         public static void Play(SoundType soundType)
         {
@@ -79,8 +80,13 @@ namespace School_Project
 
         public static async Task PlayMarketSoundAsync()
         {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Market);
-            await Task.Run(() => soundPlayer.PlaySync());
+            marketMusicPlayer = soundPlayers[SoundType.Market];
+            marketMusicPlayer.PlayLooping();
+        }
+        public static void StopMarketSound()
+        {
+            marketMusicPlayer?.Stop();
+           
         }
 
 

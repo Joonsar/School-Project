@@ -35,6 +35,7 @@ namespace School_Project
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
+                    SoundManager.StopMarketSound();
                     SoundManager.PlayMainMusicAsync();
                     break;
 
