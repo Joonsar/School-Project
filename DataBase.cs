@@ -88,7 +88,7 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine();
             String lines = new String('-', Console.LargestWindowWidth);
-            Console.WriteLine($"{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-25}{"Otettu vahinko",-25}{"Tapetut viholliset",-25}{"Juodut pullot",-25}");
+            Console.WriteLine($"{"Sija",-7}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-20}{"Otettu vahinko",-20}{"Tapetut viholliset",-25}{"Juodut pullot",-20}{"Id",-5}");
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
             var cmd = new SqliteCommand(sql, connection);
@@ -98,20 +98,20 @@ namespace School_Project
             }
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
+                int sija = 1;
                 int i = 0;
                 while (rdr.Read())
                 {
                     Console.WriteLine(lines);
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
-                    if(i == 0)
+                    if (i == 0)
                     {
                         PlayerID = rdr.GetInt32(0);
                         i++;
                     }
-                    
-
-                    Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
+                    Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
+                    sija++;
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
@@ -189,7 +189,7 @@ namespace School_Project
             connection.Close();
         }
 
-        public void PrintAllPlayerData(String name)
+        public void PrintPlayerDataByName(String name)
         {
             string sql = "SELECT * FROM HighScores WHERE @Nimi = Nimi";
             this.PrintData(sql, name);
@@ -202,5 +202,9 @@ namespace School_Project
             this.PrintData(sql, null);
         }
 
+        public void PrintPlayerStatsWihtID(int id)
+        {
+            PrintPlayerStats(id);
+        }
     }
 }
