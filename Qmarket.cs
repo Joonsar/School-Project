@@ -27,14 +27,15 @@ namespace School_Project
             gc.screen.Clear();
             PrintLogo(qMarketLogo);
             Console.WriteLine();
-
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
+            
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
+                    SoundManager.PlayMainMusicAsync();
                     break;
 
                 case ConsoleKey.K:

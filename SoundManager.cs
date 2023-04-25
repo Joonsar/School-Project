@@ -55,48 +55,77 @@ namespace School_Project
             mainMusicPlayer?.Stop();
         }
 
-        public static void PlayMarketSound()
+        public static async Task PlayAsync(SoundType soundType)
         {
-            soundPlayers[SoundType.Market].Play();
-        }
-
-        public static void StopMarketSound()
-        {
-            soundPlayers[SoundType.Market].Stop();
-        }
-
-        public static void PlayItemPickupSound()
-        {
-            using (var player = new SoundPlayer(School_Project.Properties.Resources.Bottle))
+            if (soundPlayers.TryGetValue(soundType, out SoundPlayer soundPlayer))
             {
-                player.Load();
-                player.Play();
+                await Task.Run(() => soundPlayer.PlaySync());
             }
         }
 
-        public static void PlayGameStartSound()
+        public static async Task PlayMainMusicAsync()
         {
-            soundPlayers[SoundType.GameStart].Play();
+            mainMusicPlayer = soundPlayers[SoundType.MainMusic];
+            await Task.Run(() => mainMusicPlayer.PlayLooping());
         }
 
-        public static void PlayDieSound()
+        public static async Task StopMainMusicAsync()
         {
-            soundPlayers[SoundType.Die].Play();
+            if (mainMusicPlayer != null)
+            {
+                await Task.Run(() => mainMusicPlayer.Stop());
+            }
         }
 
-        public static void PlayScoreSound()
+        public static async Task PlayMarketSoundAsync()
         {
-            soundPlayers[SoundType.Score].Play();
+            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Market);
+            await Task.Run(() => soundPlayer.PlaySync());
         }
 
-        public static void PlayMissedHitSound()
+
+
+        public static async Task PlayItemPickupSoundAsync()
         {
-            soundPlayers[SoundType.MissedHit].Play();
+            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
+            await Task.Run(() => soundPlayer.PlaySync());
         }
 
-        public static void PlayVictorySound()
+        public static async Task PlayGameStartSoundAsync()
         {
-            soundPlayers[SoundType.Victory].Play();
+            if (soundPlayers.TryGetValue(SoundType.GameStart, out SoundPlayer soundPlayer))
+            {
+                await Task.Run(() => soundPlayer.PlaySync());
+            }
+        }
+
+        public static async Task PlayDieSoundAsync()
+        {
+            if (soundPlayers.TryGetValue(SoundType.Die, out SoundPlayer soundPlayer))
+            {
+                await Task.Run(() => soundPlayer.PlaySync());
+            }
+
+        }
+
+        public static async void PlayScoreSound()
+        {
+            await Task.Run(() => soundPlayers[SoundType.Score].PlaySync());
+        }
+
+        public static async void PlayMissedHitSound()
+        {
+            await Task.Run(() => soundPlayers[SoundType.MissedHit].PlaySync());
+        }
+
+        public static async void PlayVictorySound()
+        {
+            await Task.Run(() => soundPlayers[SoundType.Victory].PlaySync());
+        }
+
+        public static async void PlayDieSound()
+        {
+            await Task.Run(() => soundPlayers[SoundType.Die].PlaySync());
         }
     }
 }

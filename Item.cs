@@ -22,7 +22,7 @@ namespace School_Project
         public override async void Use()
         {
             UseAction.Invoke();
-            SoundManager.PlayItemPickupSound();
+            SoundManager.PlayItemPickupSoundAsync().Wait(1);
             await Task.Delay(TimeSpan.FromSeconds(1));
             SoundManager.PlayMainMusic();
         }
