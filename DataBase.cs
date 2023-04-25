@@ -1,11 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
-using MySql.Data.MySqlClient;
 
 namespace School_Project
 {
@@ -72,6 +67,7 @@ namespace School_Project
             cmd.Parameters.AddWithValue("@DamageTaken", this.DamageTaken);
             cmd.Parameters.AddWithValue("@EnemiesKilled", this.enemies);
             cmd.Parameters.AddWithValue("@ItemsCollected", this.items);
+            PlayerID = Convert.ToInt32(cmd.ExecuteScalar());
             connection.Close();
         }
 
@@ -97,41 +93,21 @@ namespace School_Project
             connection.Open();
             string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var cmd = new SqliteCommand(sql, connection);
-            using (SqliteDataReader rdr = cmd.ExecuteReader()) 
+            using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
                 while (rdr.Read())
                 {
                     Console.WriteLine(lines);
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
-                    this.PlayerID = rdr.GetInt32(0);
-                     
+                    PlayerID = rdr.GetInt32(0);
+
                     Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
             }
             connection.Close();
-            while (true)
-            {
-                Console.WriteLine("1 - Tarkemmat tiedot");
-                Console.WriteLine("2 - Paluu valikkoon");
-                Console.WriteLine("9 - Tyhjennä tilasto");
-                string c = Console.ReadLine();
-                if(c == "1")
-                {
-                    this.PrintPlayerStats(this.PlayerID);
-                }
-                if(c == "2")
-                {
-                    break;
-                }
-                if(c == "9")
-                {
-                    File.Delete("database.db");
-                }
-            }
-
         }
 
         private void getNamesForEntities()
@@ -151,7 +127,7 @@ namespace School_Project
             this.items = string.Join(",", itemNames);
         }
 
-        private void PrintPlayerStats(int id)
+        public void PrintPlayerStats(int id)
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -176,15 +152,15 @@ namespace School_Project
                     string[] enemies = rdr.GetString(7).Split(",");
                     for (int i = 0; i < enemies.Length; i++)
                     {
-                        Console.WriteLine(spaces + enemies[i].Replace(";"," - "), Console.ForegroundColor = ConsoleColor.Red);
+                        Console.WriteLine(spaces + enemies[i].Replace(";", " - "), Console.ForegroundColor = ConsoleColor.Red);
                     }
                     string[] item = rdr.GetString(8).Split(",");
                     string juodut = "Juodut pullot: ";
                     spaces = new string(' ', juodut.Length);
                     Console.WriteLine(juodut, Console.ForegroundColor = ConsoleColor.Yellow);
-                    for(int i = 0;i < item.Length; i++)
+                    for (int i = 0; i < item.Length; i++)
                     {
-                        Console.WriteLine(spaces + item[i].Replace(";"," - "), Console.ForegroundColor = ConsoleColor.Green);
+                        Console.WriteLine(spaces + item[i].Replace(";", " - "), Console.ForegroundColor = ConsoleColor.Green);
                     }
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
@@ -192,6 +168,16 @@ namespace School_Project
             }
             connection.Close();
 
+        }
+
+        public void ClearDatabase()
+        {
+            var connection = new SqliteConnection($"Data Source ={this.db}");
+            connection.Open();
+            string sql = "DELETE FROM HighScores";
+            var cmd = new SqliteCommand(sql, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
     }

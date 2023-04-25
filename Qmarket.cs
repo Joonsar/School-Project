@@ -45,8 +45,7 @@ namespace School_Project
                         gc.Player.Money -= 10;
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
-                        Console.WriteLine("Paina jotain nappia jatkaaksesi.");
-                        Console.ReadKey(true);
+                        PressKeyToContinue();
                         Shop();
                     }
                     else
@@ -89,8 +88,7 @@ namespace School_Project
                         gc.Player.Addmoney(gc.Player.Bottles);
                         gc.Player.Bottles = 0;
                     }
-                    Console.WriteLine("Paina jotain nappia jatkaaksesi");
-                    Console.ReadKey();
+                    PressKeyToContinue();
                     Shop();
                     break;
 
@@ -104,36 +102,48 @@ namespace School_Project
             }
         }
 
+        private static void PressKeyToContinue()
+        {
+            Console.WriteLine("Paina jotain nappia jatkaaksesi.");
+            Console.ReadKey(true);
+        }
+
         private void RunMachine()
         {
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
             Console.WriteLine("e - Poistu, p - Pelaa");
+            PrintMoney();
+            Slots();
+            /*     var input = Console.ReadKey(true);
+                 switch (input.Key)
+                 {
+                     case ConsoleKey.E:
+                         Shop();
+                         break;
+
+                     case ConsoleKey.P:
+                         Slots();
+                         break;
+
+                     default:
+                         RunMachine();
+                         break;
+                 } */
+        }
+
+        private void PrintMoney()
+        {
             Console.SetCursorPosition(20, 14);
-            Console.WriteLine($"Rahat: {gc.Player.Money}e");
-            var input = Console.ReadKey(true);
-            switch (input.Key)
-            {
-                case ConsoleKey.E:
-                    Shop();
-                    break;
-
-                case ConsoleKey.P:
-                    Slots();
-                    break;
-
-                default:
-                    RunMachine();
-                    break;
-            }
+            Console.WriteLine($"Rahat: {gc.Player.Money}e            ");
         }
 
         private void Slots()
         {
             bool playing = true;
             int winnings = 0;
-            var spaces = new string(' ', 20);
+            var spaces = new string(' ', 40);
             Random rand = new Random();
             char[] row = new char[3];
             List<char> chars = new List<char>();
@@ -147,13 +157,11 @@ namespace School_Project
                 var input = Console.ReadKey(true);
                 if (gc.Player.Money >= 1)
                 {
-                    Console.SetCursorPosition(20, 14);
-                    Console.WriteLine($"Rahat: {gc.Player.Money}              ");
+                    PrintMoney();
                 }
                 else if (gc.Player.Money < 0)
                 {
-                    Console.SetCursorPosition(20, 14);
-                    Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
+                    PrintNotEnoughMoney();
                 }
                 switch (input.Key)
                 {
@@ -162,19 +170,26 @@ namespace School_Project
                         if (gc.Player.Money >= 1)
                         {
                             gc.Player.Money -= 1;
-                            Console.SetCursorPosition(20, 14);
-                            Console.WriteLine($"Rahat: {gc.Player.Money}");
+                            PrintMoney();
+                            Console.SetCursorPosition(20, 20);
+                            Console.Write("       ");
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
                                 Console.SetCursorPosition(20 + i, 20);
-                                Console.Write("#");
+                                //Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
                                 Console.SetCursorPosition(20 + i, 20);
+                                if (i == 0)
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                if (i == 1)
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                if (i == 2)
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write(row[i]);
                             }
                             //  Console.WriteLine($"\n{row[0]} {row[1]} {row[2]}");
-
+                            Console.ResetColor();
                             Console.WriteLine();
 
                             if (row[0] == row[1] && row[1] == row[2])
@@ -182,11 +197,12 @@ namespace School_Project
                                 if (row[0] == '$')
                                 {
                                     winnings = 50;
-                                    Console.WriteLine("Humalaisen tuuria voitit JACKPOTIN 50 euroa!");
+                                    Console.WriteLine("Humalaisen tuuria voitit JACKPOTIN 50 euroa!" + spaces);
                                 }
                                 else if (row[0] == '%')
                                 {
                                     winnings = 20;
+
                                     Console.WriteLine("Voitit 10 euroa." + spaces);
                                 }
                                 else if (row[0] == '£')
@@ -197,7 +213,7 @@ namespace School_Project
                                 else if (row[0] == '¤')
                                 {
                                     winnings = 40;
-                                    Console.WriteLine("Voitit 30 euroa." + spaces);
+                                    Console.WriteLine("ISO voitto, meinaat lentää perseellesi. Voitit 40 euroa." + spaces);
                                 }
                             }
                             else if (row[0] == row[1])
@@ -222,6 +238,7 @@ namespace School_Project
                                     winnings = 2;
                                     Console.WriteLine("Voitit 2 euroa." + spaces);
                                 }
+                                // Console.Write($"Voitit {winnings} euroa." + spaces);
                             }
                             else
                             {
@@ -229,13 +246,13 @@ namespace School_Project
                                 Console.WriteLine("Sinne meni, et voittanut mitään!" + spaces);
                             }
                             gc.Player.Money += winnings;
+                            PrintMoney();
                             winnings = 0;
                             // Console.WriteLine($"Rahat {gc.Player.Money}\n");
                         }
                         else
                         {
-                            Console.SetCursorPosition(20, 14);
-                            Console.WriteLine("Sinulla ei ole tarpeeksi rahaa pelata.");
+                            PrintNotEnoughMoney();
                         }
                         break;
 
@@ -248,6 +265,12 @@ namespace School_Project
                         break;
                 }
             }
+        }
+
+        private static void PrintNotEnoughMoney()
+        {
+            Console.SetCursorPosition(20, 14);
+            Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
         }
     }
 }
