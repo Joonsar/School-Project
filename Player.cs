@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace School_Project
 {
@@ -150,6 +151,9 @@ namespace School_Project
             else
             {
                 gc.MessageLog.AddMessage($"Epäonnistut nolosti ja kaadut turvallesi.");
+                SoundManager.PlayMissedSound();
+                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                SoundManager.PlayMainMusic();
             }
         }
 
@@ -198,6 +202,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
+                SoundManager.PlayDieSound();
                 gc.MessageLog.AddMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!");
                 gc.running = false;
             }

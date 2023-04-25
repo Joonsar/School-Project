@@ -94,9 +94,9 @@ namespace School_Project
             Console.WriteLine($"{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-25}{"Otettu vahinko",-25}{"Tapetut viholliset",-25}{"Juodut pullot",-25}");
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
-            string sql = "SELECT * FROM HighScores";
+            string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var cmd = new SqliteCommand(sql, connection);
-            using (SqliteDataReader rdr = cmd.ExecuteReader())
+            using (SqliteDataReader rdr = cmd.ExecuteReader()) 
             {
                 while (rdr.Read())
                 {
@@ -185,7 +185,6 @@ namespace School_Project
                         Console.WriteLine(spaces + item[i].Replace(";"," - "), Console.ForegroundColor = ConsoleColor.Green);
                     }
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    // Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
                 rdr.Close();
             }

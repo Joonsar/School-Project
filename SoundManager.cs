@@ -9,10 +9,13 @@ namespace School_Project
 {
     public class SoundManager
     {
-        private static readonly SoundPlayer MainMusicPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\MainMusic.wav");
-        private static readonly SoundPlayer ItemPickupPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\Item.wav");
+        
+        private static readonly SoundPlayer ItemPickupPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
         private static readonly SoundPlayer GameStartPlayer = new SoundPlayer(School_Project.Properties.Resources.GameStart);
-        private static readonly SoundPlayer DieSoundPlayer = new SoundPlayer(@"C:\Users\Omistaja\OneDrive\Työpöytä\Git\School-Project\Death.wav");
+        private static readonly SoundPlayer DieSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Death);
+        private static readonly SoundPlayer ScoreSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Score);
+        private static readonly SoundPlayer MissedHitSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Missed);
+        private static readonly SoundPlayer VictorySoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Victory);
         private static SoundPlayer mainMusicPlayer;
 
         public static void PlayMainMusic()
@@ -29,6 +32,7 @@ namespace School_Project
         public static void PlayItemPickupSound()
         {
             ItemPickupPlayer.Play();
+       
         }
 
         public static void PlayGameStart()
@@ -39,6 +43,21 @@ namespace School_Project
         public static void PlayDieSound()
         {
             DieSoundPlayer.Play();
+        }
+
+        public static void PlayScoreSound()
+        {
+            ScoreSoundPlayer.Play();
+        }
+
+        public static void PlayMissedSound()
+        {
+            MissedHitSoundPlayer.Play();
+        }
+        
+        public static void PlayVictorySound()
+        {
+            VictorySoundPlayer.Play();
         }
     }
 }
