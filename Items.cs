@@ -16,10 +16,10 @@ namespace School_Project
         public Items()
         {
             ItemsList = new List<Item>();
-            
+
             ItemsList.Add(new Item("Koskenkorvapullo", "(+Vahinko -Osumatarkkuus)", new Position(0, 0), '!', ConsoleColor.Blue, () =>
             {
-                gc.Player.BaseDamage += 10;
+                gc.Player.BaseDamage += 20;
                 gc.Player.BaseHitChance += 10;
                 gc.MessageLog.AddMessage("Juot pullon, tunnet itsesi voimakkaammaksi, samalla myös osumatarkkuus heikentyy");
             }));
@@ -31,7 +31,7 @@ namespace School_Project
             ItemsList.Add(new Item("Vissy", "ilman kossua (+Hp +MaxHp)", new Position(0, 0), '!', ConsoleColor.DarkBlue, () =>
             {
                 gc.Player.HitPoints += 100;
-                gc.Player.MaxHp += 20;
+                gc.Player.MaxHp += 50;
                 gc.MessageLog.AddMessage("Kulautat vissyn naamariin, tunnet voivasi paremmin.");
             }));
             ItemsList.Add(new Item("Konjakki", "(+Kokemuspisteet)", new Position(0, 0), '!', ConsoleColor.DarkRed, () =>
@@ -41,8 +41,13 @@ namespace School_Project
             }));
             ItemsList.Add(new Item("Smurffilimu", "(+Hp)", new Position(0, 0), '!', ConsoleColor.DarkGreen, () =>
             {
-                gc.Player.HitPoints += 20;
+                gc.Player.HitPoints += 100;
                 gc.MessageLog.AddMessage("Juot smurffilimun ja tunnet voivasi paremmin");
+            }));
+            ItemsList.Add(new Item("Maitotölkki", "(+raha)", new Position(0, 0), '!', ConsoleColor.White, () =>
+            {
+                gc.Player.Money += 5;
+                gc.MessageLog.AddMessage("Juot maitotölkin. Mitä ihmettä, sen pohjalta löytyi 5 euron kolikkoa!");
             }));
         }
 
