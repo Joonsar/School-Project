@@ -44,12 +44,13 @@ namespace School_Project
                 }
                 if (this.command == "2")
                 {
-                    gc.localdb.PrintData();
+                    gc.localdb.PrintAllData();
                     SoundManager.PlayScoreSound();
                     while (true)
                     {
-                        Console.WriteLine("1 - Tarkemmat tiedot");
-                        Console.WriteLine("2 - Paluu valikkoon");
+                        Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
+                        Console.WriteLine("2 - Hae pelaajan tiedot nimellä");
+                        Console.WriteLine("3 - Paluu valikkoon");
                         Console.WriteLine("9 - Tyhjennä tilastot");
                         Console.Write("Anna komento: ");
                         string c = Console.ReadLine();
@@ -57,7 +58,13 @@ namespace School_Project
                         {
                             gc.localdb.PrintPlayerStats(gc.localdb.PlayerID);
                         }
-                        if (c == "2")
+                        if(c == "2")
+                        {
+                            Console.Write("Anna pelaajan nimi: ");
+                            string name = Console.ReadLine();
+                            gc.localdb.PrintAllPlayerData(name);
+                        }
+                        if (c == "3")
                         {
                             this.PrintInfo();
                             break;
