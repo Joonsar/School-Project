@@ -85,6 +85,12 @@ namespace School_Project
                 gc.screen.WriteAtPosition(new Position(Pos.X + x, Pos.Y + y), Map.openDoor.Mark);
                 return;
             }
+            if (gc.Map.Mapping[Pos.X + x, Pos.Y + y] == Map.qMarket)
+            {
+                gc.MessageLog.AddMessage("Menit Q-Markettiin!");
+
+                gc.Qmarket.Shop();
+            }
             if (gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) != null)
             {
                 Attack(gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y));
