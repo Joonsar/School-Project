@@ -20,7 +20,9 @@ namespace School_Project
         Victory,
         Slots,
         Bottles,
-        OpenBottle
+        OpenBottle,
+        Win,
+        Fail
     }
 
     public static class SoundManager
@@ -37,7 +39,9 @@ namespace School_Project
             { SoundType.Victory, new SoundPlayer(School_Project.Properties.Resources.Victory) },
             { SoundType.Slots, new SoundPlayer(School_Project.Properties.Resources.Slots) },
             { SoundType.Bottles, new SoundPlayer(School_Project.Properties.Resources.Bottles) },
-            { SoundType.OpenBottle, new SoundPlayer(School_Project.Properties.Resources.OpenBottle) }
+            { SoundType.OpenBottle, new SoundPlayer(School_Project.Properties.Resources.OpenBottle) },
+            { SoundType.Win, new SoundPlayer(School_Project.Properties.Resources.Win) },
+            { SoundType.Fail, new SoundPlayer(School_Project.Properties.Resources.Fail) }
         };
 
         private static SoundPlayer mainMusicPlayer;
@@ -112,6 +116,20 @@ namespace School_Project
             var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.OpenBottle);
             await Task.Run(() => soundPlayer.PlaySync());
         }
+
+        public static async Task PlayWinSoundAsync()
+        {
+            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Win);
+            await Task.Run(() => soundPlayer.PlaySync());
+        }
+
+
+        public static async Task PlayFailSoundAsync()
+        {
+            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Fail);
+            await Task.Run(() => soundPlayer.PlaySync());
+        }
+
 
         public static async Task PlayItemPickupSoundAsync()
         {

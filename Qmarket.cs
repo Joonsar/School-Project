@@ -199,6 +199,7 @@ namespace School_Project
 
                             if (row[0] == row[1] && row[1] == row[2])
                             {
+                                SoundManager.PlayWinSoundAsync();
                                 if (row[0] == '$')
                                 {
                                     winnings = 50;
@@ -223,6 +224,7 @@ namespace School_Project
                             }
                             else if (row[0] == row[1])
                             {
+                                SoundManager.PlayWinSoundAsync();
                                 if (row[0] == '$')
                                 {
                                     winnings = 5;
@@ -247,6 +249,7 @@ namespace School_Project
                             }
                             else
                             {
+                                SoundManager.PlayFailSoundAsync();
                                 //Console.WriteLine();
                                 Console.WriteLine("Sinne meni, et voittanut mitään!" + spaces);
                             }
