@@ -17,6 +17,7 @@ namespace School_Project
         private static readonly SoundPlayer ScoreSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Score);
         private static readonly SoundPlayer MissedHitSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Missed);
         private static readonly SoundPlayer VictorySoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Victory);
+        private static readonly SoundPlayer MarketSoundPlayer = new SoundPlayer(School_Project.Properties.Resources.Market);
         private static SoundPlayer mainMusicPlayer;
 
         public static void PlayMainMusic()
@@ -30,11 +31,21 @@ namespace School_Project
             mainMusicPlayer?.Stop();
         }
 
+        public static void PlayMarketSound()
+        {
+            MarketSoundPlayer.Play();
+        }
+
+        public static void StopMarketSound()
+        {
+            MarketSoundPlayer.Stop();
+        }
+
         public static void PlayItemPickupSound()
         {
             using (var player = new SoundPlayer(School_Project.Properties.Resources.Bottle))
             {
-                player.LoadAsync();
+                player.Load();
                 player.Play();
             }
         }

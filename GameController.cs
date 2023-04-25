@@ -77,6 +77,7 @@ namespace School_Project
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
             MessageLog = new MessageLog(Height);
             StartScreen = new StartScreen();
+            
             if (Turn == 0)
             {
                 screen.Clear();
@@ -103,8 +104,10 @@ namespace School_Project
 
         public void Run()
         {
+            SoundManager.PlayMainMusic();
             while (running)
             {
+               
                 if (Inspecting)
                 {
                     var input = Console.ReadKey(true);

@@ -19,13 +19,11 @@ namespace School_Project
             UseAction = useAction;
         }
 
-        public override void Use()
+        public override async void Use()
         {
             UseAction.Invoke();
             SoundManager.PlayItemPickupSound();
-
-            Task.Delay(TimeSpan.FromSeconds(2)).Wait();
-
+            await Task.Delay(TimeSpan.FromSeconds(1));
             SoundManager.PlayMainMusic();
         }
     }

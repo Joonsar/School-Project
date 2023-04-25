@@ -119,7 +119,7 @@ namespace School_Project
             gc.PlayerName = this.PlayerName;
             Console.Clear();
 
-            SoundManager.PlayMainMusic();
+           // SoundManager.PlayMainMusic();
 
             Console.WriteLine(lines, Console.ForegroundColor = text);
             PrintText(spaces + "Luet nyt päiväkirjaa minkä omistaja on " + this.PlayerName + " ja jos en oo kuollu ja luet ilman lupaa ni etin sut ja vedän lättyy runkku!", text);
