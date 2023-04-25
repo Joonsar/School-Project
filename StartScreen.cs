@@ -49,9 +49,10 @@ namespace School_Project
                     while (true)
                     {
                         Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
-                        Console.WriteLine("2 - Hae pelaajan tiedot nimellä");
-                        Console.WriteLine("3 - Tulosta sijoitus lista");
-                        Console.WriteLine("4 - Paluu valikkoon");
+                        Console.WriteLine("2 - Hae pelaajan sijoitukset nimellä");
+                        Console.WriteLine("3 - Hae tarkemmat tiedot id:llä");
+                        Console.WriteLine("4 - Tulosta sijoitus lista");
+                        Console.WriteLine("5 - Paluu valikkoon");
                         Console.WriteLine("9 - Tyhjennä tilastot");
                         Console.Write("Anna komento: ");
                         string c = Console.ReadLine();
@@ -65,12 +66,18 @@ namespace School_Project
                             string name = Console.ReadLine();
                             gc.localdb.PrintAllPlayerData(name);
                         }
-                        if (c == "3")
+                        if(c == "3")
+                        {
+                            Console.Write("Anna id: ");
+                            int id = Convert.ToInt32(Console.ReadLine());
+                            gc.localdb.PrintPlayerStatsWihtID(id);
+                        }
+                        if (c == "4")
                         {
                             gc.localdb.PrintAllData();
                             SoundManager.PlayScoreSound();
                         }
-                        if (c == "4")
+                        if (c == "5")
                         {
                             this.PrintInfo();
                             break;

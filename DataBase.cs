@@ -88,7 +88,7 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine();
             String lines = new String('-', Console.LargestWindowWidth);
-            Console.WriteLine($"{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-25}{"Otettu vahinko",-25}{"Tapetut viholliset",-25}{"Juodut pullot",-25}");
+            Console.WriteLine($"{"Id",-5}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-25}{"Otettu vahinko",-25}{"Tapetut viholliset",-25}{"Juodut pullot",-25}");
             var connection = new SqliteConnection($"Data Source ={this.db}");
             connection.Open();
             var cmd = new SqliteCommand(sql, connection);
@@ -109,9 +109,8 @@ namespace School_Project
                         PlayerID = rdr.GetInt32(0);
                         i++;
                     }
-                    
 
-                    Console.WriteLine($"{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
+                    Console.WriteLine($"{rdr.GetInt32(0),-5}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-25}{rdr.GetString(6),-25}{enemies.Length,-25}{items.Length,-25}");
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
@@ -200,6 +199,11 @@ namespace School_Project
         {
             string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             this.PrintData(sql, null);
+        }
+
+        public void PrintPlayerStatsWihtID(int id)
+        {
+            PrintPlayerStats(id);
         }
 
     }
