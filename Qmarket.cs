@@ -29,12 +29,13 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
-            
+            SoundManager.PlayMarketSoundAsync();
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
+                    SoundManager.StopMarketSound();
                     SoundManager.PlayMainMusicAsync();
                     break;
 
@@ -84,6 +85,7 @@ namespace School_Project
                     }
                     else if (gc.Player.Bottles > 0)
                     {
+                        SoundManager.PlayBottlesSoundAsync();
                         Console.WriteLine($"Palautit {gc.Player.Bottles} pulloa ja sait niistä {gc.Player.Bottles} euroa");
                         gc.Player.Addmoney(gc.Player.Bottles);
                         gc.Player.Bottles = 0;
@@ -113,6 +115,7 @@ namespace School_Project
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
+            SoundManager.PlaySlotsMusicAsync();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Slots();
