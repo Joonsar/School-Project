@@ -43,7 +43,7 @@ namespace School_Project
                     SoundManager.PlayScoreSound();
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
-                        FileName = "http://juopontarina.servebeer.com:3000",
+                        FileName = "http://juopontarina.servebeer.com",
                         UseShellExecute = true
                     });
                 }
