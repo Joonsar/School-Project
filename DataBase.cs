@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Data.Sqlite;
 
 namespace School_Project
@@ -32,7 +31,6 @@ namespace School_Project
         public DataBase()
         {
             this.db = "database.db";
-
         }
 
         public void CreateDatabase()
@@ -177,7 +175,6 @@ namespace School_Project
                 rdr.Close();
             }
             connection.Close();
-
         }
 
         public void ClearDatabase()
@@ -194,7 +191,6 @@ namespace School_Project
         {
             string sql = "SELECT * FROM HighScores WHERE @Nimi = Nimi";
             this.PrintData(sql, name);
-
         }
 
         public void PrintAllData()

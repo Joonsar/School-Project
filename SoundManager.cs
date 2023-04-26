@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Media;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace School_Project
@@ -90,6 +86,7 @@ namespace School_Project
                 await Task.Run(() => mainMusicPlayer.Stop());
             }
         }
+
         public static async Task PlaySlotsMusicAsync()
         {
             slotsMusicPlayer = soundPlayers[SoundType.Slots];
@@ -101,10 +98,10 @@ namespace School_Project
             marketMusicPlayer = soundPlayers[SoundType.Market];
             marketMusicPlayer.PlayLooping();
         }
+
         public static void StopMarketSound()
         {
             marketMusicPlayer?.Stop();
-           
         }
 
         public static async Task PlayBottlesSoundAsync()
@@ -125,25 +122,23 @@ namespace School_Project
             await Task.Run(() => soundPlayer.PlaySync());
         }
 
-
         public static async Task PlayFailSoundAsync()
         {
             var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Fail);
             await Task.Run(() => soundPlayer.PlaySync());
         }
 
-
         public static async Task PlayItemPickupSoundAsync()
         {
             var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
             await Task.Run(() => soundPlayer.PlaySync());
         }
+
         public static async Task PlayLevelUpSound()
         {
             var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.LevelUp);
             await Task.Run(() => soundPlayer.PlaySync());
         }
-
 
         public static async Task PlayGameStartSoundAsync()
         {
@@ -159,7 +154,6 @@ namespace School_Project
             {
                 await Task.Run(() => soundPlayer.PlaySync());
             }
-
         }
 
         public static async void PlayScoreSound()
@@ -181,6 +175,5 @@ namespace School_Project
         {
             await Task.Run(() => soundPlayers[SoundType.Die].PlaySync());
         }
-
     }
 }

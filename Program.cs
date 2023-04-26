@@ -8,7 +8,6 @@
             GameController.Instance = gc;
             gc.Init();
             gc.Run();
-           
         }
     }
 }

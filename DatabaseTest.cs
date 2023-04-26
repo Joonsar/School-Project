@@ -1,9 +1,7 @@
 ﻿//using Microsoft.Data.Sqlite;
 using Microsoft.Data.Sqlite;
-using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
 using System;
-using System.Data.SqlClient;
 
 namespace School_Project
 {

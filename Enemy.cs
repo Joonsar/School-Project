@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.Json.Serialization;
-using System.Xml.Serialization;
+
 using System.Threading.Tasks;
 
 namespace School_Project
@@ -9,7 +9,6 @@ namespace School_Project
     {
         private Random rand = new Random();
 
-        [XmlIgnore]
         private GameController gc = GameController.Instance;
 
         private Tuple<Position, Char> LastPosition;
@@ -94,7 +93,7 @@ namespace School_Project
                     break;
 
                 case int n when n > 90 && n < 120:
-                    gc.MessageLog.AddMessage(new LogMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})", ConsoleColor.Green)); ;
+                    gc.MessageLog.AddMessage(new LogMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 default:
