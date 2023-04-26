@@ -35,6 +35,7 @@ namespace School_Project
                 Console.ForegroundColor = Messages[i].Color;
                 //Console.Write(Messages[i]);
                 Console.Write(Messages[i].Message + new string(' ', Console.LargestWindowWidth - Messages[i].Message.Length - gc.Map.Width - 1));
+                Console.ResetColor();
             }
         }
     }
