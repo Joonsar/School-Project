@@ -2,12 +2,13 @@
 using Microsoft.Data.Sqlite;
 using MySql.Data.MySqlClient;
 using System;
+using System.Configuration;
 
 namespace School_Project
 {
     public class DatabaseTest
     {
-        private string connectionString = "server=henkka.sytes.net;user id=juoppopeli;password=Juoppopeli12kossu14;database=HighScores";
+        private readonly string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
         public DatabaseTest()
         {

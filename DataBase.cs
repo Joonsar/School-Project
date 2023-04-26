@@ -48,6 +48,7 @@ namespace School_Project
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
             }
         }
 
