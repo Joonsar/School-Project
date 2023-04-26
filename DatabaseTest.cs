@@ -12,7 +12,7 @@ namespace School_Project
 
         public DatabaseTest()
         {
-            connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            connectionString = PW.cString;
         }
 
         public void SaveToDatabase(string dbName, string jsonString)
