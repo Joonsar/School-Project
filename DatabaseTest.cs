@@ -8,10 +8,11 @@ namespace School_Project
 {
     public class DatabaseTest
     {
-        private readonly string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+        private string connectionString;
 
         public DatabaseTest()
         {
+            connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
         }
 
         public void SaveToDatabase(string dbName, string jsonString)
