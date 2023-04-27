@@ -155,7 +155,6 @@ namespace School_Project
             var gamestatsJson = JsonSerializer.Serialize(GameStats);
 
             db.UploadToServer(gamestatsJson);
-
         }
 
         private void MoveEntities()
