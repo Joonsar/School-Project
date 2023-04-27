@@ -56,12 +56,13 @@ namespace School_Project
         public GameController()
         {
         }
-
+        
         public void Init()
         {
             Qmarket = new Qmarket();
             localdb = new DataBase();
             localdb.CreateDatabase();
+            db = new DatabaseTest();
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
@@ -70,18 +71,14 @@ namespace School_Project
             Height = 24;
             Level = 0;
             EnemiesCount = 3;
-            Turn = 0;
+            Turn = 1;
             rand = new Random();
-            screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
+            
             MessageLog = new MessageLog(Height);
             StartScreen = new StartScreen();
 
-            if (Turn == 0)
-            {
-                screen.Clear();
-                StartScreen.Run();
-                Turn = 1;
-            }
+            screen.Clear();
+            StartScreen.Run();
             entities = new List<Entity>();
 
             Maps = new List<Map>();
@@ -94,8 +91,6 @@ namespace School_Project
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
-            db = new DatabaseTest();
-            localdb = new DataBase();
 
             screen.DrawScreen();
         }
@@ -137,17 +132,29 @@ namespace School_Project
                     Turn++;
                 }
             }
-            GameStats.Update();
+        }
 
-            //localdb.CreateDatabase();
+        //Nää 2 metodia tein ja sit niitä käytetää player luokassa kuollessa ja programmissa ku peli alkaa ja sit poistin tosta init metodista tualta lopusta noi localdb = new...
+        // Ku se oli tua alussa jo ja sit siirsin ton db = new databasetest... kans tonne alkuu mut kokeilin ni ei siitä siirrosta ollu kii
+        // Sit vaihoin tonne input luokkaa sille ku painaa Q ni
+        // gc.Player.HitPoints = -1;
+        // gc.Player.CheckDeath();
+        // Korjasin myös noi database tulostelut ja siinä si tommonen hiano ratkasu tolle haulle pelaajan nimen mukaa et sai ne sijotukset kohillee ku muuten olis joko pitäny copy pastee koko roska uutee
+        //metodii tai si koittaa jotenki änkee se sijotus sinne kantaa mitä en ny heti ainaka keksi et tekis järkevästi
+        public void CreateScreen()
+        {
+            screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
+        }
+
+        public void UpdateDatabases()
+        {
+            GameStats.Update();
             localdb.GetData(GameStats);
             localdb.SaveToDatabase();
 
             var gamestatsJson = JsonSerializer.Serialize(GameStats);
 
             db.UploadToServer(gamestatsJson);
-
-            screen.EndScreen();
         }
 
         private void MoveEntities()

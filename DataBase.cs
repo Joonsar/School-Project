@@ -149,37 +149,38 @@ namespace School_Project
             Console.WriteLine($"{"Sija",-7}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-20}{"Otettu vahinko",-20}{"Tapetut viholliset",-25}{"Juodut pullot",-20}{"Id",-5}");
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
-                int sija = 1;
+                int lineCount = 0;
+                int place = 1;
                 while (rdr.Read())
                 {
-                    if (sija % 20 == 0)
+                    if (lineCount % 10 == 0 && lineCount > 0)
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Yellow);
+                        Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Blue);
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         var key = Console.ReadKey(true);
                         if (key.Key == ConsoleKey.Escape)
                         {
                             break;
                         }
                     }
-                    else
-                    {
 
-                        string[] enemies = rdr.GetString(7).Split(",");
-                        string[] items = rdr.GetString(8).Split(",");
-                        if (name == "All")
-                        {
-                            Console.WriteLine(lines);
-                            Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
-                        }
-                        else if (name != "All" && name == rdr.GetString(1))
-                        {
-                            Console.WriteLine(lines);
-                            Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
-                        }
-                        sija++;
+                    string[] enemies = rdr.GetString(7).Split(",");
+                    string[] items = rdr.GetString(8).Split(",");
+                    if (name == "All")
+                    {
+                        Console.WriteLine(lines);
+                        Console.WriteLine($"{place,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
+                        lineCount++;
                     }
+                    else if (name != "All" && name == rdr.GetString(1))
+                    {
+                        Console.WriteLine(lines);
+                        Console.WriteLine($"{place,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
+                        lineCount++;
+                    }
+                    place++;
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
@@ -195,6 +196,8 @@ namespace School_Project
             {
                 while (rdr.Read())
                 {
+                    string lines = new String('-', Console.LargestWindowWidth);
+
                     Console.WriteLine("Nimi: " + rdr.GetString(1));
                     Console.WriteLine("Pisteet: " + rdr.GetString(2));
                     Console.WriteLine("Taso: " + rdr.GetString(3));
@@ -206,12 +209,14 @@ namespace School_Project
                     Console.WriteLine("Tapetut viholliset: ");
                     string[] enemies = rdr.GetString(7).Split(",");
                     this.PrintEntitiesList(enemies, spaces, ConsoleColor.Red);
+                    Console.WriteLine(lines, Console.ForegroundColor = ConsoleColor.Yellow);
                     string[] item = rdr.GetString(8).Split(",");
                     string juodut = "Juodut pullot: ";
                     spaces = new string(' ', juodut.Length);
                     Console.WriteLine(juodut, Console.ForegroundColor = ConsoleColor.Yellow);
                     this.PrintEntitiesList(item, spaces, ConsoleColor.Green);
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(lines + "\n");
                 }
                 rdr.Close();
             }
@@ -233,12 +238,8 @@ namespace School_Project
                         break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine(spaces + list[i].Replace(";", " - "), Console.ForegroundColor = color);
-                }
+                Console.WriteLine(spaces + list[i].Replace(";", " - "), Console.ForegroundColor = color);
             }
         }
-
     }
 }

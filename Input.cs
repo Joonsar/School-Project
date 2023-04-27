@@ -107,7 +107,8 @@ namespace School_Project
                         break;
 
                     case ConsoleKey.Q:
-                        gc.running = false;
+                        gc.Player.HitPoints = -1;
+                        gc.Player.CheckDeath();
                         break;
 
                     case ConsoleKey.UpArrow:
