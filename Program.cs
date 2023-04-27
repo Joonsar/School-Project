@@ -4,7 +4,6 @@
     {
         private static void Main(string[] args)
         {
-            DotNetEnv.Env.Load();
             GameController gc = new GameController();
             GameController.Instance = gc;
             gc.CreateScreen();
