@@ -43,7 +43,7 @@ namespace School_Project
                     SoundManager.PlayScoreSound();
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
-                        FileName = "http://juopontarina.servebeer.com",
+                        FileName = "http://juopontarina.servebeer.com:3000",
                         UseShellExecute = true
                     });
                 }
@@ -123,8 +123,6 @@ namespace School_Project
                 }
             }
         }
-
-        //jos mennään kaikkien oikeioppisten sääntöjen mukaan niin täähän voi olla private? ei kutsuta muualta
         private void PrintInfo()
         {
             Random random = new Random();
@@ -256,7 +254,6 @@ namespace School_Project
             Console.ReadKey(false);
         }
 
-        //tääkin voi kaiketi olla private?
         private void PrintText(string line, ConsoleColor color)
         {
             Console.ForegroundColor = color;
@@ -280,8 +277,6 @@ namespace School_Project
                 Console.WriteLine(l);
             }
         }
-
-        //ja tämä :D (ittellä on varmasti noita kans omassa koodissa)
         private void PrintDate(String date, ConsoleColor color)
         {
             Console.ForegroundColor = color;

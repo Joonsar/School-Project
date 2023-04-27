@@ -31,6 +31,7 @@ namespace School_Project
         public DataBase()
         {
             this.db = "database.db";
+
         }
 
         public void CreateDatabase()
@@ -48,7 +49,6 @@ namespace School_Project
             }
             catch
             {
-                Console.WriteLine(ex);
             }
         }
 
@@ -134,7 +134,7 @@ namespace School_Project
 
         public void PrintPlayerDataByName(string name)
         {
-            
+
             this.PrintData(name);
         }
         public void PrintData(string name)
@@ -165,7 +165,7 @@ namespace School_Project
                     }
                     else
                     {
-                        
+
                         string[] enemies = rdr.GetString(7).Split(",");
                         string[] items = rdr.GetString(8).Split(",");
                         if (name == "All")
