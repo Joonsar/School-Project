@@ -87,7 +87,7 @@ namespace School_Project
             switch (move)
             {
                 case int n when n > 5 && n < 10:
-                    damage *=10;
+                    damage =Health;
                     gc.MessageLog.AddMessage(new LogMessage($"Horjahdat sopivasti ladatessa uskomatonta pubi heijaria joten isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 10 && n < 30:
