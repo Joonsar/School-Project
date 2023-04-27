@@ -108,10 +108,17 @@ namespace School_Project
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
-                case int n when n > 50 && n < 70:
+                case int n when n > 50 && n < 60:
                     damage *= 1;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"{this.Name} kompastuu kesken matsin naama edellä sokoksen lasiin ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    break;
+                case int n when n > 60 && n < 70:
+                    damage *= 2;
+                    Health -= damage;
+                    gc.MessageLog.AddMessage(new LogMessage($"katot että {this.Name} on ottanu vaa parit joten päätät heittää kivellä mutta kivi osuuki", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Väiski frendii!! Hirveen väännön jälkee Väiski kuiteski uskoo et se oli {this.Name} ja hakkaatte sen kimpassa!", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"{this.Name} ottaa damagee ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 70 && n < 80:
                     damage *= 3;
