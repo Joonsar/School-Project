@@ -136,6 +136,9 @@ namespace School_Project
 
         //Nää 2 metodia tein ja sit niitä käytetää player luokassa kuollessa ja programmissa ku peli alkaa ja sit poistin tosta init metodista tualta lopusta noi localdb = new...
         // Ku se oli tua alussa jo ja sit siirsin ton db = new databasetest... kans tonne alkuu mut kokeilin ni ei siitä siirrosta ollu kii
+        // Sit vaihoin tonne input luokkaa sille ku painaa Q ni
+        // gc.Player.HitPoints = -1;
+        // gc.Player.CheckDeath();
         public void CreateScreen()
         {
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
