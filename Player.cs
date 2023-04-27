@@ -209,7 +209,9 @@ namespace School_Project
             {
                 SoundManager.PlayDieSoundAsync();
                 gc.MessageLog.AddMessage(new LogMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!", ConsoleColor.Red));
-                gc.running = false;
+                gc.UpdateDatabases();
+                gc.screen.EndScreen();
+                gc.Init();
             }
         }
 

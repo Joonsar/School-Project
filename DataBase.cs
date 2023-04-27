@@ -195,6 +195,8 @@ namespace School_Project
             {
                 while (rdr.Read())
                 {
+                    string lines = new String('-', Console.LargestWindowWidth);
+
                     Console.WriteLine("Nimi: " + rdr.GetString(1));
                     Console.WriteLine("Pisteet: " + rdr.GetString(2));
                     Console.WriteLine("Taso: " + rdr.GetString(3));
@@ -206,12 +208,15 @@ namespace School_Project
                     Console.WriteLine("Tapetut viholliset: ");
                     string[] enemies = rdr.GetString(7).Split(",");
                     this.PrintEntitiesList(enemies, spaces, ConsoleColor.Red);
+                    Console.WriteLine(lines, Console.ForegroundColor = ConsoleColor.Yellow);
                     string[] item = rdr.GetString(8).Split(",");
                     string juodut = "Juodut pullot: ";
                     spaces = new string(' ', juodut.Length);
                     Console.WriteLine(juodut, Console.ForegroundColor = ConsoleColor.Yellow);
                     this.PrintEntitiesList(item, spaces, ConsoleColor.Green);
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(lines + "\n");
+
                 }
                 rdr.Close();
             }
@@ -238,6 +243,7 @@ namespace School_Project
                     Console.WriteLine(spaces + list[i].Replace(";", " - "), Console.ForegroundColor = color);
                 }
             }
+
         }
 
     }

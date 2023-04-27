@@ -56,6 +56,10 @@ namespace School_Project
         public GameController()
         {
         }
+        public void CreateScreen()
+        {
+            screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
+        }
 
         public void Init()
         {
@@ -70,18 +74,14 @@ namespace School_Project
             Height = 24;
             Level = 0;
             EnemiesCount = 3;
-            Turn = 0;
+            Turn = 1;
             rand = new Random();
-            screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
+            
             MessageLog = new MessageLog(Height);
             StartScreen = new StartScreen();
 
-            if (Turn == 0)
-            {
-                screen.Clear();
-                StartScreen.Run();
-                Turn = 1;
-            }
+            screen.Clear();
+            StartScreen.Run();
             entities = new List<Entity>();
 
             Maps = new List<Map>();
@@ -137,6 +137,10 @@ namespace School_Project
                     Turn++;
                 }
             }
+        }
+
+        public void UpdateDatabases()
+        {
             GameStats.Update();
 
             //localdb.CreateDatabase();
@@ -147,7 +151,6 @@ namespace School_Project
 
             db.UploadToServer(gamestatsJson);
 
-            screen.EndScreen();
         }
 
         private void MoveEntities()

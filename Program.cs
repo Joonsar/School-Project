@@ -7,6 +7,7 @@
             DotNetEnv.Env.Load();
             GameController gc = new GameController();
             GameController.Instance = gc;
+            gc.CreateScreen();
             gc.Init();
             gc.Run();
         }
