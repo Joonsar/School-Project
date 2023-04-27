@@ -101,7 +101,7 @@ namespace School_Project
 
                 case int n when n > 50 && n < 80:
                     damage *= 4;
-                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {damage} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} ottaa {damage} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 80 && n < 90:
