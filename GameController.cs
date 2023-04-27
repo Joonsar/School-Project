@@ -139,6 +139,8 @@ namespace School_Project
         // Sit vaihoin tonne input luokkaa sille ku painaa Q ni
         // gc.Player.HitPoints = -1;
         // gc.Player.CheckDeath();
+        // Korjasin myös noi database tulostelut ja siinä si tommonen hiano ratkasu tolle haulle pelaajan nimen mukaa et sai ne sijotukset kohillee ku muuten olis joko pitäny copy pastee koko roska uutee
+        //metodii tai si koittaa jotenki änkee se sijotus sinne kantaa mitä en ny heti ainaka keksi et tekis järkevästi
         public void CreateScreen()
         {
             screen = new Screen(SCREEN_WIDTH, SCREEN_HEIGHT);
