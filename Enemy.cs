@@ -101,7 +101,8 @@ namespace School_Project
                 case int n when n > 20 && n < 30:
                     damage *= 2;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Näytät persettä ja {this.Name} heittää laatat sekä kärsii {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Kaivat kiivaasti taskusta jotain asetta ja löydät napin. Heität napin ja {this.Name} luuli et se on massia!", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"samalla kun {this.Name} ettii sitä potkaset selkää aiheuttaen {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 30 && n < 50:
                     damage *= 1;
