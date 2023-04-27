@@ -31,7 +31,6 @@ namespace School_Project
         public DataBase()
         {
             this.db = "database.db";
-
         }
 
         public void CreateDatabase()
@@ -74,7 +73,6 @@ namespace School_Project
             }
             catch
             {
-
             }
         }
 
@@ -134,9 +132,9 @@ namespace School_Project
 
         public void PrintPlayerDataByName(string name)
         {
-
             this.PrintData(name);
         }
+
         public void PrintData(string name)
         {
             Console.WriteLine();
