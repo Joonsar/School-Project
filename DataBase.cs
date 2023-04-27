@@ -149,11 +149,11 @@ namespace School_Project
             Console.WriteLine($"{"Sija",-7}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-20}{"Otettu vahinko",-20}{"Tapetut viholliset",-25}{"Juodut pullot",-20}{"Id",-5}");
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
-                int lineCount = 1;
+                int lineCount = 0;
                 int place = 1;
                 while (rdr.Read())
                 {
-                    if (lineCount % 11 == 0)
+                    if (lineCount % 10 == 0 && lineCount > 0)
                     {
                         Console.WriteLine();
                         Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Blue);
