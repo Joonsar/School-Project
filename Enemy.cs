@@ -87,7 +87,7 @@ namespace School_Project
             switch (move)
             {
                 case int n when n > 5 && n < 10:
-                    damage *=10;
+                    damage =Health + 1;
                     gc.MessageLog.AddMessage(new LogMessage($"Horjahdat sopivasti ladatessa uskomatonta pubi heijaria joten isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 10 && n < 30:
@@ -101,7 +101,7 @@ namespace School_Project
 
                 case int n when n > 50 && n < 80:
                     damage *= 4;
-                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {damage} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} ottaa {damage} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 80 && n < 90:
@@ -117,7 +117,6 @@ namespace School_Project
 
             Health -= damage;
             gc.GameStats.DamageDealt += damage;
-
             CheckDeath();
         }
 
