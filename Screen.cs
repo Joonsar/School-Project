@@ -155,18 +155,28 @@ namespace School_Project
         {
             Clear();
             //tämä  ny tässä testimielessä, joku oma metodi loppuscreenille ja sit lyö tietoo vähän tietokantaan ny hyvä tulee.
-            Console.WriteLine("Tapoit seuraavat viholliset");
+            Console.WriteLine("Tapoit seuraavat viholliset", Console.ForegroundColor = ConsoleColor.Green);
             foreach (Entity e in gc.GameStats.EnemiesKilled)
             {
-                Console.WriteLine($"{e.Name} {e.Description}");
+                Console.WriteLine($"{e.Name} {e.Description}", Console.ForegroundColor = ConsoleColor.Yellow);
             }
 
-            Console.WriteLine($"Teit yhteensä {gc.GameStats.DamageDealt} vahinkoa");
-            Console.WriteLine($"Otit yhteensä {gc.GameStats.DamageTaken} vahinkoa");
+            Console.WriteLine($"Teit yhteensä {gc.GameStats.DamageDealt} vahinkoa", Console.ForegroundColor = ConsoleColor.Green);
+            Console.WriteLine($"Otit yhteensä {gc.GameStats.DamageTaken} vahinkoa", Console.ForegroundColor = ConsoleColor.Red);
 
-            Console.WriteLine($"Keräsit myös {gc.GameStats.ItemsCollected.Count} pulloa näistä olisi saanut palautus rahoja {gc.GameStats.ItemsCollected.Count * 0.10} euroa. Harmi!");
-            Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level + 1}. olit itse {gc.Player.Level} tasolla");
-            var input2 = Console.ReadKey(false);
+            Console.WriteLine($"Keräsit myös {gc.GameStats.ItemsCollected.Count} pulloa näistä olisi saanut palautus rahoja {gc.GameStats.ItemsCollected.Count * 0.10} euroa. Harmi!", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level + 1}. olit itse {gc.Player.Level} tasolla", Console.ForegroundColor = ConsoleColor.Green);
+            
+            Console.WriteLine("\nPaina ESC jatkaaksesi!", Console.ForegroundColor = ConsoleColor.Yellow);
+            while(true)
+            {
+                var input2 = Console.ReadKey(true);
+                if (input2.Key == ConsoleKey.Escape)
+                {
+                    break;
+                }
+            }
         }
+            
     }
 }
