@@ -165,10 +165,12 @@ namespace School_Project
             Console.WriteLine($"Otit yhteensä {gc.GameStats.DamageTaken} vahinkoa", Console.ForegroundColor = ConsoleColor.Red);
 
             Console.WriteLine($"Keräsit myös {gc.GameStats.ItemsCollected.Count} pulloa näistä olisi saanut palautus rahoja {gc.GameStats.ItemsCollected.Count * 0.10} euroa. Harmi!", Console.ForegroundColor = ConsoleColor.Blue);
+            Console.WriteLine($"Arvioitu promillemääräsi oli {gc.GameStats.ItemsCollected.Count * 0.15} promilleä. Melkoinen saavutus");
             Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level + 1}. olit itse {gc.Player.Level} tasolla", Console.ForegroundColor = ConsoleColor.Green);
-            
+
             Console.WriteLine("\nPaina ESC jatkaaksesi!", Console.ForegroundColor = ConsoleColor.Yellow);
-            while(true)
+
+            while (true)
             {
                 var input2 = Console.ReadKey(true);
                 if (input2.Key == ConsoleKey.Escape)
@@ -177,6 +179,5 @@ namespace School_Project
                 }
             }
         }
-            
     }
 }
