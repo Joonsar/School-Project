@@ -143,9 +143,8 @@ namespace School_Project
             var hitChance = rand.Next(1, 100);
             if (hitChance > BaseHitChance)
             {
-                var damage = (BaseDamage + rand.Next(1, 50));
-                e.TakeDamage(damage);
-                gc.GameStats.DamageDealt += damage;
+                e.TakeDamage(BaseDamage);
+                
                 //gc.MessageLog.AddMessage($"{Name} Hits {e.Name} for {damage}.");
             }
             else
