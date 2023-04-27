@@ -10,7 +10,7 @@ namespace School_Project
         private static System.Media.SoundPlayer player = new System.Media.SoundPlayer();
         private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
         private readonly ConsoleColor[] Colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Cyan };
-
+        private readonly int maxPlayerNameLength = 15;
         public string PlayerName { get; set; }
 
         public StartScreen()
@@ -153,7 +153,7 @@ namespace School_Project
             {
                 Console.Write("Anna sankarillesi nimi: ", Console.ForegroundColor = ConsoleColor.Yellow);
                 this.PlayerName = Console.ReadLine();
-                if (this.PlayerName.Length > 0 && this.PlayerName.Length < 10)
+                if (this.PlayerName.Length > 0 && this.PlayerName.Length < maxPlayerNameLength)
                 {
                     isNameValid = true;
                 }
@@ -161,9 +161,9 @@ namespace School_Project
                 {
                     Console.WriteLine("Pelaajan nimi ei voi olla tyhjä, yritäppä uudestaan");
                 }
-                else if (this.PlayerName.Length >= 10)
+                else if (this.PlayerName.Length >= maxPlayerNameLength)
                 {
-                    Console.WriteLine("Pelaajan nimi ei voi olla yli 10 merkkiä pitkä, yritäppä uudestaan");
+                    Console.WriteLine($"Pelaajan nimi ei voi olla yli {maxPlayerNameLength} merkkiä pitkä, yritäppä uudestaan");
                 }
             }
             gc.PlayerName = this.PlayerName;
