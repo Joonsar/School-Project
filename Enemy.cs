@@ -89,12 +89,14 @@ namespace School_Project
                 case int n when n > 0 && n < 5:
                     damage =Health + 1;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Lataat kaikki voimasi uskomattomaan pubi heijariin ja säkällä horjahdat sopivasti niin että isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Lataat kaikki voimasi uskomattomaan pubi heijariin ja säkällä horjahdat sopivasti niin että isku osuu keskelle naamaa!", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"{this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 5 && n < 20:
                     damage *= 2;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Pistät painiks ja möyritte maassa 20min ähisten jonka jälkeen pidätte juomatauon. Tauolla lyöt takaapäin ja juokset karkuun. {this.Name} kärsii {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Pistät painiks ja möyritte maassa 20min ähisten jonka jälkeen pidätte juomatauon.", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Tauolla lyöt takaapäin ja juokset karkuun. {this.Name} kärsii {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 20 && n < 30:
                     damage *= 2;
@@ -124,7 +126,8 @@ namespace School_Project
                 case int n when n > 90 && n < 110:
                     damage *= 2;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Päätät ottaa henkisen yliotteen ja ottaa paidan pois. {this.Name} nauraa pää polvissa koska riisuit housut! Käytät tilanteen hyväksesi ja tempaset puskista leukaa antaen {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Päätät ottaa henkisen yliotteen ja ottaa paidan pois. {this.Name} nauraa pää polvissa koska riisuit housut!", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Käytät tilanteen hyväksesi ja tempaset puskista leukaa antaen {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 default:
                     damage *= 1;
