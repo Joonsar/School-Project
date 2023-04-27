@@ -82,40 +82,35 @@ namespace School_Project
         private void DatabaseUsage()
         {
             Console.Clear();
-            gc.localdb.PrintAllData();
+            gc.localdb.PrintAllPlayerData();
             SoundManager.PlayScoreSound();
             while (true)
             {
-                Console.WriteLine("1 - Tarkemmat tiedot parhaasta sijoituksesta");
-                Console.WriteLine("2 - Hae pelaajan sijoitukset nimellä");
-                Console.WriteLine("3 - Hae tarkemmat tiedot id:llä");
-                Console.WriteLine("4 - Tulosta sijoitus lista");
-                Console.WriteLine("5 - Paluu valikkoon");
+                Console.WriteLine("1 - Hae pelaajan sijoitukset nimellä");
+                Console.WriteLine("2 - Hae tarkemmat tiedot id:llä");
+                Console.WriteLine("3 - Tulosta sijoitus lista");
+                Console.WriteLine("4 - Paluu valikkoon");
                 Console.WriteLine("9 - Tyhjennä tilastot");
                 Console.Write("Anna komento: ");
                 string c = Console.ReadLine();
                 if (c == "1")
                 {
-                    gc.localdb.PrintPlayerStats(gc.localdb.PlayerID);
-                }
-                if (c == "2")
-                {
                     Console.Write("Anna pelaajan nimi: ");
                     string name = Console.ReadLine();
                     gc.localdb.PrintPlayerDataByName(name);
                 }
-                if (c == "3")
+                if (c == "2")
                 {
                     Console.Write("Anna id: ");
                     int id = Convert.ToInt32(Console.ReadLine());
-                    gc.localdb.PrintPlayerStatsWihtID(id);
+                    gc.localdb.PrintPlayerStatsWhitId(id);
                 }
-                if (c == "4")
+                if (c == "3")
                 {
-                    gc.localdb.PrintAllData();
+                    gc.localdb.PrintAllPlayerData();
                     SoundManager.PlayScoreSound();
                 }
-                if (c == "5")
+                if (c == "4")
                 {
                     this.PrintInfo();
                     break;
