@@ -89,7 +89,7 @@ namespace School_Project
                 case int n when n > 0 && n < 5:
                     damage =Health + 1;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Horjahdat sopivasti ladatessa uskomatonta pubi heijaria joten isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Lataat kaikki voimasi uskomattomaan pubi heijariin ja säkällä horjahdat sopivasti ja isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
                 case int n when n > 5 && n < 20:
                     damage *= 2;
