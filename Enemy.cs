@@ -69,7 +69,7 @@ namespace School_Project
                 }
                 else
                 {
-                    gc.MessageLog.AddMessage(new LogMessage($"{Name} yrittää huitaista, mutta {gc.Player.Name} huojunta osuu kohilleen ja isku viilettää ohi!", ConsoleColor.DarkYellow));
+                    gc.MessageLog.AddMessage(new LogMessage($"{Name} yrittää huitaista, mutta juoppo {gc.Player.Name} huojuu sopivasti ja isku viilettää ohi!", ConsoleColor.DarkYellow));
                 }
             }
         }
