@@ -123,6 +123,7 @@ namespace School_Project
                 }
             }
         }
+
         private void PrintInfo()
         {
             Random random = new Random();
@@ -146,8 +147,25 @@ namespace School_Project
             string lines = new string('-', Console.LargestWindowWidth);
             String spaces = new String(' ', 12);
             Console.WriteLine();
-            Console.Write("Anna sankarillesi nimi: ", Console.ForegroundColor = ConsoleColor.Yellow);
-            this.PlayerName = Console.ReadLine();
+
+            bool isNameValid = false;
+            while (!isNameValid)
+            {
+                Console.Write("Anna sankarillesi nimi: ", Console.ForegroundColor = ConsoleColor.Yellow);
+                this.PlayerName = Console.ReadLine();
+                if (this.PlayerName.Length > 0 && this.PlayerName.Length < 10)
+                {
+                    isNameValid = true;
+                }
+                else if (this.PlayerName.Length < 1)
+                {
+                    Console.WriteLine("Pelaajan nimi ei voi olla tyhjä, yritäppä uudestaan");
+                }
+                else if (this.PlayerName.Length >= 10)
+                {
+                    Console.WriteLine("Pelaajan nimi ei voi olla yli 10 merkkiä pitkä, yritäppä uudestaan");
+                }
+            }
             gc.PlayerName = this.PlayerName;
             Console.Clear();
 
@@ -277,6 +295,7 @@ namespace School_Project
                 Console.WriteLine(l);
             }
         }
+
         private void PrintDate(String date, ConsoleColor color)
         {
             Console.ForegroundColor = color;
