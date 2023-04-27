@@ -244,7 +244,7 @@ namespace School_Project
         {
             for (int i = 0; i < list.Length; i++)
             {
-                if (i % 20 == 0 && i > 1)
+                if (i % 10 == 0 && i > 1)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Yellow);
