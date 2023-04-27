@@ -69,7 +69,7 @@ namespace School_Project
                 }
                 else
                 {
-                    gc.MessageLog.AddMessage(new LogMessage($"{Name} yrittää huitaista, mutta {gc.Player.Name} väistää.", ConsoleColor.DarkYellow));
+                    gc.MessageLog.AddMessage(new LogMessage($"{Name} yrittää huitaista, mutta {gc.Player.Name} huojunta osuu kohilleen ja isku viilettää ohi!", ConsoleColor.DarkYellow));
                 }
             }
         }
@@ -79,27 +79,44 @@ namespace School_Project
             LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
         }
 
-        public override void TakeDamage(int v)
+        public override void TakeDamage(int basedamage)
         {
-            Health -= v;
-            switch (v)
+            int damage = basedamage;
+            Random rand = new Random();
+            int move = rand.Next(0, 120);
+            switch (move)
             {
-                case int n when n < 70:
-                    gc.MessageLog.AddMessage(new LogMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                case int n when n > 5 && n < 10:
+                    damage *=10;
+                    gc.MessageLog.AddMessage(new LogMessage($"Horjahdat sopivasti ladatessa uskomatonta pubi heijaria joten isku osuu keskelle naamaa! {this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    break;
+                case int n when n > 10 && n < 30:
+                    damage *= 2;
+                    gc.MessageLog.AddMessage(new LogMessage($"Näytät persettä ja {this.Name} heittää laatat sekä kärsii {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    break;
+                case int n when n > 30 && n < 50:
+                    damage *= 1;
+                    gc.MessageLog.AddMessage(new LogMessage($"Annat pikku läpsyn naamalle. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
-                case int n when n > 70 && n < 90:
-                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {v} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
+                case int n when n > 50 && n < 80:
+                    damage *= 4;
+                    gc.MessageLog.AddMessage(new LogMessage($"Potku kulkusille osoittautuu tehokkaaks. {this.Name} {damage} vahinkoa. ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
-                case int n when n > 90 && n < 120:
-                    gc.MessageLog.AddMessage(new LogMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {v} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                case int n when n > 80 && n < 90:
+                    damage *= 3;
+                    gc.MessageLog.AddMessage(new LogMessage($"Uskomaton humalainen saksipotku. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 default:
-                    gc.MessageLog.AddMessage(new LogMessage($"Tökkäät silmään. {this.Name} ottaa {v} vahikoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    damage *= 1;
+                    gc.MessageLog.AddMessage(new LogMessage($"Tökkäät silmään. {this.Name} ottaa {damage} vahikoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
             }
+
+            Health -= damage;
+            gc.GameStats.DamageDealt += damage;
 
             CheckDeath();
         }
