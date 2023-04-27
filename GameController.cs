@@ -66,6 +66,7 @@ namespace School_Project
             Qmarket = new Qmarket();
             localdb = new DataBase();
             localdb.CreateDatabase();
+            db = new DatabaseTest();
             //All here that needs to be initialized like map, Player, screen etc.
             // for example Player Player = new Player(blabla);
             // Screen screen = new screen(80,35) (or whatever it is)
@@ -94,8 +95,6 @@ namespace School_Project
 
             // kopioidaan tämänhetkisen mapin entityt entities listaan. Näin voidaan luoda uusia mappeja ja niiden viholliset jäävät niihin talteen.
             entities = Map.entities;
-            db = new DatabaseTest();
-            localdb = new DataBase();
 
             screen.DrawScreen();
         }

@@ -152,34 +152,32 @@ namespace School_Project
                 int sija = 1;
                 while (rdr.Read())
                 {
-                    if (sija % 20 == 0)
+                    if (sija % 11 == 0)
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Yellow);
+                        Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Blue);
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         var key = Console.ReadKey(true);
                         if (key.Key == ConsoleKey.Escape)
                         {
                             break;
                         }
                     }
-                    else
-                    {
 
                         string[] enemies = rdr.GetString(7).Split(",");
                         string[] items = rdr.GetString(8).Split(",");
-                        if (name == "All")
-                        {
-                            Console.WriteLine(lines);
-                            Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
-                        }
-                        else if (name != "All" && name == rdr.GetString(1))
-                        {
-                            Console.WriteLine(lines);
-                            Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
-                        }
-                        sija++;
+                    if (name == "All")
+                    {
+                        Console.WriteLine(lines);
+                        Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
                     }
+                    else if (name != "All" && name == rdr.GetString(1))
+                    {
+                        Console.WriteLine(lines);
+                        Console.WriteLine($"{sija,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
+                    }
+                    sija++;
                 }
                 Console.WriteLine(lines);
                 rdr.Close();
@@ -238,10 +236,8 @@ namespace School_Project
                         break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine(spaces + list[i].Replace(";", " - "), Console.ForegroundColor = color);
-                }
+                Console.WriteLine(spaces + list[i].Replace(";", " - "), Console.ForegroundColor = color);
+                
             }
 
         }
