@@ -11,6 +11,7 @@ namespace School_Project
         private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
         private readonly ConsoleColor[] Colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Cyan };
         private readonly int maxPlayerNameLength = 15;
+        private readonly string viewer = " __      ___                              _ _                   _   _               _                 _       _              _ \r\n \\ \\    / (_)                            | (_)                 | | (_)             (_)               | |     (_)            | |\r\n  \\ \\  / / _  _____      _____ _ __    __| |_ ___  ___ _ __ ___| |_ _  ___  _ __    _ ___    __ _  __| |_   ___ ___  ___  __| |\r\n   \\ \\/ / | |/ _ \\ \\ /\\ / / _ \\ '__|  / _` | / __|/ __| '__/ _ \\ __| |/ _ \\| '_ \\  | / __|  / _` |/ _` \\ \\ / / / __|/ _ \\/ _` |\r\n    \\  /  | |  __/\\ V  V /  __/ |    | (_| | \\__ \\ (__| | |  __/ |_| | (_) | | | | | \\__ \\ | (_| | (_| |\\ V /| \\__ \\  __/ (_| |\r\n     \\/   |_|\\___| \\_/\\_/ \\___|_|     \\__,_|_|___/\\___|_|  \\___|\\__|_|\\___/|_| |_| |_|___/  \\__,_|\\__,_| \\_/ |_|___/\\___|\\__,_|\r\n                                                                                                                               \r\n                                                                                                                               ";
         public string PlayerName { get; set; }
 
         public StartScreen()
@@ -20,6 +21,11 @@ namespace School_Project
 
         public void Run()
         {
+            Console.Clear();
+            Console.Write(viewer);
+            System.Threading.Thread.Sleep(3000);
+            Console.Clear();
+
             SoundManager.PlayGameStartSoundAsync();
             PrintInfo();
             while (true)
