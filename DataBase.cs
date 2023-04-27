@@ -139,6 +139,9 @@ namespace School_Project
         {
             Console.WriteLine();
             Console.WriteLine();
+
+            int lineCount = 0;
+            int place = 1;
             string lines = new String('-', Console.LargestWindowWidth);
             string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var connection = new SqliteConnection($"Data Source ={this.db}");
@@ -147,33 +150,32 @@ namespace School_Project
             Console.WriteLine($"{"Sija",-7}{"Nimi",-15}{"Pisteet",-15}{"Tehty vahinko",-20}{"Otettu vahinko",-20}{"Tapetut viholliset",-25}{"Juodut pullot",-20}{"Id",-5}");
             using (SqliteDataReader rdr = cmd.ExecuteReader())
             {
-                int lineCount = 0;
-                int place = 1;
                 while (rdr.Read())
                 {
-                    if (lineCount % 10 == 0 && lineCount > 0)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Blue);
-                        Console.WriteLine();
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        var key = Console.ReadKey(true);
-                        if (key.Key == ConsoleKey.Escape)
-                        {
-                            break;
-                        }
-                    }
+                    
 
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
                     if (name == "All")
                     {
+                        if (lineCount % 10 == 0 && lineCount > 0)
+                        {
+                            if (CheckIfBreakPrinting(lineCount))
+                            {
+                                break;
+                            }
+                        }
                         Console.WriteLine(lines);
                         Console.WriteLine($"{place,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
                         lineCount++;
                     }
-                    else if (name != "All" && name == rdr.GetString(1))
+                    if (name == rdr.GetString(1))
                     {
+                        if(CheckIfBreakPrinting(lineCount))
+                        {
+                            break;
+                        }
+                        
                         Console.WriteLine(lines);
                         Console.WriteLine($"{place,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
                         lineCount++;
@@ -184,6 +186,23 @@ namespace School_Project
                 rdr.Close();
             }
             connection.Close();
+        }
+
+        private Boolean CheckIfBreakPrinting(int lineCount)
+        {
+            if (lineCount % 10 == 0 && lineCount > 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Paina entteriä jatkaaksesi tai esc lopettaaksesi tulostuksen", Console.ForegroundColor = ConsoleColor.Blue);
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                var key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void PrintPlayerStats(SqliteCommand cmd, SqliteConnection connection)
