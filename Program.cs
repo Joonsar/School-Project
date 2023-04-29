@@ -4,7 +4,7 @@
     {
         private static void Main(string[] args)
         {
-            GameController gc = new GameController();
+            GameController gc = new();
             GameController.Instance = gc;
             gc.CreateScreen();
             gc.Init();

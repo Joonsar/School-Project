@@ -24,7 +24,7 @@ namespace School_Project
 
     public static class SoundManager
     {
-        private static readonly Dictionary<SoundType, SoundPlayer> soundPlayers = new Dictionary<SoundType, SoundPlayer>
+        private static readonly Dictionary<SoundType, SoundPlayer> soundPlayers = new()
         {
             { SoundType.MainMusic, new SoundPlayer(School_Project.Properties.Resources.MainMusic) },
             { SoundType.Market, new SoundPlayer(School_Project.Properties.Resources.Market) },

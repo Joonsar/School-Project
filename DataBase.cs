@@ -142,7 +142,7 @@ namespace School_Project
 
             int lineCount = 0;
             int place = 1;
-            string lines = new String('-', Console.LargestWindowWidth);
+            string lines = new('-', Console.LargestWindowWidth);
             string sql = "SELECT * FROM HighScores ORDER BY Pisteet DESC";
             var connection = new SqliteConnection($"Data Source ={this.db}");
             var cmd = new SqliteCommand(sql, connection);
@@ -213,7 +213,7 @@ namespace School_Project
             {
                 while (rdr.Read())
                 {
-                    string lines = new String('-', Console.LargestWindowWidth);
+                    string lines = new('-', Console.LargestWindowWidth);
 
                     Console.WriteLine("Nimi: " + rdr.GetString(1));
                     Console.WriteLine("Pisteet: " + rdr.GetString(2));
@@ -222,7 +222,7 @@ namespace School_Project
                     Console.WriteLine("Otettu vahinko: " + rdr.GetString(6));
                     Console.WriteLine("Kuolit lähiön tasolla: " + rdr.GetString(4));
                     string s = "Tapetut viholliset: ";
-                    string spaces = new string(' ', s.Length);
+                    string spaces = new(' ', s.Length);
                     Console.WriteLine("Tapetut viholliset: ");
                     string[] enemies = rdr.GetString(7).Split(",");
                     this.PrintEntitiesList(enemies, spaces, ConsoleColor.Red);

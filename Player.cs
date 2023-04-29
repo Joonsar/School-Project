@@ -41,7 +41,7 @@ namespace School_Project
 
         public float Money { get; set; }
 
-        private Random rand = new Random();
+        private Random rand = new();
 
         public Player(string name, int healthValue, int hitPoints)
         {

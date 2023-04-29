@@ -21,14 +21,14 @@ namespace School_Project
         public Enemies enemies { get; set; }    
 
         //tässä määritellään seinät jne. toi true false arvo on voiko sen läpi kävellä vai ei
-        public static readonly MapObject wall = new MapObject('#', "seinä", false, ConsoleColor.DarkYellow);
+        public static readonly MapObject wall = new('#', "seinä", false, ConsoleColor.DarkYellow);
 
-        public static readonly MapObject empty = new MapObject(' ', "lattia", true);
-        public static readonly MapObject stairsDown = new MapObject('<', "portaat alas", true, ConsoleColor.Green);
-        public static readonly MapObject stairsUp = new MapObject('>', "portaal ylös", true, ConsoleColor.Red);
-        public static readonly MapObject door = new MapObject('+', "Ovi", false, ConsoleColor.White);
-        public static readonly MapObject openDoor = new MapObject('-', "Ovi", true, ConsoleColor.White);
-        public static readonly MapObject qMarket = new MapObject('Ħ', "Q-Market", true, ConsoleColor.Cyan);
+        public static readonly MapObject empty = new(' ', "lattia", true);
+        public static readonly MapObject stairsDown = new('<', "portaat alas", true, ConsoleColor.Green);
+        public static readonly MapObject stairsUp = new('>', "portaal ylös", true, ConsoleColor.Red);
+        public static readonly MapObject door = new('+', "Ovi", false, ConsoleColor.White);
+        public static readonly MapObject openDoor = new('-', "Ovi", true, ConsoleColor.White);
+        public static readonly MapObject qMarket = new('Ħ', "Q-Market", true, ConsoleColor.Cyan);
 
         public List<Entity> entities;
         private List<Position> playerPath;
@@ -72,12 +72,12 @@ namespace School_Project
 
         private void GenerateRoom(int numRooms)
         {
-            List<Room> rooms = new List<Room>();
+            List<Room> rooms = new();
             int tries = 0;
 
             while (rooms.Count < numRooms && tries < 1000)
             {
-                Room room = new Room();
+                Room room = new();
 
                 bool overlaps = false;
                 foreach (Room otherRoom in rooms)
@@ -92,8 +92,8 @@ namespace School_Project
                     int owidht = otherRoom.Rect.Width + 2;
                     int oheight = otherRoom.Rect.Height + 2;
 
-                    Rectangle r = new Rectangle(xr, yr, rwidht, rheight);
-                    Rectangle ro = new Rectangle(xo, yo, owidht, oheight);
+                    Rectangle r = new(xr, yr, rwidht, rheight);
+                    Rectangle ro = new(xo, yo, owidht, oheight);
                     if (room.Rect.IntersectsWith(otherRoom.Rect) || room.Rect.IntersectsWith(ro) || r.IntersectsWith(ro))
                     {
                         overlaps = true;
@@ -135,14 +135,14 @@ namespace School_Project
         public void GenerateItems()
         {
             var count = 0;
-            Random rand = new Random();
+            Random rand = new();
             while (ItemCount > count)
             {
                 bool isvalid = false;
                 var oldPos = new Position(-10, -10);
                 while (isvalid == false)
                 {
-                    Position randomPos = new Position(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
+                    Position randomPos = new(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
                     var item = items.GetRandomItem();
                     if (IsPositionValid(randomPos) && IsEnemyAtPosition(randomPos) == null && !IsStairsAtPosition(randomPos) && !randomPos.Equals(oldPos))
                     {
@@ -167,7 +167,7 @@ namespace School_Project
 
         private void GenerateMarket()
         {
-            Random random = new Random();
+            Random random = new();
             var pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
             while (!IsPositionValid(pos))
             {
@@ -178,7 +178,7 @@ namespace School_Project
 
         private void GenerateRandomWalls()
         {
-            Random random = new Random();
+            Random random = new();
 
             // Determine the number of walls to create based on the size of the map
             int wallCount = Width * Height / 80;
@@ -274,7 +274,7 @@ namespace School_Project
 
         public void GenerateStairs()
         {
-            Random random = new Random();
+            Random random = new();
 
             int newX = random.Next(1, Width - 1);
             int newY = random.Next(1, Height - 1);
@@ -304,7 +304,7 @@ namespace School_Project
             int newHeight = Height;
             char emptySpaceChar = '.';
 
-            Map newMap = new Map(newWidth, newHeight, emptySpaceChar);
+            Map newMap = new(newWidth, newHeight, emptySpaceChar);
 
             for (int x = 0; x < newWidth; x++)
             {

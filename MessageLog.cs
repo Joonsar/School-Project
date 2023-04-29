@@ -7,7 +7,7 @@ namespace School_Project
     {
         private GameController gc = GameController.Instance;
         private int MaxMessages;
-        private List<LogMessage> Messages = new List<LogMessage>();
+        private List<LogMessage> Messages = new();
 
         public MessageLog(int maxMessages)
         {

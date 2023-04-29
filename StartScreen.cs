@@ -7,7 +7,7 @@ namespace School_Project
     {
         private string command;
         private GameController gc = GameController.Instance;
-        private static System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+        private static System.Media.SoundPlayer player = new();
         private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
         private readonly ConsoleColor[] Colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Cyan };
         private readonly int maxPlayerNameLength = 15;
@@ -132,7 +132,7 @@ namespace School_Project
 
         private void PrintInfo()
         {
-            Random random = new Random();
+            Random random = new();
             Console.ForegroundColor = Colors[random.Next(Colors.Length)];
             Console.WriteLine(IntroText);
             Console.ResetColor();
@@ -150,8 +150,8 @@ namespace School_Project
             ConsoleColor date = ConsoleColor.Green;
             ConsoleColor text = ConsoleColor.Yellow;
             ConsoleColor drink = ConsoleColor.Red;
-            string lines = new string('-', Console.LargestWindowWidth);
-            String spaces = new String(' ', 12);
+            string lines = new('-', Console.LargestWindowWidth);
+            String spaces = new(' ', 12);
             Console.WriteLine();
 
             bool isNameValid = false;
@@ -281,7 +281,7 @@ namespace School_Project
         private void PrintText(string line, ConsoleColor color)
         {
             Console.ForegroundColor = color;
-            String spaces = new String(' ', 12);
+            String spaces = new(' ', 12);
             string[] words = line.Split(' ');
             String l = "";
             for (int i = 0; i < words.Length; i++)

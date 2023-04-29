@@ -15,7 +15,7 @@ namespace School_Project
 
         public void GenerateRoom()
         {
-            Random random = new Random();
+            Random random = new();
             int width = random.Next(5, 14); // Random width between
             int height = random.Next(5, 14); // Random height between
             int x = random.Next(2, gc.Width - width - 1); // Random x position within the game board

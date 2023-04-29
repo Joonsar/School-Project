@@ -9,7 +9,7 @@ namespace School_Project
         private List<Item> ItemsList;
         private List<Item> ItemsList2;
         private GameController gc = GameController.Instance;
-        private Random random = new Random();
+        private Random random = new();
 
         public Items()
         {
@@ -52,7 +52,7 @@ namespace School_Project
         public Item GetRandomItem()
         {
             var randomItem = ItemsList[random.Next(0, ItemsList.Count())];
-            Item newItem = new Item(randomItem.Name, randomItem.Description, randomItem.Pos, randomItem.Mark, randomItem.Color, randomItem.UseAction);
+            Item newItem = new(randomItem.Name, randomItem.Description, randomItem.Pos, randomItem.Mark, randomItem.Color, randomItem.UseAction);
             return newItem;
             //  return ItemsList[random.Next(0, ItemsList.Count())];
         }

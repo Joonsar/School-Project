@@ -7,7 +7,7 @@ namespace School_Project
 {
     public class Enemy : Entity
     {
-        private Random rand = new Random();
+        private Random rand = new();
 
         private GameController gc = GameController.Instance;
 
@@ -82,7 +82,7 @@ namespace School_Project
         public override void TakeDamage(int basedamage)
         {
             int damage = basedamage;
-            Random rand = new Random();
+            Random rand = new();
             int move = rand.Next(0, 120);
             switch (move)
             {
@@ -164,7 +164,7 @@ namespace School_Project
 
         public override void Update()
         {
-            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            Random rand = new(Guid.NewGuid().GetHashCode());
             int speed = rand.Next(1, 10);
             int moveX = 0;
             int moveY = 0;

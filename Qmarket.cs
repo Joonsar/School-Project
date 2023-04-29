@@ -146,9 +146,9 @@ namespace School_Project
             bool playing = true;
             int winnings = 0;
             var spaces = new string(' ', 40);
-            Random rand = new Random();
+            Random rand = new();
             char[] row = new char[3];
-            List<char> chars = new List<char>();
+            List<char> chars = new();
             chars.Add('$');
             chars.Add('%');
             chars.Add('£');
