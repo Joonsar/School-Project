@@ -113,7 +113,7 @@ namespace School_Project
             if (gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y) != null)
             {
                 var item = gc.Map.IsItemAtPosition(Pos.X + x, Pos.Y + y);
-                gc.MessageLog.AddMessage(new LogMessage($"Poimit maasta {item.Name} {item.Description}", ConsoleColor.Blue));
+                //gc.MessageLog.AddMessage(new LogMessage($"Poimit maasta {item.Name} {item.Description}", ConsoleColor.Blue));
                 item.Use();
                 Inventory.Add(item);
                 Bottles++;
