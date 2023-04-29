@@ -176,7 +176,7 @@ namespace School_Project
                     break;
 
                 case int n when n > 150 && n < 160:
-                    damage *= 3;
+                    damage *= 4;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Päätät käyttää käyttökelpoisinta taitoa: puremista. Puret vastustajasi kättä kunnes hän huutaa", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"'löysin bissen' ja päästät irt. Huomattuasi tulleeksi huijatuksi sinut valtaa raivo ja", ConsoleColor.Green));
