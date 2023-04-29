@@ -7,8 +7,8 @@ namespace School_Project
     public class Enemies
     {
         private GameController gc = GameController.Instance;
-        private Random rand = new Random();
-        private List<ConsoleColor> colors = new List<ConsoleColor>((ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor)));
+        private Random rand = new();
+        private List<ConsoleColor> colors = new((ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor)));
 
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private string[] enemyDescriptions = new string[]
@@ -65,19 +65,19 @@ namespace School_Project
 
         public Enemies()
         {
-            this.colors.Remove(ConsoleColor.Black);
-            this.colors.Remove(ConsoleColor.Green);
+            colors.Remove(ConsoleColor.Black);
+            colors.Remove(ConsoleColor.Green);
         }
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
         {
-            List<Enemy> enemies = new List<Enemy>();
-            List<string> randomizedNameList = new List<string>(enemyNames.OrderBy(item => rand.Next()));
-            List<string> randomizedDescriptionList = new List<string>(enemyDescriptions.OrderBy(item => rand.Next()));
+            List<Enemy> enemies = new();
+            List<string> randomizedNameList = new(enemyNames.OrderBy(item => rand.Next()));
+            List<string> randomizedDescriptionList = new(enemyDescriptions.OrderBy(item => rand.Next()));
 
             for (int i = 0; i < howMany; i++)
             {
-                ConsoleColor color = this.colors[rand.Next(0, this.colors.Count)];
+                ConsoleColor color = colors[rand.Next(0, colors.Count)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count)];
                 enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count)], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
             }
