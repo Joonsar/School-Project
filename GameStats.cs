@@ -37,6 +37,7 @@ namespace School_Project
             PlayerLevel = GameController.Instance.Player.Level;
             PlayerName = GameController.Instance.Player.Name;
             MapLevel = GameController.Instance.Level;
+            Scores = 20 * DamageDealt - 20 * DamageTaken + 100 * PlayerLevel + 50 * EnemiesKilled.Count + 50 * ItemsCollected.Count + 50 * MapLevel + GameController.Instance.Turn;
         }
     }
 }

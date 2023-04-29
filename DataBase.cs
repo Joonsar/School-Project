@@ -24,7 +24,7 @@ namespace School_Project
 
         private int MapLevel;
         private string db;
-
+        private GameController gc = GameController.Instance;
         private int Scores;
         public int PlayerID { get; set; }
 
@@ -55,6 +55,7 @@ namespace School_Project
         {
             try
             {
+                gc.GameStats.Update();
                 this.getValuesForEntities();
                 var connection = new SqliteConnection($"Data Source ={this.db}");
                 connection.Open();
