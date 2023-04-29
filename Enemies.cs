@@ -77,9 +77,9 @@ namespace School_Project
 
             for (int i = 0; i < howMany; i++)
             {
-                ConsoleColor color = this.colors[rand.Next(0, colors.Count)];
-                string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
-                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
+                ConsoleColor color = this.colors[rand.Next(0, this.colors.Count)];
+                string name = randomizedNameList[rand.Next(0, randomizedNameList.Count)];
+                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count)], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
             }
             return enemies;
         }
