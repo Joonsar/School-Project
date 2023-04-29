@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using Microsoft.Data.Sqlite;
 
 namespace School_Project
 {
@@ -152,8 +152,6 @@ namespace School_Project
             {
                 while (rdr.Read())
                 {
-                    
-
                     string[] enemies = rdr.GetString(7).Split(",");
                     string[] items = rdr.GetString(8).Split(",");
                     if (name == "All")
@@ -171,11 +169,11 @@ namespace School_Project
                     }
                     if (name == rdr.GetString(1))
                     {
-                        if(CheckIfBreakPrinting(lineCount))
+                        if (CheckIfBreakPrinting(lineCount))
                         {
                             break;
                         }
-                        
+
                         Console.WriteLine(lines);
                         Console.WriteLine($"{place,-7}{rdr.GetString(1),-15}{rdr.GetString(2),-15}{rdr.GetString(5),-20}{rdr.GetString(6),-20}{enemies.Length,-25}{items.Length,-20}{rdr.GetInt32(0),-5}");
                         lineCount++;
