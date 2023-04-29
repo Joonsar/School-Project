@@ -28,14 +28,14 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
-            // SoundManager.PlayMarketSoundAsync();
+            SoundManager.ChangeMusic(SoundType.Market);
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
                     //SoundManager.StopMarketSound();
-                    SoundManager.PlayMainMusicAsync();
+                    SoundManager.ChangeMusic(SoundType.MainMusic);
                     break;
 
                 case ConsoleKey.K:
@@ -118,7 +118,7 @@ namespace School_Project
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
-            // SoundManager.PlaySlotsMusicAsync();
+            SoundManager.ChangeMusic(SoundType.Slots);
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Console.SetCursorPosition(1, 16);

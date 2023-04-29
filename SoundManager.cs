@@ -8,6 +8,7 @@ namespace School_Project
 {
     public enum SoundType
     {
+        None,
         MainMusic,
         Market,
         ItemPickup,
@@ -33,6 +34,7 @@ namespace School_Project
         private static AudioFileReader mainMusicPlayer;
         private static AudioFileReader marketMusicPlayer;
         private static AudioFileReader slotsMusicPlayer;
+        private static SoundType currentMusicType;
 
         static SoundManager()
         {
@@ -72,6 +74,59 @@ namespace School_Project
                 waveOut.Init(soundPlayer);
                 soundPlayer.Seek(0, SeekOrigin.Begin);
                 waveOut.Play();
+            }
+        }
+
+        //tällä funktiolla soitetaan looppaavaa musiikkia.
+        public static void PlayMusic(SoundType soundType)
+        {
+            if (currentMusicType != SoundType.None)
+            {
+                StopMusic();
+            }
+
+            if (soundPlayers.TryGetValue(soundType, out AudioFileReader soundPlayer))
+            {
+                var waveOut = new WaveOutEvent();
+                waveOut.Init(soundPlayer);
+                soundPlayer.Seek(0, SeekOrigin.Begin);
+                waveOut.PlaybackStopped += (sender, args) =>
+                {
+                    //jos on päästy äänen loppuun alotetaan se uudestaan.
+                    if (args.Exception == null && waveOut.PlaybackState == PlaybackState.Stopped)
+                    {
+                        soundPlayer.Seek(0, SeekOrigin.Begin);
+                        waveOut.Play();
+                    }
+                };
+                waveOut.Play();
+                currentMusicType = soundType;
+            }
+        }
+
+        //pysäyttää tällähetkellä soivan taustamusiikin
+        public static void StopMusic()
+        {
+            if (currentMusicType != SoundType.None && soundPlayers.TryGetValue(currentMusicType, out AudioFileReader soundPlayer))
+            {
+                soundPlayer.Seek(0, SeekOrigin.Begin);
+                soundPlayers[currentMusicType] = new AudioFileReader(soundPlayer.FileName);
+
+                soundPlayer.Dispose();
+            }
+            currentMusicType = SoundType.None;
+        }
+
+        //vaihdetaan taustamusiiki
+        public static void ChangeMusic(SoundType? soundType)
+        {
+            StopMusic();
+
+            /
+            if (soundType.HasValue)
+            {
+                PlayMusic(soundType.Value);
+                currentMusicType = soundType.Value;
             }
         }
 
