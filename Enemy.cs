@@ -140,7 +140,7 @@ namespace School_Project
                 case int n when n > 110 && n < 120:
                     damage *= 2;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Ottaessasi juoksulähtöä hyppäät ilmaan ja lyöt polvella leuan alle.", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Kompastut ottaessasi juoksulähtöä karkuun ja nyrkkisi heilahtaa suoraan vastustajan leukaan!", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"{this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
 
                     break;
@@ -155,7 +155,7 @@ namespace School_Project
                     damage *= 2;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"{this.Name} kaatuu yrittäessää lyödä sua joten päätät painaa täpöö päälle.", ConsoleColor.Green));
-                    gc.MessageLog.AddMessage(new LogMessage($"ja potkit kylkeen kunnes kunto pettäää. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"ja potkit kylkeen kunnes kunto pettäää.(siis kerran) {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
 
                     break;
 
