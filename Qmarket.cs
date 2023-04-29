@@ -120,6 +120,8 @@ namespace School_Project
             SoundManager.PlaySlotsMusicAsync();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
+            Console.SetCursorPosition(1, 16);
+            PrintWinTable();
             Slots();
             /*     var input = Console.ReadKey(true);
                  switch (input.Key)
@@ -176,15 +178,15 @@ namespace School_Project
                         {
                             gc.Player.Money -= 1;
                             PrintMoney();
-                            Console.SetCursorPosition(20, 20);
+                            Console.SetCursorPosition(40, 30);
                             Console.Write("       ");
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
-                                Console.SetCursorPosition(20 + i, 20);
+                                Console.SetCursorPosition(40 + i, 30);
                                 //Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
-                                Console.SetCursorPosition(20 + i, 20);
+                                Console.SetCursorPosition(40 + i, 30);
                                 if (i == 0)
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                 if (i == 1)
@@ -279,6 +281,23 @@ namespace School_Project
         {
             Console.SetCursorPosition(20, 14);
             Console.Write("Sinulla ei ole tarpeeksi rahaa pelata.");
+        }
+
+        public static void PrintWinTable()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("________________________________________");
+            Console.WriteLine("|             Voittotaulukko            |");
+            Console.WriteLine("|---------------------------------------|");
+            Console.WriteLine("| Symboli |    3 samaa   |    2 samaa   |");
+            Console.WriteLine("|---------|--------------|--------------|");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("|    $    |    50 euroa  |    5 euroa   |");
+            Console.WriteLine("|    %    |    10 euroa  |    4 euroa   |");
+            Console.WriteLine("|    £    |    20 euroa  |    3 euroa   |");
+            Console.WriteLine("|    ¤    |    40 euroa  |    2 euroa   |");
+            Console.WriteLine("|_________|______________|______________|");
+            Console.ResetColor();
         }
     }
 }
