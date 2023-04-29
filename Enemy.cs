@@ -11,7 +11,7 @@ namespace School_Project
 
         private GameController gc = GameController.Instance;
 
-        private Tuple<Position, Char> LastPosition;
+        private MapObject LastPosition;
 
         public int Health { get; set; }
         public int MaxHealth { get; set; }
@@ -41,6 +41,7 @@ namespace School_Project
 
         public override void MoveEntity(int x, int y)
         {
+            var oldPos = new Position(Pos.X, Pos.Y);
             var newPosX = Pos.X + x;
             var newPosY = Pos.Y + y;
 
@@ -53,7 +54,7 @@ namespace School_Project
                 //tulostetaan vihollinen liikkumisen jälkeen.
                 gc.screen.PrintEnemy(this);
                 //kirjoitetaan ruutuun mistä liikuttiin, sen edellinen merkki.
-                gc.screen.WriteAtPosition(LastPosition.Item1, LastPosition.Item2);
+                gc.screen.WriteAtPosition(oldPos, LastPosition.Mark, LastPosition.Color);
                 // gc.MessageLog.AddMessage($"{Name} moves to {Pos.X}.{Pos.Y}");
                 // gc.MessageLog.AddMessage($"{Name} on {Description}");
 
@@ -76,7 +77,7 @@ namespace School_Project
 
         public void SetEnemyLastPosition()
         {
-            LastPosition = new Tuple<Position, char>(new Position(Pos.X, Pos.Y), gc.Map.Mapping[Pos.X, Pos.Y].Mark);
+            LastPosition = gc.Map.Mapping[Pos.X, Pos.Y];
         }
 
         public override void TakeDamage(int basedamage)
@@ -87,7 +88,7 @@ namespace School_Project
             switch (move)
             {
                 case int n when n > 0 && n < 5:
-                    damage =Health + 1;
+                    damage = Health + 1;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Lataat kaikki voimasi uskomattomaan pubi heijariin ja säkällä horjahdat sopivasti niin että isku osuu keskelle naamaa!", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"{this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));

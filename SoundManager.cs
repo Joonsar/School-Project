@@ -95,7 +95,10 @@ namespace School_Project
             await Task.Run(() => slotsMusicPlayer.PlayLooping());
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
         public static async Task PlayMarketSoundAsync()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             marketMusicPlayer = soundPlayers[SoundType.Market];
             marketMusicPlayer.PlayLooping();

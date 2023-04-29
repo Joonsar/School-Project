@@ -53,6 +53,7 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include=".vs\School-Project\v17\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

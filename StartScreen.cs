@@ -9,7 +9,9 @@ namespace School_Project
         private string command;
         private GameController gc = GameController.Instance;
 #pragma warning disable IDE0044 // Add readonly modifier
+#pragma warning disable CA1416 // Validate platform compatibility
         private static System.Media.SoundPlayer player = new();
+#pragma warning restore CA1416 // Validate platform compatibility
 #pragma warning restore IDE0044 // Add readonly modifier
         private readonly string IntroText = "       _                                 _             _             \r\n      | |                               | |           (_)            \r\n      | |_   _  ___  _ __   ___  _ __   | |_ __ _ _ __ _ _ __   __ _ \r\n  _   | | | | |/ _ \\| '_ \\ / _ \\| '_ \\  | __/ _` | '__| | '_ \\ / _` |\r\n | |__| | |_| | (_) | |_) | (_) | | | | | || (_| | |  | | | | | (_| |\r\n  \\____/ \\__,_|\\___/| .__/ \\___/|_| |_|  \\__\\__,_|_|  |_|_| |_|\\__,_|\r\n                    | |                                              \r\n                    |_|      ";
         private readonly ConsoleColor[] Colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Cyan };
