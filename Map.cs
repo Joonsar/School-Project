@@ -18,7 +18,7 @@ namespace School_Project
         public Position StairDown { get; set; }
         public Position StairUp { get; set; }
 
-        public Enemies enemies { get; set; }    
+        public Enemies enemies { get; set; }
 
         //tässä määritellään seinät jne. toi true false arvo on voiko sen läpi kävellä vai ei
         public static readonly MapObject wall = new('#', "seinä", false, ConsoleColor.DarkYellow);

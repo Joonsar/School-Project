@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using NAudio.Wave;
 
 namespace School_Project
 {
