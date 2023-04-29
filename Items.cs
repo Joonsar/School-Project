@@ -54,7 +54,7 @@ namespace School_Project
                 {
                     var amount = random.Next(2, 7);
 
-                    gc.MessageLog.AddMessage(new LogMessage($"Tongit roskista. Hirveän näköistä touhua. sait saaliiksi {amount} tyhjää pulloa.", ConsoleColor.Blue));
+                    gc.MessageLog.AddMessage(new LogMessage($"Tongit roskista. Hirveän näköistä touhua. Saaliisi oli {amount} kpl tyhjiä pulloja.", ConsoleColor.Blue));
                     gc.Player.Bottles += amount;
                 }
                 else

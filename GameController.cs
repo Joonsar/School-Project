@@ -56,7 +56,7 @@ namespace School_Project
         public GameController()
         {
         }
-        
+
         public void Init()
         {
             Qmarket = new Qmarket();
@@ -73,7 +73,7 @@ namespace School_Project
             EnemiesCount = 3;
             Turn = 1;
             rand = new Random();
-            
+
             MessageLog = new MessageLog(Height);
             StartScreen = new StartScreen();
 
@@ -129,6 +129,7 @@ namespace School_Project
 
                     Input.CheckInput(input.Key);
                     Player.Update();
+                    screen.PrintEntities(entities);
                     Turn++;
                 }
             }
