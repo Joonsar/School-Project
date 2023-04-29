@@ -9,7 +9,7 @@ namespace School_Project
         private GameController gc = GameController.Instance;
         private List<Enemy> enemies;
         private Random rand = new Random();
-
+        private List<ConsoleColor> colors = new List<ConsoleColor>((ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor)));
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private string[] enemyDescriptions = new string[]
         {
@@ -33,31 +33,27 @@ namespace School_Project
             "Pelle Pöhnä","Märkäkorva Marko","Pimeyden Reino","Viinapiru Väinö","Pro","Puiston Jaska","Ihan vaan ammattilainen","Delirium topi","Kadun mies","Puiston asukki"
         };
 
-
-        private ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
-        public List<ConsoleColor> c;
-
         public Enemies()
         {
             this.enemies = new List<Enemy>();
-            this.c = colors.ToList<ConsoleColor>();
-            this.c.Remove(ConsoleColor.Black);
+            this.colors.Remove(ConsoleColor.Black);
+            this.colors.Remove(ConsoleColor.Green);
         }
 
         public List<Enemy> GetEnemyListByLevel(int lvl, int howMany)
         {
             int count = 0;
-            List<string> randomizedNameList = new List<string>(enemyNames.ToList().OrderBy(item => rand.Next()));
-            List<string> randomizedDescriptionList = new List<string>(enemyDescriptions.ToList().OrderBy(item => rand.Next()));
+            List<string> randomizedNameList = new List<string>(enemyNames.OrderBy(item => rand.Next()));
+            List<string> randomizedDescriptionList = new List<string>(enemyDescriptions.OrderBy(item => rand.Next()));
             
             while (count < howMany)
             {
-                ConsoleColor color = this.c[rand.Next(0, colors.Length - 1)];
+                ConsoleColor color = this.colors[rand.Next(0, colors.Count)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
-                enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
+                this.enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
                 count++;
             }
-            return enemies;
+            return this.enemies;
         }
     }
 }

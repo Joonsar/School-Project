@@ -188,7 +188,7 @@ namespace School_Project
                 Task.Delay(TimeSpan.FromSeconds(1));
                 SoundManager.PlayMainMusic();
 
-                gc.MessageLog.AddMessage(new LogMessage($"{Name} on nyt tason {Level} sankari.", ConsoleColor.DarkYellow));
+                gc.MessageLog.AddMessage(new LogMessage($"{Name} on nyt tason {Level} pultsari.", ConsoleColor.DarkYellow));
                 gc.screen.PrintPlayerStats();
             }
         }
