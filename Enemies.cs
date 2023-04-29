@@ -9,6 +9,7 @@ namespace School_Project
         private GameController gc = GameController.Instance;
         private Random rand = new Random();
         private List<ConsoleColor> colors = new List<ConsoleColor>((ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor)));
+
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private string[] enemyDescriptions = new string[]
         {
@@ -31,8 +32,16 @@ namespace School_Project
             "Pitää vähän kaikista juomista, mutta sekaan mahtuu monesti myös aineita.","Juot kaikesta huolimatta ilostuneena ja hyväntuulisena.",
             "Juot juuri sen verran, että alkaa puhua itsestään kolmannessa persoonassa.","Juot vain kotona tai luonnon helmassa, jolloin kukaan ei näe hänen käytöstään.",
             "Ei tee koskaan hommia ennen kuin juo ensin aamukahvin ja paloviinan.","On elämänsä kunnossa vain juodessaan, muuten vetää koko ajan ylihilseen.",
-            "Juot kännissä vain yhden tunnin karuselli-ajelulaitteessa.","On pitänyt paussia juomisesta jo viisi vuotta, mutta silloin tällöin kostautuu entisellä kuumalla asialla."
-
+            "Juot kännissä vain yhden tunnin karuselli-ajelulaitteessa.","On pitänyt paussia juomisesta jo viisi vuotta, mutta silloin tällöin kostautuu entisellä kuumalla asialla.",
+            "Juoksee maratoneja oluttölkki kädessä.","Juonut niin paljon vettä, että se muuttui viiniksi.","Ei tiedä mitään muuta kuin tislaamisesta.","Pitää baarissa juotuaan erilaisia kilpailuja, mutta häviää aina.",
+            "Löysi elämäntehtävänsä valmistaa maailman vahvimman alkoholin.","Korvaa aina veden viinillä, sillä se on terveellisempää.","Opetteli juomaan veden sijaan viskiä, sillä vesi on liian tylsää.",
+            "Väittää olevansa elävä viinikellari, mutta ei ole koskaan maistanut viiniä.","On juonut kaikenlaista, mutta ei koskaan jättänyt huonon maun vuoksi juomatta.",
+            "Käyttää juomatikut hammasharjanaan, sillä se pitää hampaat terveinä.","Pitää sitruunan mausta, mutta lisää sitä aina vodkaan.",
+            "Tehnyt päänsä kokoiseen shottilasiin tequilan ja onnistui juomaan sen.","Opetteli juomaan yhtäjaksoisesti koko yön juhlissa, mutta hävisi seuraavana päivänä aivotoimintaa.",
+            "On keksinyt uuden lajin, jossa sekoitetaan viiniä ja maitoa.","Luulee olevansa supersankari, joka voi juoda mitä tahansa ilman seurauksia.",
+            "Onnistuu juomaan itsensä humalaan vain yhdellä tuopillisella.","Pitää vaaleasta viinistä, mutta lisää siihen aina punaviiniä.","Juoksee maratonin, jonka varrella on pelkkiä baareja.",
+            "Juoksee maratonin humalassa.","Yrittää keksiä uusia käyttötarkoituksia oluelle.","Korvaa aina maitonsa oluella, sillä se on terveellisempää.",
+            "Käyttää olutta marinadina kaikessa.","Pitää kaikkea juomaa sokeripitoisena, jotta se maistuu paremmalta.","Lisää aina juomaan valkosipulia, sillä se on hyväksi terveydelle."
         };
 
         private string[] enemyNames = new string[]
@@ -65,9 +74,9 @@ namespace School_Project
             List<Enemy> enemies = new List<Enemy>();
             List<string> randomizedNameList = new List<string>(enemyNames.OrderBy(item => rand.Next()));
             List<string> randomizedDescriptionList = new List<string>(enemyDescriptions.OrderBy(item => rand.Next()));
-            
-            for(int i = 0; i <  howMany; i++) 
-            { 
+
+            for (int i = 0; i < howMany; i++)
+            {
                 ConsoleColor color = this.colors[rand.Next(0, colors.Count)];
                 string name = randomizedNameList[rand.Next(0, randomizedNameList.Count())];
                 enemies.Add(new Enemy(name, randomizedDescriptionList[rand.Next(0, randomizedDescriptionList.Count())], new Position(rand.Next(1, gc.Map.Width), rand.Next(1, gc.Map.Height)), name[0], color, 300 + 300 * lvl, 10 + 10 * lvl, lvl));
