@@ -23,7 +23,6 @@ namespace School_Project
             UseAction.Invoke();
             SoundManager.Play(SoundType);
             //await Task.Delay(TimeSpan.FromSeconds(1));
-            SoundManager.PlayMainMusic();
         }
     }
 }

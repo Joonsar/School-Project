@@ -51,7 +51,7 @@ namespace School_Project
 
                 if (this.command == "3")
                 {
-                    SoundManager.PlayAsync(SoundType.Score);
+                    SoundManager.Play(SoundType.Score);
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
                         FileName = "http://juopontarina.servebeer.com/",
@@ -94,7 +94,7 @@ namespace School_Project
         {
             Console.Clear();
             gc.localdb.PrintAllPlayerData();
-            SoundManager.PlayAsync(SoundType.Score);
+            SoundManager.Play(SoundType.Score);
             while (true)
             {
                 Console.WriteLine("1 - Hae pelaajan sijoitukset nimellä");
@@ -119,7 +119,7 @@ namespace School_Project
                 if (c == "3")
                 {
                     gc.localdb.PrintAllPlayerData();
-                    SoundManager.PlayAsync(SoundType.Score);
+                    SoundManager.Play(SoundType.Score);
                 }
                 if (c == "4")
                 {

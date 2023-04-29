@@ -11,6 +11,23 @@
     <RootNamespace>School_Project</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Sounds\Bottle.wav" />
+    <None Remove="Sounds\Bottles.wav" />
+    <None Remove="Sounds\Dead.wav" />
+    <None Remove="Sounds\Fail.wav" />
+    <None Remove="Sounds\GameStart.wav" />
+    <None Remove="Sounds\Item.wav" />
+    <None Remove="Sounds\LevelUp.wav" />
+    <None Remove="Sounds\MainMusic.wav" />
+    <None Remove="Sounds\Market.wav" />
+    <None Remove="Sounds\Missed.wav" />
+    <None Remove="Sounds\OpenBottle.wav" />
+    <None Remove="Sounds\Score.wav" />
+    <None Remove="Sounds\Slots.wav" />
+    <None Remove="Sounds\Victory.wav" />
+    <None Remove="Sounds\Win.wav" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="WMPLib">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>0</VersionMinor>
@@ -20,6 +37,53 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\Bottle.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Bottles.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Dead.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Fail.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\GameStart.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Item.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\LevelUp.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\MainMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Market.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Missed.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\OpenBottle.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Score.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Slots.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Victory.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Win.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include=".git\config" />

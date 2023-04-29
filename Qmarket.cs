@@ -28,7 +28,7 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
-            SoundManager.ChangeMusic(SoundType.Market);
+            
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
@@ -44,7 +44,7 @@ namespace School_Project
                         gc.Player.BaseDamage += 20;
                         gc.Player.Money -= 10;
                         // Because this call is not awaited, execution of the current method continues before the call is completed
-                        SoundManager.PlayAsync(SoundType.OpenBottle);
+                        SoundManager.Play(SoundType.OpenBottle);
                         // Because this call is not awaited, execution of the current method continues before the call is completed
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
@@ -65,7 +65,7 @@ namespace School_Project
                     {
                         gc.Player.MaxHp += 20;
                         gc.Player.Money -= 10;
-                        SoundManager.PlayAsync(SoundType.OpenBottle);
+                        SoundManager.Play(SoundType.OpenBottle);
                         Console.WriteLine("Ostit vissyn ja kulautit sen naamaan. Tunnet voivasi paremmin");
                         gc.Player.Bottles++;
                         Console.WriteLine("Paina jotain nappia jatkaaksesi.");
@@ -202,7 +202,7 @@ namespace School_Project
 
                             if (row[0] == row[1] && row[1] == row[2])
                             {
-                                SoundManager.PlayAsync(SoundType.Win);
+                                SoundManager.Play(SoundType.Win);
                                 if (row[0] == '$')
                                 {
                                     winnings = 50;
@@ -227,7 +227,7 @@ namespace School_Project
                             }
                             else if (row[0] == row[1])
                             {
-                                SoundManager.PlayAsync(SoundType.Win);
+                                SoundManager.Play(SoundType.Win);
                                 if (row[0] == '$')
                                 {
                                     winnings = 5;
@@ -269,6 +269,7 @@ namespace School_Project
 
                     case ConsoleKey.E:
                         playing = false;
+                        SoundManager.ChangeMusic(SoundType.Market);
                         Shop();
                         break;
 

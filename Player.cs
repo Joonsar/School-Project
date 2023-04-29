@@ -103,6 +103,7 @@ namespace School_Project
             {
                 gc.MessageLog.AddMessage(new LogMessage("Menit Q-Markettiin!", ConsoleColor.DarkYellow));
 
+                SoundManager.ChangeMusic(SoundType.Market);
                 gc.Qmarket.Shop();
             }
             if (gc.Map.IsEnemyAtPosition(Pos.X + x, Pos.Y + y) != null)
@@ -152,9 +153,7 @@ namespace School_Project
             else
             {
                 gc.MessageLog.AddMessage(new LogMessage($"Epäonnistut nolosti ja kaadut turvallesi.", ConsoleColor.Red));
-                SoundManager.PlayAsync(SoundType.Fail);
-                Task.Delay(TimeSpan.FromSeconds(1));
-                SoundManager.PlayMainMusic();
+                SoundManager.Play(SoundType.Fail);
             }
         }
 
@@ -208,7 +207,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
-                SoundManager.PlayAsync(SoundType.Die);
+                SoundManager.Play(SoundType.Die);
                 gc.MessageLog.AddMessage(new LogMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!", ConsoleColor.Red));
                 gc.UpdateDatabases();
                 gc.screen.EndScreen();

@@ -122,46 +122,11 @@ namespace School_Project
         {
             StopMusic();
 
-            /
             if (soundType.HasValue)
             {
                 PlayMusic(soundType.Value);
                 currentMusicType = soundType.Value;
             }
-        }
-
-        public static void PlayMainMusic()
-        {
-            //  mainMusicPlayer = soundPlayers[SoundType.MainMusic];
-            //  var loopedStream = new LoopStream(mainMusicPlayer);
-            //  var waveOut = new WaveOutEvent();
-            //  waveOut.Init(loopedStream);
-            //  waveOut.Play();
-        }
-
-        public static void StopMainMusic()
-        {
-            mainMusicPlayer?.Dispose();
-            mainMusicPlayer = null;
-        }
-
-        public static async Task PlayAsync(SoundType soundType)
-        {
-            if (soundPlayers.TryGetValue(soundType, out AudioFileReader soundPlayer))
-            {
-                var waveOut = new WaveOutEvent();
-                waveOut.Init(soundPlayer);
-                await Task.Run(() => waveOut.Play());
-            }
-        }
-
-        public static async Task PlayMainMusicAsync()
-        {
-            // mainMusicPlayer = soundPlayers[SoundType.MainMusic];
-            //var loopedStream = new LoopStream(mainMusicPlayer);
-            //var waveOut = new WaveOutEvent();
-            //waveOut.Init(loopedStream);
-            // await Task.Run(() => waveOut.Play());
         }
     }
 }
