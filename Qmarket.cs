@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace School_Project
 {
@@ -289,15 +290,16 @@ namespace School_Project
             Console.WriteLine("________________________________________");
             Console.WriteLine("|             Voittotaulukko            |");
             Console.WriteLine("|---------------------------------------|");
-            Console.WriteLine("| Symboli |    3 samaa   |    2 samaa   |");
+            Console.WriteLine("| Symboli |    3 samaa   | 2 ensimmäistä|");
             Console.WriteLine("|---------|--------------|--------------|");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("|    $    |    50 euroa  |    5 euroa   |");
-            Console.WriteLine("|    %    |    10 euroa  |    4 euroa   |");
-            Console.WriteLine("|    £    |    20 euroa  |    3 euroa   |");
             Console.WriteLine("|    ¤    |    40 euroa  |    2 euroa   |");
+            Console.WriteLine("|    £    |    20 euroa  |    3 euroa   |");
+            Console.WriteLine("|    %    |    10 euroa  |    4 euroa   |");
             Console.WriteLine("|_________|______________|______________|");
             Console.ResetColor();
         }
     }
 }
+
