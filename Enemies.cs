@@ -7,11 +7,11 @@ namespace School_Project
     public class Enemies
     {
         private GameController gc = GameController.Instance;
-        private Random rand = new();
+        private readonly Random rand = new();
         private List<ConsoleColor> colors = new((ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor)));
 
         //string charString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private string[] enemyDescriptions = new string[]
+        private readonly string[] enemyDescriptions = new string[]
         {
             "Pari sillon tällön","Saunakaljat mukana","Muutamat aina maistuu","Juhlatilaisuuksissa kilistää ei muuten","Eläkkeellä voi pari konjakkia ottaa!",
             "Lähtee yhdelle ja pysyy siinä","Näprää tietokoneella","Vaimo sano että yks vaan.","Harvoin juo, mutta sitten tulee ongelmia.",
