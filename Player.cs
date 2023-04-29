@@ -205,6 +205,7 @@ namespace School_Project
             if (HitPoints <= 0)
             {
                 SoundManager.Play(SoundType.Die);
+                SoundManager.StopMusic();
                 gc.MessageLog.AddMessage(new LogMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!", ConsoleColor.Red));
                 gc.UpdateDatabases();
                 gc.screen.EndScreen();
