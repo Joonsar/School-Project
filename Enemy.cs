@@ -162,8 +162,8 @@ namespace School_Project
                 case int n when n > 140 && n < 150:
                     damage *= 1;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Hyppäät ilmaan ja potkaiset vastustajaasi yllättäen takapuoleen.{this.Name} kääntyy ympäri ja kysyy ", ConsoleColor.Green));
-                    gc.MessageLog.AddMessage(new LogMessage($"'Mitä helvettiä sä oikein teet? {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Väität kovasti ettet halua tapella ja kun {this.Name} kääntyy ympäri ja lähtee käveleen ", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"pois päin potkaset selkään! {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
 
                     break;
 
@@ -178,8 +178,8 @@ namespace School_Project
                 case int n when n > 160 && n < 170:
                     damage *= 1;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Otat käyttöösi matadorin liikkeet ja juokset ympäriinsä kuten härän kanssa. Lopulta vastustajasi väsyy", ConsoleColor.Green));
-                    gc.MessageLog.AddMessage(new LogMessage($"ja kaatuu maahan. Potkaiset häntä nilkkaan. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Otat käyttöösi matadorin liikkeet ja juokset ympäriinsä kuten härän kanssa. Vastustajasi  kompastuu ja kaatuu", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"maahan joten potkaiset häntä tuttuun tyylii kulkusille! {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 170 && n < 180:
