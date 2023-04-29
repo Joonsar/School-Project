@@ -52,9 +52,9 @@ namespace School_Project
                 var chance = random.Next(0, 100);
                 if (chance > 50)
                 {
-                    var amount = random.Next(0, 5);
+                    var amount = random.Next(2, 7);
 
-                    gc.MessageLog.AddMessage(new LogMessage($"Tongit roskista ja löydät {amount} tyhjää pulloa.", ConsoleColor.Blue));
+                    gc.MessageLog.AddMessage(new LogMessage($"Tongit roskista. Hirveän näköistä touhua. sait saaliiksi {amount} tyhjää pulloa.", ConsoleColor.Blue));
                     gc.Player.Bottles += amount;
                 }
                 else
