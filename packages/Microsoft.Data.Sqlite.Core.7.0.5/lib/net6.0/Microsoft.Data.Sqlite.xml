@@ -530,7 +530,7 @@
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/async">Async Limitations</seealso>
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/batching">Batching</seealso>
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/database-errors">Database Errors</seealso>
-            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken"/> is canceled.</exception>
+            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken" /> is canceled.</exception>
         </member>
         <member name="M:Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(System.Data.CommandBehavior)">
             <summary>
@@ -552,7 +552,7 @@
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/async">Async Limitations</seealso>
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/batching">Batching</seealso>
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/database-errors">Database Errors</seealso>
-            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken"/> is canceled.</exception>
+            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken" /> is canceled.</exception>
         </member>
         <member name="M:Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)">
             <summary>
@@ -562,7 +562,7 @@
             <param name="cancellationToken">The token to monitor for cancellation requests.</param>
             <returns>A task representing the asynchronous operation.</returns>
             <seealso href="https://docs.microsoft.com/dotnet/standard/data/sqlite/async">Async Limitations</seealso>
-            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken"/> is canceled.</exception>
+            <exception cref="T:System.OperationCanceledException">If the <see cref="T:System.Threading.CancellationToken" /> is canceled.</exception>
         </member>
         <member name="M:Microsoft.Data.Sqlite.SqliteCommand.ExecuteNonQuery">
             <summary>

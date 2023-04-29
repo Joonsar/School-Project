@@ -17,7 +17,7 @@
         </member>
         <member name="M:System.Runtime.InteropServices.LibraryImportAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.InteropServices.LibraryImportAttribute"/>.
+            Initializes a new instance of the <see cref="T:System.Runtime.InteropServices.LibraryImportAttribute" />.
             </summary>
             <param name="libraryName">Name of the library containing the import.</param>
         </member>
@@ -42,7 +42,7 @@
         </member>
         <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType">
             <summary>
-            Gets or sets the <see cref="T:System.Type"/> used to control how string arguments to the method are marshalled.
+            Gets or sets the <see cref="T:System.Type" /> used to control how string arguments to the method are marshalled.
             </summary>
             <remarks>
             If this field is specified, <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshalling" /> must not be specified
@@ -62,7 +62,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType" />.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
