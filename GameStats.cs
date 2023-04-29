@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace School_Project
 {
@@ -28,6 +30,13 @@ namespace School_Project
             PlayerLevel = GameController.Instance.Player.Level;
             MapLevel = GameController.Instance.Level;
             Scores = 0;
+        }
+
+        public void Update()
+        {
+            PlayerLevel = GameController.Instance.Player.Level;
+            PlayerName = GameController.Instance.Player.Name;
+            MapLevel = GameController.Instance.Level;
         }
     }
 }
