@@ -31,7 +31,7 @@ namespace School_Project
             System.Threading.Thread.Sleep(3000);
             Console.Clear();
 
-            SoundManager.PlayGameStartSoundAsync();
+            SoundManager.Play(SoundType.GameStart);
             PrintInfo();
             while (true)
             {
@@ -51,7 +51,7 @@ namespace School_Project
 
                 if (this.command == "3")
                 {
-                    SoundManager.PlayScoreSound();
+                    SoundManager.Play(SoundType.Score);
                     System.Diagnostics.Process.Start(new ProcessStartInfo
                     {
                         FileName = "http://juopontarina.servebeer.com/",
@@ -94,7 +94,7 @@ namespace School_Project
         {
             Console.Clear();
             gc.localdb.PrintAllPlayerData();
-            SoundManager.PlayScoreSound();
+            SoundManager.Play(SoundType.Score);
             while (true)
             {
                 Console.WriteLine("1 - Hae pelaajan sijoitukset nimellä");
@@ -119,7 +119,7 @@ namespace School_Project
                 if (c == "3")
                 {
                     gc.localdb.PrintAllPlayerData();
-                    SoundManager.PlayScoreSound();
+                    SoundManager.Play(SoundType.Score);
                 }
                 if (c == "4")
                 {

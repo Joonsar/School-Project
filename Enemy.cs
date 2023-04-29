@@ -212,9 +212,7 @@ namespace School_Project
         {
             if (Health <= 0)
             {
-                SoundManager.PlayVictorySound();
-                Task.Delay(TimeSpan.FromSeconds(1)).Wait(1);
-                SoundManager.PlayMainMusic();
+                SoundManager.Play(SoundType.Victory);
 
                 gc.MessageLog.AddMessage(new LogMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.", ConsoleColor.Green));
                 gc.GameStats.EnemiesKilled.Add(this);

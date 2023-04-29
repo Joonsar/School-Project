@@ -21,9 +21,8 @@ namespace School_Project
         public override void Use()
         {
             UseAction.Invoke();
-            SoundManager.PlayAsync(SoundType).Wait(1);
+            SoundManager.Play(SoundType);
             //await Task.Delay(TimeSpan.FromSeconds(1));
-            SoundManager.PlayMainMusic();
         }
     }
 }

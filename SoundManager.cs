@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Media;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using NAudio.Wave;
 
 namespace School_Project
 {
     public enum SoundType
     {
+        None,
         MainMusic,
         Market,
         ItemPickup,
@@ -26,159 +29,104 @@ namespace School_Project
 
     public static class SoundManager
     {
-        private static readonly Dictionary<SoundType, SoundPlayer> soundPlayers = new()
-        {
-            { SoundType.MainMusic, new SoundPlayer(School_Project.Properties.Resources.MainMusic) },
-            { SoundType.Market, new SoundPlayer(School_Project.Properties.Resources.Market) },
-            { SoundType.ItemPickup, new SoundPlayer(School_Project.Properties.Resources.Bottle) },
-            { SoundType.GameStart, new SoundPlayer(School_Project.Properties.Resources.GameStart) },
-            { SoundType.Die, new SoundPlayer(School_Project.Properties.Resources.Dead) },
-            { SoundType.Score, new SoundPlayer(School_Project.Properties.Resources.Score) },
-            { SoundType.MissedHit, new SoundPlayer(School_Project.Properties.Resources.Missed) },
-            { SoundType.Victory, new SoundPlayer(School_Project.Properties.Resources.Victory) },
-            { SoundType.Slots, new SoundPlayer(School_Project.Properties.Resources.Slots) },
-            { SoundType.Bottles, new SoundPlayer(School_Project.Properties.Resources.Bottles) },
-            { SoundType.OpenBottle, new SoundPlayer(School_Project.Properties.Resources.OpenBottle) },
-            { SoundType.Win, new SoundPlayer(School_Project.Properties.Resources.Win) },
-            { SoundType.Fail, new SoundPlayer(School_Project.Properties.Resources.Fail) },
-            { SoundType.LevelUp, new SoundPlayer(School_Project.Properties.Resources.LevelUp) }
-        };
+        private static readonly Dictionary<SoundType, AudioFileReader> soundPlayers = new();
 
-        private static SoundPlayer mainMusicPlayer;
-        private static SoundPlayer marketMusicPlayer;
-        private static SoundPlayer slotsMusicPlayer;
+        private static AudioFileReader mainMusicPlayer;
+        private static AudioFileReader marketMusicPlayer;
+        private static AudioFileReader slotsMusicPlayer;
+        private static SoundType currentMusicType;
+
+        static SoundManager()
+        {
+            LoadSound(SoundType.MainMusic, "MainMusic.wav");
+            LoadSound(SoundType.Market, "Market.wav");
+            LoadSound(SoundType.ItemPickup, "Bottle.wav");
+            LoadSound(SoundType.GameStart, "GameStart.wav");
+            LoadSound(SoundType.Die, "Dead.wav");
+            LoadSound(SoundType.Score, "Score.wav");
+            LoadSound(SoundType.MissedHit, "Missed.wav");
+            LoadSound(SoundType.Victory, "Victory.wav");
+            LoadSound(SoundType.Slots, "Slots.wav");
+            LoadSound(SoundType.Bottles, "Bottles.wav");
+            LoadSound(SoundType.OpenBottle, "OpenBottle.wav");
+            LoadSound(SoundType.Win, "Win.wav");
+            LoadSound(SoundType.Fail, "Fail.wav");
+            LoadSound(SoundType.LevelUp, "LevelUp.wav");
+        }
+
+        private static void LoadSound(SoundType soundType, string fileName)
+        {
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", fileName);
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException($"File not found: {filePath}");
+            }
+
+            var soundPlayer = new AudioFileReader(filePath);
+            soundPlayers.Add(soundType, soundPlayer);
+        }
 
         public static void Play(SoundType soundType)
         {
-            if (soundPlayers.TryGetValue(soundType, out SoundPlayer soundPlayer))
+            if (soundPlayers.TryGetValue(soundType, out AudioFileReader soundPlayer))
             {
-                soundPlayer.Play();
+                var waveOut = new WaveOutEvent();
+                waveOut.Init(soundPlayer);
+                soundPlayer.Seek(0, SeekOrigin.Begin);
+                waveOut.Play();
             }
         }
 
-        public static void PlayMainMusic()
+        //tällä funktiolla soitetaan looppaavaa musiikkia.
+        public static void PlayMusic(SoundType soundType)
         {
-            mainMusicPlayer = soundPlayers[SoundType.MainMusic];
-            mainMusicPlayer.PlayLooping();
-        }
-
-        public static void StopMainMusic()
-        {
-            mainMusicPlayer?.Stop();
-        }
-
-        public static async Task PlayAsync(SoundType soundType)
-        {
-            if (soundPlayers.TryGetValue(soundType, out SoundPlayer soundPlayer))
+            if (currentMusicType != SoundType.None)
             {
-                await Task.Run(() => soundPlayer.PlaySync());
+                StopMusic();
+            }
+
+            if (soundPlayers.TryGetValue(soundType, out AudioFileReader soundPlayer))
+            {
+                var waveOut = new WaveOutEvent();
+                waveOut.Init(soundPlayer);
+                soundPlayer.Seek(0, SeekOrigin.Begin);
+                waveOut.PlaybackStopped += (sender, args) =>
+                {
+                    //jos on päästy äänen loppuun alotetaan se uudestaan.
+                    if (args.Exception == null && waveOut.PlaybackState == PlaybackState.Stopped)
+                    {
+                        soundPlayer.Seek(0, SeekOrigin.Begin);
+                        waveOut.Play();
+                    }
+                };
+                waveOut.Play();
+                currentMusicType = soundType;
             }
         }
 
-        public static async Task PlayMainMusicAsync()
+        //pysäyttää tällähetkellä soivan taustamusiikin
+        public static void StopMusic()
         {
-            mainMusicPlayer = soundPlayers[SoundType.MainMusic];
-            await Task.Run(() => mainMusicPlayer.PlayLooping());
-        }
-
-        public static async Task StopMainMusicAsync()
-        {
-            if (mainMusicPlayer != null)
+            if (currentMusicType != SoundType.None && soundPlayers.TryGetValue(currentMusicType, out AudioFileReader soundPlayer))
             {
-                await Task.Run(() => mainMusicPlayer.Stop());
+                soundPlayer.Seek(0, SeekOrigin.Begin);
+                soundPlayers[currentMusicType] = new AudioFileReader(soundPlayer.FileName);
+
+                soundPlayer.Dispose();
             }
+            currentMusicType = SoundType.None;
         }
 
-        public static async Task PlaySlotsMusicAsync()
+        //vaihdetaan taustamusiiki
+        public static void ChangeMusic(SoundType? soundType)
         {
-            slotsMusicPlayer = soundPlayers[SoundType.Slots];
-            await Task.Run(() => slotsMusicPlayer.PlayLooping());
-        }
+            StopMusic();
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-
-        public static async Task PlayMarketSoundAsync()
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-        {
-            marketMusicPlayer = soundPlayers[SoundType.Market];
-            marketMusicPlayer.PlayLooping();
-        }
-
-        public static void StopMarketSound()
-        {
-            marketMusicPlayer?.Stop();
-        }
-
-        public static async Task PlayBottlesSoundAsync()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottles);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayOpenBottleSoundAsync()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.OpenBottle);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayWinSoundAsync()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Win);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayFailSoundAsync()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Fail);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayItemPickupSoundAsync()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.Bottle);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayLevelUpSound()
-        {
-            var soundPlayer = new SoundPlayer(School_Project.Properties.Resources.LevelUp);
-            await Task.Run(() => soundPlayer.PlaySync());
-        }
-
-        public static async Task PlayGameStartSoundAsync()
-        {
-            if (soundPlayers.TryGetValue(SoundType.GameStart, out SoundPlayer soundPlayer))
+            if (soundType.HasValue)
             {
-                await Task.Run(() => soundPlayer.PlaySync());
+                PlayMusic(soundType.Value);
+                currentMusicType = soundType.Value;
             }
-        }
-
-        public static async Task PlayDieSoundAsync()
-        {
-            if (soundPlayers.TryGetValue(SoundType.Die, out SoundPlayer soundPlayer))
-            {
-                await Task.Run(() => soundPlayer.PlaySync());
-            }
-        }
-
-        public static async void PlayScoreSound()
-        {
-            await Task.Run(() => soundPlayers[SoundType.Score].PlaySync());
-        }
-
-        public static async void PlayMissedHitSound()
-        {
-            await Task.Run(() => soundPlayers[SoundType.MissedHit].PlaySync());
-        }
-
-        public static async void PlayVictorySound()
-        {
-            await Task.Run(() => soundPlayers[SoundType.Victory].PlaySync());
-        }
-
-        public static async void PlayDieSound()
-        {
-            await Task.Run(() => soundPlayers[SoundType.Die].PlaySync());
         }
     }
 }
