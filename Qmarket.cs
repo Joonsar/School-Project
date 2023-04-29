@@ -5,6 +5,7 @@ namespace School_Project
 {
     public class Qmarket
     {
+#pragma warning disable CS4014
         private GameController gc = GameController.Instance;
 
         private string qMarketLogo = " .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. \r\n| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\r\n| |    ___       | || |              | || | ____    ____ | || |      __      | || |  _______     | || |  ___  ____   | || |  _________   | || |  _________   | |\r\n| |  .'   '.     | || |              | || ||_   \\  /   _|| || |     /  \\     | || | |_   __ \\    | || | |_  ||_  _|  | || | |_   ___  |  | || | |  _   _  |  | |\r\n| | /  .-.  \\    | || |    ______    | || |  |   \\/   |  | || |    / /\\ \\    | || |   | |__) |   | || |   | |_/ /    | || |   | |_  \\_|  | || | |_/ | | \\_|  | |\r\n| | | |   | |    | || |   |______|   | || |  | |\\  /| |  | || |   / ____ \\   | || |   |  __ /    | || |   |  __'.    | || |   |  _|  _   | || |     | |      | |\r\n| | \\  `-'  \\_   | || |              | || | _| |_\\/_| |_ | || | _/ /    \\ \\_ | || |  _| |  \\ \\_  | || |  _| |  \\ \\_  | || |  _| |___/ |  | || |    _| |_     | |\r\n| |  `.___.\\__|  | || |              | || ||_____||_____|| || ||____|  |____|| || | |____| |___| | || | |____||____| | || | |_________|  | || |   |_____|    | |\r\n| |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |\r\n| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |\r\n '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' ";
@@ -41,7 +42,9 @@ namespace School_Project
                     {
                         gc.Player.BaseDamage += 20;
                         gc.Player.Money -= 10;
+                        // Because this call is not awaited, execution of the current method continues before the call is completed
                         SoundManager.PlayOpenBottleSoundAsync();
+                        // Because this call is not awaited, execution of the current method continues before the call is completed
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
                         PressKeyToContinue();
