@@ -7,7 +7,6 @@ namespace School_Project
     public class Items
     {
         private List<Item> ItemsList;
-        private List<Item> ItemsList2;
         private GameController gc = GameController.Instance;
         private Random random = new();
 
