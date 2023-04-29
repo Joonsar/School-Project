@@ -22,6 +22,8 @@ namespace School_Project
         LevelUp
     }
 
+#pragma warning disable CA1416 // Validate platform compatibility
+
     public static class SoundManager
     {
         private static readonly Dictionary<SoundType, SoundPlayer> soundPlayers = new()

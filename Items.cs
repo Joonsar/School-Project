@@ -42,7 +42,7 @@ namespace School_Project
                 gc.Player.HitPoints += 100;
                 gc.MessageLog.AddMessage(new LogMessage("Juot smurffilimun ja tunnet voivasi paremmin", ConsoleColor.Blue));
             }));
-            ItemsList.Add(new Item("Maitotölkki", "(+raha)", new Position(0, 0), '!', ConsoleColor.White, SoundType.Fail, () =>
+            ItemsList.Add(new Item("Maitotölkki", "(+raha)", new Position(0, 0), '!', ConsoleColor.White, SoundType.ItemPickup, () =>
             {
                 gc.Player.Money += 5;
                 gc.MessageLog.AddMessage(new LogMessage("Juot maitotölkin. Mitä ihmettä, sen pohjalta löytyi 5 euron kolikkoa!", ConsoleColor.Blue));
