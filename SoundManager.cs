@@ -25,15 +25,10 @@ namespace School_Project
         LevelUp
     }
 
-#pragma warning disable CA1416 // Validate platform compatibility
-
     public static class SoundManager
     {
         private static readonly Dictionary<SoundType, AudioFileReader> soundPlayers = new();
 
-        private static AudioFileReader mainMusicPlayer;
-        private static AudioFileReader marketMusicPlayer;
-        private static AudioFileReader slotsMusicPlayer;
         private static SoundType currentMusicType;
 
         static SoundManager()
