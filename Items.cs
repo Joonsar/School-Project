@@ -47,7 +47,7 @@ namespace School_Project
                 gc.Player.Money += 5;
                 gc.MessageLog.AddMessage(new LogMessage("Juot maitotölkin. Mitä ihmettä, sen pohjalta löytyi 5 euron kolikkoa!", ConsoleColor.Blue));
             }));
-            ItemsList.Add(new Item("Roskis", "Roskis täynnä rojua", new Position(0, 0), '?', ConsoleColor.DarkGreen, SoundType.Bottles, () =>
+            ItemsList.Add(new Item("Roskis", "Roskis täynnä rojua", new Position(0, 0), '®', ConsoleColor.DarkGreen, SoundType.Bottles, () =>
             {
                 var chance = random.Next(0, 100);
                 if (chance > 50)
