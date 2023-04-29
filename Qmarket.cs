@@ -28,13 +28,13 @@ namespace School_Project
             Console.WriteLine();
             Console.WriteLine("e - Poistu, s - Palauta tyhjät pullot, p - Pelaa Ruplapottia, k - Osta Kossu (20 damage) 10e, v - Osta Vissy (20 maxhealth) 10e");
             Console.WriteLine($"Rahat: {gc.Player.Money}e");
-            SoundManager.PlayMarketSoundAsync();
+            // SoundManager.PlayMarketSoundAsync();
             var input = Console.ReadKey(true);
             switch (input.Key)
             {
                 case (ConsoleKey.E):
                     gc.screen.DrawScreen();
-                    SoundManager.StopMarketSound();
+                    //SoundManager.StopMarketSound();
                     SoundManager.PlayMainMusicAsync();
                     break;
 
@@ -44,7 +44,7 @@ namespace School_Project
                         gc.Player.BaseDamage += 20;
                         gc.Player.Money -= 10;
                         // Because this call is not awaited, execution of the current method continues before the call is completed
-                        SoundManager.PlayOpenBottleSoundAsync();
+                        SoundManager.PlayAsync(SoundType.OpenBottle);
                         // Because this call is not awaited, execution of the current method continues before the call is completed
                         Console.WriteLine("Ostit kossun ja kulautit sen naamaan. Tunnet itsesi voimakkaammakksi");
                         gc.Player.Bottles++;
@@ -65,7 +65,7 @@ namespace School_Project
                     {
                         gc.Player.MaxHp += 20;
                         gc.Player.Money -= 10;
-                        SoundManager.PlayOpenBottleSoundAsync();
+                        SoundManager.PlayAsync(SoundType.OpenBottle);
                         Console.WriteLine("Ostit vissyn ja kulautit sen naamaan. Tunnet voivasi paremmin");
                         gc.Player.Bottles++;
                         Console.WriteLine("Paina jotain nappia jatkaaksesi.");
@@ -88,7 +88,7 @@ namespace School_Project
                     }
                     else if (gc.Player.Bottles > 0)
                     {
-                        SoundManager.PlayBottlesSoundAsync();
+                        SoundManager.Play(SoundType.Bottles);
                         Console.WriteLine($"Palautit {gc.Player.Bottles} pulloa ja sait niistä {gc.Player.Bottles} euroa");
                         gc.Player.Addmoney(gc.Player.Bottles);
                         gc.Player.Bottles = 0;
@@ -118,7 +118,7 @@ namespace School_Project
             gc.screen.Clear();
             Console.WriteLine();
             PrintLogo(ruplaPottiLogo);
-            SoundManager.PlaySlotsMusicAsync();
+            // SoundManager.PlaySlotsMusicAsync();
             Console.WriteLine("e - Poistu, p - Pelaa");
             PrintMoney();
             Console.SetCursorPosition(1, 16);
@@ -202,7 +202,7 @@ namespace School_Project
 
                             if (row[0] == row[1] && row[1] == row[2])
                             {
-                                SoundManager.PlayWinSoundAsync();
+                                SoundManager.PlayAsync(SoundType.Win);
                                 if (row[0] == '$')
                                 {
                                     winnings = 50;
@@ -227,7 +227,7 @@ namespace School_Project
                             }
                             else if (row[0] == row[1])
                             {
-                                SoundManager.PlayWinSoundAsync();
+                                SoundManager.PlayAsync(SoundType.Win);
                                 if (row[0] == '$')
                                 {
                                     winnings = 5;
@@ -252,7 +252,7 @@ namespace School_Project
                             }
                             else
                             {
-                                SoundManager.PlayFailSoundAsync();
+                                SoundManager.Play(SoundType.Fail);
                                 //Console.WriteLine();
                                 Console.WriteLine("Sinne meni, et voittanut mitään!" + spaces);
                             }
@@ -302,4 +302,3 @@ namespace School_Project
         }
     }
 }
-

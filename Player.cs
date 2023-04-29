@@ -152,7 +152,7 @@ namespace School_Project
             else
             {
                 gc.MessageLog.AddMessage(new LogMessage($"Epäonnistut nolosti ja kaadut turvallesi.", ConsoleColor.Red));
-                SoundManager.PlayMissedHitSound();
+                SoundManager.PlayAsync(SoundType.Fail);
                 Task.Delay(TimeSpan.FromSeconds(1));
                 SoundManager.PlayMainMusic();
             }
@@ -186,9 +186,9 @@ namespace School_Project
                 BaseDamage += 10;
                 MaxHp += 25;
 
-                SoundManager.PlayLevelUpSound().Wait(1);
-                Task.Delay(TimeSpan.FromSeconds(1));
-                SoundManager.PlayMainMusic();
+                SoundManager.Play(SoundType.LevelUp);
+                //Task.Delay(TimeSpan.FromSeconds(1));
+                //SoundManager.PlayMainMusic();
 
                 gc.MessageLog.AddMessage(new LogMessage($"{Name} on nyt tason {Level} pultsari.", ConsoleColor.DarkYellow));
                 gc.screen.PrintPlayerStats();
@@ -208,7 +208,7 @@ namespace School_Project
         {
             if (HitPoints <= 0)
             {
-                SoundManager.PlayDieSoundAsync();
+                SoundManager.PlayAsync(SoundType.Die);
                 gc.MessageLog.AddMessage(new LogMessage($"Kaadut maahan, silmissä pimenee. Seikkailusi on ohi!", ConsoleColor.Red));
                 gc.UpdateDatabases();
                 gc.screen.EndScreen();

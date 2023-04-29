@@ -59,6 +59,7 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.5" />
     <PackageReference Include="MySql.Data" Version="8.0.33" />
+    <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="System.Text.Json" Version="7.0.2" />
     <PackageReference Include="System.Windows.Extensions" Version="7.0.0" />
   </ItemGroup>

@@ -212,7 +212,7 @@ namespace School_Project
         {
             if (Health <= 0)
             {
-                SoundManager.PlayVictorySound();
+                // SoundManager.PlayVictorySound();
                 Task.Delay(TimeSpan.FromSeconds(1)).Wait(1);
                 SoundManager.PlayMainMusic();
 
