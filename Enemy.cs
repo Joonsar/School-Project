@@ -164,22 +164,24 @@ namespace School_Project
                 case int n when n > 130 && n < 140:
                     damage *= 2;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"{this.Name} kaatuu yrittäessää lyödä sua joten päätät painaa täpöö päälle.", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"{this.Name} kaatuu yrittäessää lyödä sua joten päätät painaa täpöö päälle", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"ja potkit kylkeen kunnes kunto pettäää.(siis kerran) {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 140 && n < 150:
                     damage *= 1;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Väität kovasti ettet halua tapella ja kun {this.Name} kääntyy ympäri ja lähtee käveleen ", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Väität kovasti ettet halua tapella ja kun {this.Name} kääntyy ympäri ja lähtee käveleen", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"pois päin potkaset selkään! {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
 
                 case int n when n > 150 && n < 160:
                     damage *= 3;
                     Health -= damage;
-                    gc.MessageLog.AddMessage(new LogMessage($"Päätät käyttää käyttökelpoisinta taitoa: puremista. Puret vastustajasi kättä kunnes hän huutaa ", ConsoleColor.Green));
-                    gc.MessageLog.AddMessage(new LogMessage($"'löysin bissen' ja päästät irti. {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"Päätät käyttää käyttökelpoisinta taitoa: puremista. Puret vastustajasi kättä kunnes hän huutaa", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"'löysin bissen' ja päästät irt. Huomattuasi tulleeksi huijatuksi sinut valtaa raivo ja", ConsoleColor.Green));
+                    gc.MessageLog.AddMessage(new LogMessage($"paukutat menee ku merimies bordellissa! {this.Name} ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
+
                     break;
 
                 case int n when n > 160 && n < 170:
