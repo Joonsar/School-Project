@@ -86,19 +86,19 @@ namespace School_Project
             int move = rand.Next(0, 200);
             switch (move)
             {
-                case int n when n > 0 && n < 2:
+                case int n when n > 0 && n < 5:
                     damage =Health + 1;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Lataat kaikki voimasi uskomattomaan pubi heijariin ja säkällä horjahdat sopivasti niin että isku osuu keskelle naamaa!", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"{this.Name} tippuu ku hanskat duunarilta ja ottaa {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
-                case int n when n > 2 && n < 10:
+                case int n when n > 5 && n < 15:
                     damage *= 2;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Pistät painiks ja möyritte maassa 20min ähisten jonka jälkeen pidätte juomatauon.", ConsoleColor.Green));
                     gc.MessageLog.AddMessage(new LogMessage($"Tauolla lyöt takaapäin ja juokset karkuun. {this.Name} kärsii {damage} vahinkoa ({Health}/{MaxHealth})", ConsoleColor.Green));
                     break;
-                case int n when n > 10 && n < 30:
+                case int n when n > 15 && n < 30:
                     damage *= 1;
                     Health -= damage;
                     gc.MessageLog.AddMessage(new LogMessage($"Kaivat kiivaasti taskusta jotain asetta ja löydät napin. Heität napin ja {this.Name} luuli et se on massia!", ConsoleColor.Green));
