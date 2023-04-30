@@ -94,6 +94,7 @@ namespace School_Project
                 gc.Map.Mapping[Pos.X + x, Pos.Y + y] = Map.openDoor;
                 gc.MessageLog.AddMessage(new LogMessage("Avasit oven!", ConsoleColor.DarkYellow));
                 gc.screen.WriteAtPosition(new Position(Pos.X + x, Pos.Y + y), Map.openDoor.Mark);
+                SoundManager.Play(SoundType.Door);
                 return;
             }
             if (gc.Map.Mapping[Pos.X + x, Pos.Y + y] == Map.qMarket)

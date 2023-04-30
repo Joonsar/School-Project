@@ -15,6 +15,7 @@
     <None Remove="Sounds\Bottle.wav" />
     <None Remove="Sounds\Bottles.wav" />
     <None Remove="Sounds\Dead.wav" />
+    <None Remove="Sounds\door.mp3" />
     <None Remove="Sounds\Fail.wav" />
     <None Remove="Sounds\GameStart.wav" />
     <None Remove="Sounds\Item.wav" />
@@ -51,6 +52,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Dead.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\door.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Fail.wav">

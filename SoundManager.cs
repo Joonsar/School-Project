@@ -23,7 +23,8 @@ namespace School_Project
         Fail,
         LevelUp,
         Viewer,
-        Bg2
+        Bg2,
+        Door
     }
 
     public static class SoundManager
@@ -50,6 +51,7 @@ namespace School_Project
             LoadSound(SoundType.LevelUp, "LevelUp.wav");
             LoadSound(SoundType.Viewer, "Viewer.mp3");
             LoadSound(SoundType.Bg2, "bg2.mp3");
+            LoadSound(SoundType.Door, "door.mp3");
         }
 
         private static void LoadSound(SoundType soundType, string fileName)
