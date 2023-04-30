@@ -21,7 +21,8 @@ namespace School_Project
         OpenBottle,
         Win,
         Fail,
-        LevelUp
+        LevelUp,
+        Viewer
     }
 
     public static class SoundManager
@@ -46,6 +47,7 @@ namespace School_Project
             LoadSound(SoundType.Win, "Win.wav");
             LoadSound(SoundType.Fail, "Fail.wav");
             LoadSound(SoundType.LevelUp, "LevelUp.wav");
+            LoadSound(SoundType.Viewer, "Viewer.mp3");
         }
 
         private static void LoadSound(SoundType soundType, string fileName)

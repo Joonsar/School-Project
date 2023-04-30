@@ -28,7 +28,8 @@ namespace School_Project
         {
             Console.Clear();
             Console.Write(viewer);
-            System.Threading.Thread.Sleep(3000);
+            SoundManager.Play(SoundType.Viewer);
+            System.Threading.Thread.Sleep(5000);
             Console.Clear();
 
             SoundManager.Play(SoundType.GameStart);

@@ -25,6 +25,7 @@
     <None Remove="Sounds\Score.wav" />
     <None Remove="Sounds\Slots.wav" />
     <None Remove="Sounds\Victory.wav" />
+    <None Remove="Sounds\Viewer.mp3" />
     <None Remove="Sounds\Win.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Victory.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Viewer.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Win.wav">
