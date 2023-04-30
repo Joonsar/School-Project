@@ -11,6 +11,7 @@
     <RootNamespace>School_Project</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Sounds\bg2.mp3" />
     <None Remove="Sounds\Bottle.wav" />
     <None Remove="Sounds\Bottles.wav" />
     <None Remove="Sounds\Dead.wav" />
@@ -40,6 +41,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sounds\bg2.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\Bottle.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

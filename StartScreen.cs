@@ -18,6 +18,7 @@ namespace School_Project
         private readonly int maxPlayerNameLength = 15;
         private readonly string viewer = " __      ___                              _ _                   _   _               _                 _       _              _ \r\n \\ \\    / (_)                            | (_)                 | | (_)             (_)               | |     (_)            | |\r\n  \\ \\  / / _  _____      _____ _ __    __| |_ ___  ___ _ __ ___| |_ _  ___  _ __    _ ___    __ _  __| |_   ___ ___  ___  __| |\r\n   \\ \\/ / | |/ _ \\ \\ /\\ / / _ \\ '__|  / _` | / __|/ __| '__/ _ \\ __| |/ _ \\| '_ \\  | / __|  / _` |/ _` \\ \\ / / / __|/ _ \\/ _` |\r\n    \\  /  | |  __/\\ V  V /  __/ |    | (_| | \\__ \\ (__| | |  __/ |_| | (_) | | | | | \\__ \\ | (_| | (_| |\\ V /| \\__ \\  __/ (_| |\r\n     \\/   |_|\\___| \\_/\\_/ \\___|_|     \\__,_|_|___/\\___|_|  \\___|\\__|_|\\___/|_| |_| |_|___/  \\__,_|\\__,_| \\_/ |_|___/\\___|\\__,_|\r\n                                                                                                                               \r\n                                                                                                                               ";
         public string PlayerName { get; set; }
+        private bool viewerHasPlayed = false;
 
         public StartScreen()
         {
@@ -28,11 +29,15 @@ namespace School_Project
         {
             Console.Clear();
             Console.Write(viewer);
-            SoundManager.Play(SoundType.Viewer);
-            System.Threading.Thread.Sleep(5000);
-            Console.Clear();
+            if (!viewerHasPlayed)
+            {
+                SoundManager.Play(SoundType.Viewer);
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
+                viewerHasPlayed = true;
+            }
 
-            SoundManager.Play(SoundType.GameStart);
+            //SoundManager.Play(SoundType.GameStart);
             PrintInfo();
             while (true)
             {

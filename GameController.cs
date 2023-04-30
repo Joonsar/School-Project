@@ -97,7 +97,7 @@ namespace School_Project
 
         public void Run()
         {
-            SoundManager.ChangeMusic(SoundType.MainMusic);
+            SoundManager.ChangeMusic(SoundType.Bg2);
             while (running)
             {
                 if (Inspecting)
