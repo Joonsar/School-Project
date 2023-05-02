@@ -27,7 +27,8 @@ namespace School_Project
         Door,
         HitEnemy,
         Alcohol,
-        NonAlcohol
+        NonAlcohol,
+        RuplapottiLose
 
     }
 
@@ -63,6 +64,7 @@ namespace School_Project
             LoadSound(SoundType.Door, "door.mp3");
             LoadSound(SoundType.Alcohol, "Alcohol.mp3");
             LoadSound(SoundType.NonAlcohol, "NonAlcohol.mp3");
+            LoadSound(SoundType.RuplapottiLose, "RuplapottiLose.mp3");
         }
 
         private static void LoadSound(SoundType soundType, string fileName)
