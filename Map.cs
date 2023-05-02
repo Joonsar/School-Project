@@ -169,7 +169,7 @@ namespace School_Project
         {
             Random random = new();
             var pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
-            while (!IsPositionValid(pos))
+            while (!IsPositionValid(pos) && !IsStairsAtPosition(pos))
             {
                 pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
             }
