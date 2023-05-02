@@ -11,6 +11,7 @@
     <RootNamespace>School_Project</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Sounds\Alcohol.mp3" />
     <None Remove="Sounds\bg2.mp3" />
     <None Remove="Sounds\Bottle.wav" />
     <None Remove="Sounds\Bottles.wav" />
@@ -24,6 +25,7 @@
     <None Remove="Sounds\Market.wav" />
     <None Remove="Sounds\Missed.wav" />
     <None Remove="Sounds\MissHit.mp3" />
+    <None Remove="Sounds\NonAlcohol.mp3" />
     <None Remove="Sounds\Ooh.mp3" />
     <None Remove="Sounds\OpenBottle.wav" />
     <None Remove="Sounds\Ough.mp3" />
@@ -52,6 +54,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Bottles.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Alcohol.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Dead.wav">
@@ -103,6 +108,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Viewer.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\NonAlcohol.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Win.wav">

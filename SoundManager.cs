@@ -25,7 +25,10 @@ namespace School_Project
         Viewer,
         Bg2,
         Door,
-        HitEnemy
+        HitEnemy,
+        Alcohol,
+        NonAlcohol
+
     }
 
     public static class SoundManager
@@ -58,6 +61,8 @@ namespace School_Project
             LoadSound(SoundType.Viewer, "Viewer.mp3");
             LoadSound(SoundType.Bg2, "bg2.mp3");
             LoadSound(SoundType.Door, "door.mp3");
+            LoadSound(SoundType.Alcohol, "Alcohol.mp3");
+            LoadSound(SoundType.NonAlcohol, "NonAlcohol.mp3");
         }
 
         private static void LoadSound(SoundType soundType, string fileName)
