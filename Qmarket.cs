@@ -158,6 +158,15 @@ namespace School_Project
             string markTwo = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |    ___       | |\r\n| |  .' _ '.     | |\r\n| |  | (_) '___  | |\r\n| |  .`___'/ _/  | |\r\n| | | (___)  \\_  | |\r\n| | `._____.\\__| | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
             string markTree = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |      _       | |\r\n| |   /\\| |/\\    | |\r\n| |   \\     /    | |\r\n| |  |_     _|   | |\r\n| |   /     \\    | |\r\n| |   \\/|_|\\/    | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
             string markFour = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |    _  _      | |\r\n| |  _| || |_    | |\r\n| | |_| || |_|   | |\r\n| | |_| || |_|   | |\r\n| |   |_||_|     | |\r\n| |              | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
+
+            markOne.Replace("\n", "").Replace("\r","");
+
+            markTwo.Replace("\n", "").Replace("\r","");
+
+            markTree.Replace("\n", "").Replace("\r", "");
+
+            markFour.Replace("\n", "").Replace("\r", "");
+
             chars.Add(markOne);
             chars.Add(markTwo);
             chars.Add(markTree);
@@ -187,10 +196,10 @@ namespace School_Project
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
-                                Console.SetCursorPosition(40 + i*40, 37);
+                                Console.SetCursorPosition(40 + i*20, 30);
                                 //Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
-                                Console.SetCursorPosition(40 + i*40, 37);
+                                Console.SetCursorPosition(40 + i*20, 37);
                                 if (i == 0)
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                 if (i == 1)
@@ -198,6 +207,23 @@ namespace School_Project
                                     Console.ForegroundColor = ConsoleColor.Green;
                                 if (i == 2)
                                     Console.ForegroundColor = ConsoleColor.Red;
+                                int rowCount = 0;
+                                if (i == 1)
+                                {
+                                    string s = "";
+                                    for (int ii = 0; ii < row[i].Length; i++)
+                                    {
+                                        s  += row[i][ii];
+                                        if (ii % 20 == 0)
+                                        {
+                                            
+                                            Console.SetCursorPosition(21*i, 37-rowCount);
+                                            rowCount++;
+                                            Console.WriteLine(s);
+                                            s = "";
+                                        }
+                                    }
+                                }
                                 Console.Write(row[i]);
                             }
                             //  Console.WriteLine($"\n{row[0]} {row[1]} {row[2]}");
