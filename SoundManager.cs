@@ -26,7 +26,8 @@ namespace School_Project
         Bg2,
         Door,
         HitEnemy,
-        Cognac
+        Alcohol,
+        NonAlcohol
 
     }
 
@@ -58,7 +59,8 @@ namespace School_Project
             LoadSound(SoundType.Viewer, "Viewer.mp3");
             LoadSound(SoundType.Bg2, "bg2.mp3");
             LoadSound(SoundType.Door, "door.mp3");
-            LoadSound(SoundType.Cognac, "Cognac.mp3");
+            LoadSound(SoundType.Alcohol, "Alcohol.mp3");
+            LoadSound(SoundType.NonAlcohol, "NonAlcohol.mp3");
         }
 
         private static void LoadSound(SoundType soundType, string fileName)
