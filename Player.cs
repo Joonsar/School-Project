@@ -177,11 +177,12 @@ namespace School_Project
 
         public void CheckLevelUp()
         {
-            if (ExpPoints > Level * 100)
+            if (ExpPoints > Level * 300)
             {
                 Level++;
                 BaseDamage += 10;
-                MaxHp += 25;
+                MaxHp += 150;
+                HitPoints = MaxHp;
 
                 SoundManager.Play(SoundType.LevelUp);
                 //Task.Delay(TimeSpan.FromSeconds(1));
