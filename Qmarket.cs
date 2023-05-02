@@ -152,12 +152,16 @@ namespace School_Project
             int winnings = 0;
             var spaces = new string(' ', 40);
             Random rand = new();
-            char[] row = new char[3];
-            List<char> chars = new();
-            chars.Add('$');
-            chars.Add('%');
-            chars.Add('£');
-            chars.Add('¤');
+            string[] row = new string[3];
+            List<string> chars = new();
+            string markOne = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |        __    | |\r\n| |    _  / /    | |\r\n| |   (_)/ /     | |\r\n| |     / / _    | |\r\n| |    / / (_)   | |\r\n| |   /_/        | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
+            string markTwo = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |    ___       | |\r\n| |  .' _ '.     | |\r\n| |  | (_) '___  | |\r\n| |  .`___'/ _/  | |\r\n| | | (___)  \\_  | |\r\n| | `._____.\\__| | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
+            string markTree = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |      _       | |\r\n| |   /\\| |/\\    | |\r\n| |   \\     /    | |\r\n| |  |_     _|   | |\r\n| |   /     \\    | |\r\n| |   \\/|_|\\/    | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
+            string markFour = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |    _  _      | |\r\n| |  _| || |_    | |\r\n| | |_| || |_|   | |\r\n| | |_| || |_|   | |\r\n| |   |_||_|     | |\r\n| |              | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
+            chars.Add(markOne);
+            chars.Add(markTwo);
+            chars.Add(markTree);
+            chars.Add(markFour);
 
             while (playing)
             {
@@ -183,13 +187,14 @@ namespace School_Project
                             for (int i = 0; i < row.Length; i++)
                             {
                                 row[i] = chars[rand.Next(0, chars.Count)];
-                                Console.SetCursorPosition(40 + i, 30);
+                                Console.SetCursorPosition(40 + i*40, 37);
                                 //Console.Write(".");
                                 System.Threading.Thread.Sleep(500);
-                                Console.SetCursorPosition(40 + i, 30);
+                                Console.SetCursorPosition(40 + i*40, 37);
                                 if (i == 0)
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                 if (i == 1)
+
                                     Console.ForegroundColor = ConsoleColor.Green;
                                 if (i == 2)
                                     Console.ForegroundColor = ConsoleColor.Red;
@@ -202,23 +207,23 @@ namespace School_Project
                             if (row[0] == row[1] && row[1] == row[2])
                             {
                                 SoundManager.Play(SoundType.Win);
-                                if (row[0] == '$')
+                                if (row[0] == markOne)
                                 {
                                     winnings = 50;
                                     Console.WriteLine("Humalaisen tuuria voitit JACKPOTIN 50 euroa!" + spaces);
                                 }
-                                else if (row[0] == '%')
+                                else if (row[0] == markTwo)
                                 {
                                     winnings = 10;
 
                                     Console.WriteLine("Voitit 10 euroa." + spaces);
                                 }
-                                else if (row[0] == '£')
+                                else if (row[0] == markTree)
                                 {
                                     winnings = 20;
                                     Console.WriteLine("Voitit 20 euroa." + spaces);
                                 }
-                                else if (row[0] == '¤')
+                                else if (row[0] == markFour)
                                 {
                                     winnings = 40;
                                     Console.WriteLine("ISO voitto, meinaat lentää perseellesi. Voitit 40 euroa." + spaces);
@@ -227,22 +232,22 @@ namespace School_Project
                             else if (row[0] == row[1])
                             {
                                 SoundManager.Play(SoundType.Win);
-                                if (row[0] == '$')
+                                if (row[0] == markOne)
                                 {
                                     winnings = 5;
                                     Console.WriteLine("Voitit 5 euroa." + spaces);
                                 }
-                                else if (row[0] == '%')
+                                else if (row[0] == markTwo)
                                 {
                                     winnings = 4;
                                     Console.WriteLine("Voitit 4 euroa." + spaces);
                                 }
-                                else if (row[0] == '£')
+                                else if (row[0] == markTree)
                                 {
                                     winnings = 3;
                                     Console.WriteLine("Voitit 3 euroa." + spaces);
                                 }
-                                else if (row[0] == '¤')
+                                else if (row[0] == markFour)
                                 {
                                     winnings = 2;
                                     Console.WriteLine("Voitit 2 euroa." + spaces);
