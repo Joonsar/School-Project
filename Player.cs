@@ -177,12 +177,11 @@ namespace School_Project
 
         public void CheckLevelUp()
         {
-            if (ExpPoints > (Level * 200))
+            if (ExpPoints > Level * 100)
             {
                 Level++;
                 BaseDamage += 10;
-                MaxHp += 150;
-                HitPoints = MaxHp;
+                MaxHp += 25;
 
                 SoundManager.Play(SoundType.LevelUp);
                 //Task.Delay(TimeSpan.FromSeconds(1));
@@ -195,8 +194,6 @@ namespace School_Project
 
         public void TakeDamage(int amount)
         {
-            //int damageMultiplier = rand.Next(1, 3);
-            //amount *= damageMultiplier;
             gc.GameStats.DamageTaken += amount;
             gc.MessageLog.AddMessage(new LogMessage($"{Name} otaa {amount} vahinkoa", ConsoleColor.Red));
             HitPoints -= amount;
@@ -219,7 +216,7 @@ namespace School_Project
 
         public void Update()
         {
-            //HitPoints += 1;
+            HitPoints += 1;
             if (HitPoints > MaxHp)
             {
                 HitPoints = MaxHp;

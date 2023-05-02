@@ -215,7 +215,7 @@ namespace School_Project
 
                 gc.MessageLog.AddMessage(new LogMessage($"{Name} kaatuu maahan. Sinut valtaa voittajafiilis.", ConsoleColor.Green));
                 gc.GameStats.EnemiesKilled.Add(this);
-                gc.Player.AddExperience(30);
+                gc.Player.AddExperience((Level + 1) * 50);
                 gc.Map.entities.Remove(this);
             }
         }
