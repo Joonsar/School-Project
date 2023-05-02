@@ -250,7 +250,7 @@ namespace School_Project
                             }
                             else
                             {
-                                SoundManager.Play(SoundType.Fail);
+                                SoundManager.Play(SoundType.RuplapottiLose);
                                 //Console.WriteLine();
                                 Console.WriteLine("Sinne meni, et voittanut mitään!" + spaces);
                             }
