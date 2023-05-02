@@ -177,7 +177,7 @@ namespace School_Project
 
         public void CheckLevelUp()
         {
-            if (ExpPoints > Level * 300)
+            if (ExpPoints > (Level * 200))
             {
                 Level++;
                 BaseDamage += 10;
@@ -195,6 +195,8 @@ namespace School_Project
 
         public void TakeDamage(int amount)
         {
+            //int damageMultiplier = rand.Next(1, 3);
+            //amount *= damageMultiplier;
             gc.GameStats.DamageTaken += amount;
             gc.MessageLog.AddMessage(new LogMessage($"{Name} otaa {amount} vahinkoa", ConsoleColor.Red));
             HitPoints -= amount;
@@ -217,7 +219,7 @@ namespace School_Project
 
         public void Update()
         {
-            HitPoints += 1;
+            //HitPoints += 1;
             if (HitPoints > MaxHp)
             {
                 HitPoints = MaxHp;
