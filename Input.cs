@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace School_Project
 {
     public static class Input
@@ -162,7 +163,7 @@ namespace School_Project
                     case ConsoleKey.Escape:
                         System.Environment.Exit(0);
                         break;
-
+                #if (DEBUG)
                     case ConsoleKey.O:
                         gc.ChangeLevel(1);
                         break;
@@ -170,6 +171,7 @@ namespace School_Project
                     case ConsoleKey.I:
                         gc.ChangeLevel(-1);
                         break;
+                #endif
                 }
             }
         }
