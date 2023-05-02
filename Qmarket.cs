@@ -40,6 +40,7 @@ namespace School_Project
                     if (gc.Player.Money >= 10)
                     {
                         gc.Player.BaseDamage += 20;
+                        gc.Player.BaseHitChance += 10;
                         gc.Player.Money -= 10;
                         // Because this call is not awaited, execution of the current method continues before the call is completed
                         SoundManager.Play(SoundType.OpenBottle);

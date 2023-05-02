@@ -180,8 +180,10 @@ namespace School_Project
             if (ExpPoints > Level * 100)
             {
                 Level++;
-                BaseDamage += 10;
+                BaseDamage += 5;
                 MaxHp += 25;
+                int addHealth = (int)MaxHp / 5;
+                HitPoints += addHealth;
 
                 SoundManager.Play(SoundType.LevelUp);
                 //Task.Delay(TimeSpan.FromSeconds(1));
