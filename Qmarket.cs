@@ -159,13 +159,13 @@ namespace School_Project
             string markTree = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |      _       | |\r\n| |   /\\| |/\\    | |\r\n| |   \\     /    | |\r\n| |  |_     _|   | |\r\n| |   /     \\    | |\r\n| |   \\/|_|\\/    | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
             string markFour = "\r\n\r\n .----------------. \r\n| .--------------. |\r\n| |    _  _      | |\r\n| |  _| || |_    | |\r\n| | |_| || |_|   | |\r\n| | |_| || |_|   | |\r\n| |   |_||_|     | |\r\n| |              | |\r\n| |              | |\r\n| '--------------' |\r\n '----------------' \r\n\r\n";
 
-            markOne.Replace("\r\n", "");
+            markOne.Replace("\r", "").Replace("\n", "");
 
-            markTwo.Replace("\r\n", "");
+            markTwo.Replace("\r", "").Replace("\n", "");
 
-            markTree.Replace("\r\n", "");
+            markTree.Replace("\r", "").Replace("\n", "");
 
-            markFour.Replace("\r\n", "");
+            markFour.Replace("\r", "").Replace("\n", "");
 
             chars.Add(markOne);
             chars.Add(markTwo);
@@ -209,22 +209,22 @@ namespace School_Project
                                 if (i == 2)
                                     Console.ForegroundColor = ConsoleColor.Red;
                                 int rowCount = 0;
-                                if (i == 1)
+                                // if (i == 1)
+                                // {
+                                string s = "";
+                                for (int ii = 0; ii < row[i].Length; ii++)
                                 {
-                                    string s = "";
-                                    for (int ii = 0; ii < row[i].Length - 1; ii++)
+                                    s += row[i][ii];
+                                    if (ii % 20 == 0)
                                     {
                                         s += row[i][ii];
-                                        if (ii % 20 == 0)
-                                        {
-                                            s += row[i][ii];
-                                            Console.SetCursorPosition(21 * i, 37 - rowCount);
-                                            rowCount++;
-                                            Console.WriteLine(s);
-                                            s = "";
-                                        }
+                                        Console.SetCursorPosition(21 * i + 1, 37);
+                                        rowCount++;
+                                        Console.WriteLine(s);
+                                        s = "";
                                     }
                                 }
+                                //}
                                 Console.Write(row[i]);
                             }
                             //  Console.WriteLine($"\n{row[0]} {row[1]} {row[2]}");
