@@ -80,6 +80,7 @@ namespace School_Project
 
         public override void TakeDamage(int basedamage)
         {
+            SoundManager.Play(SoundType.HitEnemy);
             int damage = basedamage;
             Random rand = new();
             int move = rand.Next(0, 200);

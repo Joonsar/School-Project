@@ -24,7 +24,9 @@ namespace School_Project
         LevelUp,
         Viewer,
         Bg2,
-        Door
+        Door,
+        HitEnemy
+
     }
 
     public static class SoundManager
@@ -48,7 +50,9 @@ namespace School_Project
             LoadSound(SoundType.Bottles, "Bottles.wav");
             LoadSound(SoundType.OpenBottle, "OpenBottle.wav");
             LoadSound(SoundType.Win, "Win.wav");
+            //LoadSound(SoundType.Fail, "Fail.wav");
             LoadSound(SoundType.Fail, "Ooh.mp3");
+            LoadSound(SoundType.HitEnemy, "Ough.mp3");
             LoadSound(SoundType.LevelUp, "LevelUp.wav");
             LoadSound(SoundType.Viewer, "Viewer.mp3");
             LoadSound(SoundType.Bg2, "bg2.mp3");

@@ -26,6 +26,7 @@
     <None Remove="Sounds\MissHit.mp3" />
     <None Remove="Sounds\Ooh.mp3" />
     <None Remove="Sounds\OpenBottle.wav" />
+    <None Remove="Sounds\Ough.mp3" />
     <None Remove="Sounds\Score.wav" />
     <None Remove="Sounds\Slots.wav" />
     <None Remove="Sounds\Victory.wav" />
@@ -87,6 +88,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\OpenBottle.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Ough.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Score.wav">
