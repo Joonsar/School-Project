@@ -130,6 +130,7 @@ namespace School_Project
                     Input.CheckInput(input.Key);
                     Player.Update();
                     screen.PrintEntities(entities);
+                    screen.SetCursorPosition(Player.Pos.X, Player.Pos.Y);
                     Turn++;
                 }
             }
