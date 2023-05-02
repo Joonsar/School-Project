@@ -14,6 +14,7 @@
     <None Remove="Sounds\bg2.mp3" />
     <None Remove="Sounds\Bottle.wav" />
     <None Remove="Sounds\Bottles.wav" />
+    <None Remove="Sounds\Cognac.mp3" />
     <None Remove="Sounds\Dead.wav" />
     <None Remove="Sounds\door.mp3" />
     <None Remove="Sounds\Fail.wav" />
@@ -52,6 +53,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Bottles.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Cognac.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\Dead.wav">

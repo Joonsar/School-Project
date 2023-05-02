@@ -31,7 +31,7 @@ namespace School_Project
                 gc.Player.MaxHp += 50;
                 gc.MessageLog.AddMessage(new LogMessage("Kulautat vissyn naamariin, tunnet voivasi paremmin.", ConsoleColor.Blue));
             }));
-            ItemsList.Add(new Item("Konjakki", "(+Kokemuspisteet)", new Position(0, 0), '!', ConsoleColor.DarkRed, SoundType.ItemPickup, () =>
+            ItemsList.Add(new Item("Konjakki", "(+Kokemuspisteet)", new Position(0, 0), '!', ConsoleColor.DarkRed, SoundType.Cognac, () =>
             {
                 gc.Player.AddExperience(100);
                 gc.MessageLog.AddMessage(new LogMessage("Nautiskelet konjakin. Tunnet itsesi ammattilaiseksi", ConsoleColor.Blue));
