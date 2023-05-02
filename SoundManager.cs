@@ -26,7 +26,6 @@ namespace School_Project
         Bg2,
         Door,
         HitEnemy
-
     }
 
     public static class SoundManager
@@ -34,6 +33,8 @@ namespace School_Project
         private static readonly Dictionary<SoundType, AudioFileReader> soundPlayers = new();
 
         private static SoundType currentMusicType;
+
+        private static float musicVolume = 0.5f;
 
         static SoundManager()
         {
@@ -93,14 +94,16 @@ namespace School_Project
             if (soundPlayers.TryGetValue(soundType, out AudioFileReader soundPlayer))
             {
                 var waveOut = new WaveOutEvent();
-                waveOut.Init(soundPlayer);
-                soundPlayer.Seek(0, SeekOrigin.Begin);
+                var volume = new WaveChannel32(soundPlayer);
+                volume.Volume = musicVolume;
+                waveOut.Init(volume);
+                volume.Seek(0, SeekOrigin.Begin);
                 waveOut.PlaybackStopped += (sender, args) =>
                 {
                     //jos on päästy äänen loppuun alotetaan se uudestaan.
                     if (args.Exception == null && waveOut.PlaybackState == PlaybackState.Stopped)
                     {
-                        soundPlayer.Seek(0, SeekOrigin.Begin);
+                        volume.Seek(0, SeekOrigin.Begin);
                         waveOut.Play();
                     }
                 };
