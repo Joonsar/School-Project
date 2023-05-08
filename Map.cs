@@ -31,7 +31,6 @@ namespace School_Project
         public static readonly MapObject qMarket = new('Ħ', "Q-Market", true, ConsoleColor.Cyan);
 
         public List<Entity> entities;
-        private List<Position> playerPath;
 
         public Map(int width, int height, char emptySpaceChar = ' ', int numRooms = 0)
         {
@@ -174,26 +173,6 @@ namespace School_Project
                 pos = new Position(random.Next(1, Width - 1), random.Next(1, Height - 1));
             }
             Mapping[pos.X, pos.Y] = qMarket;
-        }
-
-        private void GenerateRandomWalls()
-        {
-            Random random = new();
-
-            // Determine the number of walls to create based on the size of the map
-            int wallCount = Width * Height / 80;
-
-            // Generate the specified number of walls in random positions
-            for (int i = 0; i < wallCount; i++)
-            {
-                int x = random.Next(1, Width - 1);
-                int y = random.Next(1, Height - 1);
-
-                if (Mapping[x, y] == empty)
-                {
-                    Mapping[x, y] = wall;
-                }
-            }
         }
 
         // Check if a given position is within the bounds of the game board and if there is wall at position
