@@ -168,7 +168,7 @@ namespace School_Project
             Console.WriteLine($"Arvioitu promillemääräsi oli {gc.GameStats.ItemsCollected.Count * 0.15} promilleä. Melkoinen saavutus");
             Console.WriteLine($"Lopulta kuolit lähiön tasolla {gc.Level + 1}. olit itse {gc.Player.Level} tasolla", Console.ForegroundColor = ConsoleColor.Green);
 
-            Console.WriteLine("\nPaina ESC jatkaaksesi!", Console.ForegroundColor = ConsoleColor.Yellow);
+            Console.WriteLine("\nPaina ESC jatkaaksesi!\n", Console.ForegroundColor = ConsoleColor.Yellow);
 
             while (true)
             {
@@ -178,6 +178,36 @@ namespace School_Project
                     break;
                 }
             }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Silmäsi aukeavat ja havahdut olevasi sairaalassa letkuissa!");
+            Console.WriteLine("hetken katseltasi ympärillesi huomaat väiskin istunvan penkillä huoneen kulmassa");
+            Console.WriteLine("eikä si mitenkä kovin ilosen näkösenä. Hetken kaavittuasi kuolaa huuliltasi kysyt väiskiltä");
+            Console.WriteLine("et mitäs mää täällä tee ja mitä nää letkut on? Sainks mää nii pahasti tauluu vai mitä kävi?");
+            Console.WriteLine("Väiski si tokas et eks sää saatana retku muista viimestä parii viikkoo?");
+            Console.WriteLine("Koitat selittää väiskille huikeista uroteoistasi kylillä ja kuin oot vedelly kaikkia pataa");
+            Console.WriteLine("ja pikkusen sivussa ottanu nestettä...");
+            Console.WriteLine("Väiski si totee et joo tosiaa oot pyöriny meiän talon pihassa ihan naamaat huudellen rivouksia,");
+            Console.WriteLine("tapellu pyykkitelinee ja puitten kans sekä koittanu vonkaa piirakkaa naapurin irma mummelilta! ");
+            Console.WriteLine("Vähä väliä kävit pöllyyttää pihan roskista ja toit kassi tolkulla jotai paskaa mun ovelle et");
+            Console.WriteLine("tuut ny markettii ostoksille! Sit sää perkele näpytteliit hetken mun pasianssi pakkaa ja huusit jackpot!");
+            Console.WriteLine("ja tulit tuomaa jotai roskaa pöytää et ny on ruplaa millä osetella! Oli hirvee homma aina saada");
+            Console.WriteLine("sut houkuteltua painuu pellolle viinapullolla mut sit lähit onnessas takas pihaa ja huusi vaihtavas");
+            Console.WriteLine("maisemat vähä laadukkaampii alueisii mut kuiteski kiipesit vaa pihan hiekkalaatikolle ja sama ralli jatku!");
+            Console.WriteLine("perkele pari viikkoo sää siinä kerkesit sekoilee kunnes pihan kakarat paino sut sileeks ja soitettii");
+            Console.WriteLine("lanssi hakee sut ja tohtorit totes et oot kiskassu kunnon viina psykoosit päälle");
+            Console.WriteLine("Tähän si sankarimme totee et no jopas oli reissu, ihmettelinki et miks kaikki näyttää kirjaimilta ja maisemat");
+            Console.WriteLine("pixeli mössöö. No ei siinä tänää paikkaillaa ja huomenna uusiks!");
+            Console.WriteLine("");
+            Console.WriteLine("\nPaina ESC jatkaaksesi!", Console.ForegroundColor = ConsoleColor.Yellow);
+            while (true)
+            {
+                var input2 = Console.ReadKey(true);
+                if (input2.Key == ConsoleKey.Escape)
+                {
+                    break;
+                }
+            }
+
         }
     }
 }
